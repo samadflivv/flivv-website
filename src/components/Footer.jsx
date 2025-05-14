@@ -7,11 +7,14 @@ const Footer = () => {
   <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10 relative z-10">
     {/* Column 1 */}
     <div>
-      <h2 className="text-4xl font-normal leading-tight">Making Luxury<br />Living Effortless</h2>
-      <button className="mt-4 px-5 py-2 rounded-full border border-white hover:bg-white hover:text-black transition">
-        Book Visit →
-      </button>
-    </div>
+  <h2 className="text-4xl font-normal leading-tight md:pt-0">
+    Making Luxury<br />Living Effortless
+  </h2>
+  <button className="mt-4 px-10 py-2 rounded-full border border-white bg-white text-black font-semibold transition w-full md:w-auto">
+    Book Visit →
+  </button>
+</div>
+
 
     {/* Column 2 */}
     <div>
@@ -48,12 +51,12 @@ const Footer = () => {
   </div>
 
   {/* Divider */}
-  <div className="border-t border-white mt-4 relative z-10">
+  {/* <div className="border-t border-white mt-4 relative z-10">
     <div className="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-400 flex justify-between">
       <p>All copyrights are server@flivvdevelopers</p>
       <p>Design and developed by khan</p>
     </div>
-  </div>
+  </div> */}
 
   {/* Background Image (blended) */}
   <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden rounded-xl">
