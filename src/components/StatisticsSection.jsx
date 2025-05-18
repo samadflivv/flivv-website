@@ -52,24 +52,24 @@ import React from 'react';
 
 const stats = [
   {
-    value: '200+',
-    label: 'Home Projects',
-    description: 'Crafted with precision and ultimate elegance.',
+    value: '5+',
+    label: 'Projects',
+    description: 'HMDA/ DTCP/ RERA Approved projects',
   },
   {
-    value: '50+',
-    label: 'Luxury Villas',
-    description: 'Designed for those who demand the best in class.',
+    value: '12+',
+    label: 'Years of Legacy',
+    description: 'Built on trust, quality, integrity, and innovation in real estate',
   },
   {
-    value: '5K',
+    value: '300+',
     label: 'Happy Clients',
-    description: 'Satisfied homeowners across multiple communities.',
+    description: 'Trusted by people from diverse cities and countries',
   },
   {
     value: '97%',
     label: 'Satisfaction Rate',
-    description: 'Our clients keep coming back and referring others.',
+    description: 'Our clients choose us again and recommend us to others',
   },
 ];
 

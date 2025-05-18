@@ -4,21 +4,21 @@ const OurPurpose = () => {
   const purposes = [
     {
       number: '01',
-      title: 'Redefining Luxury Living',
+      title: 'Mission',
       description:
-        'We create exceptional spaces that blend elegance, innovation, and comfort to elevate modern lifestyles.',
+        'To empower individuals and families with opportunities to diversify investment options according to the options we present while providing trustworthy and transparent services in open plot sales. We also aim to enhance the quality of our projects with each step as we take in all the customer-centric practices.',
     },
     {
       number: '02',
-      title: 'Uncompromising Quality & Craftsmanship',
+      title: 'Vision',
       description:
-        'Every project is built with meticulous attention to detail, using the finest materials and expert craftsmanship.',
+        'To be one of the most known online platforms in Hyderabad for educating the audience in the field of Real Estate while providing convenient open plot investment options and delivering the best exceptional value to our customers. This vision is what drives us to give our best and establish disciplined practices at work.',
     },
     {
       number: '03',
-      title: 'Creating Lasting Value',
+      title: 'Goal',
       description:
-        'Beyond beautiful homes, we design spaces that enrich lives, foster communities, and stand the test of time.',
+        'Our goal is to be recognized all over the country and to maintain customer satisfaction along with expansion and accessibility to all in and around Hyderabad and strengthen community engagement by constantly producing content that shall be beneficial for all the stakeholders in Real Estate in Hyderabad.',
     },
   ];
 

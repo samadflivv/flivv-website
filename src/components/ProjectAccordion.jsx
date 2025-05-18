@@ -112,32 +112,32 @@ import { useState } from 'react';
 
 const projects = [
   {
-    type: 'Residential',
-    name: 'Serenity Heights',
-    description: 'A premium residential complex with scenic views and top-notch amenities.',
-    location: 'Austin',
-    images: ['/images/serenity-1.jpg', '/images/serenity-1.jpg'],
+    type: 'NS Homes',
+    name: 'DTCP/RERA',
+    description: 'NS Homes DTCP-approved project is located on the 100-ft main road connecting Srisailam and Nagarjuna Sagar Highway',
+    location: 'location : Meerkhanpet',
+    images: ['/images/ns-1.jpeg', '/nsfront.jpeg'],
   },
   {
-    type: 'Commercial',
-    name: 'Vertex Business Tower',
-    description: 'A state-of-the-art office tower for enterprises and startups.',
-    location: 'Downtown LA',
-    images: ['/images/vertex-1.jpg', '/images/vertex-2.jpg'],
+    type: 'NS Homes 2.0',
+    name: 'DTCP/RERA',
+    description: 'NS Homes 2.0 is an extension of NS Homes, spreading across 4 acres of land. And has been completely sold out',
+    location: 'location : Meerkhanpet',
+    images: ['/images/ns2.jpeg', '/images/ns2-2.jpeg'],
   },
   {
-    type: 'Residential',
-    name: 'Greenwood Villas',
-    description: 'Exclusive villa community surrounded by lush greenery.',
-    location: 'Greenville',
-    images: ['/images/greenwood-1.jpg', '/images/greenwood-2.jpg'],
+    type: 'Ideal Avenue',
+    name: 'HMDA',
+    description: 'Ideal Avenue is a premium HMDA-approved plotted venture in the R1 zone between Shadnagar & Kothur',
+    location: 'location : Shadnagar',
+    images: ['/images/ideal-1.jpg', '/images/ideal-2.jpg'],
   },
   {
-    type: 'Residential',
-    name: 'Tranquil Apartments',
-    description: 'Tranquil Retreat Apartments redefine urban living with a focus on relaxation, offering pools.',
-    location: 'Palm City',
-    images: ['/images/tranquil-1.jpg', '/images/tranquil-2.jpg'],
+    type: 'Lake City',
+    name: 'DTCP/RERA',
+    description: 'DTCP & RERA-approved plotted venture on Mumbai Highway (NH65) in Nandikandis prime growth corridor',
+    location: 'location : Nandikandi',
+    images: ['/images/lakecity-1.JPG', '/images/lakecity2.JPG'],
   },
 ];
 
@@ -205,11 +205,13 @@ export default function ProjectAccordion() {
         ))}
       </div>
 
-      <div className="mt-10">
+      {/* <div className="mt-10">
+        <a href='/projects'>
         <button className="px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition">
           Check All Projects →
         </button>
-      </div>
+        </a>
+      </div> */}
     </section>
   );
 }

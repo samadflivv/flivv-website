@@ -86,30 +86,40 @@ const FaqSection = () => {
 
   const faqs = [
     {
-      question: "What makes your projects unique?",
+      question: "How long have you been in the Real Estate business in Hyderabad?",
       answer:
-        "Our projects are crafted with elite craftsmanship, personalized designs, and located in the most prestigious areas, ensuring a luxurious living experience.",
+        "It's been 2+ years since we diversified into Real Estate from IT. Having successfully provided IT services for over a decade, we are now also giving our best in Real Estate.",
     },
     {
-      question: "Do you offer customization options?",
+      question: "What types of properties do you specialize in?",
       answer:
-        "Yes, we offer a wide range of customization options to cater to your unique preferences and requirements.",
+        "We are currently dealing with open plot ventures around Hyderabad, focusing on developing areas that'd help you enjoy investment security and appreciation in the coming years.",
     },
     {
-      question: "What amenities are included in the properties?",
+      question: "How many projects have you marketed and developed so far?",
       answer:
-        "Our properties come with state-of-the-art amenities, including swimming pools, gyms, gardens, and advanced security systems.",
+        "We either take up projects for developing & marketing or exclusively for marketing. So far, we have 3+ projects successfully being executed.",
     },
     {
-      question: "How can I schedule a visit?",
+      question: "In what ways do you support or assist buyers after the sale?",
       answer:
-        "You can schedule a visit by contacting our sales team through our website or by calling our customer service hotline.",
+        "Once you buy from us, it's not a one-time deal. We're here for you even after your purchase. And when it comes to keeping your property safe and well-maintained, you can count on us.",
+    },
+    {
+      question: "What payment methods are available for your open plot ventures?",
+      answer:
+        "In real estate, payments can raise many questions and worries. To make things easier for you and ensure your comfort, we offer various payment options. You can choose to pay the full amount upfront, in installments, or through EMI.",
+    },
+    {
+      question: "Why should we trust Flivv Developers?",
+      answer:
+        "We believe in complete transperancy with the people we deal with. More than monetory transactions, we prioritize in maintaining healthy relations with stakeholders - business follows.",
     },
   ];
 
   return (
     <section className="px-4 py-10">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row">
         
         {/* Left Section */}
         <div className="flex-1">
@@ -120,7 +130,7 @@ const FaqSection = () => {
         </div>
 
         {/* Right Section - Accordion */}
-        <div className="flex-1 mt-8 lg:mt-0 space-y-6">
+        <div className="flex-1 mt-8 lg:mt-0 space-y-8">
           {faqs.map((faq, index) => (
             <div key={index} className="border-b pb-4">
               <div

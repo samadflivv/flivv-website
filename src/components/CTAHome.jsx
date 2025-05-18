@@ -65,14 +65,14 @@ const CTAHome = () => {
         {/* Overlay Content */}
         <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center text-white px-4">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-normal max-w-4xl">
-            Experience Timeless Elegance and Premium Living in Your Dream Home.
+            Not a conventional Real Estate company
           </h1>
-
+          <a href='/contact'>
           <button
             aria-label="Book an appointment"
             className="mt-6 px-6 py-3 bg-white/20 backdrop-blur-md text-white font-semibold rounded-full flex items-center space-x-2 shadow-lg hover:bg-white/30 transition duration-200 border"
           >
-            <span>Book Appointment</span>
+            <span>Get Free Consultation</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -89,6 +89,7 @@ const CTAHome = () => {
               />
             </svg>
           </button>
+          </a>
         </div>
       </div>
     </div>

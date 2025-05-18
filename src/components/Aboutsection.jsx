@@ -105,10 +105,10 @@ const Aboutsection = () => {
         {/* Left Column */}
         <div className="flex flex-col justify-start max-w-2xl">
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-normal leading-tight">
-            Embrace luxury and indulge in <br />
+            Expert advice or smart investments -
             a life of{' '}
             <span className="text-gray-500 font-normal">
-              elegance, serenity, and paradise.
+              we make your investment journey simple and effortless.
             </span>
           </h1>
 
@@ -126,32 +126,34 @@ const Aboutsection = () => {
 
           {/* Paragraph */}
           <p className="mt-4 text-gray-500 text-base sm:text-base max-w-md">
-            Experience a lifestyle of unmatched elegance and comfort. Discover spaces crafted for those who seek the extraordinary.
+            Our goal is to ensure both individual investors and companies can confidently navigate the market, maximising returns and securing long-term value.
           </p>
         </div>
 
         {/* Right Column - Button */}
         <div className="flex lg:items-end justify-end lg:justify-end w-full lg:w-auto">
-          <button className="w-full justify-center lg:mt-0 flex items-center gap-2 px-6 py-3 border border-black text-black rounded-full bg-transparent hover:bg-black hover:text-white transition duration-300">
-            Explore More <ArrowRight size={18} />
+          <a href='/about'>
+          <button className="w-full sm:w-50 justify-center lg:mt-0 flex items-center gap-2 px-6 py-3 border border-black text-black rounded-full bg-transparent hover:bg-black hover:text-white transition duration-300">
+            More About us <ArrowRight size={18} />
           </button>
+          </a>
         </div>
       </div>
 
       {/* Logo Scroller */}
       <>
-        <div className="relative overflow-hidden mt-10">
+        {/* <div className="relative overflow-hidden mt-10"> */}
           {/* Fading edges */}
-          <div
+          {/* <div
             className="pointer-events-none absolute inset-0 z-10"
             style={{
               background:
                 'linear-gradient(to right, white 0%, transparent 10%, transparent 90%, white 100%)',
             }}
-          />
+          /> */}
 
           {/* Logos Row */}
-          <div className="flex w-max animate-scroll whitespace-nowrap">
+          {/* <div className="flex w-max animate-scroll whitespace-nowrap">
             {[...Array(2)].flatMap((_, index) =>
               [...Array(8)].map((_, i) => (
                 <img
@@ -163,10 +165,10 @@ const Aboutsection = () => {
               ))
             )}
           </div>
-        </div>
+        </div> */}
 
         {/* Keyframes for Scroll */}
-        <style>
+        {/* <style>
           {`
             @keyframes scroll {
               0% { transform: translateX(0); }
@@ -176,7 +178,7 @@ const Aboutsection = () => {
               animation: scroll 20s linear infinite;
             }
           `}
-        </style>
+        </style> */}
       </>
     </section>
   );

@@ -96,10 +96,13 @@ const FourthSection = () => {
     <div className="px-4 sm:px-20 py-8 space-y-16">
       {/* Exceptionalities Section */}
       <div>
-        <p className="text-sm font-normal text-black">EXCEPTIONALITIES</p>
+        <p className="text-base font-normal text-black">Why Trust Us</p>
         <h1 className="text-3xl sm:text-5xl font-normal tracking-tight mt-2">
-          The Art of Exceptional Living
+          Understanding Your Investment Concerns
         </h1>
+        <h2 className="text-xl sm:text-xl font-normal text-gray-600 tracking-tight mt-5">
+          With over 12+ years in the business, we understand what it takes to<br/> build trust among our stakeholders.
+        </h2>
 
         {/* Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mt-12">
@@ -107,30 +110,24 @@ const FourthSection = () => {
           <div className="space-y-4">
             <div className="relative w-full h-72 sm:h-90">
               <Image
-                src="/17.jpg"
+                src="/professionals.jpeg"
                 alt="Elite Craftsmanship"
                 layout="fill"
                 objectFit="cover"
                 className="rounded-xl"
               />
             </div>
-            <h2 className="text-xl sm:text-2xl font-semibold">Elite Craftsmanship</h2>
-            <p className="text-sm sm:text-base font-medium text-gray-400">
-              Meticulously designed with the finest materials and attention to detail.
-            </p>
+            <h2 className="text-xl sm:text-xl font-normal">Involvement of professionals</h2>
           </div>
 
           {/* Card 2 */}
           <div className="space-y-4 flex flex-col-reverse sm:flex-col">
             <div>
-              <h2 className="text-xl sm:text-2xl font-semibold pt-4">Personalized Design</h2>
-              <p className="text-sm sm:text-base font-medium text-gray-400 pt-4 sm:pt-2">
-                Tailored spaces that reflect your unique style, vision, and personality.
-              </p>
+              <h2 className="text-xl sm:text-xl font-normal">Delivering high-quality development</h2>
             </div>
             <div className="relative w-full h-72 sm:h-90">
               <Image
-                src="/17.jpg"
+                src="/rivdevelopment.jpeg"
                 alt="Personalized Design"
                 layout="fill"
                 objectFit="cover"
@@ -143,26 +140,20 @@ const FourthSection = () => {
           <div className="space-y-4">
             <div className="relative w-full h-72 sm:h-90">
               <Image
-                src="/17.jpg"
+                src="/consultation.jpeg"
                 alt="Modern Elegance"
                 layout="fill"
                 objectFit="cover"
                 className="rounded-xl"
               />
             </div>
-            <h2 className="text-xl sm:text-2xl font-semibold">Modern Elegance</h2>
-            <p className="text-sm sm:text-base font-medium text-gray-400">
-              Bringing together contemporary aesthetics and timeless beauty.
-            </p>
+            <h2 className="text-xl sm:text-xl font-normal">Consultation and assistance</h2>
           </div>
 
           {/* Card 4 */}
           <div className="space-y-4 flex flex-col-reverse sm:flex-col">
             <div>
-              <h2 className="text-xl sm:text-2xl font-semibold pt-4">Inspired Spaces</h2>
-              <p className="text-sm sm:text-base font-medium text-gray-400 pt-1 sm:pt-2">
-                Designs that inspire emotion and purpose in every corner.
-              </p>
+              <h2 className="text-xl sm:text-xl font-normal pt-3">Making a difference in the market</h2>
             </div>
             <div className="relative w-full h-72 sm:h-90">
               <Image

@@ -85,28 +85,28 @@ import React from 'react';
 const ContactpageSecondsection = () => {
   const offices = [
     {
-      country: "USA",
-      city: "New York",
-      address: "123 Madison Avenue, New York, NY 10016",
-      link: "https://example.com/usa",
+      country: "NS Homes",
+      city: "Meerkhanpet",
+      address: "NS Homes DTCP-approved project is located on the 100-ft main road connecting Srisailam and Nagarjuna Sagar Highway",
+      link: "/",
     },
     {
-      country: "UK",
-      city: "London",
-      address: "45 Kensington High Street, London W8 5EB",
-      link: "https://example.com/uk",
+      country: "NS Homes 2.0",
+      city: "Meerkhanpet",
+      address: "NS Homes 2.0 is an extension of NS Homes, spreading across 4 acres of land. And has been completely sold out",
+      link: "/",
     },
     {
-      country: "UAE",
-      city: "Dubai",
-      address: "789 Sheikh Zayed Road, Bur Dubai, UAE",
-      link: "https://example.com/uae",
+      country: "Ideal Avenue",
+      city: "Shadnagar",
+      address: "Ideal Avenue is a premium HMDA-approved plotted venture in the R1 zone between Shadnagar & Kothur",
+      link: "/",
     },
     {
-      country: "India",
-      city: "Goa",
-      address: "23 Kolava Main Road Goa, India",
-      link: "https://example.com/india",
+      country: "Lake City",
+      city: "Nandikandi",
+      address: "DTCP & RERA-approved plotted venture on Mumbai Highway (NH65) in Nandikandi's prime growth corridor",
+      link: "/",
     },
   ];
 

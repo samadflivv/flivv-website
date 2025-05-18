@@ -11,7 +11,9 @@ function Navigation() {
     <div className="flex justify-between items-center px-6 md:px-[100px] w-full z-50 text-white absolute">
       {/* Logo */}
       <div>
+        <a href='/'>
         <img src="/flivv-logo.png" alt="Flivv Logo" width={150} />
+        </a>
       </div>
 
       {/* Desktop Menu */}

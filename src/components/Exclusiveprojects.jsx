@@ -69,7 +69,7 @@ import React from 'react';
 
 const Exclusiveprojects = () => {
   return (
-    <div className="px-4 sm:px-8 md:px-20 py-12">
+    <div className="px-4 sm:px-8 md:px-20 py-12" id="projects">
       {/* Highlights Section */}
       <div>
         <p className="text-sm text-black">HIGHLIGHTS</p>
@@ -92,12 +92,12 @@ const Exclusiveprojects = () => {
           </div>
           <div className="pt-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl md:text-3xl font-normal">Serenity Heights</h2>
-              <p className="text-lg md:text-2xl font-normal">$40,000</p>
+              <h2 className="text-xl md:text-3xl font-normal">Gulmohar Villas</h2>
+              <p className="text-lg md:text-2xl font-normal">Shadnagar</p>
             </div>
             <hr className="border-t border-gray-300 mt-4" />
             <p className="text-sm md:text-base text-gray-500 mt-2">
-              3 Bedroom · 1 Bathroom · 3 Livingroom
+              HMDA-approved 22-acre villa community at Shadnagar (NH44) – where leisure meets modern living.
             </p>
           </div>
         </div>
@@ -107,7 +107,7 @@ const Exclusiveprojects = () => {
           <div className="relative w-full h-64 md:h-80">
             <Image
               className="rounded-xl"
-              src="/hero-img-2.jpg"
+              src="/rivendell.jpeg"
               alt="Serenity Heights"
               fill
               style={{ objectFit: 'cover', borderRadius: '0.75rem' }}
@@ -116,12 +116,12 @@ const Exclusiveprojects = () => {
           </div>
           <div className="pt-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl md:text-3xl font-normal">Serenity Heights</h2>
-              <p className="text-lg md:text-2xl font-normal">$40,000</p>
+              <h2 className="text-xl md:text-3xl font-normal">Rivendell Farms</h2>
+              <p className="text-lg md:text-2xl font-normal">Thimmajipet, Jadcherla</p>
             </div>
             <hr className="border-t border-gray-300 mt-4" />
             <p className="text-sm md:text-base text-gray-500 mt-2">
-              3 Bedroom · 1 Bathroom · 3 Livingroom
+              A farmland project with premium amenities, sustainable living, exclusive memberships, and full of experience.
             </p>
           </div>
         </div>
