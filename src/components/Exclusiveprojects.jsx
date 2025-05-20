@@ -72,7 +72,7 @@ const Exclusiveprojects = () => {
     <div className="px-4 sm:px-8 md:px-20 py-12" id="projects">
       {/* Highlights Section */}
       <div>
-        <p className="text-sm text-black">HIGHLIGHTS</p>
+        {/* <p className="text-sm text-black">HIGHLIGHTS</p> */}
         <h1 className="text-2xl md:text-5xl font-normal tracking-tight mt-2">Exclusive Projects</h1>
       </div>
 
@@ -83,7 +83,7 @@ const Exclusiveprojects = () => {
           <div className="relative w-full h-64 md:h-80">
             <Image
               className="rounded-xl"
-              src="/hero-img-2.jpg"
+              src="/gv-ss.png"
               alt="Serenity Heights"
               fill
               style={{ objectFit: 'cover', borderRadius: '0.75rem' }} // tailwind's rounded-xl

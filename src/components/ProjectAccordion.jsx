@@ -150,8 +150,8 @@ export default function ProjectAccordion() {
 
   return (
     <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <h2 className="text-sm uppercase text-black tracking-widest mb-2">Projects</h2>
-      <h1 className="text-3xl sm:text-5xl font-normal mb-10">More Iconic Spaces</h1>
+      {/* <h2 className="text-sm uppercase text-black tracking-widest mb-2">Projects</h2> */}
+      <h1 className="text-3xl sm:text-5xl font-normal mb-10">Explore Our Projects</h1>
 
       <div className="space-y-12">
         {projects.map((project, idx) => (
@@ -194,9 +194,9 @@ export default function ProjectAccordion() {
   <span className="border px-5 py-2 rounded-lg text-sm text-gray-700 w-full sm:w-auto">
     {project.location}
   </span>
-  <button className="text-black border border-black px-6 py-2 rounded-full w-full sm:w-auto">
+  {/* <button className="text-black border border-black px-6 py-2 rounded-full w-full sm:w-auto">
     View Details →
-  </button>
+  </button> */}
 </div>
 
               </div>

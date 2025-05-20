@@ -5,7 +5,6 @@ import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
 import FourthSection from "@/components/FourthSection";
 import Herosection from "@/components/Herosection";
-import Navigation from "@/components/Navigation";
 import ProjectAccordion from "@/components/ProjectAccordion";
 import StatisticsSection from "@/components/StatisticsSection";
 

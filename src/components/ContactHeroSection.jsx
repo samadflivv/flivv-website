@@ -62,6 +62,7 @@
 
 
 import React from "react";
+import HubspotForm from "./HubspotForm";
 
 const ContactHeroSection = () => {
   return (
@@ -80,9 +81,10 @@ const ContactHeroSection = () => {
         <div className="flex flex-col justify-center text-white px-4 sm:px-10 py-8 space-y-6">
           <h2 className="text-3xl sm:text-4xl font-semibold">Connect with us</h2>
 
+            <HubspotForm/>
           <form className="space-y-6">
             {/* Contact Info */}
-            <div>
+            {/* <div>
               <h4 className="text-sm font-medium mb-2">Contact Information</h4>
               <div className="space-y-4">
                 <input
@@ -92,7 +94,7 @@ const ContactHeroSection = () => {
                 />
                 <input
                   type="email"
-                  placeholder="jane@framer.com"
+                  placeholder="Email"
                   className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-white"
                 />
                 <input
@@ -101,24 +103,24 @@ const ContactHeroSection = () => {
                   className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-white"
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Project Info */}
-            <div>
+            {/* <div>
               <h4 className="text-sm font-medium mb-2">Project Information</h4>
               <textarea
                 placeholder="Write your requirements.."
                 className="w-full px-4 py-3 bg-transparent border border-gray-600 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-white h-28 resize-none"
               />
-            </div>
+            </div> */}
 
             {/* Submit Button */}
-            <button
+            {/* <button
               type="submit"
               className="w-full py-3 bg-gray-500 hover:bg-gray-400 text-white rounded-full transition"
             >
               Submit
-            </button>
+            </button> */}
           </form>
         </div>
       </div>

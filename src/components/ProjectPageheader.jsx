@@ -7,10 +7,10 @@ const ProjectPageheader = () => {
         {/* Left Content */}
         <div className="flex flex-col md:flex-row items-end md:w-full sm:pl-25 sm:pr-20">
           <h1 className="text-3xl md:text-5xl font-normal leading-tight mb-4 w-1/1">
-            Crafting Excellence,<br />Redefining Luxury
+           Offering You The Best Real Estate Services
           </h1>
           <p className="text-gray-400 text-base md:text-lg w-1/">
-            With a commitment to unparalleled craftsmanship and visionary design, we create exceptional living spaces that blend elegance, comfort, and innovation.
+            Our goal is to provide you with the best service by understanding your needs and exceeding expectations. We constantly strive to improve and deliver better every step of the way.
           </p>
         </div>
 

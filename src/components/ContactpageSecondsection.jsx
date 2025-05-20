@@ -81,6 +81,7 @@
 
 
 import React from 'react';
+import HubspotForm from './HubspotForm';
 
 const ContactpageSecondsection = () => {
   const offices = [
@@ -114,17 +115,16 @@ const ContactpageSecondsection = () => {
     <div className="bg-white text-black px-4 sm:px-8 py-20">
       <div className="max-w-6xl mx-auto">
         <h5 className="text-base tracking-widest text-black uppercase mb-2">
-          Our Office
+          Our Projects
         </h5>
         <h1 className="text-4xl sm:text-5xl font-normal mb-10">
           Visit Our Experience Points
         </h1>
-
         <div className="divide-y divide-gray-200">
           {offices.map((office, idx) => (
             <div
               key={idx}
-              className="py-6 flex flex-col sm:grid sm:grid-cols-4 sm:items-start gap-2 sm:gap-0"
+              className="py-6 flex flex-col sm:grid sm:grid-cols-3 sm:items-start gap-2 sm:gap-0"
             >
               {/* Mobile: City top right */}
               <div className="flex justify-between sm:hidden">
@@ -153,7 +153,7 @@ const ContactpageSecondsection = () => {
               </div>
 
               {/* Free Consultation */}
-              <div className="text-base font-medium sm:text-right mt-2 sm:mt-0">
+              {/* <div className="text-base font-medium sm:text-right mt-2 sm:mt-0">
                 <a
                   href={office.link}
                   target="_blank"
@@ -174,7 +174,7 @@ const ContactpageSecondsection = () => {
                     />
                   </svg>
                 </a>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

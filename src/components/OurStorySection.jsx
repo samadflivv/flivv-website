@@ -4,11 +4,11 @@ const OurStorySection = () => {
   return (
     <section className="bg-white text-black px-4 md:px-40 py-16">
       {/* Top Content */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-10">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8">
         {/* Left bullet and heading */}
         <div className="md:w-1/2">
           <p className="text-sm tracking-widest text-black uppercase mb-2">About Us</p>
-          <h2 className="sm:text-5xl text-4xl font-normal mb-6">The Future of Real Estate with Flivv Developers</h2>
+          <h2 className="sm:text-5xl text-4xl font-normal">The Future of Real Estate with Flivv Developers</h2>
           {/* <ul className="list-disc pl-5 text-black">
             <li>
               Built on passion and precision, our journey is dedicated to redefining luxury living with timeless elegance.
