@@ -20,4 +20,4 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            pm2 restart flivv-nextjs
+            pm2 reload flivv-nextjs --update-env
