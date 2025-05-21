@@ -18,6 +18,7 @@ jobs:
           script: |
             cd ~/flivv-website
             git pull origin main
+            rm -rf .next node_modules
             npm install
             npm run build
             pm2 reload flivv-nextjs --update-env
