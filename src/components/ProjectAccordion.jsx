@@ -149,7 +149,7 @@ export default function ProjectAccordion() {
   };
 
   return (
-    <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* <h2 className="text-sm uppercase text-black tracking-widest mb-2">Projects</h2> */}
       <h1 className="text-3xl sm:text-5xl font-normal mb-10">Explore Our Projects</h1>
 
