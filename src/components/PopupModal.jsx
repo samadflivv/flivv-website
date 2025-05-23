@@ -43,7 +43,7 @@ const PopupModal = () => {
         {/* Left Image - hidden on mobile */}
         <div className="hidden md:block w-1/2 h-full">
           <img
-            src="/popup-image.jpeg"
+            src="/popup-img.jpeg"
             alt="Popup Visual"
             className="w-full h-150 object-cover"
           />
