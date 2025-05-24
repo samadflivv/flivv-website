@@ -26,7 +26,7 @@ const Herosection = () => {
           <p className="text-white text-base sm:text-lg leading-relaxed text-justify sm:text-left">
   We’re full-fledged developers and marketers of premium open plot ventures committed to
   <span className="hidden sm:inline"><br /></span>{" "}
-  providing you with the highest quality service and expertise in real estate investments in
+  providing you with customer-driven services and expertise in real estate investments in
   <span className="hidden sm:inline"><br /></span>{" "}
   the growing areas around Hyderabad.
 </p>
@@ -39,8 +39,8 @@ const Herosection = () => {
             </Button>
             </a> */}
             <a href="/projects">
-            <Button variant="secondary" className="w-full md:w-50 flex items-center justify-center gap-2 bg-white/10 text-white text-lg border border-white rounded-full py-6 px-6 font-semibold backdrop-blur-md hover:bg-white/20 transition-all">
-              Explore Projects
+            <Button variant="secondary" className="w-full md:w-60 flex items-center justify-center gap-2 bg-white/10 text-white text-lg border border-white rounded-full py-6 px-6 font-semibold backdrop-blur-md hover:bg-white/20 transition-all">
+              Explore Our Projects
             </Button>
             </a> 
           </div>

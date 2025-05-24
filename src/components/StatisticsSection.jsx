@@ -54,22 +54,18 @@ const stats = [
   {
     value: '5+',
     label: 'Projects',
-    description: 'HMDA/ DTCP/ RERA Approved projects',
   },
   {
     value: '12+',
     label: 'Years of Legacy',
-    description: 'Built on trust, quality, integrity, and innovation in real estate',
   },
   {
     value: '300+',
     label: 'Happy Clients',
-    description: 'Trusted by people from diverse cities and countries',
   },
   {
     value: '97%',
     label: 'Satisfaction Rate',
-    description: 'Our clients choose us again and recommend us to others',
   },
 ];
 
@@ -83,9 +79,6 @@ const StatisticsSection = () => {
             <h2 className="text-lg md:text-xl font-semibold mt-4 md:mt-6">
               {stat.label}
             </h2>
-            <p className="text-sm md:text-base font-medium text-gray-400 mt-1">
-              {stat.description}
-            </p>
           </div>
         ))}
       </div>

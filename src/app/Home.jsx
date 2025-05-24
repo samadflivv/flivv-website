@@ -17,7 +17,6 @@ export default function Home() {
       <FourthSection/>
       <StatisticsSection/>
       <CTAHome/>
-      <ProjectAccordion/>
       <FaqSection/>
       <Footer/>
     </main>

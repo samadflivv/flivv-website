@@ -105,10 +105,9 @@ const Aboutsection = () => {
         {/* Left Column */}
         <div className="flex flex-col justify-start max-w-2xl">
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-normal leading-tight">
-            Expert advice or smart investments -
-            a life of{' '}
+            Enhancing open lands with high-quality development amenities {' '}
             <span className="text-gray-500 font-normal">
-              we make your investment journey simple and effortless.
+              to increase the value of the projects we market
             </span>
           </h1>
 
@@ -126,7 +125,7 @@ const Aboutsection = () => {
 
           {/* Paragraph */}
           <p className="mt-4 text-gray-500 text-base sm:text-base max-w-md">
-            Our goal is to ensure both individual investors and companies can confidently navigate the market, maximising returns and securing long-term value.
+            Our goal is to ensure that initial investors and end-users of the projects we develop, market, and sell benefit from their investment journey by maximizing returns and securing long-term value.
           </p>
         </div>
 
