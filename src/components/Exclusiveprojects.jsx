@@ -73,7 +73,7 @@ const Exclusiveprojects = () => {
       {/* Highlights Section */}
       <div>
         {/* <p className="text-sm text-black">HIGHLIGHTS</p> */}
-        <h1 className="text-2xl md:text-5xl font-normal tracking-tight mt-2">Exclusive Projects</h1>
+        <h1 className="text-2xl md:text-5xl font-normal tracking-tight mt-2">Actively Running Projects</h1>
       </div>
 
       {/* Cards Section */}
@@ -97,7 +97,7 @@ const Exclusiveprojects = () => {
             </div>
             <hr className="border-t border-gray-300 mt-4" />
             <p className="text-sm md:text-base text-gray-500 mt-2">
-              HMDA-approved 22-acre villa community at Shadnagar (NH44) – where leisure meets modern living.
+              Our first-ever HMDA-approved 22-acre villa plot project in Nagulapally, Shadnagar, designed to enhance community living.
             </p>
           </div>
         </div>
@@ -121,7 +121,7 @@ const Exclusiveprojects = () => {
             </div>
             <hr className="border-t border-gray-300 mt-4" />
             <p className="text-sm md:text-base text-gray-500 mt-2">
-              A farmland project with premium amenities, sustainable living, exclusive memberships, and full of experience.
+              A premium farmland project with 10+ amenities, sustainable living concept, exclusive memberships, and full of experience.
             </p>
           </div>
         </div>

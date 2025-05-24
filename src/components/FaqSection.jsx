@@ -125,7 +125,7 @@ const FaqSection = () => {
         <div className="flex-1">
           <h2 className="text-sm font-medium text-black uppercase mb-2">FAQs</h2>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal leading-tight tracking-tight">
-            Everything You Need to <br className="hidden sm:block" /> Know Right Now
+            Everything You Need to <br className="hidden sm:block" /> Know About Flivv
           </h1>
         </div>
 

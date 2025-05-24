@@ -117,17 +117,17 @@ const FourthSection = () => {
                 className="rounded-xl"
               />
             </div>
-            <h2 className="text-xl sm:text-xl font-normal">Involvement of professionals</h2>
+            <h2 className="text-xl sm:text-xl font-normal">Involvement of Professionals</h2>
           </div>
 
           {/* Card 2 */}
           <div className="space-y-4 flex flex-col-reverse sm:flex-col">
             <div>
-              <h2 className="text-xl sm:text-xl font-normal">Delivering high-quality development</h2>
+              <h2 className="text-xl sm:text-xl font-normal">High Quality development</h2>
             </div>
             <div className="relative w-full h-72 sm:h-90">
               <Image
-                src="/rivdevelopment.jpeg"
+                src="/ns-3.jpeg"
                 alt="Personalized Design"
                 layout="fill"
                 objectFit="cover"
@@ -147,17 +147,17 @@ const FourthSection = () => {
                 className="rounded-xl"
               />
             </div>
-            <h2 className="text-xl sm:text-xl font-normal">Consultation and assistance</h2>
+            <h2 className="text-xl sm:text-xl font-normal">Consultation and Assistance</h2>
           </div>
 
           {/* Card 4 */}
           <div className="space-y-4 flex flex-col-reverse sm:flex-col">
             <div>
-              <h2 className="text-xl sm:text-xl font-normal pt-3">Making a difference in the market</h2>
+              <h2 className="text-xl sm:text-xl font-normal">Redefining the Market</h2>
             </div>
             <div className="relative w-full h-72 sm:h-90">
               <Image
-                src="/17.jpg"
+                src="/flivv-event.jpg"
                 alt="Inspired Spaces"
                 layout="fill"
                 objectFit="cover"

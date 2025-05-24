@@ -9,7 +9,7 @@ const ProjectPageheader = () => {
           <h1 className="text-3xl md:text-5xl font-normal leading-tight mb-4 w-1/1">
            Offering You The Best Real Estate Services
           </h1>
-          <p className="text-gray-400 text-base md:text-lg w-1/">
+          <p className="text-gray-400 text-base md:text-base">
             Our goal is to provide you with the best service by understanding your needs and exceeding expectations. We constantly strive to improve and deliver better every step of the way.
           </p>
         </div>
@@ -17,7 +17,7 @@ const ProjectPageheader = () => {
         {/* Right Side Images (for desktop) */}
         <div className="hidden md:flex md:w-1/2 gap-8">
           <img
-            src="/nsfront.jpeg"
+            src="/ns-front-2.jpeg"
             alt="Luxury Home"
             className="md:rounded-bl-lg  md:rounded-tr-xl h-auto object-cover"
           />
