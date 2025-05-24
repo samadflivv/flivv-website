@@ -51,8 +51,8 @@ const PopupModal = () => {
 
         {/* Right HubSpot Form (non-glass background) */}
         <div className="w-full md:w-1/2  md:p-6 flex flex-col justify-center">
-          <h2 className="text-2xl font-bold mb-3 text-black pt-6 pl-6 sm:p-0">Book a Free Site Visit</h2>
-          <p className="sm:mb-4 text-sm text-black/80 pl-6 sm:p-0">Our team will get in touch shortly after submission.</p>
+          <h2 className="text-2xl font-bold mb-3 text-black pt-6 pl-6 sm:p-0">Get in touch with us!</h2>
+          <p className="sm:mb-4 text-sm text-black/80 pl-6 sm:p-0">Help us understand your investment preferences better so we assist you accordingly.</p>
 
           <div className="bg-white text-black rounded-md sm:border sm:border-black">
             <div
