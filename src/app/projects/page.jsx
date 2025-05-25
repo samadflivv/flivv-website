@@ -1,6 +1,4 @@
-import Aboutsection from '@/components/Aboutsection'
-import ContactHeroSection from '@/components/ContactHeroSection'
-import Exclusiveprojects from '@/components/Exclusiveprojects'
+import Exclusiveprojects2 from '@/components/Exclusiveproje2'
 import Footer from '@/components/Footer'
 import Navigation from '@/components/Navigation'
 import ProjectAccordion from '@/components/ProjectAccordion'
@@ -13,7 +11,7 @@ const Projects = () => {
     <div>
       <Navigation/>
       <ProjectPageheader/>
-      <Exclusiveprojects/>
+      <Exclusiveprojects2/>
       <ProjectAccordion/>
       <Footer/>
     </div>

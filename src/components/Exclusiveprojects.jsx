@@ -71,16 +71,24 @@ const Exclusiveprojects = () => {
   return (
     <div className="px-4 sm:px-8 md:px-20 py-12" id="projects">
       {/* Highlights Section */}
-      <div>
+      <div className='flex items-center justify-between'>
         {/* <p className="text-sm text-black">HIGHLIGHTS</p> */}
-        <h1 className="text-2xl md:text-5xl font-normal tracking-tight mt-2">Actively Running Projects</h1>
+        <h1 className="text-3xl md:text-5xl font-normal tracking-tight mt-2">Actively Running Projects</h1>
+      
+      <div className="mt-10 hidden md:block">
+        <a href='/projects'>
+        <button className="px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition">
+          Check All Projects →
+        </button>
+        </a>
+      </div>
       </div>
 
       {/* Cards Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         {/* Card 1 */}
         <div className="overflow-hidden">
-          <div className="relative w-full h-64 md:h-80">
+          <div className="relative w-full h-64 md:h-90">
             <Image
               className="rounded-xl"
               src="/gv-ss.png"
@@ -104,7 +112,7 @@ const Exclusiveprojects = () => {
 
         {/* Card 2 (Duplicate example) */}
         <div className="overflow-hidden">
-          <div className="relative w-full h-64 md:h-80">
+          <div className="relative w-full h-64 md:h-90">
             <Image
               className="rounded-xl"
               src="/rivendell.jpeg"
@@ -125,6 +133,13 @@ const Exclusiveprojects = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className="mt-10 sm:hidden">
+        <a href='/projects'>
+        <button className="w-full px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition">
+          Check All Projects →
+        </button>
+        </a>
       </div>
     </div>
   );

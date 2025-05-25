@@ -64,7 +64,7 @@ const CTAHome = () => {
 
         {/* Overlay Content */}
         <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center text-white px-4">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-normal max-w-4xl">
+          <h1 className="text-5xl md:text-5xl lg:text-6xl font-normal max-w-4xl">
             Not a conventional Real Estate company
           </h1>
           <a href='/contact'>

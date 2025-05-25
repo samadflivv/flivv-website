@@ -11,7 +11,7 @@ const PopupModal = () => {
       const timer = setTimeout(() => {
         setIsVisible(true);
         sessionStorage.setItem("popupShown", "true");
-      }, 3000); // 3 seconds delay
+      }, 5000); // 3 seconds delay
 
       // Load HubSpot form script
       const script = document.createElement("script");
@@ -54,7 +54,7 @@ const PopupModal = () => {
           <h2 className="text-2xl font-bold mb-3 text-black pt-6 pl-6 sm:p-0">Get in touch with us!</h2>
           <p className="sm:mb-4 text-sm text-black/80 pl-6 sm:p-0">Help us understand your investment preferences better so we assist you accordingly.</p>
 
-          <div className="bg-white text-black rounded-md sm:border sm:border-black">
+          <div className="bg-white text-black rounded-md sm:shadow-lg">
             <div
               className="hs-form-frame"
               data-region="na1"
