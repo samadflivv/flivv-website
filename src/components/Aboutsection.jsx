@@ -103,8 +103,8 @@ const Aboutsection = () => {
       {/* Top content section */}
       <div className="flex flex-col lg:flex-row justify-between gap-12">
         {/* Left Column */}
-        <div className="flex flex-col justify-start max-w-2xl">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-normal leading-tight">
+        <div className="flex flex-col justify-start max-w-4xl">
+          <h1 className="text-2xl sm:text-xl md:text-5xl font-normal leading-tight">
             Enhancing open lands with high-quality development amenities {' '}
             <span className="text-gray-500 font-normal">
               to increase the value of the projects we market
@@ -130,9 +130,9 @@ const Aboutsection = () => {
         </div>
 
         {/* Right Column - Button */}
-        <div className="flex lg:items-end justify-end lg:justify-end w-full lg:w-auto">
+        <div className="flex lg:items-end justify-center lg:justify-end w-full lg:w-auto">
           <a href='/about'>
-          <button className="w-full sm:w-50 justify-center lg:mt-0 flex items-center gap-2 px-6 py-3 border border-black text-black rounded-full bg-transparent hover:bg-black hover:text-white transition duration-300">
+          <button className="w-80 sm:w-50 justify-center lg:mt-0 flex items-center gap-2 px-6 py-3 border border-black text-black rounded-full bg-transparent hover:bg-black hover:text-white transition duration-300">
             More About us <ArrowRight size={18} />
           </button>
           </a>

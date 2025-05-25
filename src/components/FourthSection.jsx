@@ -107,7 +107,7 @@ const FourthSection = () => {
         {/* Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mt-12">
           {/* Card 1 */}
-          <div className="space-y-4">
+          <div className="space-y-4 shadow-md rounded-xl p-4">
             <div className="relative w-full h-72 sm:h-90">
               <Image
                 src="/professionals.jpeg"
@@ -121,9 +121,9 @@ const FourthSection = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="space-y-4 flex flex-col-reverse sm:flex-col">
+          <div className="space-y-4 flex flex-col-reverse sm:flex-col shadow-md rounded-xl p-4">
             <div>
-              <h2 className="text-xl sm:text-xl font-normal">High Quality development</h2>
+              <h2 className="text-xl sm:text-xl font-normal pt-5 sm:pt-0">High Quality development</h2>
             </div>
             <div className="relative w-full h-72 sm:h-90">
               <Image
@@ -137,7 +137,7 @@ const FourthSection = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="space-y-4">
+          <div className="space-y-4 shadow-md rounded-xl p-4">
             <div className="relative w-full h-72 sm:h-90">
               <Image
                 src="/consultation.jpeg"
@@ -151,9 +151,9 @@ const FourthSection = () => {
           </div>
 
           {/* Card 4 */}
-          <div className="space-y-4 flex flex-col-reverse sm:flex-col">
+          <div className="space-y-4 flex flex-col-reverse sm:flex-col shadow-md rounded-xl p-4">
             <div>
-              <h2 className="text-xl sm:text-xl font-normal">Redefining the Market</h2>
+              <h2 className="text-xl sm:text-xl font-normal pt-5 sm:pt-0">Redefining the Market</h2>
             </div>
             <div className="relative w-full h-72 sm:h-90">
               <Image

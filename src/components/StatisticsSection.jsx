@@ -71,7 +71,7 @@ const stats = [
 
 const StatisticsSection = () => {
   return (
-    <div className="px-4 sm:px-8 md:px-20 mt-20 mb-30">
+    <div className="px-6 sm:px-8 md:px-20 mt-20 mb-30">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-col items-start">
