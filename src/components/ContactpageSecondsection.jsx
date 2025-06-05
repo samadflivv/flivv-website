@@ -88,25 +88,25 @@ const ContactpageSecondsection = () => {
     {
       country: "NS Homes",
       city: "Meerkhanpet",
-      address: "NS Homes DTCP-approved project is located on the 100-ft main road connecting Srisailam and Nagarjuna Sagar Highway",
+      address: "NS Homes is our maiden open plot project located on the 100ft. main road connecting Srisailam & Nagarjuna Sagar Highways",
       link: "/",
     },
     {
       country: "NS Homes 2.0",
       city: "Meerkhanpet",
-      address: "NS Homes 2.0 is an extension of NS Homes, spreading across 4 acres of land. And has been completely sold out",
+      address: "NS Homes 2.0 is an extension of NS Homes, spreading across 4 acres of land. This project is now fully sold out",
       link: "/",
     },
     {
       country: "Ideal Avenue",
       city: "Shadnagar",
-      address: "Ideal Avenue is a premium HMDA-approved plotted venture in the R1 zone between Shadnagar & Kothur",
+      address: "Ideal Avenue is a premium HMDA-approved plotted venture in the R1 zone on the Kothur - Shadnagar Highway",
       link: "/",
     },
     {
       country: "Lake City",
       city: "Nandikandi",
-      address: "DTCP & RERA-approved plotted venture on Mumbai Highway (NH65) in Nandikandi's prime growth corridor",
+      address: "A 10.5-acre open plot project on Mumbai Highway (NH65) in Nandikandi's prime growth corridor",
       link: "/",
     },
   ];

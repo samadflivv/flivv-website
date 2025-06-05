@@ -1,5 +1,4 @@
 import Home from '@/app/Home'
-import Navigation from '@/components/Navigation'
 import PopupModal from '@/components/PopupModal'
 import React from 'react'
 
