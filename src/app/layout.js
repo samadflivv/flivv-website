@@ -14,6 +14,8 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Flivv Developers",
   description: "Dedicated to helping you Invest Wisely in Real Estate",
+  icon: "/favicon.ico",
+  
 };
 
 export default function RootLayout({ children }) {

@@ -105,7 +105,7 @@ const FourthSection = () => {
         </h2>
 
         {/* Cards Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12">
           {/* Card 1 */}
           <div className="space-y-4 shadow-md rounded-xl p-4">
             <div className="relative w-full h-72 sm:h-90">
