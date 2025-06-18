@@ -157,7 +157,7 @@ const FourthSection = () => {
             </div>
             <div className="relative w-full h-72 sm:h-90">
               <Image
-                src="/flivv-event.jpg"
+                src="/DSC00693.JPG"
                 alt="Inspired Spaces"
                 layout="fill"
                 objectFit="cover"
