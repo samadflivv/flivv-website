@@ -86,6 +86,18 @@ import HubspotForm from './HubspotForm';
 const ContactpageSecondsection = () => {
   const offices = [
     {
+      country: "Gulmohar Villas",
+      city: "Shadnagar",
+      address: "Our first-ever HMDA-approved 22-acre villa plot project in Nagulapally, Shadnagar, designed to enhance community living",
+      link: "/",
+    },
+    {
+      country: "Rivendell Farms",
+      city: "Thimmajipet, Jadcherla",
+      address: "A premium farmland project with 10+ amenities, sustainable living concept, exclusive memberships, and full of experience.",
+      link: "/",
+    },
+    {
       country: "NS Homes",
       city: "Meerkhanpet",
       address: "NS Homes is our maiden open plot project located on the 100ft. main road connecting Srisailam & Nagarjuna Sagar Highways",
