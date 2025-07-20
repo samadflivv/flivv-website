@@ -3,6 +3,7 @@ import ContactpageSecondsection from '@/components/ContactpageSecondsection'
 import FaqSection from '@/components/FaqSection'
 import Footer from '@/components/Footer'
 import Navigation from '@/components/Navigation'
+import ScrollVideoSection from '@/components/ScrollVideoSection'
 import React from 'react'
 
 const Contact = () => {
