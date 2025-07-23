@@ -7,7 +7,6 @@ import GVgallery from '@/components/GVgallery'
 import GVHerotest from '@/components/GVHerotop'
 import GVLocationMapSection from '@/components/GVLocationMapSection'
 import Navigation from '@/components/Navigation'
-import ScrollVideoSection from '@/components/ScrollVideoSection'
 import React from 'react'
 
 const page = () => {

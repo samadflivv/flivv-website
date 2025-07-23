@@ -40,11 +40,11 @@ const GVcta = () => {
         {/* Left side */}
         <div className="space-y-10">
           <div>
-            <h2 className="text-5xl md:text-6xl pb-5 font-semibold leading-tight">
+            <h2 className="text-6xl pb-5 font-normal leading-tight">
               Ready? Let’s talk
             </h2>
             <p className="text-xl md:text-2xl font-light">
-              Connect with us to explore Gulmohar Villas opportunities.
+              Explore investment opportunities at Gulmohar Villas
             </p>
           </div>
 
@@ -68,13 +68,13 @@ const GVcta = () => {
             <div className="w-2 h-2 rounded-full bg-[#E509EF] animate-pulse"></div>
             <div>
               <span className="text-lg font-semibold">Gulmohar Villas</span>
-              <p className="text-xs text-gray-300">Taking bookings this month</p>
+              <p className="text-xs text-gray-300">Selling-Fast ⚡</p>
             </div>
           </div>
         </div>
 
         {/* Right side with HubSpot form */}
-        <div className="bg-white text-black rounded-2xl shadow-xl relative">
+        <div id="GVcontact" className="bg-white text-black rounded-2xl shadow-xl relative">
           <h3 className="text-3xl font-semibold pl-10 pt-8">
             Leave your details & we’ll get in touch
           </h3>

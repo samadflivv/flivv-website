@@ -40,11 +40,10 @@ export default function GVHerotop() {
             <AnimatedBTN />
           </div>
           
-          <div className="text-right text-sm tracking-wider uppercase text-white space-y-1 font-medium">
-            <p>DESIGNING</p>
-            <p>PROJECT DESIGN</p>
-            <p>CONSTRUCTION</p>
-            <p>FINAL RENOVATION</p>
+          <div className="pt-6 text-right text-sm tracking-wider uppercase text-white space-y-1 font-medium">
+            <p>SHADNAGAR</p>
+            <p>HMDA APPROVED</p>
+            <p>VILLA PLOT PROJECT</p>
           </div>
         </div>
       </div>
@@ -76,10 +75,9 @@ export default function GVHerotop() {
           
           <div className="flex items-end">
             <div className="text-right text-sm md:text-sm tracking-wider uppercase text-white/80 ml-25 mb-10">
-              <p>DESIGNING</p>
-              <p>PROJECT DESIGN</p>
-              <p>CONSTRUCTION</p>
-              <p>FINAL RENOVATION</p>
+            <p>SHADNAGAR</p>
+            <p>HMDA APPROVED</p>
+            <p>VILLA PLOT PROJECT</p>
             </div>
           </div>
 

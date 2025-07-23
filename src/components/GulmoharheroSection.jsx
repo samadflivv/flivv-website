@@ -124,7 +124,7 @@ export default function HeroSection() {
                 w-full h-full z-10
                 ${isMobile ? 'object-contain' : 'object-cover'}
               `}
-              src="/hero.mp4"
+              src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GULMOHAR%203D%20FINALER.mp4"
               style={{
                 // Maintain aspect ratio on mobile
                 aspectRatio: isMobile ? '16/9' : undefined,

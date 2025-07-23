@@ -13,19 +13,13 @@ export default function GVabout() {
           </button>
           <h2 className="text-6xl font-normal mb-4">About</h2>
           <p className="mb-4 text-lg sm:text-justify">
-            Located in the rapidly developing <strong>Shadnagar, Gulmohar Villas</strong> offers prime
-            connectivity to NH 44, <strong>Shadnagar town</strong> and RGIA, just 38 km from Aramgarh X Roads —
-            an ideal choice for families seeking a peaceful retreat.
+            Gulmohar Villas marks our very first HMDA-approved villa plot development, and it’s one that truly <b className= 'italic text-[#E509EF]' >"sold itself".</b>
           </p>
           <p className="mb-4 text-lg sm:text-justify">
-            This thoughtfully designed, self-sustained community blends modern conveniences with natural serenity.
-            With personalized villas, modern infrastructure and lush landscapes, it promotes well-being, freedom
-            and simplicity. The community offers <strong>wellness center, outdoor spaces</strong> and essential
-            amenities such as a <strong>healthcare facility, supermarket</strong> and a <strong>café</strong>.
+            Located in the fast-growing area of Shadnagar, this project offers great connectivity to NH 44, Shadnagar town, and Rajiv Gandhi International Airport (RGIA), just 38 km from Aramgarh X Roads. It’s the perfect blend of modern and natural tranquility, making it an ideal choice for families seeking a peaceful yet connected lifestyle. 
           </p>
           <p className="mb-6 text-lg sm:text-justify">
-            For a long-term leisure living, Gulmohar Villas redefines simple living, nurturing a harmonious
-            connection with nature and modern comfort.
+            <b className= 'italic text-[#E509EF]' >With 100+ units sold in just 2 months,</b> Gulmohar Villas' success was built on a strong foundation of the trust we've earned over years of consistent branding.
           </p>
 
           {/* Logo Scroller */}

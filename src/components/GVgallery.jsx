@@ -1,7 +1,5 @@
 'use client'
 
-'use client'
-
 // components/GVgallery.js
 import { useState, useRef, useEffect } from 'react';
 
@@ -71,10 +69,11 @@ export default function GVgallery() {
   return (
     <div className="min-h-screen bg-white">
       {/* Main Gallery */}
-      <div className="container mx-auto py-20 sm:py:30 px-4 sm:px-25">
+      <div className="container mx-auto py-30 px-4 sm:px-25">
         {/* Added Heading */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-normal text-gray-800 sm:mb-20">Gallery</h1>
+          <h1 className="text-4xl font-normal text-gray-800">Gallery</h1>
+          <div className="w-24 h-1 bg-gray-300 mx-auto mt-4"></div>
         </div>
         
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
@@ -134,19 +133,22 @@ export default function GVgallery() {
             {images.map((image, index) => (
               <div 
                 key={index} 
-                className="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-4"
+                className="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-2 sm:p-4"
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="max-h-[85vh] max-w-[85vw] object-contain"
-                />
+                {/* Mobile centering fix */}
+                <div className="w-full h-full flex items-center justify-center">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="max-h-[80vh] pl-5"
+                  />
+                </div>
               </div>
             ))}
           </div>
 
-          {/* Controls */}
-          <div className="fixed top-1/2 left-0 right-0 flex justify-between px-4 z-20 transform -translate-y-1/2">
+          {/* Controls - Hidden on mobile */}
+          <div className="fixed top-1/2 left-0 right-0 hidden sm:flex justify-between px-4 z-20 transform -translate-y-1/2">
             <button
               className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-3xl text-gray-800 shadow-lg hover:bg-white transition-all duration-300"
               onClick={() => scrollCarousel(-1)}
@@ -161,9 +163,9 @@ export default function GVgallery() {
             </button>
           </div>
 
-          {/* Close Button */}
+          {/* Close Button - Larger on mobile */}
           <button
-            className="fixed top-6 right-6 w-12 h-12 text-3xl text-gray-800 flex items-center justify-center z-20 bg-white/80 backdrop-blur-md rounded-full shadow-lg hover:bg-white transition-all duration-300"
+            className="fixed top-4 right-4 w-12 h-12 text-3xl text-gray-800 flex items-center justify-center z-20 bg-white/80 backdrop-blur-md rounded-full shadow-lg hover:bg-white transition-all duration-300"
             onClick={closeDialog}
           >
             ✕
