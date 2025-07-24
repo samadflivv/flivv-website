@@ -69,7 +69,7 @@ export default function GVgallery() {
   return (
     <div className="min-h-screen bg-white">
       {/* Main Gallery */}
-      <div className="container mx-auto py-30 px-4 sm:px-25">
+      <div className="container mx-auto py-25 px-4 sm:px-25">
         {/* Added Heading */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-normal text-gray-800">Gallery</h1>

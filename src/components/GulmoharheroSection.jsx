@@ -51,7 +51,7 @@ export default function HeroSection() {
         
         // Enable sound on mobile
         if (isMobile) {
-          video.muted = false
+          video.muted = true
         }
           
         video.play().catch(error => {

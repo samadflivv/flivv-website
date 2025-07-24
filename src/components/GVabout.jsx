@@ -13,13 +13,13 @@ export default function GVabout() {
           </button>
           <h2 className="text-6xl font-normal mb-4">About</h2>
           <p className="mb-4 text-lg sm:text-justify">
-            Gulmohar Villas marks our very first HMDA-approved villa plot development, and it’s one that truly <b className= 'italic text-[#E509EF]' >"sold itself".</b>
+            Gulmohar Villas marks our very first HMDA-approved villa plot development, and it’s one that truly <b className= 'italic text-bold' >"sold itself".</b>
           </p>
           <p className="mb-4 text-lg sm:text-justify">
             Located in the fast-growing area of Shadnagar, this project offers great connectivity to NH 44, Shadnagar town, and Rajiv Gandhi International Airport (RGIA), just 38 km from Aramgarh X Roads. It’s the perfect blend of modern and natural tranquility, making it an ideal choice for families seeking a peaceful yet connected lifestyle. 
           </p>
           <p className="mb-6 text-lg sm:text-justify">
-            <b className= 'italic text-[#E509EF]' >With 100+ units sold in just 2 months,</b> Gulmohar Villas' success was built on a strong foundation of the trust we've earned over years of consistent branding.
+            <b className= 'italic text-bold' >With 100+ units sold in just 2 months,</b> Gulmohar Villas' success was built on a strong foundation of the trust we've earned over years of consistent branding.
           </p>
 
           {/* Logo Scroller */}

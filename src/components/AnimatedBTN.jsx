@@ -37,9 +37,9 @@ export default function AnimatedBTN() {
         ref={buttonRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="shadow-xl shadow-[#E509EF]/50 relative z-10 px-3 md:px-8 py-3 rounded-xl backdrop-blur-md bg-[#E509EF]/35 text-white text-sm md:text-xl border border-[#E509EF]/70 shadow-md transition-all duration-300 overflow-hidden"
+        className="shadow-xl shadow-[#E509EF]/50 relative z-10 px-6 md:px-8 py-3 rounded-xl backdrop-blur-md bg-[#E509EF]/35 text-white text-sm md:text-xl border border-[#E509EF]/70 shadow-md transition-all duration-300 overflow-hidden"
       >
-        Explore Gulmohar Villas
+        Contact Us &rarr;	
       </button>
       </a>
     </div>

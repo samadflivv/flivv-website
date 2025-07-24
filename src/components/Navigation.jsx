@@ -68,7 +68,7 @@ export default function Navigation() {
               <ul className="pl-4 mt-2 space-y-2">
                 <li>
                   <Link
-                    href="/gulmohar"
+                    href="/gulmoharvillas"
                     onClick={() => setIsOpen(false)}
                     className="block py-1 text-lg font-light text-gray-300 hover:text-white"
                   >
