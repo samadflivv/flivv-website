@@ -26,7 +26,7 @@ export default function Navigation() {
           <ul className="absolute left-0 mt-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
             <li>
               <Link
-                href="/gulmohar"
+                href="/gulmoharvillas"
                 className="block px-4 py-2 rounded-lg text-lg font-normal bg-white/10 text-white backdrop-blur-md hover:bg-white/20 transition-all"
               >
                 Gulmohar Villas
