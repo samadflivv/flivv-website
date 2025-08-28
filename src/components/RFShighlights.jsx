@@ -128,7 +128,7 @@ const RFShighlights = () => {
 >
   {/* Background Image */}
   <img
-    src="/RFSclubhouse.jpg"
+    src="/RFSclubHouse.jpg"
     alt="Clubhouse"
     className="object-cover w-full h-full"
   />

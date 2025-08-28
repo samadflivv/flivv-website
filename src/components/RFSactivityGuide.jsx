@@ -10,7 +10,7 @@
       {
         time: "08:00 AM - 09:00 AM",
         description: "Savor a fresh morning feast from our culinary team while enjoying the nature's beauty.",
-        image: "/coffecup.png" 
+        image: "/Coffecup.png" 
       },
       {
         time: "09:30 AM - 11:00 AM",
