@@ -141,7 +141,7 @@ export default function RFScta() {
             <span className="text-sm font-medium text-gray-600 uppercase tracking-wider">Contact</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-[#081C15] mb-4">
+          <h2 className="text-4xl md:text-6xl font-normal text-[#081C15] mb-4">
             Request a Visit
           </h2>
 
