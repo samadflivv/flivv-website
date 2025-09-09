@@ -13,6 +13,7 @@ const Exclusiveprojects2 = () => {
       {/* Cards Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         {/* Card 1 */}
+        <a href="/gulmoharvillas">
         <div className="overflow-hidden">
           <div className="relative w-full h-64 md:h-90">
             <Image
@@ -35,8 +36,10 @@ const Exclusiveprojects2 = () => {
             </p>
           </div>
         </div>
+        </a>
 
         {/* Card 2 (Duplicate example) */}
+        <a href="/rivendellfarms">
         <div className="overflow-hidden">
           <div className="relative w-full h-64 md:h-90">
             <Image
@@ -59,6 +62,7 @@ const Exclusiveprojects2 = () => {
             </p>
           </div>
         </div>
+        </a>
       </div>
     </div>
   );

@@ -1,20 +1,20 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
 
-// Register GSAP plugins
+// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const WhyRFS = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
   const containerRef = useRef(null);
   const leftStickyRef = useRef(null);
-  const progressTrackRef = useRef(null);
-  const progressDotRef = useRef(null);
   const cardRefs = useRef([]);
-  
+
   const cards = [
     {
       id: 1,
@@ -42,87 +42,114 @@ const WhyRFS = () => {
     }
   ];
 
-  // Initialize GSAP ScrollTriggers
+  // Detect mobile/desktop and update state
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cardsContainer = containerRef.current.querySelector('.cards-wrapper');
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      return mobile;
+    };
+    
+    checkMobile();
+    
+    const handleResize = () => {
+      const wasMobile = isMobile;
+      const nowMobile = checkMobile();
       
+      // Only refresh if mobile state actually changed
+      if (wasMobile !== nowMobile) {
+        // Use a small timeout to ensure DOM is updated
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 100);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobile]);
+
+  // Initialize GSAP ScrollTriggers with proper cleanup
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // Kill any existing ScrollTriggers from this component first
+    ScrollTrigger.getAll().forEach(trigger => {
+      if (trigger.vars.trigger?.classList?.contains('why-rfs-cards-wrapper') || 
+          trigger.vars.trigger === containerRef.current) {
+        trigger.kill();
+      }
+    });
+
+    const ctx = gsap.context(() => {
+      const cardsContainer = containerRef.current?.querySelector('.why-rfs-cards-wrapper');
+
       // Only enable pinning on desktop
-      if (window.innerWidth >= 1024) {
+      if (!isMobile && cardsContainer && leftStickyRef.current) {
         ScrollTrigger.create({
           trigger: containerRef.current,
           start: 'top top+=120',
           end: () => `+=${cardsContainer.scrollHeight - window.innerHeight + 200}`,
           pin: leftStickyRef.current,
-          pinSpacing: false
+          pinSpacing: false,
+          markers: false,
+          id: 'why-rfs-pin' // Add ID for easier identification
         });
       }
 
-      // Create card triggers
+      // Create card triggers with unique IDs
       cardRefs.current.forEach((card, index) => {
+        if (!card) return;
+        
         ScrollTrigger.create({
           trigger: card,
-          start: 'top center',
-          end: 'bottom center',
+          start: isMobile ? 'top 70%' : 'top center',
+          end: isMobile ? 'bottom 30%' : 'bottom center',
           onEnter: () => setActiveIndex(index),
           onEnterBack: () => setActiveIndex(index),
-          markers: false // Disable in production
+          markers: false,
+          id: `why-rfs-card-${index}` // Add ID for easier identification
         });
       });
-
-      // Handle reduced motion preference
-      const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
-      ).matches;
-
-      if (prefersReducedMotion) {
-        ScrollTrigger.getAll().forEach(trigger => {
-          trigger.disable();
-        });
-      }
-
     }, containerRef);
 
-    return () => ctx.revert();
-  }, []);
-
-  // Update progress dot position
-  useEffect(() => {
-    if (progressTrackRef.current && progressDotRef.current) {
-      const trackHeight = progressTrackRef.current.offsetHeight;
-      const position = (activeIndex / (cards.length - 1)) * trackHeight;
-      gsap.to(progressDotRef.current, {
-        y: position,
-        duration: 0.3,
-        ease: 'power1.out'
+    return () => {
+      // Properly revert the context
+      if (ctx && ctx.revert) {
+        ctx.revert();
+      }
+      
+      // Manually kill any remaining ScrollTriggers from this component
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.id && trigger.id.includes('why-rfs')) {
+          trigger.kill();
+        }
       });
-    }
-  }, [activeIndex]);
+    };
+  }, [isMobile]);
 
-  // Handle number click
+  // Smooth scroll to card
   const scrollToCard = (index) => {
     const card = cardRefs.current[index];
     if (card) {
-      gsap.to(window, {
-        scrollTo: {
-          y: card,
-          offsetY: 120
-        },
-        duration: 0.8,
-        ease: 'power2.out'
-      });
+      const offset = isMobile ? 100 : 120;
+      const y = card.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
-  // Handle keyboard navigation
+  // Keyboard navigation
   const handleKeyDown = (e, index) => {
     if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
       scrollToCard(index);
     }
     if (e.key === 'ArrowDown' && index < cards.length - 1) {
+      e.preventDefault();
       scrollToCard(index + 1);
     }
     if (e.key === 'ArrowUp' && index > 0) {
+      e.preventDefault();
       scrollToCard(index - 1);
     }
   };
@@ -130,23 +157,64 @@ const WhyRFS = () => {
   return (
     <section 
       ref={containerRef}
-      className="w-full bg-[#D8F3DC] py-12"
+      className="w-full bg-[#D8F3DC] py-6 lg:py-12"
       role="region"
       aria-label="Why RFS - how we work"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-30 items-start">
-        {/* Left Column - Sticky Content */}
-        <aside className="col-span-5 lg:col-span-5 relative top-25">
-          <div ref={leftStickyRef} className="sticky">
-            <span className="inline-flex items-center px-5 py-2 text-base bg-white rounded-xl shadow text-gray-700">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 grid lg:grid-cols-12 lg:gap-30 items-start">
+        {/* Mobile sticky top bar */}
+        {isMobile && (
+          <div className="col-span-12 sticky top-0 z-40 bg-[#D8F3DC] pt-3 pb-2 border-b border-gray-200">
+            <div className="max-w-7xl mx-auto px-2">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <span className="hidden lg:inline-flex items-center px-2 py-2 text-sm bg-white rounded-xl shadow text-gray-700">
+                    How we work
+                  </span>
+                  <h2 className="text-4xl font-normal text-gray-900 leading-tight">
+                    Why choose Rivendell Farms?
+                  </h2>
+                </div>
+              </div>
+
+              <nav aria-label="Mobile step navigation" className="mt-3">
+                <ol className="flex gap-3 pr-2 overflow-x-auto pb-2">
+                  {cards.map((_, index) => (
+                    <li key={index}>
+                      <button
+                        className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm font-medium transition-all shrink-0 ${
+                          activeIndex === index
+                            ? 'bg-gray-900 text-white shadow-lg scale-105'
+                            : 'bg-white border border-gray-300 text-gray-700'
+                        }`}
+                        onClick={() => scrollToCard(index)}
+                        onKeyDown={(e) => handleKeyDown(e, index)}
+                        aria-label={`Go to step ${index + 1}`}
+                        aria-current={activeIndex === index ? 'step' : 'false'}
+                        tabIndex={0}
+                      >
+                        {index + 1}
+                      </button>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </div>
+          </div>
+        )}
+
+        {/* Left Column - Sticky Content (desktop only) */}
+        <aside className="hidden lg:block col-span-5 relative">
+          <div ref={leftStickyRef} className="sticky top-32">
+            <div className="inline-flex items-center px-5 py-2 text-base bg-white rounded-xl shadow text-gray-700">
               How we work
-            </span>
-            <h2 className="text-4xl lg:text-6xl font-normal text-gray-900 leading-tight mt-4">
+            </div>
+
+            <h2 className="text-4xl lg:text-6xl font-normal text-gray-900 leading-tight mt-4 mb-4">
               Why choose Rivendell Farms?
             </h2>
-            
-            {/* Number Navigation Bar */}
-            <nav className="mt-6 flex items-start space-x-6">
+
+            <nav className="mt-4">
               <ol className="flex flex-row gap-4">
                 {cards.map((_, index) => (
                   <li key={index}>
@@ -160,7 +228,7 @@ const WhyRFS = () => {
                       onKeyDown={(e) => handleKeyDown(e, index)}
                       aria-label={`Go to step ${index + 1}`}
                       aria-current={activeIndex === index ? 'step' : 'false'}
-                      aria-controls={`card-${index}`}
+                      aria-controls={`why-rfs-card-${index}`}
                       tabIndex={0}
                     >
                       {index + 1}
@@ -168,47 +236,45 @@ const WhyRFS = () => {
                   </li>
                 ))}
               </ol>
-              <div 
-                ref={progressTrackRef} 
-                className="relative w-1 bg-gray-200 rounded-full"
-              >
-              </div>
             </nav>
           </div>
         </aside>
 
         {/* Right Column - Scrollable Cards */}
-        <div className="col-span-7 lg:col-span-6">
-          <div className="cards-wrapper space-y-8">
+        <div className={`${isMobile ? 'col-span-12 mt-4' : 'col-span-7 lg:col-span-6'}`}>
+          <div className="why-rfs-cards-wrapper space-y-6 lg:space-y-8">
             {cards.map((card, index) => (
-              <div 
+              <article
                 key={card.id}
                 ref={el => cardRefs.current[index] = el}
-                id={`card-${index}`}
+                id={`why-rfs-card-${index}`}
                 className="bg-white rounded-xl overflow-hidden shadow-sm"
+                aria-labelledby={`why-rfs-card-${index}-title`}
+                role="article"
               >
-                <div className="relative h-64">
+                <div className="relative w-full h-48 md:h-64">
                   <Image 
                     src={card.image}
                     alt={card.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: 'cover' }}
                     placeholder="blur"
-                    blurDataURL="data:image/svg+xml;base64,..." // Add actual base64
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjwvc3ZnPg=="
                   />
-                  <span className="absolute left-6 bottom-6 text-6xl font-bold text-white opacity-90">
+                  <span className="absolute left-4 bottom-4 text-4xl md:text-6xl font-bold text-white opacity-90">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
-                <div className="bg-[#081C15] p-6 rounded-b-lg">
-                  <h3 className="text-xl font-semibold text-[#D8F3DC] mb-2">
+                <div className="bg-[#081C15] p-5 md:p-6 rounded-b-lg">
+                  <h3 id={`why-rfs-card-${index}-title`} className="text-xl font-semibold text-[#D8F3DC] mb-2">
                     {card.title}
                   </h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-400 text-sm md:text-base">
                     {card.description}
                   </p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>

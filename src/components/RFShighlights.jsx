@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 const RFShighlights = () => {
   // Refs for animations
@@ -73,7 +75,7 @@ const RFShighlights = () => {
 
   return (
     <section className="w-full bg-[#081c15] mx-auto px-[10%] py-16 md:py-24">
-      <h2 className='text-6xl font-normal flex justify-center pb-20 text-[#D8F3DC]'>Project Hightlights</h2>
+      <h2 className='text-4xl lg:text-6xl font-normal flex justify-center pb-10 text-[#D8F3DC]'>Project Hightlights</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Column 1 */}
         <div className="space-y-6">
@@ -93,27 +95,28 @@ const RFShighlights = () => {
           
           {/* Video Card */}
           <motion.div 
-            className="relative rounded-xl overflow-hidden h-130   shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-white bg-opacity-90 flex items-center justify-center">
-                <svg className="w-8 h-8 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                </svg>
-              </div>
-            </div>
-            <div className="absolute bottom-4 left-4 text-white">
-              <p className="font-semibold">Alonso D. Dowson</p>
-              <p className="text-sm opacity-80">House Owner</p>
-            </div>
-          </motion.div>
+  className="relative rounded-xl overflow-hidden h-130 shadow-lg"
+  whileHover={{ scale: 1.05 }}
+  transition={{ duration: 0.3 }}
+  variants={cardVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-100px" }}
+>
+  <video
+    className="w-full h-full object-cover"
+    src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/0810%20(2)(3).mp4"   // 👉 replace with actual video path
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls={true}
+    disablePictureInPicture
+    controlsList="nodownload noplaybackrate"
+  />
+</motion.div>
+
+
         </div>
         
         {/* Column 2 */}
@@ -266,7 +269,7 @@ const RFShighlights = () => {
                 
                 {/* Stat value */}
                 <div 
-                  className="font-bold text-2xl"
+                  className="font-bold text-xl"
                   style={{
                     background: 'linear-gradient(45deg, #081C15 45%, #fff, #431d1dff)',
                     backgroundClip: 'text',

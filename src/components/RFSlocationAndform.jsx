@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import RFSForm from "./RFSForm";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,7 +58,7 @@ const RFSlocationAndform = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#081C15] flex flex-col lg:flex-row">
+    <div ref={containerRef} className="min-h-screen bg-[#081C15] flex flex-col lg:flex-row gap-10 lg:gap-0 pb-10 lg:pb-0">
       {/* Left Column - Google Maps (50% on desktop) */}
       <div className="w-full lg:w-[50%] h-[50vh] lg:h-screen relative overflow-hidden">
         <div ref={mapRef} className="w-full h-full relative transform-gpu">
@@ -83,16 +84,10 @@ const RFSlocationAndform = () => {
       </div>
 
       {/* Right Column - HubSpot Form (50% on desktop) */}
-       <div className="w-full lg:w-[50%] h-[50vh] lg:h-screen flex items-center justify-center p-4 lg:p-10 relative"> 
-      <div ref={formRef} className="relative bg-[#D8F3DC] rounded-xl w-full z-10 shadow-xl/30 shadow-[#D8F3DC]" > 
-      <div className="text-center"> <h2 className="text-5xl font-normal text-gray-800 pt-10">Visit Rivendell Farms</h2> </div> 
-      {/* HubSpot form */} 
-      <div className="hs-form-frame" 
-      data-region="na1" 
-      data-form-id="fe48d8bb-c0aa-41d3-8f45-a54c78e57d79" 
-      data-portal-id="21626983" >
-      </div> 
-      </div> 
+       <div className="w-full lg:w-[50%] flex items-center justify-center p-4 lg:p-10 relative"> 
+          <div className="w-full lg:w-full shadow-xl rounded-2xl">
+            <RFSForm/>
+          </div>
       </div>
     </div>
   );

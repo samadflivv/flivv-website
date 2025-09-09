@@ -23,13 +23,21 @@ export default function Navigation() {
         <li><Link href="/about">About Us</Link></li>
         <li className="relative group">
           <Link href="/projects">Projects</Link>
-          <ul className="absolute left-0 mt-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+          <ul className="absolute left-0 mt-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
             <li>
               <Link
                 href="/gulmoharvillas"
                 className="block px-4 py-2 rounded-lg text-lg font-normal bg-white/10 text-white backdrop-blur-md hover:bg-white/20 transition-all"
               >
                 Gulmohar Villas
+              </Link>
+            </li>
+             <li>
+              <Link
+                href="/rivendellfarms"
+                className="block px-4 py-2 rounded-lg text-lg font-normal bg-white/10 text-white backdrop-blur-md hover:bg-white/20 transition-all mt-2"
+              >
+                Rivendell Farms
               </Link>
             </li>
           </ul>
@@ -73,6 +81,15 @@ export default function Navigation() {
                     className="block py-1 text-lg font-light text-gray-300 hover:text-white"
                   >
                     Gulmohar Villas
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/rivendellfarms"
+                    onClick={() => setIsOpen(false)}
+                    className="block py-1 text-lg font-light text-gray-300 hover:text-white"
+                  >
+                    Rivendell Farms
                   </Link>
                 </li>
               </ul>
