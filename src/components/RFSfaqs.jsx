@@ -119,15 +119,33 @@ const RFSfaqs = () => {
             </motion.div>
           ))}
         </div>
-        
+
+
         <div className="mt-16 text-center">
-          <p className="text-gray-400 mb-6">Still have questions?</p>
-          <button
-            className="px-6 py-2 md:px-8 md:py-3 rounded-full bg-gradient-to-r from-[#D8F3DC] to-[#1B4332] text-[#081C15] font-medium shadow-lg text-sm md:text-base hover:shadow-[#2D6A4F] transition-all"
-          >
-            Contact Support
-          </button>
-        </div>
+  <p className="text-gray-400 mb-6">Still have questions?</p>
+  <a href="#rfsctaform">
+  <button
+    className="px-6 py-2 md:px-8 md:py-3 rounded-full bg-gradient-to-r from-[#D8F3DC] to-[#1B4332] text-[#081C15] font-medium shadow-lg text-sm md:text-base hover:shadow-[#2D6A4F] transition-all active:scale-95"
+    onClick={() => {
+      // 👉 Haptic Feedback (mobile devices that support it)
+      if (navigator.vibrate) {
+        navigator.vibrate(30);
+      }
+
+      // 👉 Play Click Sound (desktop + mobile)
+      const clickSound = new Audio("/sounds/RFSbuttonclick.mp3"); 
+      clickSound.volume = 1.0; // set volume (0.0 - 1.0)
+      clickSound.play().catch((err) => {
+        console.warn("Sound play blocked until user interacts:", err);
+      });
+    }}
+  >
+    Contact Support 
+  </button>
+  </a>
+</div>
+
+
       </div>
     </div>
   );
