@@ -75,7 +75,7 @@ const RFShighlights = () => {
 
   return (
     <section className="w-full bg-[#081c15] mx-auto px-[10%] py-16 md:py-24">
-      <h2 className='text-4xl lg:text-6xl font-normal flex justify-center pb-10 text-[#D8F3DC]'>Project Hightlights</h2>
+      <h2 className='text-4xl lg:text-6xl font-normal flex justify-center pb-10 text-[#D8F3DC]'>Project Highlights</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Column 1 */}
         <div className="space-y-6">
@@ -89,7 +89,7 @@ const RFShighlights = () => {
           >
             <div className="flex gap-5 items-center">
               <img src="/money-strategy.png" alt="" className='w-10 h-10'/>
-              <p className="text-black font-semibold text-xl mt-1">EMI Facility Available</p>
+              <p className="text-black font-semibold text-xl mt-1">12-Month EMI Plan Available</p>
             </div>
           </motion.div>
           
@@ -123,7 +123,7 @@ const RFShighlights = () => {
         <div className="space-y-6">
           {/* Image Card */}
           <motion.div
-            className="relative rounded-xl overflow-hidden h-90 shadow-lg"
+            className="relative rounded-xl overflow-hidden h-124 shadow-lg"
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
@@ -156,13 +156,13 @@ const RFShighlights = () => {
               <div className="flex space-x-1">
               </div>
               <p className="text-xl italic">
-                “Working with Rivendell Farms feels like a partnership; as we continued to use their services and found more use cases, our feature requests quickly found solutions.”
+                “Enjoy the concept of Sustainable Living at Rivendell Farms. Where nature meets pure bliss.”
               </p>
             </div>
-            <div className="mt-6">
+            {/* <div className="mt-6">
               <p className="font-semibold">Alonso D. Dowson</p>
               <p className="text-gray-300">House Owner</p>
-            </div>
+            </div> */}
           </motion.div>
         </div>
         
@@ -190,7 +190,7 @@ const RFShighlights = () => {
   whileInView="visible"
   viewport={{ once: true, margin: "-100px" }}
 >
-  <img src="/RFSmaintenance.jpeg" alt="" className="w-full h-full object-cover" />
+  <img src="/fauntainrfs.jpeg" alt="" className="w-full h-full object-cover" />
 
   {/* Transparent Black Overlay */}
   <div className="absolute inset-0 bg-black/40"></div>
@@ -200,7 +200,7 @@ const RFShighlights = () => {
     className="absolute inset-0 flex items-end pb-10 whitespace-nowrap"
   >
     {[
-      "10 Years of Security & Maintenance"
+      "State of the Art Amenities"
     ].map((item, index) => (
       <div 
         key={index} 

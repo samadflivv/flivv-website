@@ -24,7 +24,7 @@ export default function RFScta() {
         </div>
 
         {/* RIGHT - Form Card */}
-        <div className="w-full md:w-[50%]" id="rfsctaform">
+        <div className="w-full md:w-[50%]">
           <RFSForm />
         </div>
       </div>

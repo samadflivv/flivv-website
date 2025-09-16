@@ -32,7 +32,7 @@ export default function Navigation() {
                 Gulmohar Villas
               </Link>
             </li>
-             <li>
+            <li>
               <Link
                 href="/rivendellfarms"
                 className="block px-4 py-2 rounded-lg text-lg font-normal bg-white/10 text-white backdrop-blur-md hover:bg-white/20 transition-all mt-2"
@@ -65,13 +65,22 @@ export default function Navigation() {
             <Link href="/about" onClick={() => setIsOpen(false)}>About Us</Link>
           </li>
           <li className="w-full">
-            <button
-              className="flex items-center justify-between w-full text-left"
-              onClick={() => setProjectsOpen(prev => !prev)}
-            >
-              <span>Projects</span>
-              {projectsOpen ? <ChevronUp size={20}/> : <ChevronDown size={20}/>}
-            </button>
+            <div className="flex items-center justify-between w-full">
+              {/* Projects button now navigates to /projects */}
+              <Link
+                href="/projects"
+                onClick={() => setIsOpen(false)}
+                className="flex-1"
+              >
+                Projects
+              </Link>
+              <button
+                onClick={() => setProjectsOpen(prev => !prev)}
+                aria-label="Toggle Projects Submenu"
+              >
+                {projectsOpen ? <ChevronUp size={20}/> : <ChevronDown size={20}/>}
+              </button>
+            </div>
             {projectsOpen && (
               <ul className="pl-4 mt-2 space-y-2">
                 <li>

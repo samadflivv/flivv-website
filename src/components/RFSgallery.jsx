@@ -248,7 +248,7 @@
 
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -278,21 +278,20 @@ const RFSgallery = ({ rows }) => {
   ];
   const galleryRows = rows && rows.length ? rows : sampleRows;
 
-  // Mobile auto-scroll refs
+  // Mobile auto-scroll refs (omitted here for brevity — keep your current logic)
   const mobileContainers = useRef([]);
   const rafIds = useRef([]);
   const lastTimestamps = useRef([]);
 
-  // Touch detection refs to decide vertical vs horizontal gestures
+  // Touch refs (if you use them)
   const touchStartRef = useRef([]);
-  const touchLockRef = useRef([]); // 'vertical' | 'horizontal' | null
+  const touchLockRef = useRef([]);
 
-  // Mobile speed (px per second) — tweak this value for faster/slower motion
+  // Mobile speed
   const MOBILE_SPEED_PX_PER_SEC = 50;
 
-  // Start RAF auto-scroll for mobile (always runs — does NOT pause on touch)
+  // (Keep your existing mobile RAF/touch logic here)
   useEffect(() => {
-    // cleanup any existing RAFs
     rafIds.current.forEach((id) => id && cancelAnimationFrame(id));
     rafIds.current = [];
     lastTimestamps.current = [];
@@ -308,8 +307,6 @@ const RFSgallery = ({ rows }) => {
           rafIds.current[rowIndex] = requestAnimationFrame(step);
           return;
         }
-
-        // Performance hints (set once)
         if (!container._rfs_initialized) {
           container._rfs_initialized = true;
           container.style.webkitOverflowScrolling = "touch";
@@ -318,31 +315,19 @@ const RFSgallery = ({ rows }) => {
           container.style.willChange = "scroll-position, transform";
           container.style.scrollSnapType = "none";
         }
-
         if (!lastTimestamps.current[rowIndex]) lastTimestamps.current[rowIndex] = ts;
         const dt = (ts - lastTimestamps.current[rowIndex]) / 1000;
         lastTimestamps.current[rowIndex] = ts;
 
-        // direction multiplier:
-        // - For second row (index 1) we want left->right animation (scrollLeft should decrease),
-        //   so use dir = -1. For other rows dir = +1.
         const dir = rowIndex === 1 ? -1 : 1;
-
-        // Always advance scroll (do not pause on touch). Use fractional delta for smoothness.
         const delta = MOBILE_SPEED_PX_PER_SEC * dt * dir;
         container.scrollLeft += delta;
 
-        // Seamless reset when scrolled past half (since items duplicated)
         const half = container.scrollWidth / 2;
         if (dir === 1) {
-          if (container.scrollLeft >= half) {
-            container.scrollLeft -= half;
-          }
+          if (container.scrollLeft >= half) container.scrollLeft -= half;
         } else {
-          // dir === -1
-          if (container.scrollLeft <= 0) {
-            container.scrollLeft += half;
-          }
+          if (container.scrollLeft <= 0) container.scrollLeft += half;
         }
 
         rafIds.current[rowIndex] = requestAnimationFrame(step);
@@ -358,48 +343,35 @@ const RFSgallery = ({ rows }) => {
     };
   }, [isMobile, galleryRows.length]);
 
-  // Touch handlers to allow vertical scrolling when user gestures are vertical
+  // Touch handlers (if used in your code)
   const handleTouchStart = (e, idx) => {
     const t = e.touches && e.touches[0];
     if (!t) return;
     touchStartRef.current[idx] = { x: t.clientX, y: t.clientY };
     touchLockRef.current[idx] = null;
-    // Ensure horizontal scrolling is available initially
     const el = mobileContainers.current[idx];
     if (el) el.style.overflowX = "auto";
   };
-
   const handleTouchMove = (e, idx) => {
     const t = e.touches && e.touches[0];
     if (!t) return;
     const start = touchStartRef.current[idx];
     if (!start) return;
-
     const dx = t.clientX - start.x;
     const dy = t.clientY - start.y;
-
-    // if not yet decided, lock direction based on first meaningful delta
     if (!touchLockRef.current[idx]) {
       if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 6) {
         touchLockRef.current[idx] = "vertical";
-        // disable horizontal scroll so page can scroll smoothly
         const el = mobileContainers.current[idx];
-        if (el) {
-          // hide overflow-x so the container doesn't capture vertical swipes
-          el.style.overflowX = "hidden";
-        }
+        if (el) el.style.overflowX = "hidden";
       } else if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 6) {
         touchLockRef.current[idx] = "horizontal";
-        // ensure horizontal scroll is allowed
         const el = mobileContainers.current[idx];
         if (el) el.style.overflowX = "auto";
       }
     }
-    // otherwise, do nothing — we let browser handle native scrolling
   };
-
   const handleTouchEnd = (e, idx) => {
-    // restore horizontal scrolling shortly after interaction to allow RAF to continue seamlessly
     setTimeout(() => {
       const el = mobileContainers.current[idx];
       if (el) el.style.overflowX = "auto";
@@ -408,7 +380,6 @@ const RFSgallery = ({ rows }) => {
     }, 60);
   };
 
-  // render image item helper
   const renderItem = (src, i, mobileMode) => (
     <div key={`${src}-${i}`} className="relative group cursor-pointer flex-shrink-0">
       <div
@@ -463,7 +434,7 @@ const RFSgallery = ({ rows }) => {
             );
           }
 
-          // DESKTOP: unchanged framer-motion auto-loop (you asked not to modify desktop)
+          // DESKTOP: unchanged framer-motion auto-loop
           return (
             <div key={rowIndex} className="relative w-full overflow-hidden py-4">
               <motion.div
@@ -515,17 +486,48 @@ const RFSgallery = ({ rows }) => {
             <X className="w-8 h-8 text-white" />
           </button>
 
-          <motion.div
-            className="relative max-w-5xl max-h-[85vh] w-full mx-4"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.28 }}
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-          >
-            <img src={lightbox.src} alt="Lightbox preview" className="w-full h-full lg:w-500 lg:h-200 object-contain rounded-lg shadow-2xl" />
-          </motion.div>
+          {/* ---------- DESKTOP: improved centered wrapper ---------- */}
+          {!isMobile ? (
+            <div
+              className="relative w-full flex items-center justify-center"
+              style={{ maxWidth: "1200px", maxHeight: "85vh", margin: "0 auto", padding: "20px" }}
+              onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.28 }}
+                style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
+              >
+                <img
+                  src={lightbox.src}
+                  alt="Lightbox preview"
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "calc(85vh - 40px)", // keep bottom/top padding
+                    objectFit: "contain",
+                    borderRadius: 12,
+                    boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+                  }}
+                />
+              </motion.div>
+            </div>
+          ) : (
+            /* ---------- MOBILE: keep existing behavior exactly ---------- */
+            <motion.div
+              className="relative max-w-5xl max-h-[85vh] w-full mx-4"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.28 }}
+              onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+            >
+              <img src={lightbox.src} alt="Lightbox preview" className="w-full h-full object-contain rounded-lg shadow-2xl" />
+            </motion.div>
+          )}
         </motion.div>
       )}
 
@@ -538,7 +540,7 @@ const RFSgallery = ({ rows }) => {
           -ms-overflow-style: none;
           scrollbar-width: none;
           will-change: transform;
-          touch-action: pan-y; /* prioritize vertical panning so page scroll is smooth */
+          touch-action: pan-y;
         }
       `}</style>
     </section>

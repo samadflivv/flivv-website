@@ -8,28 +8,28 @@ const RFSfaqs = () => {
   
   const faqs = [
     {
-      question: "What is the AI Scheduling Assistant?",
-      answer: "The AI Scheduling Assistant is a smart tool that helps you manage and automate your appointments, reminders, and meetings. It uses machine learning to understand your preferences and optimize your schedule."
+      question: "How far is Rivendell Farms from Hyderabad?",
+      answer: "Rivendell Farms is around 100 km from Aramghar."
     },
     {
-      question: "Is the AI Scheduling Assistant compatible with my calendar?",
-      answer: "Yes, it integrates seamlessly with Google Calendar, Outlook, Apple Calendar, and other major scheduling platforms. It can also sync with your existing productivity tools."
+      question: "Is it agricultural land? What are the norms for construction?",
+      answer: "Yes, the project is a farmland project. We can construct on 20-30% of the land area."
     },
     {
-      question: "How does the AI Scheduling Assistant work?",
-      answer: "It uses AI to analyze your preferences, suggest optimal meeting times, and automatically send invites or reminders. The assistant learns from your scheduling patterns to become more efficient over time."
+      question: "Is Rivendell DTCP or HMDA approved?",
+      answer: "None of the above. It is a kutcha layout and purely farmland and comes with Patta Passbook documentation."
     },
     {
-      question: "Can I customize the assistant's behavior?",
-      answer: "Absolutely. You can set preferences for meeting durations, buffer times between meetings, preferred times of day, and even specific days you want to keep free."
+      question: "What are the amenities in it?",
+      answer: "The project is equipped with recreational amenities on 2.2 Acres, including horse riding, swimming pool, indoor games, amphitheater & much more!"
     },
     {
-      question: "Is my data secure with the scheduling assistant?",
-      answer: "We prioritize security with end-to-end encryption and compliance with GDPR, CCPA, and other privacy regulations. Your data is never sold or shared with third parties."
+      question: "Is there an EMI plan? What is the registration process?",
+      answer: "Yes, we do have a 12-month EMI option. The registration process takes place at Jadcherla MRO"
     },
     {
-      question: "How does the assistant handle time zone differences?",
-      answer: "The assistant automatically detects and adjusts for time zones, ensuring meetings are scheduled at convenient times for all participants regardless of location."
+      question: "Is this good for short-term or long-term investment?",
+      answer: "Preferably long-term, as this project is designed for land ownership and intended to grow in value and purpose over time."
     }
   ];
 

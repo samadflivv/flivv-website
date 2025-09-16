@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const RivendellHeader = () => {
   const videoRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -11,22 +12,31 @@ const RivendellHeader = () => {
         console.log("Video autoplay prevented:", error);
       });
     }
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add event listener for resize
+    window.addEventListener('resize', checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
-    <section className="relative h-[90vh] md:h-screen w-full overflow-hidden">
-      {/* Sticky Background Wrapper */}
-      <div className="absolute inset-0">
-        <div
-          className="w-full h-full bg-cover bg-no-repeat bg-center"
-          style={{
-            backgroundImage: `url('/RFSherotestimg.jpg')`,
-            position: 'sticky',
-            top: 0,
-          }}
-        ></div>
-      </div>
-
+    <section
+      className="relative h-[90vh] md:h-screen w-full bg-cover bg-center bg-no-repeat overflow-hidden"
+      style={{
+        backgroundImage: `url('/RFSherotestimg.jpg')`,
+        backgroundAttachment: isMobile ? 'fixed' : 'fixed',
+        backgroundSize: isMobile ? 'cover' : 'cover',
+        backgroundColor: '#000', // Fallback color for mobile
+      }}
+    >
       {/* Video Overlay */}
       <div className="absolute inset-0 z-10">
         <video
@@ -42,22 +52,31 @@ const RivendellHeader = () => {
         </video>
       </div>
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/20 md:bg-black/10 z-0"></div>
+      {/* Dark Overlay - Adjust opacity for mobile */}
+      <div className={`absolute inset-0 z-0 ${isMobile ? 'bg-black/20' : 'bg-black/10'}`}></div>
 
       {/* Text Content */}
-      <div className="relative z-20 h-full flex items-end justify-center px-2">
-        <h1
-          className="
-            text-white text-center uppercase tracking-wider lg:font-[editorial]
-            leading-[0.95] lg:leading-[0.85]
-            lg:-mb-3 -mb-1.5 font-serif
-            text-[36px] lg:text-[135px]
-          "
-        >
+      <div className="relative z-20 h-full flex items-end justify-center md:pb-0">
+        <h1 className="
+          text-white text-center uppercase tracking-wider 
+          leading-[0.85] font-serif
+          text-[35px] md:text-[80px] lg:text-[135px]
+          px-4 md:px-0
+          lg:-mb-3 -mb-1
+        ">
           Rivendell Farms
         </h1>
       </div>
+
+      {/* Mobile-specific styling to ensure full image visibility */}
+      {isMobile && (
+        <style jsx>{`
+          section {
+            background-position: center top;
+            background-repeat: no-repeat;
+          }
+        `}</style>
+      )}
     </section>
   );
 };

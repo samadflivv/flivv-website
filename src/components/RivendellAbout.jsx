@@ -82,14 +82,14 @@ const RivendellAbout = () => {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-white overflow-x-hidden flex items-center justify-left relative my-20 lg:px-[10%] px-4"
+      className="min-h-screen bg-white overflow-x-hidden flex items-center justify-left relative my-20 lg:px-[10%] px-1"
     >
-      <div className="reveal-text relative w-full max-w-6xl">
+      <div className="reveal-text relative w-full lg:max-w-8xl">
         <p
           ref={textRef}
-          className="text-black-reveal text-2xl md:text-3xl lg:text-5xl font-normal leading-normal"
+          className="text-justify text-black-reveal text-2xl lg:text-5xl font-normal leading-normal"
         >
-          Rivendell Farms is our premium farmland project, located in Thimmajipet, Jadcherla. It is spread over 15 acres and comprising a total of 109 units. Out of this, 2.2 acres of area is dedicated to shared farmhouse facilities, making it an ideal blend of nature, comfort, and sustainable living. As part of investing in Rivendell Farms, investors also have the option to build an eco-friendly cottage on their farm plot, adding to both the charm and functionality of the space. The project is designed to be affordable, easy to maintain, and a joy to own. With 80% of the units already sold, only a limited number are still available, a great opportunity for those looking to invest in premium farmland project..
+          Rivendell Farms is our premium farmland project, located in Thimmajipet, Jadcherla. It is spread over 15 acres and comprising a total of 109 units. Out of this, 2.2 acres of area is dedicated to shared farmhouse facilities, making it an ideal blend of nature, comfort, and sustainable living. As part of investing in Rivendell Farms, customers also have the option to build an eco-friendly cottage on their farm plot, adding to both the charm and functionality of the space. The project is designed to be affordable, easy to maintain, and a joy to own. With 75% of the units already sold, only a limited number are still available, a great opportunity for those looking to invest in premium farmland project.
         </p>
       </div>
 

@@ -9,7 +9,6 @@ import RFSactivityGuide from '@/components/RFSactivityGuide'
 import RFSlocationAndform from '@/components/RFSlocationAndform'
 import RFSgallery from '@/components/RFSgallery'
 import RFSfaqs from '@/components/RFSfaqs'
-import RFScta from '@/components/RFScta'
 
 const page = () => {
   return (
@@ -20,10 +19,9 @@ const page = () => {
         <RFShighlights/>
         <WhyRFS/>
         <RFSactivityGuide/>
-        <RFSlocationAndform/>
-        <RFSgallery/>
         <RFSfaqs/>
-        <RFScta/>
+        <RFSgallery/>
+        <RFSlocationAndform/>
         <Footer/>
     </div>
   )

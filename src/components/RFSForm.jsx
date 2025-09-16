@@ -40,8 +40,8 @@ const RFSForm = () => {
   return (
     <div id="rfs-hs-form-wrapper" className="rfs-hs-form-wrapper">
       <div className="rfs-hs-header pt-5 pl-5">
-        <h3>Let's arrange a visit</h3>
-        <p>Tell us a preferred date/time and we'll confirm availability.</p>
+        <h3>Get in Touch With Us</h3>
+        <p>Book Your Site Visit Today</p>
       </div>
 
       <div
@@ -66,8 +66,8 @@ const RFSForm = () => {
           margin: 0 auto;
           padding: 24px;
           border-radius: 22px;
-          background: linear-gradient(180deg, #03170f 0%, #082818 100%);
-          box-shadow: 20px 30px 60px rgba(8,28,21,0.22), -10px -10px 30px rgba(255,255,255,0.02);
+          background: #D8F3DC;
+          box-shadow: 20px 30px 60px rgba(216, 243, 220, 0.22), -10px -10px 30px rgba(216, 243, 220, 0.22);
           color: #e8f8f0;
 
           /* PERFORMANCE TUNING - create a composited layer */
@@ -84,13 +84,13 @@ const RFSForm = () => {
           margin: 0 0 8px 0;
           font-size: 36px;
           line-height: 1.05;
-          color: #e8f8f0;
+          color: #081C15;
           font-weight: 600;
         }
 
         .rfs-hs-header p {
           margin: 0 0 0;
-          color: #cfeee0;
+          color: #014728ff;
           opacity: 0.9;
         }
 

@@ -26,7 +26,7 @@ const Exclusiveprojects = () => {
           <div className="relative w-full h-64 md:h-90">
             <Image
               className="rounded-xl"
-              src="/gv-ss.png"
+              src="/image.png"
               alt="Serenity Heights"
               fill
               style={{ objectFit: 'cover', borderRadius: '0.75rem' }} // tailwind's rounded-xl
@@ -52,7 +52,7 @@ const Exclusiveprojects = () => {
           <div className="relative w-full h-64 md:h-90">
             <Image
               className="rounded-xl"
-              src="/rivendell.jpeg"
+              src="/RFS2.jpeg"
               alt="Serenity Heights"
               fill
               style={{ objectFit: 'cover', borderRadius: '0.75rem' }}

@@ -1,6 +1,11 @@
-import React from 'react';
+'use client';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { X } from "lucide-react";
 
 const OurStorySection = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <section className="bg-white text-black px-4 md:px-40 py-16">
       {/* Top Content */}
@@ -8,12 +13,9 @@ const OurStorySection = () => {
         {/* Left bullet and heading */}
         <div className="md:w-1/2">
           <p className="text-sm tracking-widest text-black uppercase mb-2">About Us</p>
-          <h2 className="sm:text-5xl text-4xl font-normal">The Future of Real Estate with Flivv Developers</h2>
-          {/* <ul className="list-disc pl-5 text-black">
-            <li>
-              Built on passion and precision, our journey is dedicated to redefining luxury living with timeless elegance.
-            </li>
-          </ul> */}
+          <h2 className="sm:text-5xl text-4xl font-normal">
+            The Future of Real Estate with Flivv Developers
+          </h2>
         </div>
 
         {/* Right Paragraphs */}
@@ -33,11 +35,45 @@ const OurStorySection = () => {
       {/* Image */}
       <div className="mt-12">
         <img
-          src="/aboutmain.jpg"
+          src="/teamflivv.JPG"
           alt="Modern Architecture"
-          className="rounded-xl w-full h-auto object-cover shadow-lg"
+          className="rounded-xl w-full h-full object-cover shadow-lg cursor-pointer"
+          onClick={() => setLightboxOpen(true)}
         />
       </div>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => setLightboxOpen(false)}
+        >
+          {/* Close button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxOpen(false);
+            }}
+            className="absolute top-6 right-6 bg-white/20 backdrop-blur-md rounded-full p-3 hover:bg-white/40 transition z-10"
+            aria-label="Close lightbox"
+          >
+            <X className="w-8 h-8 text-white" />
+          </button>
+
+          {/* Image content */}
+          <motion.img
+            src="/teamflivv.JPG"
+            alt="Flivv Developers Team"
+            className="max-w-5xl max-h-[85vh] w-full h-auto object-contain rounded-lg shadow-2xl"
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </motion.div>
+      )}
     </section>
   );
 };

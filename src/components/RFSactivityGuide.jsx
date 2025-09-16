@@ -5,7 +5,6 @@
   import Image from 'next/image';
 
   const RFSactivityGuide = () => {
-    // Activity data with direct paths to public folder
     const activities = [
       {
         time: "08:00 AM - 09:00 AM",
@@ -52,7 +51,7 @@
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-      <div className="bg-white min-h-screen py-35 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white min-h-screen py-30 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-normal text-center mb-10 text-gray-900">
             Daily Activity Guide

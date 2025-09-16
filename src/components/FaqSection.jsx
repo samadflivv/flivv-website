@@ -118,7 +118,7 @@ const FaqSection = () => {
   ];
 
   return (
-    <section className="px-4 py-10">
+    <section className="px-4 py-20">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row">
         
         {/* Left Section */}

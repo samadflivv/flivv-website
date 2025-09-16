@@ -19,27 +19,21 @@ const WhyRFS = () => {
     {
       id: 1,
       title: "Low Pollution Zone",
-      description: "We begin by sitting down with you to understand your vision, goals, and preferences. We listen carefully to your ideas, discuss needs, and explore what's possible.",
+      description: "Farmlands are typically surrounded by fresh air and a peaceful atmosphere, making them ideal low-pollution zones. Rivendell Farms is perfectly nestled in such a serene and beautiful location.",
       image: "/Lowpollutionzone.jpg"
     },
     {
       id: 2,
-      title: "Grow Organic Food",
-      description: "We create a clear roadmap — timelines, deliverables, and resources — so everyone knows what success looks like.",
-      image: "/Organixfarming.jpg"
+      title: "Sustainable Living ",
+      description: "At Rivendell Farms, we've taken great care to preserve the natural beauty of the space. Embracing the concept of eco-friendly cottage living, we're committed to promoting a sustainable lifestyle amidst lush greenery.",
+      image: "/rfssustainableliving.jpeg"
     },
     {
       id: 3,
-      title: "Affordable investment",
-      description: "We design, build, and iterate with you. Regular check-ins ensure alignment and quality.",
+      title: "Affordable Investment",
+      description: "Farmland investments are generally more affordable than other types of property, making it easier to take the first step toward land ownership. It might just be the perfect place to start your investment journey.",
       image: "/RFSclubHouse.jpg"
     },
-    {
-      id: 4,
-      title: "Tax Benefits",
-      description: "We hand off the final product with documentation and ongoing support options to keep things smooth.",
-      image: "/LandtaxBenefits.jpg"
-    }
   ];
 
   // Detect mobile/desktop and update state
@@ -169,7 +163,7 @@ const WhyRFS = () => {
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <span className="hidden lg:inline-flex items-center px-2 py-2 text-sm bg-white rounded-xl shadow text-gray-700">
-                    How we work
+                    Premium Farmland Project
                   </span>
                   <h2 className="text-4xl font-normal text-gray-900 leading-tight">
                     Why choose Rivendell Farms?
@@ -207,7 +201,7 @@ const WhyRFS = () => {
         <aside className="hidden lg:block col-span-5 relative">
           <div ref={leftStickyRef} className="sticky top-32">
             <div className="inline-flex items-center px-5 py-2 text-base bg-white rounded-xl shadow text-gray-700">
-              How we work
+              Premium Farmland Project   
             </div>
 
             <h2 className="text-4xl lg:text-6xl font-normal text-gray-900 leading-tight mt-4 mb-4">
