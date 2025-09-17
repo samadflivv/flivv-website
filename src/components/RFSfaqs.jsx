@@ -9,15 +9,15 @@ const RFSfaqs = () => {
   const faqs = [
     {
       question: "How far is Rivendell Farms from Hyderabad?",
-      answer: "Rivendell Farms is around 100 km from Aramghar."
+      answer: "Rivendell Farms is around 99 km from Aramghar."
     },
     {
       question: "Is it agricultural land? What are the norms for construction?",
-      answer: "Yes, the project is a farmland project. We can construct on 20-30% of the land area."
+      answer: "Yes, the project is a farmland project. We can construct on 15-20% of the land area."
     },
     {
       question: "Is Rivendell DTCP or HMDA approved?",
-      answer: "None of the above. It is a kutcha layout and purely farmland and comes with Patta Passbook documentation."
+      answer: "None of the above. It is a purely farmland and comes with Patta Passbook documentation."
     },
     {
       question: "What are the amenities in it?",
