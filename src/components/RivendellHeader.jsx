@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const RivendellHeader = () => {
   const videoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -17,6 +18,11 @@ const RivendellHeader = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
+    // detect iOS (iPhone / iPad / iPod)
+    const ua = typeof navigator !== 'undefined' ? navigator.userAgent || navigator.vendor || '' : '';
+    const ios = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    setIsIOS(ios);
+
     // Initial check
     checkMobile();
 
@@ -27,15 +33,30 @@ const RivendellHeader = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // base style that applies generally; we'll override small pieces for iOS
+  const baseBackgroundStyle = {
+    backgroundImage: `url('/RFSherotestimg.jpg')`,
+    backgroundAttachment: isMobile ? 'fixed' : 'fixed', // preserved for non-iOS behavior
+    backgroundSize: isMobile ? 'cover' : 'cover',
+    backgroundColor: '#000',
+  };
+
+  // iOS-specific overrides: avoid fixed attachment and use contain so full image is visible
+  const iosOverrides = {
+    backgroundAttachment: 'scroll',      // don't use fixed on iOS
+    backgroundSize: 'cover',          // show whole image without heavy crop
+    backgroundPosition: 'center top',   // keep image aligned nicely
+    backgroundRepeat: 'no-repeat',
+  };
+
+  const finalBackgroundStyle = isIOS
+    ? { ...baseBackgroundStyle, ...iosOverrides }
+    : baseBackgroundStyle;
+
   return (
     <section
       className="relative h-[90vh] md:h-screen w-full bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{
-        backgroundImage: `url('/RFSherotestimg.jpg')`,
-        backgroundAttachment: isMobile ? 'fixed' : 'fixed',
-        backgroundSize: isMobile ? 'cover' : 'cover',
-        backgroundColor: '#000', // Fallback color for mobile
-      }}
+      style={finalBackgroundStyle}
     >
       {/* Video Overlay */}
       <div className="absolute inset-0 z-10">
