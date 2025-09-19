@@ -9,6 +9,7 @@ import RFSactivityGuide from '@/components/RFSactivityGuide'
 import RFSlocationAndform from '@/components/RFSlocationAndform'
 import RFSgallery from '@/components/RFSgallery'
 import RFSfaqs from '@/components/RFSfaqs'
+import PopupRFS from '@/components/PopupRFS'
 
 const page = () => {
   return (
@@ -23,6 +24,7 @@ const page = () => {
         <RFSgallery/>
         <RFSlocationAndform/>
         <Footer/>
+        <PopupRFS/>
     </div>
   )
 }
