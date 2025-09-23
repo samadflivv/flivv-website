@@ -6,12 +6,11 @@ const PopupRFS = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only show on home page and once per session
     if (window.location.pathname === "/rivendellfarms" && !sessionStorage.getItem("popupShown")) {
       const timer = setTimeout(() => {
         setIsVisible(true);
         sessionStorage.setItem("popupShown", "true");
-      }, 1000); // 3 seconds delay
+      }, 1000);
 
       // Load HubSpot form script
       const script = document.createElement("script");
@@ -30,12 +29,20 @@ const PopupRFS = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="relative bg-white backdrop-blur-xl border border-white/30 rounded-2xl shadow-xl flex flex-col md:flex-row w-[95%] max-w-5xl text-white overflow-hidden">
-        {/* Close Button */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-2">
+      {/* Modal container */}
+      <div
+        className="
+          relative bg-[#081C15] backdrop-blur-xl border border-white/30 rounded-2xl shadow-xl flex flex-col md:flex-row w-full max-w-5xl text-white
+          overflow-hidden
+          max-h-[calc(100dvh-2rem)] md:max-h-none
+        "
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
+        {/* Close Button inside popup */}
         <button
           onClick={closePopup}
-          className="absolute top-5 right-6 text-black text-2xl font-bold hover:text-red-400"
+          className="absolute top-2 right-3 md:top-3 md:right-5 text-white text-2xl font-bold hover:text-red-400 z-10"
         >
           &times;
         </button>
@@ -49,11 +56,15 @@ const PopupRFS = () => {
           />
         </div>
 
-        {/* Right HubSpot Form (non-glass background) */}
-        <div className="w-full md:w-1/2  md:p-6 flex flex-col justify-center">
-          <h2 className="lg:text-4xl text-2xl font-normal mb-3 text-black pt-6 pl-6 sm:p-0">Confirm Your Visit For Sales Meet at Rivendell Farms!</h2>
-          <p className="sm:mb-4 mb-2 text-lg font-bold text-black/80 pl-6 sm:p-0">21st September, Sunday</p>
-          <div className="bg-[#D8F3DC] text-black rounded-md sm:shadow-lg">
+        {/* Right HubSpot Form */}
+        <div className="w-full md:w-1/2 md:p-6 flex flex-col justify-center overflow-y-auto">
+          <h2 className="lg:text-4xl text-2xl font-normal mb-3 text-white pt-6 pl-6 pr-6 sm:p-0">
+            Confirm Your Visit For Sales Meet at Rivendell Farms!
+          </h2>
+          <p className="sm:mb-4 mb-2 text-lg font-bold text-white/80 pl-6 sm:p-0">
+            28th September, Sunday
+          </p>
+          <div className="bg-[#D8F3DC] text-black rounded-md sm:shadow-lg m-6 md:m-0 overflow-auto">
             <div
               className="hs-form-frame"
               data-region="na2"
