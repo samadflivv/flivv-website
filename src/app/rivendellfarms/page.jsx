@@ -10,12 +10,14 @@ import RFSlocationAndform from '@/components/RFSlocationAndform'
 import RFSgallery from '@/components/RFSgallery'
 import RFSfaqs from '@/components/RFSfaqs'
 import PopupRFS from '@/components/PopupRFS'
+import RFSalesmeetcta from '@/components/RFSalesmeetcta'
 
 const page = () => {
   return (
     <div>
         <Navigation/>
         <RivendellHeader/>
+        <RFSalesmeetcta/>
         <RivendellAbout/>
         <RFShighlights/>
         <WhyRFS/>

@@ -82,7 +82,7 @@ const RivendellAbout = () => {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-white overflow-x-hidden flex items-center justify-left relative my-20 lg:px-[10%] px-1"
+      className="min-h-screen bg-white overflow-x-hidden flex items-center justify-left relative pb-20 lg:px-[10%] px-1"
     >
       <div className="reveal-text relative w-full lg:max-w-8xl">
         <p

@@ -69,7 +69,7 @@ const RivendellHeader = () => {
           className="w-full h-full object-cover opacity-30"
           style={{ mixBlendMode: 'overlay' }}
         >
-          <source src="/graintexture.mp4" type="video/mp4" />
+          <source src="/" type="video/mp4" />
         </video>
       </div>
 
