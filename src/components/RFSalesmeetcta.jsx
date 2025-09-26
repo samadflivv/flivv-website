@@ -151,7 +151,7 @@ useEffect(() => {
               className="mt-8 flex flex-col sm:flex-row gap-4"
             >
               <motion.a
-  href="#rfsctaform"   // 👈 id of the section you want to jump to
+  href="#rfsctaform"  
   whileHover={{ 
     scale: shouldReduceMotion ? 1 : 1.03,
     backgroundColor: "#D8F3DC"
@@ -166,25 +166,17 @@ useEffect(() => {
 </motion.a>
               
             </motion.div>
+            
+{/* Date Section */}
+<motion.div
+  variants={itemVariants}
+  className="mt-12 flex justify-center pt-8 border-t border-green-500/20"
+>
+  <h1 className="text-4xl sm:text-5xl font-extrabold text-[#D8F3DC] text-center animate-pulse">
+    28<sup className="align-top text-3xl sm:text-5xl">th</sup> September, Sunday
+  </h1>
+</motion.div>
 
-            {/* Stats Section */}
-            {/* <motion.div 
-              variants={itemVariants}
-              className="mt-12 grid grid-cols-3 gap-8 pt-8 border-t border-green-500/20"
-            >
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#74C69D]">8+</div>
-                <div className="text-sm text-gray-400 mt-1">Amenities</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#74C69D]">97%</div>
-                <div className="text-sm text-gray-400 mt-1">Satisfaction Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#74C69D]">12+</div>
-                <div className="text-sm text-gray-400 mt-1">Years of Legacy</div>
-              </div>
-            </motion.div> */}
           </motion.div>
 
           {/* Right Column - Video */}
