@@ -141,7 +141,7 @@ useEffect(() => {
               variants={itemVariants}
               className="mt-6 text-lg text-gray-300 max-w-xl leading-relaxed"
             >
-              Be part of our biggest celebration yet at Rivendell Farms. Secure your unit amid lush, green, and serene countryside landscapes.
+              Be part of our biggest celebration yet at Rivendell Farms. Secure your unit amid lush greenery and serene countryside landscapes.
               <b> Only 25 units left!</b>
             </motion.p>
 
