@@ -177,6 +177,19 @@ useEffect(() => {
   </h1>
 </motion.div>
 
+<motion.div
+  variants={itemVariants}
+  className="mt-10 flex justify-center flex-col"
+>
+  <h1 className="text-2xl sm:text-4xl font-semibold text-[#D8F3DC] text-center lg:leading-12">
+    Free iPhone 17
+  </h1>
+
+  <h1 className="text-2xl sm:text-4xl font-semibold text-[#D8F3DC] text-center lg:leading-12">
+    Flivv Covers Registration & Fencing!
+  </h1>
+</motion.div>
+
           </motion.div>
 
           {/* Right Column - Video */}

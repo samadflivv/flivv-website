@@ -10,7 +10,7 @@ const PopupRFS = () => {
       const timer = setTimeout(() => {
         setIsVisible(true);
         sessionStorage.setItem("popupShown", "true");
-      }, 1000);
+      }, 30000);
 
       // Load HubSpot form script
       const script = document.createElement("script");
