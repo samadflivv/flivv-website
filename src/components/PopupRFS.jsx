@@ -50,7 +50,7 @@ const PopupRFS = () => {
         {/* Left Image - hidden on mobile */}
         <div className="hidden md:block w-1/2 h-full">
           <img
-            src="/rfspopupsalesmeet.jpeg"
+            src="/fountainimgforpopup.jpeg"
             alt="Popup Visual"
             className="w-full h-160 object-cover"
           />
@@ -59,10 +59,10 @@ const PopupRFS = () => {
         {/* Right HubSpot Form */}
         <div className="w-full md:w-1/2 md:p-6 flex flex-col justify-center overflow-y-auto">
           <h2 className="lg:text-4xl text-2xl font-normal mb-3 text-white pt-6 pl-6 pr-6 sm:p-0">
-            Confirm Your Visit For Sales Meet at Rivendell Farms!
+            Get in Touch With Us
           </h2>
-          <p className="sm:mb-4 mb-2 text-lg font-bold text-white/80 pl-6 sm:p-0">
-            28th September, Sunday
+          <p className="sm:mb-4 mb-2 text-lg font-semibold text-white/80 pl-6 sm:p-0">
+            Leave your details & we’ll get in touch
           </p>
           <div className="bg-[#D8F3DC] text-black rounded-md sm:shadow-lg m-6 md:m-0 overflow-auto">
             <div
