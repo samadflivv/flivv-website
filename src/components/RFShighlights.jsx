@@ -80,18 +80,18 @@ const RFShighlights = () => {
         {/* Column 1 */}
         <div className="space-y-6">
           {/* Rating Card */}
-          <motion.div 
+          <motion.a 
+          href="#rfsctaform"
             className="bg-[#D8F3DC] rounded-xl p-8 flex flex-col space-y-4 shadow-xl shadow-[#95D5B2]/30"
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="flex gap-5 items-center">
-              <img src="/money-strategy.png" alt="" className='w-10 h-10'/>
-              <p className="text-black font-semibold text-xl mt-1">12-Month EMI Plan Available</p>
+            <div className="flex items-center justify-center">
+              <p className="text-black font-bold text-xl lg:text-2xl mt-1">Connect with Us Today ➜</p>
             </div>
-          </motion.div>
+          </motion.a>
           
           {/* Video Card */}
           <motion.div 
