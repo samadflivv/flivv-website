@@ -272,10 +272,10 @@ export default function FlivvConnectPage() {
       </section>
 
       {/* HUBSPOT FORM SECTION */}
-      <section id="form" className="py-12 px-4">
-        <div className="max-w-3xl mx-auto p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl bg-[#DBFCE7]">
-          <h4 className="text-2xl md:text-4xl font-semibold text-center">Interested? Submit your contact details</h4>
-          <p className="text-center text-gray-600 mt-2 text-sm md:text-xl">Our team shall be reaching out to you soon for booking your seat!</p>
+      <section id="form" className="py-20 px-4">
+        <div className="max-w-3xl mx-auto p-6 rounded-2xl md:rounded-3xl shadow-2xl bg-[#DBFCE7]">
+          <h4 className="text-3xl md:text-4xl font-semibold text-center">Interested? Submit your contact details</h4>
+          <p className="text-center text-gray-600 mt-2 text-lg md:text-xl">Our team shall be reaching out to you soon for booking your seat!</p>
 
           <Script id="hsforms" strategy="afterInteractive">
             {`(function() {
