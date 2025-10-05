@@ -130,7 +130,7 @@ export default function FlivvConnectPage() {
             <h3 className="text-4xl md:text-6xl font-black text-center bg-gradient-to-r from-green-900 to-green-700 bg-clip-text text-transparent animate-fade-in-up">
               KSA SALES EVENT 2025 
             </h3>
-            <h2 className="text-4xl md:text-6xl text-center mt-2 font-bold text-[#0192D3] animate-fade-in-up delay-100">
+            <h2 className="text-4xl md:text-6xl text-center mt-2 font-bold text-black animate-fade-in-up delay-100">
               Flivv Developers
             </h2>
 
@@ -148,17 +148,6 @@ export default function FlivvConnectPage() {
               >
                 <span className="relative z-10">Book Your Seat</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              </a>
-              <a 
-                href="#destinations" 
-                className="group px-4 py-2 md:px-6 md:py-3 rounded-full font-medium border-2 transition-all duration-300 hover:scale-105 hover:shadow-lg text-sm md:text-base"
-                style={{ 
-                  borderColor: primary,
-                  color: primary,
-                  background: 'transparent'
-                }}
-              >
-                <span className="relative z-10">View Itinerary</span>
               </a>
             </div>
 
@@ -195,13 +184,13 @@ export default function FlivvConnectPage() {
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
           <div className="inline-flex items-center gap-3 px-4 py-2 md:px-6 md:py-2 rounded-full bg-green-100 border border-green-200 mb-6 md:mb-8">
             <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: primary }}></div>
-            <span className="text-xs md:text-sm font-semibold" style={{ color: primary }}>About The Event</span>
+            <span className="text-xs md:text-sm font-semibold" style={{ color: primary }}>Our Journey</span>
           </div>
-          <h3 className="text-2xl md:text-4xl font-bold text-gray-900">About Flivv Connect</h3>
+          <h3 className="text-2xl md:text-4xl font-bold text-gray-900">About Flivv Developers</h3>
           <p className="mt-4 md:mt-6 text-gray-700 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-            Flivv Developers is a premier real estate development firm dedicated to helping investors 
-            <span className="font-semibold text-green-700"> "invest wisely in real estate"</span>. Flivv Connect: KSA 2025 brings Indian investors to Saudi Arabia for 
-            curated site visits, exclusive workshops, and high-value networking across the thriving markets of Dammam, Khobar, and Jeddah.
+            With over 10+ of experience in the IT industry, Flivv has built a strong reputation for reliability and service excellence. Over the past 3.5+ years, we have successfully diversified into the real estate sector as 
+            <span className="font-semibold text-green-700"> Flivv Developers</span>.
+            We specialize in the development and marketing of open plot projects, with focus on long-term real estate investment goals. With 5+ successful projects in our portfolio, we offer trustworthy companionship, backed by lifelong support and exceptional service.
           </p>
         </div>
       </section>
@@ -212,31 +201,32 @@ export default function FlivvConnectPage() {
           <div className="text-center mb-8 md:mb-12 animate-fade-in-up">
             <div className="inline-flex items-center gap-3 px-4 py-2 md:px-6 md:py-2 rounded-full bg-green-100 border border-green-200 mb-4">
               <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: primary }}></div>
-              <span className="text-xs md:text-sm font-semibold" style={{ color: primary }}>Event Journey</span>
+              <span className="text-xs md:text-sm font-semibold" style={{ color: primary }}>Events Timeline</span>
             </div>
-            <h3 className="text-2xl md:text-4xl font-bold text-gray-900">Itinerary & Destinations</h3>
+            <h3 className="text-2xl md:text-4xl font-bold text-gray-900">Event Destinations Lineup</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
-                city:'Dammam', 
-                date:'Oct 23, 2025', 
+                city:'Al-Khobar', 
+                date:'October 23, 2025', 
+                desc:'Meet local experts and tour prime developments in this coastal business center.',
+                icon:'',
+                gradient: `linear-gradient(135deg, ${primaryLight}, ${primary})`
+              },
+              {
+                city:'Riyadh', 
+                date:'October 24, 2025', 
                 desc:'Exclusive site visits and developer presentations in the Eastern Province hub.',
                 icon:'🏙️',
                 gradient: `linear-gradient(135deg, ${primary}, #004a25)`
               },
-              {
-                city:'Khobar', 
-                date:'Oct 24, 2025', 
-                desc:'Meet local experts and tour prime developments in this coastal business center.',
-                icon:'🌊',
-                gradient: `linear-gradient(135deg, ${primaryLight}, ${primary})`
-              },
+              
               {
                 city:'Jeddah', 
-                date:'Oct 25, 2025', 
+                date:'October 25, 2025', 
                 desc:'Workshops, networking events, and cultural tours in the historic gateway.',
-                icon:'🕌',
+                icon:'🌊',
                 gradient: `linear-gradient(135deg, ${primaryLighter}, ${primaryLight})`
               }
             ].map((d, idx) => (
@@ -254,19 +244,14 @@ export default function FlivvConnectPage() {
                 <div className="relative z-10">
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-3 md:gap-4">
-                      <div 
-                        className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center text-xl md:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300"
-                        style={{ background: d.gradient, color: '#fff' }}
-                      >
-                        {d.icon}
-                      </div>
+                     
                       <div>
                         <h4 className="text-xl md:text-2xl font-bold text-gray-900">{d.city}</h4>
                         <div className="text-xs md:text-sm font-medium text-gray-500 mt-1">{d.date}</div>
                       </div>
                     </div>
                     <div className="text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-800">
-                      Limited
+                      Limited Seats
                     </div>
                   </div>
                   <p className="mt-4 md:mt-6 text-gray-600 leading-relaxed text-sm md:text-base">{d.desc}</p>
@@ -276,7 +261,7 @@ export default function FlivvConnectPage() {
                       className="flex-1 text-center px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg text-sm md:text-base"
                       style={{ background: d.gradient }}
                     >
-                      Register
+                      Register Your Seat
                     </a>
                   </div>
                 </div>
@@ -288,9 +273,9 @@ export default function FlivvConnectPage() {
 
       {/* HUBSPOT FORM SECTION */}
       <section id="form" className="py-12 px-4">
-        <div className="max-w-3xl mx-auto p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl bg-white">
-          <h4 className="text-xl md:text-2xl font-semibold text-center">Interested? Submit your details</h4>
-          <p className="text-center text-gray-600 mt-2 text-sm md:text-base">We'll contact you with the event schedule, pricing, and travel support.</p>
+        <div className="max-w-3xl mx-auto p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl bg-[#DBFCE7]">
+          <h4 className="text-2xl md:text-4xl font-semibold text-center">Interested? Submit your contact details</h4>
+          <p className="text-center text-gray-600 mt-2 text-sm md:text-xl">Our team shall be reaching out to you soon for booking your seat!</p>
 
           <Script id="hsforms" strategy="afterInteractive">
             {`(function() {
