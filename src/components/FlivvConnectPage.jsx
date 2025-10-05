@@ -14,6 +14,7 @@ export default function FlivvConnectPage() {
 
   // VIDEO
   const videoRef = useRef(null);
+  const videoSectionRef = useRef(null);
 
   // countdown updater
   useEffect(() => {
@@ -21,52 +22,62 @@ export default function FlivvConnectPage() {
     return () => clearInterval(id);
   }, [targetDate]);
 
-  // IMMEDIATE VIDEO AUTOPLAY - No delays, no complex logic
+  // VIDEO PLAY/PAUSE BASED ON VIEWPORT VISIBILITY
   useEffect(() => {
     const vid = videoRef.current;
-    if (!vid) return;
+    const section = videoSectionRef.current;
+    
+    if (!vid || !section) return;
 
-    // Set video attributes for immediate playback
+    // Set video attributes
     vid.muted = false;
     vid.volume = 1;
     vid.playsInline = true;
     vid.preload = "auto";
 
-    // Immediate play attempt without any delays
-    const playVideo = () => {
-      vid.play().catch(err => {
-        console.log('First play attempt failed, trying muted:', err);
-        // If unmuted fails, try muted playback
-        vid.muted = true;
-        vid.play().catch(mutedErr => {
-          console.log('Muted playback also failed:', mutedErr);
+    // Intersection Observer to play when in viewport, pause when not
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Section is in viewport - play video
+            vid.play().catch(err => {
+              console.log('Play failed, trying muted:', err);
+              // If unmuted fails, try muted playback
+              vid.muted = true;
+              vid.play().catch(mutedErr => {
+                console.log('Muted playback also failed:', mutedErr);
+              });
+            });
+          } else {
+            // Section is out of viewport - pause video
+            vid.pause();
+          }
         });
-      });
-    };
+      },
+      { 
+        threshold: 0.5, // Play when 50% of section is visible
+        rootMargin: '0px' 
+      }
+    );
 
-    // Try to play immediately
-    if (vid.readyState >= 1) {
-      playVideo();
-    } else {
-      vid.addEventListener('loadeddata', playVideo);
-      vid.addEventListener('canplay', playVideo);
-    }
+    observer.observe(section);
 
     // Cleanup
     return () => {
-      vid.removeEventListener('loadeddata', playVideo);
-      vid.removeEventListener('canplay', playVideo);
+      observer.disconnect();
     };
   }, []);
 
   return (
     <div className="min-h-screen text-gray-900 bg-gradient-to-b from-white to-gray-50">
-      {/* SECTION 1: SIMPLE VIDEO ONLY HERO */}
-      <section className="relative w-full h-screen overflow-hidden">
+      {/* SECTION 1: VIDEO HERO SECTION WITH CONTROLS */}
+      <section ref={videoSectionRef} className="relative w-full h-screen overflow-hidden">
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
+          controls
+          controlsList="nodownload" // Removes download option
           loop
           playsInline
           preload="auto"
@@ -117,14 +128,14 @@ export default function FlivvConnectPage() {
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 md:p-14 mx-4 border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500">
             <h3 className="text-4xl md:text-6xl font-black text-center bg-gradient-to-r from-green-900 to-green-700 bg-clip-text text-transparent animate-fade-in-up">
-              Flivv Connect
+              KSA SALES EVENT 2025 
             </h3>
-            <h2 className="text-3xl md:text-5xl text-center mt-2 font-bold text-gray-800 animate-fade-in-up delay-100">
-              KSA 2025
+            <h2 className="text-4xl md:text-6xl text-center mt-2 font-bold text-[#0192D3] animate-fade-in-up delay-100">
+              Flivv Developers
             </h2>
 
             <p className="mt-4 md:mt-6 text-center max-w-3xl mx-auto text-gray-600 text-base md:text-lg leading-relaxed animate-fade-in-up delay-200">
-              Empowering Indian investors to explore high-growth real estate opportunities in the booming markets of Dammam, Khobar, and Jeddah.
+              With a growing client base of 200+ in KSA, we’re pleased to present Flivv Developers’ upcoming investment opportunities through new project launches.
             </p>
 
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 animate-fade-in-up delay-300">
@@ -135,7 +146,7 @@ export default function FlivvConnectPage() {
                   background: `linear-gradient(135deg, ${primary}, ${primaryLight})`,
                 }}
               >
-                <span className="relative z-10">Register Now</span>
+                <span className="relative z-10">Book Your Seat</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
               </a>
               <a 
@@ -267,9 +278,6 @@ export default function FlivvConnectPage() {
                     >
                       Register
                     </a>
-                    <button className="px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl font-medium border border-gray-200 text-gray-700 hover:border-green-300 hover:text-green-700 transition-colors duration-300 text-sm md:text-base">
-                      Learn more
-                    </button>
                   </div>
                 </div>
               </article>
