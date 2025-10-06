@@ -210,23 +210,17 @@ export default function FlivvConnectPage() {
               {
                 city:'Al-Khobar', 
                 date:'October 23, 2025', 
-                desc:'Meet local experts and tour prime developments in this coastal business center.',
-                icon:'',
                 gradient: `linear-gradient(135deg, ${primaryLight}, ${primary})`
               },
               {
                 city:'Riyadh', 
                 date:'October 24, 2025', 
-                desc:'Exclusive site visits and developer presentations in the Eastern Province hub.',
-                icon:'🏙️',
                 gradient: `linear-gradient(135deg, ${primary}, #004a25)`
               },
               
               {
                 city:'Jeddah', 
                 date:'October 25, 2025', 
-                desc:'Workshops, networking events, and cultural tours in the historic gateway.',
-                icon:'🌊',
                 gradient: `linear-gradient(135deg, ${primaryLighter}, ${primaryLight})`
               }
             ].map((d, idx) => (
