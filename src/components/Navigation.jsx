@@ -43,7 +43,7 @@ export default function Navigation() {
           </ul>
         </li>
         <li><Link href="/contact">Contact</Link></li>
-        <li className='border border-white py-2 px-4 rounded-full bg-[#07713B]'><Link href="/flivvksaevent">Flivv KSA Event</Link></li>
+        <li className='border border-white py-2 px-4 rounded-full bg-[#07713B]'><Link href="/flivvksaevent">KSA Sales Event</Link></li>
       </ul>
 
       {/* Hamburger */}
@@ -108,7 +108,7 @@ export default function Navigation() {
           <li>
             <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
           </li>
-          <li className='border border-white py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-[#07713B]'><Link href="/flivvksaevent">Flivv KSA Event</Link></li>
+          <li className='border border-white py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-[#07713B]'><Link href="/flivvksaevent">KSA Sales Event</Link></li>
         </ul>
       </nav>
     </div>

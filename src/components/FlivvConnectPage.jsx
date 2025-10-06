@@ -135,7 +135,7 @@ export default function FlivvConnectPage() {
             </h2>
 
             <p className="mt-4 md:mt-6 text-center max-w-3xl mx-auto text-gray-600 text-base md:text-lg leading-relaxed animate-fade-in-up delay-200">
-              With a growing client base of 200+ in KSA, we’re pleased to present Flivv Developers’ upcoming investment opportunities through new project launches.
+              With a growing client base of 200+ in The Kingdom of Saudi Arabia, we’re pleased to present Flivv Developers’ upcoming investment opportunities through new project launches, interactive Q&A sessions and more.
             </p>
 
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 animate-fade-in-up delay-300">
@@ -188,7 +188,7 @@ export default function FlivvConnectPage() {
           </div>
           <h3 className="text-2xl md:text-4xl font-bold text-gray-900">About Flivv Developers</h3>
           <p className="mt-4 md:mt-6 text-gray-700 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-            With over 10+ of experience in the IT industry, Flivv has built a strong reputation for reliability and service excellence. Over the past 3.5+ years, we have successfully diversified into the real estate sector as 
+            With over 13+ of experience in the IT industry, Flivv has built a strong reputation for reliability and service excellence. Over the past 3.5+ years, we have successfully diversified into the real estate sector as 
             <span className="font-semibold text-green-700"> Flivv Developers</span>.
             We specialize in the development and marketing of open plot projects, with focus on long-term real estate investment goals. With 5+ successful projects in our portfolio, we offer trustworthy companionship, backed by lifelong support and exceptional service.
           </p>
@@ -210,17 +210,20 @@ export default function FlivvConnectPage() {
               {
                 city:'Al-Khobar', 
                 date:'October 23, 2025', 
+                day:'Thursday',
                 gradient: `linear-gradient(135deg, ${primaryLight}, ${primary})`
               },
               {
                 city:'Riyadh', 
                 date:'October 24, 2025', 
+                day:'Friday',
                 gradient: `linear-gradient(135deg, ${primary}, #004a25)`
               },
               
               {
                 city:'Jeddah', 
                 date:'October 25, 2025', 
+                day:'Saturday',
                 gradient: `linear-gradient(135deg, ${primaryLighter}, ${primaryLight})`
               }
             ].map((d, idx) => (
@@ -242,13 +245,13 @@ export default function FlivvConnectPage() {
                       <div>
                         <h4 className="text-xl md:text-2xl font-bold text-gray-900">{d.city}</h4>
                         <div className="text-xs md:text-sm font-medium text-gray-500 mt-1">{d.date}</div>
+                        <div className="text-xs md:text-sm font-medium text-gray-500 mt-1">{d.day}</div>
                       </div>
                     </div>
                     <div className="text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-800">
                       Limited Seats
                     </div>
                   </div>
-                  <p className="mt-4 md:mt-6 text-gray-600 leading-relaxed text-sm md:text-base">{d.desc}</p>
                   <div className="mt-6 md:mt-8 flex gap-3">
                     <a 
                       href="#form" 
@@ -268,8 +271,8 @@ export default function FlivvConnectPage() {
       {/* HUBSPOT FORM SECTION */}
       <section id="form" className="py-20 px-4">
         <div className="max-w-3xl mx-auto p-6 rounded-2xl md:rounded-3xl shadow-2xl bg-[#DBFCE7]">
-          <h4 className="text-3xl md:text-4xl font-semibold text-center">Interested? Submit your contact details</h4>
-          <p className="text-center text-gray-600 mt-2 text-lg md:text-xl">Our team shall be reaching out to you soon for booking your seat!</p>
+          <h4 className="text-3xl md:text-4xl font-semibold text-center">Interested? RSVP to reserve your Seat</h4>
+          <p className="text-center text-gray-600 mt-2 text-lg md:text-xl">Our team shall be connecting with you shortly.</p>
 
           <Script id="hsforms" strategy="afterInteractive">
             {`(function() {

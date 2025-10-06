@@ -123,23 +123,13 @@ const Footer = () => {
 
     {/* Column 4 - Contact */}
     <div className="col-span-2 md:col-span-1">
-      <h3 className="font-semibold text-lg mb-2">Contact Details</h3>
+      <h3 className="font-semibold text-lg mb-2">Office Address & Contact Details</h3>
       <ul className="space-y-1 text-sm text-gray-300">
         <li><a href="">&#9679; 8-1-301, 302 & 303, West World, II Floor, B Block, Front Portion, above Karachi Bakery, Shaikpet, Hyderabad, Telangana 500008</a></li>
         <li><a href="mailto:info@flivvdevelopers.com">&#9679; info@flivvdevelopers.com</a></li>
       </ul>
     </div>
   </div>
-
-  {/* Background Image (blended) */}
-  {/* <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden rounded-xl">
-    <div className="absolute inset-0 bg-gradient-to-b from-black/100 via-black/100 to-transparent" />
-    <img
-      src="/dream-home.jpg"
-      alt="Footer Background"
-      className="w-full h-[800px] object-cover"
-    />
-  </div> */}
 </footer>
 
   )
