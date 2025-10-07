@@ -83,7 +83,7 @@ export default function FlivvConnectPage() {
           preload="auto"
           muted={false}
         >
-          <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/1002%20(1)(2).mp4" type="video/mp4" />
+          <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/WEBSITE%20VID%20KEYFRAMED.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>
