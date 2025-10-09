@@ -188,7 +188,7 @@ export default function FlivvConnectPage() {
           </div>
           <h3 className="text-2xl md:text-4xl font-bold text-gray-900">About Flivv Developers</h3>
           <p className="mt-4 md:mt-6 text-gray-700 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-            With over 13+ of experience in the IT industry, Flivv has built a strong reputation for reliability and service excellence. Over the past 3.5+ years, we have successfully diversified into the real estate sector as 
+            With over 13+ of experience in the IT industry, Flivv has built a strong reputation for reliability and service excellence. Over the past 4+ years, we have successfully diversified into the real estate sector as 
             <span className="font-semibold text-green-700"> Flivv Developers</span>.
             We specialize in the development and marketing of open plot projects, with focus on long-term real estate investment goals. With 5+ successful projects in our portfolio, we offer trustworthy companionship, backed by lifelong support and exceptional service.
           </p>

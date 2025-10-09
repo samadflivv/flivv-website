@@ -108,7 +108,7 @@ export default function Navigation() {
           <li>
             <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
           </li>
-          <li className='border border-white py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-[#07713B]'><Link href="/flivvksaevent">KSA Sales Event</Link></li>
+          <li className='border border-white py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-[#07713B] text-base'><Link href="/flivvksaevent">KSA Sales Event</Link></li>
         </ul>
       </nav>
     </div>

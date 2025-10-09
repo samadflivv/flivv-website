@@ -2,6 +2,7 @@ import Aboutsection from "@/components/Aboutsection";
 import CTAHome from "@/components/CTAHome";
 import Exclusiveprojects from "@/components/Exclusiveprojects";
 import FaqSection from "@/components/FaqSection";
+import FlivvConnectBanner from "@/components/FlivvConnectBanner";
 import Footer from "@/components/Footer";
 import FourthSection from "@/components/FourthSection";
 import Herosection from "@/components/Herosection";
