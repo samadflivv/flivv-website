@@ -12,7 +12,7 @@ export default function FlivvConnectPage() {
   return (
     <div className="min-h-screen text-gray-900 bg-gradient-to-b from-white to-gray-50">
       {/* NEW SECTION: Upcoming Riyadh Sales Meet - NOW AT TOP */}
-      <section className="pt-20 md:pt-32 h-screen pb-12 md:pb-20 px-4 bg-gradient-to-b from-green-800 to-green-100">
+      <section className="pt-32 h-screen pb-12 md:pb-20 px-4 bg-gradient-to-b from-green-800 to-green-100">
   <div className="max-w-4xl mx-auto text-center">
     <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border border-green-300 mb-8 animate-pulse shadow-lg">
       <div className="w-3 h-3 rounded-full bg-green-600"></div>
@@ -27,7 +27,7 @@ export default function FlivvConnectPage() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="text-center md:text-left">
           <h4 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">Riyadh Sales Meet</h4>
-          <p className="text-lg text-gray-600 mb-4">Join us for another exclusive investment opportunity</p>
+          <p className="text-lg text-gray-600 mb-4">Join us for another exclusive 1:1 Sales Session </p>
           
           <div className="flex items-center justify-center md:justify-start gap-6 mb-6">
             <div className="text-center">
@@ -56,7 +56,7 @@ export default function FlivvConnectPage() {
         <div className="bg-green-100 rounded-2xl p-6 text-center border-2 border-green-200">
           <div className="text-4xl mb-4">🎯</div>
           <h5 className="font-bold text-green-800 mb-2">Limited Seats Available</h5>
-          <p className="text-sm text-green-700">Early registration recommended</p>
+          <p className="text-sm text-green-700">Get Exclusive Deals on the Spot</p>
         </div>
       </div>
     </div>
