@@ -122,11 +122,19 @@ export default function FlivvQatarEvent() {
 
   // Updated schedule days to November 20, 2025
   const scheduleDays = [
-    {
-      date: "November 20, 2025",
-      location: "Doha, Qatar"
-    }
-  ];
+  {
+    date: "November 20, 2025",
+    location: "Doha, Qatar"
+  },
+  {
+    date: "November 21, 2025", 
+    location: "Doha, Qatar"
+  },
+  {
+    date: "November 22, 2025",
+    location: "Doha, Qatar"
+  }
+];
 
   const faqItems = [
     {
@@ -183,6 +191,11 @@ export default function FlivvQatarEvent() {
       url: "/images/event4.jpg",
       alt: "Flivv Previous Event 4",
       title: "Delhi Investment Forum"
+    },
+    {
+      url: "/images/event6.jpg",
+      alt: "Flivv Previous Event 5",
+      title: "Chennai Developers Conference"
     },
     {
       url: "/images/event5.jpg",
@@ -659,54 +672,54 @@ export default function FlivvQatarEvent() {
       </section>
 
       {/* Schedule Section with Maroon Icons - Updated to Single Day */}
-      <section className="section-padding bg-white">
-        <div className="w-full max-w-4xl mx-auto">
-          <motion.div 
-            className="text-center mb-12 md:mb-16"
-            {...fadeInUp}
+<section className="section-padding bg-white">
+  <div className="w-full max-w-6xl mx-auto">
+    <motion.div 
+      className="text-center mb-12 md:mb-16"
+      {...fadeInUp}
+    >
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        Event Schedule
+      </h2>
+      <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
+    </motion.div>
+    
+    <motion.div 
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+      variants={staggerChildren}
+      initial="initial"
+      whileInView="whileInView"
+      viewport={{ once: true }}
+    >
+      {scheduleDays.map((day, index) => (
+        <motion.div
+          key={index}
+          className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 text-center group hover-lift premium-shadow border border-gray-200"
+          variants={fadeInUp}
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="flex justify-center mb-4">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="#8A1538">
+              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+            </svg>
+          </div>
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+            {day.date}
+          </h3>
+          <p className="text-gray-600 mb-4 text-lg">{day.location}</p>
+          <motion.a
+            href="#registration"
+            className="inline-block bg-[#8A1538] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6A102B] transition-colors text-sm md:text-base"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Event Schedule
-            </h2>
-            <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
-          </motion.div>
-          
-          <motion.div 
-            className="flex justify-center"
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-          >
-            {scheduleDays.map((day, index) => (
-              <motion.div
-                key={index}
-                className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 md:p-12 text-center group hover-lift premium-shadow border border-gray-200 max-w-md w-full"
-                variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="flex justify-center mb-6">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="#8A1538">
-                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                  {day.date}
-                </h3>
-                <p className="text-gray-600 mb-8 text-lg">{day.location}</p>
-                <motion.a
-                  href="#registration"
-                  className="inline-block bg-[#8A1538] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#6A102B] transition-colors text-lg"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Register Now
-                </motion.a>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+            Register Now
+          </motion.a>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
 
       {/* Why Flivv Section with White Icons */}
       <section className="section-padding gradient-bg">
@@ -896,9 +909,6 @@ export default function FlivvQatarEvent() {
             className="text-center mt-6 md:mt-8"
             {...fadeInUp}
           >
-            <p className="text-white/70 text-sm md:text-base">
-              By submitting this form, you agree to our privacy policy and consent to being contacted by Flivv representatives.
-            </p>
           </motion.div>
         </div>
       </section>
