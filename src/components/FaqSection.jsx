@@ -88,7 +88,7 @@ const FaqSection = () => {
     {
       question: "How long have you been in the Real Estate business in Hyderabad?",
       answer:
-        "It's been 3.5+ years since we diversified into Real Estate from IT. Having successfully provided IT services for over a decade, we are now also giving our best in Real Estate.",
+        "It's been 4 years since we diversified into Real Estate from IT. Having successfully provided IT services for over a decade, we are now also giving our best in Real Estate.",
     },
     {
       question: "What types of properties do you specialize in?",
@@ -98,7 +98,7 @@ const FaqSection = () => {
     {
       question: "How many projects have you marketed and developed so far?",
       answer:
-        "We either take up projects for developing & marketing or exclusively for marketing. So far, we have 5+ projects successfully being executed.",
+        "We either take up projects for developing & marketing or exclusively for marketing. So far, we have 10+ projects successfully being executed.",
     },
     {
       question: "In what ways do you support or assist buyers after the sale?",
