@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Complete Flivv Qatar Sales Event Landing Page - Final Version
+// Complete Flivv Qatar Sales Event Landing Page - With Background Image & Video Controls
 export default function FlivvQatarEvent() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -13,11 +13,14 @@ export default function FlivvQatarEvent() {
     seconds: 0
   });
   const [activeFAQ, setActiveFAQ] = useState(null);
+  const [activeImage, setActiveImage] = useState(null);
+  const videoRef = useRef(null);
+  const videoSectionRef = useRef(null);
 
-  // Countdown timer
+  // Countdown timer - Updated to November 20, 2025
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const targetDate = new Date('2025-11-13T00:00:00Z');
+      const targetDate = new Date('2025-11-20T00:00:00Z');
       const difference = +targetDate - +new Date();
       
       if (difference > 0) {
@@ -39,8 +42,52 @@ export default function FlivvQatarEvent() {
     return () => clearInterval(timer);
   }, []);
 
+  // Video play/pause based on visibility
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Video is in view - play it
+            if (videoRef.current) {
+              videoRef.current.play().catch(error => {
+                console.log('Video play failed:', error);
+              });
+            }
+          } else {
+            // Video is out of view - pause it
+            if (videoRef.current) {
+              videoRef.current.pause();
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.5 // Trigger when 50% of video is visible
+      }
+    );
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current);
+    }
+
+    return () => {
+      if (videoSectionRef.current) {
+        observer.unobserve(videoSectionRef.current);
+      }
+    };
+  }, []);
+
   const toggleFAQ = (index) => {
     setActiveFAQ(activeFAQ === index ? null : index);
+  };
+
+  const openImageModal = (index) => {
+    setActiveImage(index);
+  };
+
+  const closeImageModal = () => {
+    setActiveImage(null);
   };
 
   // Fixed HubSpot Form Component
@@ -53,7 +100,7 @@ export default function FlivvQatarEvent() {
     return () => {};
   }, []);
 
-  // Event data
+  // Event data - Updated dates to November 20, 2025
   const eventHighlights = [
     {
       title: "Founder Meet & Greet",
@@ -73,17 +120,10 @@ export default function FlivvQatarEvent() {
     }
   ];
 
+  // Updated schedule days to November 20, 2025
   const scheduleDays = [
     {
-      date: "November 13, 2025",
-      location: "Doha, Qatar"
-    },
-    {
-      date: "November 14, 2025", 
-      location: "Doha, Qatar"
-    },
-    {
-      date: "November 15, 2025",
+      date: "November 20, 2025",
       location: "Doha, Qatar"
     }
   ];
@@ -121,6 +161,42 @@ export default function FlivvQatarEvent() {
       description: "Dedicated premium support service for our international investors worldwide."
     }
   ];
+
+  // Previous Event Images (Replace with your actual image URLs)
+  const previousEventImages = [
+    {
+      url: "/images/event1.jpg",
+      alt: "Flivv Previous Event 1",
+      title: "Hyderabad Investor Meet 2024"
+    },
+    {
+      url: "/images/event2.jpg", 
+      alt: "Flivv Previous Event 2",
+      title: "Mumbai Real Estate Summit"
+    },
+    {
+      url: "/images/event3.jpg",
+      alt: "Flivv Previous Event 3", 
+      title: "Bangalore Property Expo"
+    },
+    {
+      url: "/images/event4.jpg",
+      alt: "Flivv Previous Event 4",
+      title: "Delhi Investment Forum"
+    },
+    {
+      url: "/images/event5.jpg",
+      alt: "Flivv Previous Event 5",
+      title: "Chennai Developers Conference"
+    }
+  ];
+
+  // Video section data
+  const videoData = {
+    title: "We're Coming to Qatar!",
+    description: "Watch our special announcement about the upcoming Flivv Doha Connect 2025 event",
+    videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID" // Replace with your video URL
+  };
 
   // Scroll animations
   const fadeInUp = {
@@ -217,39 +293,36 @@ export default function FlivvQatarEvent() {
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
+
+        /* Image modal styles */
+        .image-modal-overlay {
+          background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Hide download button in video controls */
+        video::-internal-media-controls-download-button {
+          display:none;
+        }
+        
+        video::-webkit-media-controls-enclosure {
+          overflow:hidden;
+        }
+        
+        video::-webkit-media-controls-panel {
+          width: calc(100% + 30px);
+        }
       `}</style>
 
-      {/* Enhanced Hero Section */}
-      <section className="min-h-screen gradient-bg relative overflow-hidden flex items-center justify-center pt-20 md:pt-0">
-        {/* Enhanced Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/3 rounded-full blur-3xl"></div>
-          
-          {/* Geometric Patterns */}
-          <div className="absolute top-20 left-10 w-32 h-32 border-2 border-white/10 rounded-lg rotate-45"></div>
-          <div className="absolute bottom-32 right-20 w-24 h-24 border-2 border-white/10 rounded-full"></div>
-          <div className="absolute top-40 right-32 w-16 h-16 border-2 border-white/10 rotate-12"></div>
-        </div>
-
-        {/* Enhanced Floating Elements */}
-        <div className="absolute top-20 left-10 animate-float">
-          <div className="w-8 h-8 bg-white/20 rounded-full"></div>
-        </div>
-        <div className="absolute bottom-32 right-16 animate-float" style={{animationDelay: '2s'}}>
-          <div className="w-6 h-6 bg-white/30 rounded-full"></div>
-        </div>
-        <div className="absolute top-40 right-20 animate-float" style={{animationDelay: '4s'}}>
-          <div className="w-10 h-10 bg-white/10 rounded-full"></div>
-        </div>
-        <div className="absolute bottom-20 left-20 animate-float" style={{animationDelay: '1s'}}>
-          <div className="w-4 h-4 bg-white/25 rounded-full"></div>
-        </div>
-        <div className="absolute top-1/3 right-1/4 animate-float" style={{animationDelay: '3s'}}>
-          <div className="w-3 h-3 bg-white/15 rounded-full"></div>
-        </div>
-
+      {/* Enhanced Hero Section with Background Image */}
+      <section 
+        className="min-h-screen relative overflow-hidden flex items-center justify-center pt-20 md:pt-0"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(138, 21, 56, 0.8), rgba(106, 16, 43, 0.8)), url(/qatarhero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
         <div className="w-full max-w-6xl mx-auto text-center relative z-10 px-4 py-20 md:py-0">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -339,7 +412,7 @@ export default function FlivvQatarEvent() {
         </motion.div>
       </section>
 
-      {/* Fixed Countdown Section - Mobile Responsive */}
+      {/* Fixed Countdown Section - Mobile Responsive - Updated to November 20 */}
       <section className="section-padding bg-gradient-to-br from-gray-50 to-white">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -350,6 +423,7 @@ export default function FlivvQatarEvent() {
               Event Begins In
             </h2>
             <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
+            <p className="text-gray-600 mt-4">November 20, 2025 | Doha, Qatar</p>
           </motion.div>
           
           <motion.div 
@@ -401,7 +475,38 @@ export default function FlivvQatarEvent() {
         </div>
       </section>
 
-      {/* About Section with White Location/Date Icons */}
+      {/* Full Screen Video Section with Auto Play/Pause */}
+      <section 
+        ref={videoSectionRef}
+        className="min-h-screen relative flex items-center justify-center bg-black"
+      >
+        <div className="w-full h-full">
+
+          {/* Video Placeholder - Replace with your actual video */}
+          <div className="w-full h-full bg-gray-900 flex items-center justify-center">
+            <div className="text-center text-white">
+              
+              {/* Uncomment and use this for actual video */}
+              
+              <video
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                controls
+                controlsList="nodownload"
+                muted
+                playsInline
+                onContextMenu={(e) => e.preventDefault()}
+              >
+                <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/WEBSITE%20VID%20KEYFRAMED.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+             
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section with White Location/Date Icons - Updated Date */}
       <section id="details" className="section-padding bg-white">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -433,7 +538,7 @@ export default function FlivvQatarEvent() {
                 </p>
               </div>
 
-              {/* Location & Date Highlight - WHITE ICONS */}
+              {/* Location & Date Highlight - WHITE ICONS - Updated Date */}
               <motion.div 
                 className="mt-8 md:mt-12 bg-gradient-to-br from-[#8A1538] to-[#6A102B] rounded-2xl p-6 md:p-8 premium-shadow text-white"
                 whileHover={{ scale: 1.02 }}
@@ -459,7 +564,7 @@ export default function FlivvQatarEvent() {
                       </svg>
                     </div>
                     <h3 className="font-bold text-lg mb-2">Date</h3>
-                    <p className="text-white/90">Nov 13-15, 2025</p>
+                    <p className="text-white/90">Nov 20, 2025</p>
                   </div>
                 </div>
               </motion.div>
@@ -508,7 +613,7 @@ export default function FlivvQatarEvent() {
         </div>
       </section>
 
-      {/* Highlights Section with Maroon Icons */}
+      {/* Highlights Section with White Icons */}
       <section className="section-padding gradient-bg">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -553,7 +658,7 @@ export default function FlivvQatarEvent() {
         </div>
       </section>
 
-      {/* Schedule Section with Maroon Icons */}
+      {/* Schedule Section with Maroon Icons - Updated to Single Day */}
       <section className="section-padding bg-white">
         <div className="w-full max-w-4xl mx-auto">
           <motion.div 
@@ -567,7 +672,7 @@ export default function FlivvQatarEvent() {
           </motion.div>
           
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+            className="flex justify-center"
             variants={staggerChildren}
             initial="initial"
             whileInView="whileInView"
@@ -576,22 +681,22 @@ export default function FlivvQatarEvent() {
             {scheduleDays.map((day, index) => (
               <motion.div
                 key={index}
-                className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 text-center group hover-lift premium-shadow border border-gray-200"
+                className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 md:p-12 text-center group hover-lift premium-shadow border border-gray-200 max-w-md w-full"
                 variants={fadeInUp}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="flex justify-center mb-4">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="#8A1538">
+                <div className="flex justify-center mb-6">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="#8A1538">
                     <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
                   </svg>
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                   {day.date}
                 </h3>
-                <p className="text-gray-600 mb-6">{day.location}</p>
+                <p className="text-gray-600 mb-8 text-lg">{day.location}</p>
                 <motion.a
                   href="#registration"
-                  className="inline-block bg-[#8A1538] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6A102B] transition-colors text-sm md:text-base"
+                  className="inline-block bg-[#8A1538] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#6A102B] transition-colors text-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -603,7 +708,7 @@ export default function FlivvQatarEvent() {
         </div>
       </section>
 
-      {/* Why Flivv Section with Maroon Icons */}
+      {/* Why Flivv Section with White Icons */}
       <section className="section-padding gradient-bg">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -637,6 +742,55 @@ export default function FlivvQatarEvent() {
                 <p className="text-white/80 leading-relaxed text-sm md:text-base">
                   {pillar.description}
                 </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* Previous Events Gallery Section - Moved to better position */}
+      <section className="section-padding bg-white">
+        <div className="w-full max-w-6xl mx-auto">
+          <motion.div 
+            className="text-center mb-12 md:mb-16"
+            {...fadeInUp}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Our Previous Events
+            </h2>
+            <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto mt-6 text-lg">
+              Experience the excellence of Flivv through our successful past events
+            </p>
+          </motion.div>
+
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
+            {previousEventImages.map((image, index) => (
+              <motion.div
+                key={index}
+                className="group cursor-pointer"
+                variants={fadeInUp}
+                whileHover={{ y: -5 }}
+                onClick={() => openImageModal(index)}
+              >
+                <div className="bg-gray-100 rounded-2xl overflow-hidden premium-shadow hover-lift aspect-square relative">
+                  {/* Image Placeholder - Replace with actual images */}
+                  <div className="w-full h-full bg-gradient-to-br from-[#8A1538] to-[#6A102B] flex items-center justify-center">
+                    {/* You would replace the above div with: */}
+                    <img 
+                      src={image.url} 
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -742,6 +896,9 @@ export default function FlivvQatarEvent() {
             className="text-center mt-6 md:mt-8"
             {...fadeInUp}
           >
+            <p className="text-white/70 text-sm md:text-base">
+              By submitting this form, you agree to our privacy policy and consent to being contacted by Flivv representatives.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -775,7 +932,7 @@ export default function FlivvQatarEvent() {
             <motion.div variants={fadeInUp}>
               <h4 className="text-lg font-semibold text-white mb-4">Event</h4>
               <div className="space-y-2 text-white/80 text-sm">
-                <p className="font-semibold text-white">November 13-15, 2025</p>
+                <p className="font-semibold text-white">November 20, 2025</p>
                 <p>Doha, Qatar</p>
                 <p className="mt-2">Exclusive event for premium investors</p>
               </div>
@@ -792,6 +949,57 @@ export default function FlivvQatarEvent() {
           </motion.div>
         </div>
       </footer>
+
+      {/* Image Modal */}
+      <AnimatePresence>
+        {activeImage !== null && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 image-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeImageModal}
+          >
+            <motion.div
+              className="bg-white rounded-2xl max-w-4xl max-h-full overflow-hidden relative"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors"
+                onClick={closeImageModal}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+              </button>
+              
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  {previousEventImages[activeImage].title}
+                </h3>
+                <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video flex items-center justify-center">
+                  {/* Replace with actual image */}
+                  <div className="text-center text-gray-600">
+                    <svg className="w-16 h-16 mx-auto mb-3" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                    <p>Image: {previousEventImages[activeImage].title}</p>
+                    {/* You would replace this with: */}
+                    {/* <img 
+                      src={previousEventImages[activeImage].url} 
+                      alt={previousEventImages[activeImage].alt}
+                      className="w-full h-full object-contain"
+                    /> */}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
