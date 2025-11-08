@@ -102,7 +102,6 @@ const Exclusiveprojects = () => {
       image: "/SukoonVillas1.jpg",
       description: "Launching Soon!",
       status: "coming-soon",
-      href: "#",
       hasBadge: true,
       badgeText: "Coming Soon",
       badgeColor: "bg-yellow-500"
@@ -114,7 +113,6 @@ const Exclusiveprojects = () => {
       image: "/GulmoharHomes1.jpg",
       description: "Gulmohar Homes — an elegant extension of Gulmohar Villas, offering HMDA & RERA-approved villa plots with serene living and excellent investment potential.",
       status: "approved",
-      href: "#",
       hasBadge: false
     },
     {
@@ -124,7 +122,6 @@ const Exclusiveprojects = () => {
       image: "/AirportTown1.jpg",
       description: "Airport Town — a premium HMDA-approved open plot project just 2 km from Bangalore Highway, featuring limited plots with top-notch development.",
       status: "premium",
-      href: "#",
       hasBadge: false
     },
     {
@@ -134,7 +131,6 @@ const Exclusiveprojects = () => {
       image: "/SadhanaCity1.jpg",
       description: "Sadhana City — a DTCP-approved gated community near the Regional Ring Road and Mucherla IT Cluster, offering 100% Vastu plots.",
       status: "approved",
-      href: "#",
       hasBadge: false
     },
     {
@@ -227,7 +223,7 @@ const Exclusiveprojects = () => {
                     priority={project.priority}
                   />
                 </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 group-hover:opacity-100 transition-opacity duration-300" />
                 {project.hasBadge && (
                   <div className="absolute top-4 right-4">
                     <span className={`px-3 py-1 ${project.badgeColor} text-white text-sm font-semibold rounded-full shadow-lg`}>
