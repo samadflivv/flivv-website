@@ -136,7 +136,7 @@ const FlivvKSAPage = () => {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-600/10 rounded-full"></div>
         </div>
         
-        <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-10 px-4">
+        <div className="w-full md:w-1/2 mt-15 md:mt-0 mb-8 md:mb-0 relative z-10 px-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
             KSA SALES EVENT 2025
           </h1>
