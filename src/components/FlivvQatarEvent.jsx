@@ -103,20 +103,16 @@ export default function FlivvQatarEvent() {
   // Event data - Updated dates to November 20, 2025
   const eventHighlights = [
     {
-      title: "Founder Meet & Greet",
-      description: "Direct access to Flivv's leadership team"
+      title: "Public Address"
     },
     {
-      title: "Exclusive Project Previews",
-      description: "First look at upcoming premium developments"
+      title: "Project Showcasing"
     },
     {
-      title: "Investment Strategy",
-      description: "Expert guidance on portfolio planning"
+      title: "Q&A Session"
     },
     {
-      title: "NRI Solutions",
-      description: "Tailored solutions for overseas investors"
+      title: "1:1 Sales Session"
     }
   ];
 
@@ -136,25 +132,6 @@ export default function FlivvQatarEvent() {
   }
 ];
 
-  const faqItems = [
-    {
-      question: "How do I register for this exclusive event?",
-      answer: "Submit your details through our registration form above. As this is an exclusive gathering for serious investors, our team will review applications and extend personalized invitations to qualified attendees."
-    },
-    {
-      question: "Are Flivv projects HMDA-approved?",
-      answer: "Absolutely. All Flivv developments, including our flagship Rivendell Farms, maintain full HMDA compliance and possess all necessary legal clearances, ensuring complete investment security and transparency."
-    },
-    {
-      question: "What premium payment options are available?",
-      answer: "We offer bespoke payment solutions including flexible premium EMI plans, customized investment structures, and exclusive terms for our distinguished NRI investors. Our relationship managers will tailor a plan to your specific requirements."
-    },
-    {
-      question: "Do you provide dedicated NRI investment support?",
-      answer: "Yes, we offer white-glove service for NRI investors including comprehensive documentation assistance, legal facilitation, property management solutions, and dedicated relationship management throughout your investment journey."
-    }
-  ];
-
   const companyPillars = [
     {
       title: "Elite Transparency",
@@ -173,34 +150,22 @@ export default function FlivvQatarEvent() {
   // Previous Event Images (Replace with your actual image URLs)
   const previousEventImages = [
     {
-      url: "/images/event1.jpg",
-      alt: "Flivv Previous Event 1",
-      title: "Hyderabad Investor Meet 2024"
+      url: "/images/event1.jpg"
     },
     {
-      url: "/images/event2.jpg", 
-      alt: "Flivv Previous Event 2",
-      title: "Mumbai Real Estate Summit"
+      url: "/images/event2.jpg"
     },
     {
-      url: "/images/event3.jpg",
-      alt: "Flivv Previous Event 3", 
-      title: "Bangalore Property Expo"
+      url: "/images/event3.jpg"
     },
     {
-      url: "/images/event4.jpg",
-      alt: "Flivv Previous Event 4",
-      title: "Delhi Investment Forum"
+      url: "/images/event4.jpg"
     },
     {
-      url: "/images/event6.jpg",
-      alt: "Flivv Previous Event 5",
-      title: "Chennai Developers Conference"
+      url: "/images/event6.jpg"
     },
     {
-      url: "/images/event5.jpg",
-      alt: "Flivv Previous Event 5",
-      title: "Chennai Developers Conference"
+      url: "/images/event5.jpg"
     }
   ];
 
@@ -228,11 +193,6 @@ export default function FlivvQatarEvent() {
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
-      <Head>
-        <title>Flivv Doha Connect 2025 | Exclusive Investor Event</title>
-        <meta name="description" content="Exclusive gathering for Hyderabadi Investors in Qatar seeking premium land opportunities with Flivv Developers" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
 
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -324,13 +284,45 @@ export default function FlivvQatarEvent() {
         video::-webkit-media-controls-panel {
           width: calc(100% + 30px);
         }
+
+        /* Blob animation */
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+
+        /* Gallery image fixes */
+        .gallery-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-image {
+          transform: scale(1.1);
+        }
       `}</style>
 
       {/* Enhanced Hero Section with Background Image */}
       <section 
         className="min-h-screen relative overflow-hidden flex items-center justify-center pt-20 md:pt-0"
         style={{
-          backgroundImage: 'linear-gradient(rgba(138, 21, 56, 0.8), rgba(106, 16, 43, 0.8)), url(/qatarhero.jpg)',
+          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(/qatarhero.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
@@ -359,8 +351,7 @@ export default function FlivvQatarEvent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
-              Flivv
-              <span className="block text-2xl md:text-4xl lg:text-5xl font-light mt-4">Doha Connect 2025</span>
+              Qatar Sales Event 2025
             </motion.h1>
             
             <motion.p 
@@ -369,17 +360,9 @@ export default function FlivvQatarEvent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Exclusive Gathering for Qatar's Premier Hyderabadi Investors
+              Join us at the event, meet our team, and discover our projects
             </motion.p>
             
-            <motion.p 
-              className="text-white/80 max-w-xl mx-auto mb-12 text-base md:text-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-            >
-              Discover premium land investment opportunities with Flivv's exclusive portfolio
-            </motion.p>
             
             <motion.div
               className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center"
@@ -393,17 +376,9 @@ export default function FlivvQatarEvent() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Secure Your Spot
+                Book Your Seat
               </motion.a>
               
-              <motion.a
-                href="#details"
-                className="border-2 border-white text-white px-8 md:px-10 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover-lift w-full sm:w-auto text-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Learn More
-              </motion.a>
             </motion.div>
           </motion.div>
         </div>
@@ -425,9 +400,16 @@ export default function FlivvQatarEvent() {
         </motion.div>
       </section>
 
-      {/* Fixed Countdown Section - Mobile Responsive - Updated to November 20 */}
-      <section className="section-padding bg-gradient-to-br from-gray-50 to-white">
-        <div className="w-full max-w-6xl mx-auto">
+      {/* Countdown Section - Reverted to Previous Style with Blobs */}
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Animated Blobs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#8A1538] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
+          <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#6A102B] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-[#8A1538] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div className="w-full max-w-6xl mx-auto relative z-10">
           <motion.div 
             className="text-center mb-12 md:mb-16"
             {...fadeInUp}
@@ -475,7 +457,7 @@ export default function FlivvQatarEvent() {
             className="text-center mt-8 md:mt-12"
             {...fadeInUp}
           >
-            <p className="text-gray-600 mb-6 text-sm md:text-base">Don't miss this exclusive opportunity</p>
+            <p className="text-gray-600 mb-6 text-sm md:text-base">Let's Get Connected!</p>
             <motion.a
               href="#registration"
               className="inline-block bg-gradient-to-r from-[#8A1538] to-[#6A102B] text-white px-6 md:px-8 py-3 md:py-4 rounded-2xl font-semibold hover-lift premium-shadow text-sm md:text-base"
@@ -494,32 +476,22 @@ export default function FlivvQatarEvent() {
         className="min-h-screen relative flex items-center justify-center bg-black"
       >
         <div className="w-full h-full">
-
-          {/* Video Placeholder - Replace with your actual video */}
-          <div className="w-full h-full bg-gray-900 flex items-center justify-center">
-            <div className="text-center text-white">
-              
-              {/* Uncomment and use this for actual video */}
-              
-              <video
-                ref={videoRef}
-                className="w-full h-full object-cover"
-                controls
-                controlsList="nodownload"
-                muted
-                playsInline
-                onContextMenu={(e) => e.preventDefault()}
-              >
-                <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/WEBSITE%20VID%20KEYFRAMED.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-             
-            </div>
-          </div>
+          <video
+            ref={videoRef}
+            className="w-full h-full object-cover"
+            controls
+            controlsList="nodownload"
+            muted
+            playsInline
+            onContextMenu={(e) => e.preventDefault()}
+          >
+            <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/WEBSITE%20VID%20KEYFRAMED.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
 
-      {/* About Section with White Location/Date Icons - Updated Date */}
+      {/* About Section with Image on Right Side */}
       <section id="details" className="section-padding bg-white">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -534,24 +506,24 @@ export default function FlivvQatarEvent() {
               <div className="mb-8">
                 <div className="inline-flex items-center gap-3 mb-6">
                   <div className="w-8 md:w-12 h-0.5 bg-gradient-to-r from-[#8A1538] to-[#6A102B] rounded-full"></div>
-                  <span className="text-[#8A1538] font-semibold uppercase tracking-wider text-xs md:text-sm">Exclusive Event</span>
+                  <span className="text-[#8A1538] font-semibold uppercase tracking-wider text-xs md:text-sm">International Sales Event 2025</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Premium Investment <span className="text-[#8A1538]">Gathering</span>
+                  Exclusive Sales Event in <span className="text-[#8A1538]">Qatar</span>
                 </h2>
               </div>
               
               <div className="space-y-4 md:space-y-6 text-gray-600 text-base md:text-lg leading-relaxed">
                 <p>
-                  <span className="font-semibold text-gray-900">Flivv Doha Connect 2025</span> brings together Qatar's most discerning investors for an exclusive preview of premium land investment opportunities.
+                  After the success of our first international event in the Kingdom of Saudi Arabia, we're sincerely grateful for the incredible support and enthusiasm we received. Now, we're delighted to announce that we're coming to Qatar to showcase Flivv Developers in your very own city, Doha.
                 </p>
                 
                 <p>
-                  Experience direct access to Flivv's leadership team and gain exclusive insights into our curated portfolio of premium developments.
+                  Join us on November 20, 2025, for an exclusive Sales Event featuring project showcases, meaningful connections, and personalized 1:1 sales sessions. We can't wait to assist you in connecting and building a long-lasting relationship with Flivv Developers!
                 </p>
               </div>
 
-              {/* Location & Date Highlight - WHITE ICONS - Updated Date */}
+              {/* Location & Date Highlight */}
               <motion.div 
                 className="mt-8 md:mt-12 bg-gradient-to-br from-[#8A1538] to-[#6A102B] rounded-2xl p-6 md:p-8 premium-shadow text-white"
                 whileHover={{ scale: 1.02 }}
@@ -559,7 +531,6 @@ export default function FlivvQatarEvent() {
               >
                 <div className="grid grid-cols-2 gap-4 md:gap-6">
                   <div className="text-center">
-                    {/* White Location Icon */}
                     <div className="flex justify-center mb-3">
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -570,63 +541,61 @@ export default function FlivvQatarEvent() {
                   </div>
                   
                   <div className="text-center">
-                    {/* White Calendar Icon */}
                     <div className="flex justify-center mb-3">
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
                         <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
                       </svg>
                     </div>
                     <h3 className="font-bold text-lg mb-2">Date</h3>
-                    <p className="text-white/90">Nov 20, 2025</p>
+                    <p className="text-white/90">Nov 20-22, 2025</p>
                   </div>
                 </div>
               </motion.div>
             </motion.div>
             
-            {/* Visual Content - MAROON ICONS */}
+            {/* Image Section - Replaced Icons */}
             <motion.div 
-              className="grid grid-cols-2 gap-4 md:gap-6"
-              variants={staggerChildren}
+              className="relative"
+              variants={fadeInUp}
             >
-              {[
-                { 
-                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#8A1538"><path d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-5v-1.25c0-.54 2.56-1.25 2.5-1.25s2.5.71 2.5 1.25v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.34.76-.08 1.53-.16 2.02-.16 2.3 0 4.5.8 4.5 1.65v1.1zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></svg>,
-                  title: "Direct Access", 
-                  desc: "Meet Flivv leadership team" 
-                },
-                { 
-                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#8A1538"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>,
-                  title: "Exclusive Insights", 
-                  desc: "First look at premium projects" 
-                },
-                { 
-                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#8A1538"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>,
-                  title: "Investment Strategy", 
-                  desc: "Expert portfolio guidance" 
-                },
-                { 
-                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#8A1538"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>,
-                  title: "Global Solutions", 
-                  desc: "Tailored for international investors" 
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-gray-50 rounded-2xl p-4 md:p-6 text-center group hover-lift premium-shadow"
-                  variants={fadeInUp}
-                  whileHover={{ y: -5 }}
+              <div className="relative rounded-3xl overflow-hidden premium-shadow hover-lift group">
+                {/* Replace with your actual image */}
+                <div 
+                  className="w-full h-96 md:h-[500px] bg-gradient-to-br from-[#8A1538] to-[#6A102B] flex items-center justify-center relative overflow-hidden"
                 >
-                  <div className="flex justify-center mb-3">{item.icon}</div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base">{item.title}</h3>
-                  <p className="text-gray-600 text-xs md:text-sm">{item.desc}</p>
-                </motion.div>
-              ))}
+                  {/* You would replace this div with an actual img tag */}
+                  <div className="text-center text-white z-10">
+                    <svg className="w-20 h-20 mx-auto mb-4 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                    <p className="text-lg font-semibold">Event Preview Image</p>
+                    <p className="text-sm opacity-70 mt-2">Replace with actual event image</p>
+                  </div>
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Hover Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#8A1538] to-[#6A102B] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                </div>
+                
+                {/* Decorative Elements */}
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#8A1538] rounded-full opacity-20"></div>
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#6A102B] rounded-full opacity-30"></div>
+              </div>
+              
+              {/* Image Caption */}
+              <div className="text-center mt-6">
+                <p className="text-gray-600 text-sm italic">
+                  Join us for an unforgettable experience in Doha
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Highlights Section with White Icons */}
+      {/* Updated Event Highlights Section with Better Icons */}
       <section className="section-padding gradient-bg">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -654,74 +623,93 @@ export default function FlivvQatarEvent() {
                 whileHover={{ y: -10 }}
               >
                 <div className="flex justify-center mb-4">
-                  {index === 0 && <svg width="40" height="40" viewBox="0 0 24 24" fill="#ffffffff"><path d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-5v-1.25c0-.54 2.56-1.25 2.5-1.25s2.5.71 2.5 1.25v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.34.76-.08 1.53-.16 2.02-.16 2.3 0 4.5.8 4.5 1.65v1.1zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/></svg>}
-                  {index === 1 && <svg width="40" height="40" viewBox="0 0 24 24" fill="#ffffffff"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>}
-                  {index === 2 && <svg width="40" height="40" viewBox="0 0 24 24" fill="#ffffffff"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>}
-                  {index === 3 && <svg width="40" height="40" viewBox="0 0 24 24" fill="#ffffffff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>}
+                  {/* Better Icons for each highlight */}
+                  {index === 0 && (
+                    // Public Address - Better Mic Icon
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="#ffffffff">
+                      <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                      <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                    </svg>
+                  )}
+                  {index === 1 && (
+                    // Project Showcasing - Modern Presentation Icon
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="#ffffffff">
+                      <path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"/>
+                    </svg>
+                  )}
+                  {index === 2 && (
+                    // Q&A Session - Chat with Question Icon
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="#ffffffff">
+                      <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+                    </svg>
+                  )}
+                  {index === 3 && (
+                    // 1:1 Sales Session - Handshake Icon
+                    <svg width="52" height="52" viewBox="0 0 24 24" fill="#ffffffff">
+                      <path d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-5v-1.25c0-.54 2.56-1.25 2.5-1.25s2.5.71 2.5 1.25v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.34.76-.08 1.53-.16 2.02-.16 2.3 0 4.5.8 4.5 1.65v1.1zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
+                    </svg>
+                  )}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">
                   {highlight.title}
                 </h3>
-                <p className="text-white/80 leading-relaxed text-sm md:text-base">
-                  {highlight.description}
-                </p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Schedule Section with Maroon Icons - Updated to Single Day */}
-<section className="section-padding bg-white">
-  <div className="w-full max-w-6xl mx-auto">
-    <motion.div 
-      className="text-center mb-12 md:mb-16"
-      {...fadeInUp}
-    >
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-        Event Schedule
-      </h2>
-      <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
-    </motion.div>
-    
-    <motion.div 
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-      variants={staggerChildren}
-      initial="initial"
-      whileInView="whileInView"
-      viewport={{ once: true }}
-    >
-      {scheduleDays.map((day, index) => (
-        <motion.div
-          key={index}
-          className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 text-center group hover-lift premium-shadow border border-gray-200"
-          variants={fadeInUp}
-          whileHover={{ scale: 1.05 }}
-        >
-          <div className="flex justify-center mb-4">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="#8A1538">
-              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-            </svg>
-          </div>
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
-            {day.date}
-          </h3>
-          <p className="text-gray-600 mb-4 text-lg">{day.location}</p>
-          <motion.a
-            href="#registration"
-            className="inline-block bg-[#8A1538] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6A102B] transition-colors text-sm md:text-base"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+      {/* Schedule Section with Three Days */}
+      <section className="section-padding bg-white">
+        <div className="w-full max-w-6xl mx-auto">
+          <motion.div 
+            className="text-center mb-12 md:mb-16"
+            {...fadeInUp}
           >
-            Register Now
-          </motion.a>
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</section>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Event Schedule
+            </h2>
+            <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
+            {scheduleDays.map((day, index) => (
+              <motion.div
+                key={index}
+                className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 text-center group hover-lift premium-shadow border border-gray-200"
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="flex justify-center mb-4">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="#8A1538">
+                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+                  {day.date}
+                </h3>
+                <p className="text-gray-600 mb-4 text-lg">{day.location}</p>
+                <motion.a
+                  href="#registration"
+                  className="inline-block bg-[#8A1538] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6A102B] transition-colors text-sm md:text-base"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Register Now
+                </motion.a>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-      {/* Why Flivv Section with White Icons */}
+      {/* Why Flivv Section */}
       <section className="section-padding gradient-bg">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -761,8 +749,7 @@ export default function FlivvQatarEvent() {
         </div>
       </section>
 
-
-      {/* Previous Events Gallery Section - Moved to better position */}
+      {/* Previous Events Gallery Section with Fixed Images */}
       <section className="section-padding bg-white">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -788,84 +775,37 @@ export default function FlivvQatarEvent() {
             {previousEventImages.map((image, index) => (
               <motion.div
                 key={index}
-                className="group cursor-pointer"
+                className="group cursor-pointer gallery-item"
                 variants={fadeInUp}
                 whileHover={{ y: -5 }}
                 onClick={() => openImageModal(index)}
               >
                 <div className="bg-gray-100 rounded-2xl overflow-hidden premium-shadow hover-lift aspect-square relative">
-                  {/* Image Placeholder - Replace with actual images */}
-                  <div className="w-full h-full bg-gradient-to-br from-[#8A1538] to-[#6A102B] flex items-center justify-center">
-                    {/* You would replace the above div with: */}
-                    <img 
-                      src={image.url} 
-                      alt={image.alt}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
+                  {/* Actual Image Display */}
+                  <div className="w-full h-full relative overflow-hidden">
+                    {/* Image with proper styling */}
+                    <div className="w-full h-full bg-gradient-to-br from-[#8A1538] to-[#6A102B] flex items-center justify-center">
+                      <img 
+                        src={image.url}
+                        className="gallery-image w-full h-full object-cover"
+                        onError={(e) => {
+                          // Fallback if image fails to load
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      {/* Fallback content if image fails to load */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 text-center" style={{display: 'none'}}>
+                        <svg className="w-12 h-12 mb-3 opacity-70" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                        <p className="font-semibold">{image.title}</p>
+                        <p className="text-sm opacity-70 mt-1">Image not available</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ Section with Maroon Icons */}
-      <section className="section-padding bg-white">
-        <div className="w-full max-w-3xl mx-auto">
-          <motion.div 
-            className="text-center mb-12 md:mb-16"
-            {...fadeInUp}
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Frequently Asked Questions
-            </h2>
-            <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
-          </motion.div>
-          
-          <motion.div 
-            className="space-y-4 md:space-y-6"
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-          >
-            {faqItems.map((faq, index) => (
-              <motion.div 
-                key={index}
-                className="bg-gray-50 rounded-2xl overflow-hidden group hover-lift premium-shadow"
-                variants={fadeInUp}
-              >
-                <button
-                  className="w-full text-left p-6 md:p-8 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <span className="font-semibold text-gray-900 text-lg pr-4">{faq.question}</span>
-                  <motion.span
-                    className="text-[#8A1538] text-xl flex-shrink-0"
-                    animate={{ rotate: activeFAQ === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#8A1538">
-                      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
-                    </svg>
-                  </motion.span>
-                </button>
                 
-                <AnimatePresence>
-                  {activeFAQ === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="p-6 md:p-8 bg-white border-t border-gray-200">
-                        <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
             ))}
           </motion.div>
@@ -904,16 +844,10 @@ export default function FlivvQatarEvent() {
               ></div>
             </div>
           </motion.div>
-          
-          <motion.div 
-            className="text-center mt-6 md:mt-8"
-            {...fadeInUp}
-          >
-          </motion.div>
         </div>
       </section>
 
-      {/* Updated Footer - Removed Quick Links */}
+      {/* Footer */}
       <footer className="section-padding gradient-bg border-t border-white/10">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -942,7 +876,7 @@ export default function FlivvQatarEvent() {
             <motion.div variants={fadeInUp}>
               <h4 className="text-lg font-semibold text-white mb-4">Event</h4>
               <div className="space-y-2 text-white/80 text-sm">
-                <p className="font-semibold text-white">November 20, 2025</p>
+                <p className="font-semibold text-white">November 20-22, 2025</p>
                 <p>Doha, Qatar</p>
                 <p className="mt-2">Exclusive event for premium investors</p>
               </div>
@@ -960,25 +894,25 @@ export default function FlivvQatarEvent() {
         </div>
       </footer>
 
-      {/* Image Modal */}
+      {/* Fixed Image Modal - Working Lightbox */}
       <AnimatePresence>
         {activeImage !== null && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 image-modal-overlay"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-90"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeImageModal}
           >
             <motion.div
-              className="bg-white rounded-2xl max-w-4xl max-h-full overflow-hidden relative"
+              className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-auto relative"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-4 right-4 z-10 bg-black/50 text-white rounded-full p-2 hover:bg-black/70 transition-colors"
+                className="absolute top-4 right-4 z-10 bg-black/70 text-white rounded-full p-2 hover:bg-black transition-colors"
                 onClick={closeImageModal}
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -986,24 +920,36 @@ export default function FlivvQatarEvent() {
                 </svg>
               </button>
               
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
                   {previousEventImages[activeImage].title}
                 </h3>
                 <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video flex items-center justify-center">
-                  {/* Replace with actual image */}
-                  <div className="text-center text-gray-600">
-                    <svg className="w-16 h-16 mx-auto mb-3" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                    </svg>
-                    <p>Image: {previousEventImages[activeImage].title}</p>
-                    {/* You would replace this with: */}
-                    {/* <img 
-                      src={previousEventImages[activeImage].url} 
-                      alt={previousEventImages[activeImage].alt}
-                      className="w-full h-full object-contain"
-                    /> */}
-                  </div>
+                  {/* Actual image in modal */}
+                  <img 
+                    src={previousEventImages[activeImage].url} 
+                    alt={previousEventImages[activeImage].alt}
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      // Fallback if image fails to load in modal
+                      e.target.style.display = 'none';
+                      const fallback = document.createElement('div');
+                      fallback.className = 'text-center text-gray-600 p-8';
+                      fallback.innerHTML = `
+                        <svg class="w-20 h-20 mx-auto mb-4 text-[#8A1538]" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                        <p class="text-lg font-semibold mb-2">${previousEventImages[activeImage].title}</p>
+                        <p class="text-sm text-gray-500">Image not available</p>
+                      `;
+                      e.target.parentNode.appendChild(fallback);
+                    }}
+                  />
+                </div>
+                <div className="mt-4 text-center">
+                  <p className="text-gray-600 text-sm">
+                    {previousEventImages[activeImage].alt}
+                  </p>
                 </div>
               </div>
             </motion.div>

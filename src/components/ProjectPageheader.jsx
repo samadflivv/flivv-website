@@ -17,12 +17,12 @@ const ProjectPageheader = () => {
         {/* Right Side Images (for desktop) */}
         <div className="hidden md:flex md:w-1/2 gap-8">
           <img
-            src="/image.png"
+            src="/SadhanaCity1.jpg"
             alt="Luxury Home"
             className="md:rounded-bl-lg  md:rounded-tr-xl h-auto object-cover"
           />
           <img
-            src="/Lowpollutionzone.jpg"
+            src="/GVdrone1.jpg"
             alt="Luxury Home 2"
             className="md:rounded-br-lg md:rounded-tl-xl  h-auto object-cover"
           />
@@ -32,12 +32,12 @@ const ProjectPageheader = () => {
       {/* Images (for mobile) */}
       <div className="md:hidden flex flex-col gap-4 mt-8">
         <img
-          src="/image.png"
+          src="/SadhanaCity1.jpg"
           alt="Luxury Home Mobile 1"
           className="rounded-xl w-full h-auto object-cover"
         />
         <img
-          src="/Lowpollutionzone.jpg"
+          src="/GVdrone1.jpg"
           alt="Luxury Home Mobile 2"
           className="rounded-xl w-full h-auto object-cover"
         />
