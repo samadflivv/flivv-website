@@ -21,6 +21,7 @@ export default function Navigation() {
       <ul className="hidden md:flex items-center gap-x-9 font-medium text-lg">
         <li><Link href="/">Home</Link></li>
         <li><Link href="/about">About Us</Link></li>
+
         <li className="relative group">
           <Link href="/projects">Projects</Link>
           <ul className="absolute left-0 mt-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
@@ -42,8 +43,26 @@ export default function Navigation() {
             </li>
           </ul>
         </li>
+
         <li><Link href="/contact">Contact</Link></li>
-        {/* <li className='border border-white py-2 px-4 rounded-full bg-[#07713B]'><Link href="/flivvksaevent">KSA Sales Event</Link></li> */}
+
+        {/* Added Event Buttons */}
+        <li>
+          <Link
+            href="/flivvksaevent"
+            className=" py-2 px-4 rounded-full"
+          >
+            KSA Event
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/flivvqatarevent"
+            className="border border-white py-2 px-4 rounded-full bg-[#871537]"
+          >
+            Qatar Event
+          </Link>
+        </li>
       </ul>
 
       {/* Hamburger */}
@@ -67,7 +86,6 @@ export default function Navigation() {
           </li>
           <li className="w-full">
             <div className="flex items-center justify-between w-full">
-              {/* Projects button now navigates to /projects */}
               <Link
                 href="/projects"
                 onClick={() => setIsOpen(false)}
@@ -108,7 +126,26 @@ export default function Navigation() {
           <li>
             <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
           </li>
-          {/* <li className='border border-white py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-[#07713B] text-base'><Link href="/flivvksaevent">KSA Sales Event</Link></li> */}
+
+          {/* Added Event Buttons in Mobile */}
+          <li>
+            <Link
+              href="/flivvksaevent"
+              onClick={() => setIsOpen(false)}
+              className="border border-white py-2 px-4 rounded-full text-base block w-full text-center"
+            >
+              KSA Event
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/flivvqatarevent"
+              onClick={() => setIsOpen(false)}
+              className="py-2 px-4 rounded-full bg-[#871537] text-base block w-full text-center"
+            >
+              Qatar Event
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

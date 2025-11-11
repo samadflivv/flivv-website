@@ -1,220 +1,420 @@
 'use client';
+import React, { useEffect, useRef, useState } from 'react';
 
-import React from 'react';
-import Script from 'next/script';
-import Footer from './Footer';
+const FlivvKSAPage = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+  const [currentCity, setCurrentCity] = useState('');
+  const videoRef = useRef(null);
 
-export default function FlivvConnectPage() {
-  const primary = '#006C35'; // KSA green
-  const primaryLight = '#2b8a57';
-  const primaryLighter = '#4da879';
+  // Video play/pause based on viewport
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {
+              // Autoplay might be blocked, we'll handle it gracefully
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (video) {
+      observer.observe(video);
+    }
+
+    return () => {
+      if (video) {
+        observer.unobserve(video);
+      }
+    };
+  }, []);
+
+  // Sample gallery data with actual image paths
+  const galleryData = {
+    alkhobar: [
+      { id: 1, src: "/images/alkhobar1.jpg", alt: "Al Khobar Event 1" },
+      { id: 2, src: "/images/alkhobar2.jpg", alt: "Al Khobar Event 2" },
+      { id: 3, src: "/images/alkhobar3.jpg", alt: "Al Khobar Event 3" },
+      { id: 4, src: "/images/alkhobar4.jpg", alt: "Al Khobar Event 4" },
+      { id: 5, src: "/images/alkhobar5.jpg", alt: "Al Khobar Event 5" },
+      { id: 6, src: "/images/alkhobar6.jpg", alt: "Al Khobar Event 6" },
+      { id: 7, src: "/images/alkhobar7.jpg", alt: "Al Khobar Event 7" },
+      { id: 8, src: "/images/alkhobar8.jpg", alt: "Al Khobar Event 8" },
+      { id: 9, src: "/images/alkhobar9.jpg", alt: "Al Khobar Event 9" }
+    ],
+    riyadh: [
+      { id: 1, src: "/images/riyadh1.jpg", alt: "Riyadh Event 1" },
+      { id: 2, src: "/images/riyadh2.jpg", alt: "Riyadh Event 2" },
+      { id: 3, src: "/images/riyadh3.jpg", alt: "Riyadh Event 3" },
+      { id: 4, src: "/images/riyadh4.jpg", alt: "Riyadh Event 4" },
+      { id: 5, src: "/images/riyadh5.jpg", alt: "Riyadh Event 5" },
+      { id: 6, src: "/images/riyadh6.jpg", alt: "Riyadh Event 6" },
+      { id: 7, src: "/images/riyadh7.jpg", alt: "Riyadh Event 7" },
+      { id: 8, src: "/images/riyadh8.jpg", alt: "Riyadh Event 8" },
+      { id: 9, src: "/images/riyadh9.jpg", alt: "Riyadh Event 9" }
+    ],
+    jeddah: [
+      { id: 1, src: "/images/jeddah1.jpg", alt: "Jeddah Event 1" },
+      { id: 2, src: "/images/jeddah2.jpg", alt: "Jeddah Event 2" },
+      { id: 3, src: "/images/jeddah3.jpg", alt: "Jeddah Event 3" },
+      { id: 4, src: "/images/jeddah4.jpg", alt: "Jeddah Event 4" },
+      { id: 5, src: "/images/jeddah5.jpg", alt: "Jeddah Event 5" },
+      { id: 6, src: "/images/jeddah6.jpg", alt: "Jeddah Event 6" },
+      { id: 7, src: "/images/jeddah7.jpg", alt: "Jeddah Event 7" },
+      { id: 8, src: "/images/jeddah8.jpg", alt: "Jeddah Event 8" },
+      { id: 9, src: "/images/jeddah9.jpg", alt: "Jeddah Event 9" }
+    ]
+  };
+
+  // City content data
+  const cityContent = {
+    alkhobar: {
+      title: "Al Khobar - KSA",
+      stats: "Venue : VOCO Hotel"
+    },
+    riyadh: {
+      title: "Riyadh - KSA",
+      stats: "Venue : Marriott Hotel"
+    },
+    jeddah: {
+      title: "Jeddah - KSA",
+      stats: "Venue : Intercontinental Hotel"
+    }
+  };
+
+  const openLightbox = (city, imageId) => {
+    setCurrentCity(city);
+    setCurrentImage(imageId);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setCurrentImage(null);
+    setCurrentCity('');
+  };
+
+  const navigateLightbox = (direction) => {
+    const currentImages = galleryData[currentCity];
+    let newIndex;
+    
+    if (direction === 'next') {
+      newIndex = currentImage === currentImages.length ? 1 : currentImage + 1;
+    } else {
+      newIndex = currentImage === 1 ? currentImages.length : currentImage - 1;
+    }
+    
+    setCurrentImage(newIndex);
+  };
+
+  // Get current image for lightbox
+  const getCurrentImage = () => {
+    if (!currentCity || !currentImage) return null;
+    return galleryData[currentCity]?.find(img => img.id === currentImage);
+  };
 
   return (
-    <div className="min-h-screen text-gray-900 bg-gradient-to-b from-white to-gray-50">
-      {/* FIXED SECTION: Removed h-screen and added multiple dates */}
-      <section className="pt-32 pb-12 md:pb-20 px-4 bg-gradient-to-b from-green-800 to-green-100">
-        <div className="max-w-4xl mx-auto text-center min-h-[80vh] flex items-center justify-center">
-          <div className="w-full">
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border border-green-300 mb-8 animate-pulse shadow-lg">
-              <div className="w-3 h-3 rounded-full bg-green-600"></div>
-              <span className="text-sm font-bold text-green-800">NEW SALES MEET ANNOUNCEMENT</span>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+      {/* Hero Section */}
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-4 md:px-8 lg:px-16 py-16 md:py-24 pt-24 md:pt-32 overflow-hidden">
+        {/* Dark Green Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-800 via-green-900 to-green-950 z-0"></div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-green-700/10 rounded-full"></div>
+          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/5 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-600/10 rounded-full"></div>
+        </div>
+        
+        <div className="w-full md:w-1/2 mb-8 md:mb-0 relative z-10 px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
+            KSA SALES EVENT 2025
+          </h1>
+          <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 text-green-100">
+            Al Khobar, Riyadh, Jeddah
+          </h2>
+          <p className="text-lg  mb-6 text-white/90">
+            October 2025 marked a significant milestone for us — our very first International Sales Meet in the Kingdom of Saudi Arabia. We were truly honored to host over 1,000 families across Al-Khobar, Riyadh, and Jeddah, and the experience was nothing short of remarkable.
+          </p>
+
+          <p className="text-lg  mb-6 text-white/90">
+            From the launch of our latest project, Gulmohar Homes, to the soft launch of our upcoming premium villa project in Tukkuguda, the response was overwhelmingly positive. The enthusiasm and trust shown by our guests inspired us to extend our stay in Riyadh, where we conducted exclusive 1:1 sales sessions to cater to the growing interest.
+          </p>
+
+          <p className="text-lg mb-6 text-white/90">
+            A heartfelt thank you to everyone who showed up, believed in us, and became part of the Flivv Developers family, now 500+ strong and growing. We are committed to delivering excellence and upholding the trust placed in us by the wonderful people of the Kingdom of Saudi Arabia.
+          </p>
+
+        </div>
+        
+        <div className="w-full md:w-2/5 mt-6 md:mt-0 flex justify-center relative z-10 px-4">
+          <div className="relative w-full max-w-md">
+            {/* Video Player */}
+            <div className="rounded-2xl shadow-2xl overflow-hidden aspect-[4/5] w-full bg-black">
+              <video 
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                muted
+                playsInline
+                loop
+                controlsList="nodownload"
+                onContextMenu={(e) => e.preventDefault()}
+              >
+                <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/khobar%20riyadh%20website%204.3%20ratio.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
-            
-            <h3 className="text-3xl md:text-5xl font-black text-white mb-6">
-              We're Coming Back to <span className="text-green-100">Riyadh</span>!
-            </h3>
-            
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-green-200 transform hover:scale-105 transition-transform duration-300 mb-8">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                <div className="text-center md:text-left">
-                  <h4 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">Riyadh Sales Meet</h4>
-                  <p className="text-lg text-gray-600 mb-4">Join us for exclusive 1:1 Sales Sessions</p>
-                  
-                  {/* Multiple Dates Section */}
-                  <div className="mb-6">
-                    <p className="text-sm text-gray-500 mb-3">Available Dates:</p>
-                    <div className="flex flex-wrap justify-center md:justify-start gap-4">
-                      {[
-                        { date: '28', day: 'Tue', month: 'OCT' },
-                        { date: '29', day: 'Wed', month: 'OCT' },
-                        { date: '30', day: 'Thu', month: 'OCT' },
-                        { date: '31', day: 'Fri', month: 'OCT' }
-                      ].map((item) => (
-                        <div key={item.date} className="text-center bg-green-50 rounded-lg p-3 min-w-[70px] border border-green-200">
-                          <div className="text-xl font-black text-green-700">{item.date}</div>
-                          <div className="text-xs text-gray-500">{item.month}</div>
-                          <div className="text-xs text-gray-500">{item.day}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <a 
-                    href="#form" 
-                    className="inline-block px-8 py-4 rounded-full font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl text-lg"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${primary}, ${primaryLight})`,
-                    }}
-                  >
-                    Reserve Your Spot Now
-                  </a>
-                </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cities Section */}
+      <section id="cities" className="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-4">
+          Cities We Visited
+        </h2>
+        
+        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8 sm:mb-12 text-sm sm:text-base">
+          Our journey across the Kingdom of Saudi Arabia was met with tremendous success and enthusiasm. 
+          Explore the highlights from each city below.
+        </p>
+        
+        {/* Al Khobar */}
+        <div className="city-section mb-12 sm:mb-20 bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 p-4 sm:p-8">
+            {/* Content Column - 25% with sticky */}
+            <div className="lg:col-span-3">
+              <div className="sticky top-20 bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-md border border-gray-100">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
+                  {cityContent.alkhobar.title}
+                </h3>
                 
-                <div className="bg-green-100 rounded-2xl p-6 text-center border-2 border-green-200">
-                  <div className="text-4xl mb-4">🎯</div>
-                  <h5 className="font-bold text-green-800 mb-2">Limited Seats Available</h5>
-                  <p className="text-sm text-green-700">Get Exclusive Deals on the Spot</p>
+                <div className="bg-green-50 border-l-4 border-green-500 p-3 sm:p-4 rounded-r-lg">
+                  <p className="text-green-700 font-semibold text-sm sm:text-base">
+                    <i className="fas fa-users mr-2"></i>
+                    {cityContent.alkhobar.stats}
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: Enhanced About */}
-      <section id="about" className="py-12 md:py-20 px-4 bg-gradient-to-b from-white to-green-50/30">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-          <div className="inline-flex items-center gap-3 px-4 py-2 md:px-6 md:py-2 rounded-full bg-green-100 border border-green-200 mb-6 md:mb-8">
-            <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: primary }}></div>
-            <span className="text-xs md:text-sm font-semibold" style={{ color: primary }}>Our Journey</span>
-          </div>
-          <h3 className="text-2xl md:text-4xl font-bold text-gray-900">About Flivv Developers</h3>
-          <p className="mt-4 md:mt-6 text-gray-700 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-            With over 14 years of experience in business, Flivv has built a strong reputation for reliability and service excellence. Over the past 4 years, <span className="font-semibold text-green-700"> Flivv Developers</span>. has successfully established a strong presence in the real estate sector. We specialize in the development and marketing of open plot projects, with focus on long-term real estate investment goals. With 10+ projects in our portfolio, we offer trustworthy companionship, backed by lifetime advisory and customer relationship management.
-          </p>
-        </div>
-      </section>
-
-      {/* SECTION 3: Itinerary & Destinations - All Completed */}
-      <section id="destinations" className="py-12 md:py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 md:mb-12 animate-fade-in-up">
-            <div className="inline-flex items-center gap-3 px-4 py-2 md:px-6 md:py-2 rounded-full bg-gray-100 border border-gray-200 mb-4">
-              <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-              <span className="text-xs md:text-sm font-semibold text-gray-600">Past Events</span>
-            </div>
-            <h3 className="text-2xl md:text-4xl font-bold text-gray-900">Event Destinations Completed</h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                city:'Al-Khobar', 
-                date:'October 23, 2025', 
-                day:'Thursday',
-                status: 'completed',
-                gradient: `linear-gradient(135deg, #9CA3AF, #6B7280)`
-              },
-              {
-                city:'Riyadh', 
-                date:'October 24, 2025', 
-                day:'Friday',
-                status: 'completed',
-                gradient: `linear-gradient(135deg, #9CA3AF, #6B7280)`
-              },
-              {
-                city:'Jeddah', 
-                date:'October 25, 2025', 
-                day:'Saturday',
-                status: 'completed',
-                gradient: `linear-gradient(135deg, #9CA3AF, #6B7280)`
-              }
-            ].map((d, idx) => (
-              <article 
-                key={d.city} 
-                className="group relative bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl border border-gray-100 overflow-hidden animate-fade-in-up"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                {/* Background gradient overlay */}
+            
+            {/* Gallery Column - 75% */}
+            <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+              {galleryData.alkhobar.map((image, index) => (
                 <div 
-                  className="absolute inset-0 opacity-5"
-                  style={{ background: d.gradient }}
-                ></div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <div>
-                        <h4 className="text-xl md:text-2xl font-bold text-gray-900">{d.city}</h4>
-                        <div className="text-xs md:text-sm font-medium text-gray-500 mt-1">{d.date}</div>
-                        <div className="text-xs md:text-sm font-medium text-gray-500 mt-1">{d.day}</div>
-                      </div>
-                    </div>
-                    <div className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-100 text-gray-600">
-                      Completed
+                  key={image.id}
+                  className="gallery-item bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md cursor-pointer relative group"
+                  onClick={() => openLightbox('alkhobar', image.id)}
+                >
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    className="w-full h-32 sm:h-48 object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback if image doesn't load */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center hidden">
+                    <div className="text-white text-center p-2">
+                      <i className="fas fa-image text-sm sm:text-lg mb-1"></i>
+                      <p className="text-xs">Al Khobar {image.id}</p>
                     </div>
                   </div>
-                  <div className="mt-6 md:mt-8">
-                    <button 
-                      className="w-full text-center px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl font-semibold text-gray-500 transition-all duration-300 text-sm md:text-base border-2 border-gray-300 cursor-not-allowed opacity-70"
-                      disabled
-                    >
-                      Event Completed
-                    </button>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <i className="fas fa-search-plus text-sm sm:text-base"></i>
+                    </div>
                   </div>
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Riyadh */}
+        <div className="city-section mb-12 sm:mb-20 bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 p-4 sm:p-8">
+            {/* Content Column - 25% with sticky */}
+            <div className="lg:col-span-3 order-2 lg:order-1">
+              <div className="sticky top-20 bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-md border border-gray-100">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
+                  {cityContent.riyadh.title}
+                </h3>
+                
+                <div className="bg-green-50 border-l-4 border-green-500 p-3 sm:p-4 rounded-r-lg">
+                  <p className="text-green-700 font-semibold text-sm sm:text-base">
+                    <i className="fas fa-users mr-2"></i>
+                    {cityContent.riyadh.stats}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Gallery Column - 75% */}
+            <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 order-1 lg:order-2">
+              {galleryData.riyadh.map((image, index) => (
+                <div 
+                  key={image.id}
+                  className="gallery-item bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md cursor-pointer relative group"
+                  onClick={() => openLightbox('riyadh', image.id)}
+                >
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    className="w-full h-32 sm:h-48 object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback if image doesn't load */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center hidden">
+                    <div className="text-white text-center p-2">
+                      <i className="fas fa-image text-sm sm:text-lg mb-1"></i>
+                      <p className="text-xs">Riyadh {image.id}</p>
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <i className="fas fa-search-plus text-sm sm:text-base"></i>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Jeddah */}
+        <div className="city-section mb-12 sm:mb-20 bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 p-4 sm:p-8">
+            {/* Content Column - 25% with sticky */}
+            <div className="lg:col-span-3">
+              <div className="sticky top-20 bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow-md border border-gray-100">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
+                  {cityContent.jeddah.title}
+                </h3>
+                
+                <div className="bg-green-50 border-l-4 border-green-500 p-3 sm:p-4 rounded-r-lg">
+                  <p className="text-green-700 font-semibold text-sm sm:text-base">
+                    <i className="fas fa-users mr-2"></i>
+                    {cityContent.jeddah.stats}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Gallery Column - 75% */}
+            <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+              {galleryData.jeddah.map((image, index) => (
+                <div 
+                  key={image.id}
+                  className="gallery-item bg-gray-100 rounded-lg sm:rounded-xl overflow-hidden shadow-md cursor-pointer relative group"
+                  onClick={() => openLightbox('jeddah', image.id)}
+                >
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    className="w-full h-32 sm:h-48 object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback if image doesn't load */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center hidden">
+                    <div className="text-white text-center p-2">
+                      <i className="fas fa-image text-sm sm:text-lg mb-1"></i>
+                      <p className="text-xs">Jeddah {image.id}</p>
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <i className="fas fa-search-plus text-sm sm:text-base"></i>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* HUBSPOT FORM SECTION */}
-      <section id="form" className="py-20 px-4">
-        <div className="max-w-3xl mx-auto p-6 rounded-2xl md:rounded-3xl shadow-2xl bg-[#DBFCE7]">
-          <h4 className="text-3xl md:text-4xl font-semibold text-center">Interested? RSVP to reserve your Seat</h4>
-          <p className="text-center text-gray-600 mt-2 text-lg md:text-xl">Our team shall be connecting with you shortly.</p>
-
-          <Script id="hsforms" strategy="afterInteractive">
-            {`(function() {
-              var s = document.createElement('script');
-              s.src = 'https://js.hsforms.net/forms/v2.js';
-              document.head.appendChild(s);
-              s.onload = function() {
-                if(window.hbspt) {
-                  hbspt.forms.create({
-                    portalId: '21626983',
-                    formId: '60910235-031b-47fe-8214-048ba1989721',
-                    target: '#hubspot-form'
-                  });
-                }
-              };
-            })();`}
-          </Script>
-
-          <div id="hubspot-form" className="mt-4 md:mt-6">
-            <noscript>
-              <div className="p-4 bg-gray-50 rounded-lg text-sm text-gray-600">Please enable JavaScript to view the registration form or contact info@flivvdevelopers.com</div>
-            </noscript>
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
+          {/* Close Button */}
+          <button 
+            className="absolute top-4 right-4 text-white text-3xl z-10 bg-black/50 w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
+            onClick={closeLightbox}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          {/* Previous Button */}
+          <button 
+            className="absolute left-2 sm:left-4 text-white text-2xl bg-black/50 hover:bg-black/70 p-3 sm:p-4 rounded-full z-10 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox('prev');
+            }}
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Image Display */}
+          <div className="w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full h-full max-w-6xl max-h-full flex items-center justify-center">
+              {getCurrentImage() && (
+                <img 
+                  src={getCurrentImage().src} 
+                  alt={getCurrentImage().alt}
+                  className="max-w-full max-h-full object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+              )}
+            </div>
+          </div>
+          
+          {/* Next Button */}
+          <button 
+            className="absolute right-2 sm:right-4 text-white text-2xl bg-black/50 hover:bg-black/70 p-3 sm:p-4 rounded-full z-10 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox('next');
+            }}
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          
+          {/* Image Counter */}
+          <div className="absolute bottom-4 text-white text-center w-full text-sm sm:text-base">
+            {currentCity.charAt(0).toUpperCase() + currentCity.slice(1)} - Image {currentImage} of {galleryData[currentCity]?.length}
           </div>
         </div>
-      </section>
-
-      <Footer />
-
-      <style jsx>{`
-        .min-h-screen { min-height: 100vh; }
-
-        /* Enhanced animations */
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out forwards;
-        }
-
-        /* Responsive improvements */
-        @media (max-width: 768px) {
-          .blob-svg-a, .blob-svg-b { display: none; }
-        }
-      `}</style>
+      )}
     </div>
   );
-}
+};
+
+export default FlivvKSAPage;

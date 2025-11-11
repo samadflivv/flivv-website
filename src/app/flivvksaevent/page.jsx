@@ -1,4 +1,5 @@
 import FlivvConnectPage from '@/components/FlivvConnectPage'
+import Footer from '@/components/Footer'
 import Navigation from '@/components/Navigation'
 import React from 'react'
 
@@ -7,6 +8,7 @@ const page = () => {
     <div>
         <Navigation/>
         <FlivvConnectPage/>
+        <Footer/>
     </div>
   )
 }
