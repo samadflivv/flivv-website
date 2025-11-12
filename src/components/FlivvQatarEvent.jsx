@@ -136,21 +136,6 @@ export default function FlivvQatarEvent() {
   }
 ];
 
-  const companyPillars = [
-    {
-      title: "Elite Transparency",
-      description: "A decade of distinguished service with uncompromising transparency in every transaction."
-    },
-    {
-      title: "Premium Portfolio", 
-      description: "Curated collection of exclusive developments offering unparalleled value appreciation."
-    },
-    {
-      title: "NRI Concierge",
-      description: "Dedicated premium support service for our international investors worldwide."
-    }
-  ];
-
   // Previous Event Images (Replace with your actual image URLs)
   const previousEventImages = [
     {
@@ -320,17 +305,49 @@ export default function FlivvQatarEvent() {
         .gallery-item:hover .gallery-image {
           transform: scale(1.1);
         }
+
+        /* iOS background image fix */
+        .hero-bg {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(/qatarhero.jpg);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment: scroll;
+        }
+
+        @media (max-width: 768px) {
+          .hero-bg {
+            background-attachment: scroll;
+          }
+        }
+
+        /* Video mobile fixes */
+        .video-container {
+          width: 100%;
+          height: auto;
+        }
+
+        @media (max-width: 768px) {
+          .video-container {
+            height: auto;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .video-container video {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+          }
+        }
       `}</style>
 
-      {/* Enhanced Hero Section with Background Image */}
+      {/* Enhanced Hero Section with iOS Background Fix */}
       <section 
-        className="min-h-screen relative overflow-hidden flex items-center justify-center pt-20 md:pt-0"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(/qatarhero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
-        }}
+        className="min-h-screen relative overflow-hidden flex items-center justify-center pt-20 md:pt-0 hero-bg"
       >
         <div className="w-full max-w-6xl mx-auto text-center relative z-10 px-4 py-20 md:py-0">
           <motion.div
@@ -474,25 +491,24 @@ export default function FlivvQatarEvent() {
         </div>
       </section>
 
-      {/* Full Screen Video Section with Auto Play/Pause */}
+      {/* Full Screen Video Section with Auto Play/Pause and Loop */}
       <section 
         ref={videoSectionRef}
-        className="min-h-screen relative flex items-center justify-center bg-black"
+        className="video-container relative flex items-center justify-center bg-black"
       >
-        <div className="w-full h-full">
-          <video
-            ref={videoRef}
-            className="w-full h-full object-cover"
-            controls
-            controlsList="nodownload"
-            muted
-            playsInline
-            onContextMenu={(e) => e.preventDefault()}
-          >
-            <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/QATAR%20WEBSITE%20VIDEO.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover md:object-contain"
+          controls
+          controlsList="nodownload"
+          muted
+          playsInline
+          loop
+          onContextMenu={(e) => e.preventDefault()}
+        >
+          <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/QATAR%20WEBSITE%20VIDEO.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </section>
 
       {/* About Section with Image on Right Side */}
@@ -517,7 +533,7 @@ export default function FlivvQatarEvent() {
                 </h2>
               </div>
               
-              <div className="space-y-4 md:space-y-6 text-gray-600 text-base md:text-lg leading-relaxed">
+              <div className="space-y-4 md:space-y-6 text-gray-600 text-base md:text-lg leading-relaxed text-justify">
                 <p>
                   After the success of our first international event in the Kingdom of Saudi Arabia, we're sincerely grateful for the incredible support and enthusiasm we received. Now, we're delighted to announce that we're coming to Qatar to showcase Flivv Developers in your very own city, Doha.
                 </p>
@@ -527,9 +543,28 @@ export default function FlivvQatarEvent() {
                 </p>
               </div>
 
-              {/* Location & Date Highlight */}
+              
+            </motion.div>
+            
+            {/* Image Section - Replaced Icons */}
+
+            
+            <motion.div 
+              className="relative"
+              variants={fadeInUp}
+            >
+              <div className="mb-8 relative rounded-3xl overflow-hidden premium-shadow hover-lift group">
+                {/* Replace with your actual image */}
+                <img src="/images/riyadh3.jpg" alt="" />
+                
+                {/* Decorative Elements */}
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#8A1538] rounded-full opacity-20"></div>
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#6A102B] rounded-full opacity-30"></div>
+              </div>
+              
+                {/* Location & Date Highlight */}
               <motion.div 
-                className="mt-8 md:mt-12 bg-gradient-to-br from-[#8A1538] to-[#6A102B] rounded-2xl p-6 md:p-8 premium-shadow text-white"
+                className="bg-gradient-to-br from-[#8A1538] to-[#6A102B] rounded-2xl p-6 md:p-8 premium-shadow text-white"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -555,28 +590,7 @@ export default function FlivvQatarEvent() {
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
-            
-            {/* Image Section - Replaced Icons */}
-            <motion.div 
-              className="relative"
-              variants={fadeInUp}
-            >
-              <div className="relative rounded-3xl overflow-hidden premium-shadow hover-lift group">
-                {/* Replace with your actual image */}
-                <img src="/images/riyadh3.jpg" alt="" />
-                
-                {/* Decorative Elements */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#8A1538] rounded-full opacity-20"></div>
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#6A102B] rounded-full opacity-30"></div>
-              </div>
               
-              {/* Image Caption */}
-              <div className="text-center mt-6">
-                <p className="text-gray-600 text-sm italic">
-                  Join us for an unforgettable experience in Doha
-                </p>
-              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -712,17 +726,44 @@ export default function FlivvQatarEvent() {
         </div>
       </section>
 
+      
+      {/* Enhanced Our Journey Section */}
+      <section id="about" className="section-padding bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238A1538' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: '30px 30px'
+          }}></div>
+        </div>
 
-<section id="about" className="py-12 md:py-20 px-4 bg-gradient-to-b from-white to-green-50/30">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-          <div className="inline-flex items-center gap-3 px-4 py-2 md:px-6 md:py-2 rounded-full bg-[#871537] mb-6 md:mb-8">
-            <div className="w-2 h-2 rounded-full animate-pulse"></div>
-            <span className="text-xs text-white md:text-sm font-semibold">Our Journey</span>
-          </div>
-          <h3 className="text-2xl md:text-4xl font-bold text-gray-900">About Flivv Developers</h3>
-          <p className="mt-4 md:mt-6 text-gray-700 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-            With over 14 years of experience in business, Flivv has built a strong reputation for reliability and service excellence. Over the past 4 years, Flivv Developers has successfully established a strong presence in the real estate sector. We specialize in the development and marketing of open plot projects, with focus on long-term real estate investment goals. With 10+ projects in our portfolio, we offer trustworthy companionship, backed by lifetime advisory and customer relationship management.
-          </p>
+        <div className="w-full max-w-6xl mx-auto relative z-10">
+          <motion.div 
+            className="text-center mb-12 md:mb-16"
+            {...fadeInUp}
+          >
+            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-[#8A1538] mb-6">
+              <span className="text-white font-semibold uppercase tracking-wider text-sm">Our Journey</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              About Flivv Developers
+            </h2>
+            <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
+          </motion.div>
+
+          <motion.div 
+            className="bg-white rounded-3xl premium-shadow p-8 md:p-12 relative overflow-hidden"
+            {...fadeInUp}
+          >
+            {/* Decorative Corner */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#8A1538] to-[#6A102B] rounded-bl-full opacity-10"></div>
+            
+            <div className="relative z-10">
+              <p className="text-gray-700 text-lg md:text-xl leading-relaxed text-center max-w-4xl mx-auto">
+                With over 14 years of experience in business, Flivv has built a strong reputation for reliability and service excellence. Over the past 4 years, Flivv Developers has successfully established a strong presence in the real estate sector. We specialize in the development and marketing of open plot projects, with focus on long-term real estate investment goals. With 10+ projects in our portfolio, we offer trustworthy companionship, backed by lifetime advisory and customer relationship management.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
