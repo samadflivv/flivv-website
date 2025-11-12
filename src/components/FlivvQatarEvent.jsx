@@ -99,140 +99,30 @@ export default function FlivvQatarEvent() {
   // Robust HubSpot loader
   // -------------------------
   // Replace your current HubSpot useEffect with this:
+// Very Simple HubSpot loader
 useEffect(() => {
-  const PORTAL_ID = '21626983';
-  const FORM_ID = 'd3b56077-11fe-485c-98cd-677027236164';
-  const TARGET_SELECTOR = '#hubspot-form';
-  const SCRIPT_SRC = 'https://js.hsforms.net/forms/v2.js';
+  if (window.hubspotFormInitialized) return;
+  window.hubspotFormInitialized = true;
 
-  // Paste the HubSpot "Form page" share URL here (Actions → Share → Form page)
-  const FALLBACK_SHARE_URL = 'https://cvjhj.share-na2.hsforms.com/207VgdxH-SFyYzWdwJyNhZA';
-
-  let mounted = true;
-  let attemptedCreate = false;
-
-  const injectIframeFallback = (url) => {
-    if (!url) return;
-    const target = document.querySelector(TARGET_SELECTOR);
-    if (!target) return;
-    target.innerHTML = ''; // clear any existing broken content
-    const iframe = document.createElement('iframe');
-    iframe.src = url;
-    iframe.width = '100%';
-    iframe.height = '720'; // adjust if needed
-    iframe.style.border = '0';
-    iframe.loading = 'lazy';
-    target.appendChild(iframe);
-    console.warn('HubSpot embed failed — injected iframe fallback.');
-  };
-
-  const ensureScript = () => {
-    // avoid duplicate script elements
-    const existing = Array.from(document.scripts).find(s => s.src && s.src.includes('hsforms.net'));
-    if (existing) return Promise.resolve(true);
-    return new Promise((resolve, reject) => {
-      const s = document.createElement('script');
-      s.src = SCRIPT_SRC;
-      s.async = true;
-      s.onload = () => resolve(true);
-      s.onerror = () => reject(new Error('HubSpot forms script failed to load'));
-      document.head.appendChild(s);
-    });
-  };
-
-  const tryCreate = async () => {
-    // avoid repeated attempts
-    if (attemptedCreate) return;
-    attemptedCreate = true;
-
-    // ensure container exists
-    const waitForContainer = (ms = 2500) => new Promise(res => {
-      const start = Date.now();
-      (function check() {
-        if (!mounted) return res(false);
-        if (document.querySelector(TARGET_SELECTOR)) return res(true);
-        if (Date.now() - start > ms) return res(false);
-        requestAnimationFrame(check);
-      })();
-    });
-
-    const containerReady = await waitForContainer(2500);
-    if (!containerReady) {
-      injectIframeFallback(FALLBACK_SHARE_URL);
-      return;
-    }
-
-    // if hbspt already available, attempt create immediately
+  const script = document.createElement('script');
+  script.src = 'https://js.hsforms.net/forms/v2.js';
+  script.async = true;
+  
+  script.onload = () => {
     if (window.hbspt && window.hbspt.forms) {
-      try {
-        window.hbspt.forms.create({
-          portalId: PORTAL_ID,
-          formId: FORM_ID,
-          target: TARGET_SELECTOR
-        });
-        // give it a short grace window then check if it rendered
-        setTimeout(() => {
-          const target = document.querySelector(TARGET_SELECTOR);
-          if (target && target.children.length === 0 && FALLBACK_SHARE_URL) {
-            injectIframeFallback(FALLBACK_SHARE_URL);
-          }
-        }, 800);
-        return;
-      } catch (e) {
-        console.warn('hbspt.create error', e);
-      }
-    }
-
-    // load script
-    try {
-      await ensureScript();
-    } catch (e) {
-      console.error('HubSpot script load failed', e);
-      injectIframeFallback(FALLBACK_SHARE_URL);
-      return;
-    }
-
-    // wait a short while for HubSpot to initialize
-    const waitHbspt = (timeout = 5000) => new Promise(res => {
-      const start = Date.now();
-      (function check() {
-        if (window.hbspt && window.hbspt.forms) return res(true);
-        if (Date.now() - start > timeout) return res(false);
-        setTimeout(check, 100);
-      })();
-    });
-
-    const ok = await waitHbspt(5000);
-    if (!ok) {
-      // likely host validation / incompatible form type
-      injectIframeFallback(FALLBACK_SHARE_URL);
-      return;
-    }
-
-    // finally create form via HubSpot embed
-    try {
       window.hbspt.forms.create({
-        portalId: PORTAL_ID,
-        formId: FORM_ID,
-        target: TARGET_SELECTOR
+        portalId: '21626983',
+        formId: 'd3b56077-11fe-485c-98cd-677027236164',
+        target: '#hubspot-form',
+        region: 'na1'
       });
-      // after short delay, if nothing rendered, fallback
-      setTimeout(() => {
-        const target = document.querySelector(TARGET_SELECTOR);
-        if (target && target.children.length === 0 && FALLBACK_SHARE_URL) {
-          injectIframeFallback(FALLBACK_SHARE_URL);
-        }
-      }, 900);
-    } catch (err) {
-      console.warn('HubSpot create failed — falling back to iframe', err);
-      injectIframeFallback(FALLBACK_SHARE_URL);
     }
   };
-
-  tryCreate();
-
-  return () => { mounted = false; };
+  
+  document.head.appendChild(script);
 }, []);
+
+
 
 
   // Event data - Updated dates to November 20, 2025
@@ -477,6 +367,43 @@ useEffect(() => {
             object-fit: contain;
           }
         }
+
+        #hubspot-form:empty {
+          display: none;
+        }
+        #hubspot-form iframe {
+          width: 100% !important;
+          display: block !important;
+        }
+        .hubspot-form-wrapper {
+          overflow: hidden;
+        }
+
+/* HubSpot Form Fixes - Enhanced */
+#hubspot-form:empty {
+  display: none !important;
+}
+
+#hubspot-form iframe {
+  width: 100% !important;
+  display: block !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+/* Hide any duplicate form containers */
+#hubspot-form > div:empty,
+#hubspot-form > iframe[src=""],
+#hubspot-form > iframe[src*="about:blank"] {
+  display: none !important;
+}
+
+/* Ensure proper form container sizing */
+.hubspot-form-wrapper {
+  min-height: 300px;
+  position: relative;
+}
+
       `}</style>
 
       {/* Enhanced Hero Section with iOS Background Fix */}
@@ -929,7 +856,9 @@ useEffect(() => {
           >
             <div className="p-6 md:p-8 lg:p-12">
               {/* IMPORTANT: hubspot form target */}
-              <div id="hubspot-form" />
+              <div className="hubspot-form-wrapper">
+      <div id="hubspot-form"></div>
+    </div>
             </div>
           </motion.div>
         </div>
