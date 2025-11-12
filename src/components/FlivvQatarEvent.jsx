@@ -381,7 +381,7 @@ export default function FlivvQatarEvent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Join us at the event, meet our team, and discover our projects
+              Join us at the Mega Sales Event on November 20th, meet our team, and discover our projects
             </motion.p>
             
             
@@ -529,17 +529,17 @@ export default function FlivvQatarEvent() {
                   <span className="text-[#8A1538] font-semibold uppercase tracking-wider text-xs md:text-sm">International Sales Event 2025</span>
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Exclusive Sales Event in <span className="text-[#8A1538]">Qatar</span>
+                  Mega Sales Event in <span className="text-[#8A1538]">Qatar</span>
                 </h2>
               </div>
               
               <div className="space-y-4 md:space-y-6 text-gray-600 text-base md:text-lg leading-relaxed text-justify">
                 <p>
-                  After the success of our first international event in the Kingdom of Saudi Arabia, we're sincerely grateful for the incredible support and enthusiasm we received. Now, we're delighted to announce that we're coming to Qatar to showcase Flivv Developers in your very own city, Doha.
+                  After the success of our first international sales event in the Kingdom of Saudi Arabia, we're sincerely grateful for the incredible response and enthusiasm we received. Now, we're delighted to announce that we're coming to Qatar to showcase Flivv Developers in your very own city, Doha.
                 </p>
                 
                 <p>
-                  Join us on November 20, 2025, at Holiday Inn Doha for an exclusive Sales Event featuring project showcases, meaningful connections, and personalized 1:1 sales sessions. We can't wait to assist you in connecting and building a long-lasting relationship with Flivv Developers!
+                  Join us on November 20, 2025, at Holiday Inn Doha for an exclusive sales event featuring project showcases, meaningful connections, and personalized 1:1 sales sessions. We can't wait to assist you in connecting and building a long-lasting relationship with us!
                 </p>
               </div>
 
@@ -781,7 +781,7 @@ export default function FlivvQatarEvent() {
             </h2>
             <div className="w-20 md:w-24 h-1 bg-white/50 mx-auto mb-4 md:mb-6 rounded-full"></div>
             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-              Join our exclusive gathering on 20th Nov at Holiday Inn Doha.
+              Join our exclusive gathering on 20th November at Holiday Inn Doha.
                Limited seats available 
             </p>
           </motion.div>
