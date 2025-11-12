@@ -125,24 +125,19 @@ const FlivvKSAPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between px-4 md:px-8 lg:px-16 py-16 md:py-24 pt-24 md:pt-32 overflow-hidden">
+      <section className="relative flex flex-col md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 py-16 pt-24 md:pt-35 gap-20 h-screen overflow-hidden">
         {/* Dark Green Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-800 via-green-900 to-green-950 z-0"></div>
+        <div className="absolute inset-0 bg-[#002200] z-0"></div>
         
-        {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-green-700/10 rounded-full"></div>
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/5 rounded-full"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-600/10 rounded-full"></div>
-        </div>
-        
-        <div className="w-full md:w-1/2 mt-15 md:mt-0 mb-8 md:mb-0 relative z-10 px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
+        <div className="w-full md:w-1/2  mb-8 md:mb-0 relative z-10 px-4 text-justify">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4 text-white">
             KSA SALES EVENT 2025
           </h1>
+          
           <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 text-green-100">
             Al Khobar, Riyadh, Jeddah
           </h2>
+          <div className="w-20 md:w-24 h-1 bg-white mb-6 rounded-full"></div>
           <p className="text-lg  mb-6 text-white/90">
             October 2025 marked a significant milestone for us — our very first International Sales Meet in the Kingdom of Saudi Arabia. We were truly honored to host over 1,000 families across Al-Khobar, Riyadh, and Jeddah, and the experience was nothing short of remarkable.
           </p>
