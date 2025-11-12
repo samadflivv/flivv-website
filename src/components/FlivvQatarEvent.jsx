@@ -98,136 +98,142 @@ export default function FlivvQatarEvent() {
   // -------------------------
   // Robust HubSpot loader
   // -------------------------
-  useEffect(() => {
-    const PORTAL_ID = '21626983';
-    const FORM_ID = 'd3b56077-11fe-485c-98cd-677027236164';
-    const TARGET_SELECTOR = '#hubspot-form';
-    const SCRIPT_SRC = 'https://js.hsforms.net/forms/v2.js'; // official v2 loader
+  // Replace your current HubSpot useEffect with this:
+useEffect(() => {
+  const PORTAL_ID = '21626983';
+  const FORM_ID = 'd3b56077-11fe-485c-98cd-677027236164';
+  const TARGET_SELECTOR = '#hubspot-form';
+  const SCRIPT_SRC = 'https://js.hsforms.net/forms/v2.js';
 
-    // Create form when possible
-    const createForm = () => {
-      if (hubspotCreating.current) return; // avoid parallel attempts
-      hubspotCreating.current = true;
+  // Paste the HubSpot "Form page" share URL here (Actions → Share → Form page)
+  const FALLBACK_SHARE_URL = 'https://cvjhj.share-na2.hsforms.com/207VgdxH-SFyYzWdwJyNhZA';
 
+  let mounted = true;
+  let attemptedCreate = false;
+
+  const injectIframeFallback = (url) => {
+    if (!url) return;
+    const target = document.querySelector(TARGET_SELECTOR);
+    if (!target) return;
+    target.innerHTML = ''; // clear any existing broken content
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.width = '100%';
+    iframe.height = '720'; // adjust if needed
+    iframe.style.border = '0';
+    iframe.loading = 'lazy';
+    target.appendChild(iframe);
+    console.warn('HubSpot embed failed — injected iframe fallback.');
+  };
+
+  const ensureScript = () => {
+    // avoid duplicate script elements
+    const existing = Array.from(document.scripts).find(s => s.src && s.src.includes('hsforms.net'));
+    if (existing) return Promise.resolve(true);
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = SCRIPT_SRC;
+      s.async = true;
+      s.onload = () => resolve(true);
+      s.onerror = () => reject(new Error('HubSpot forms script failed to load'));
+      document.head.appendChild(s);
+    });
+  };
+
+  const tryCreate = async () => {
+    // avoid repeated attempts
+    if (attemptedCreate) return;
+    attemptedCreate = true;
+
+    // ensure container exists
+    const waitForContainer = (ms = 2500) => new Promise(res => {
+      const start = Date.now();
+      (function check() {
+        if (!mounted) return res(false);
+        if (document.querySelector(TARGET_SELECTOR)) return res(true);
+        if (Date.now() - start > ms) return res(false);
+        requestAnimationFrame(check);
+      })();
+    });
+
+    const containerReady = await waitForContainer(2500);
+    if (!containerReady) {
+      injectIframeFallback(FALLBACK_SHARE_URL);
+      return;
+    }
+
+    // if hbspt already available, attempt create immediately
+    if (window.hbspt && window.hbspt.forms) {
       try {
-        const target = document.querySelector(TARGET_SELECTOR);
-        if (!target) {
-          hubspotCreating.current = false;
-          return;
-        }
-
-        if (window.hbspt && window.hbspt.forms) {
-          // Do not recreate if iframe already exists
-          if (!target.querySelector('iframe')) {
-            window.hbspt.forms.create({
-              portalId: PORTAL_ID,
-              formId: FORM_ID,
-              target: TARGET_SELECTOR
-            });
-          }
-          hubspotLoaded.current = true;
-        }
-      } catch (err) {
-        // swallow errors but allow retries
-        // console.warn('createForm error', err);
-      } finally {
-        hubspotCreating.current = false;
-      }
-    };
-
-    // Wait for the target element to exist (supports SPA render timing)
-    const waitForTarget = (timeout = 5000) => {
-      return new Promise((resolve) => {
-        const el = document.querySelector(TARGET_SELECTOR);
-        if (el) return resolve(true);
-
-        // use MutationObserver to detect when target is added to DOM
-        const observer = new MutationObserver((mutations) => {
-          if (document.querySelector(TARGET_SELECTOR)) {
-            observer.disconnect();
-            resolve(true);
-          }
+        window.hbspt.forms.create({
+          portalId: PORTAL_ID,
+          formId: FORM_ID,
+          target: TARGET_SELECTOR
         });
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        // fallback timeout
+        // give it a short grace window then check if it rendered
         setTimeout(() => {
-          observer.disconnect();
-          resolve(Boolean(document.querySelector(TARGET_SELECTOR)));
-        }, timeout);
-      });
-    };
-
-    // Wait for hbspt to exist, with retries
-    const waitForHbspt = (retries = 50, delay = 100) => {
-      return new Promise((resolve) => {
-        let attempts = 0;
-        const check = () => {
-          if (window.hbspt && window.hbspt.forms) return resolve(true);
-          attempts++;
-          if (attempts >= retries) return resolve(false);
-          setTimeout(check, delay);
-        };
-        check();
-      });
-    };
-
-    const ensureScript = () => {
-      // If script tag already present (maybe from other page), don't add duplicate
-      const existing = Array.from(document.scripts).find(s => s.src && s.src.includes('hsforms.net/forms'));
-      if (existing) return Promise.resolve(true);
-
-      return new Promise((resolve, reject) => {
-        const s = document.createElement('script');
-        s.src = SCRIPT_SRC;
-        s.async = true;
-        s.onload = () => resolve(true);
-        s.onerror = () => reject(new Error('HubSpot script failed to load'));
-        document.head.appendChild(s);
-      });
-    };
-
-    let mounted = true;
-
-    (async () => {
-      try {
-        // Wait for form container first (since Next SSR might mount after effect)
-        await waitForTarget(4000);
-
-        // If hbspt already present, try create immediately
-        if (window.hbspt && window.hbspt.forms) {
-          createForm();
-          return;
-        }
-
-        // Load the script if not present
-        try {
-          await ensureScript();
-        } catch (e) {
-          // script failed to load; bail out
-          // console.error(e);
-          return;
-        }
-
-        // wait for hbspt initialization
-        const ok = await waitForHbspt(80, 75); // ~6 seconds max
-        if (!ok) {
-          // last attempt anyway
-          createForm();
-          return;
-        }
-        // finally create form
-        if (mounted) createForm();
+          const target = document.querySelector(TARGET_SELECTOR);
+          if (target && target.children.length === 0 && FALLBACK_SHARE_URL) {
+            injectIframeFallback(FALLBACK_SHARE_URL);
+          }
+        }, 800);
+        return;
       } catch (e) {
-        // graceful fallback
-        // console.error('HubSpot loader error', e);
+        console.warn('hbspt.create error', e);
       }
-    })();
+    }
 
-    return () => {
-      mounted = false;
-    };
-  }, []);
+    // load script
+    try {
+      await ensureScript();
+    } catch (e) {
+      console.error('HubSpot script load failed', e);
+      injectIframeFallback(FALLBACK_SHARE_URL);
+      return;
+    }
+
+    // wait a short while for HubSpot to initialize
+    const waitHbspt = (timeout = 5000) => new Promise(res => {
+      const start = Date.now();
+      (function check() {
+        if (window.hbspt && window.hbspt.forms) return res(true);
+        if (Date.now() - start > timeout) return res(false);
+        setTimeout(check, 100);
+      })();
+    });
+
+    const ok = await waitHbspt(5000);
+    if (!ok) {
+      // likely host validation / incompatible form type
+      injectIframeFallback(FALLBACK_SHARE_URL);
+      return;
+    }
+
+    // finally create form via HubSpot embed
+    try {
+      window.hbspt.forms.create({
+        portalId: PORTAL_ID,
+        formId: FORM_ID,
+        target: TARGET_SELECTOR
+      });
+      // after short delay, if nothing rendered, fallback
+      setTimeout(() => {
+        const target = document.querySelector(TARGET_SELECTOR);
+        if (target && target.children.length === 0 && FALLBACK_SHARE_URL) {
+          injectIframeFallback(FALLBACK_SHARE_URL);
+        }
+      }, 900);
+    } catch (err) {
+      console.warn('HubSpot create failed — falling back to iframe', err);
+      injectIframeFallback(FALLBACK_SHARE_URL);
+    }
+  };
+
+  tryCreate();
+
+  return () => { mounted = false; };
+}, []);
+
 
   // Event data - Updated dates to November 20, 2025
   const eventHighlights = [
