@@ -1,9 +1,8 @@
 'use client';
 
-// pages/airport-town.js
 import Head from "next/head";
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -21,6 +20,17 @@ gsap.registerPlugin && gsap.registerPlugin(ScrollTrigger);
 export default function AirportTown() {
   const heroBgRef = useRef(null);
   const floatingElementsRef = useRef([]);
+  const [activeImage, setActiveImage] = useState(0);
+
+  // Enhanced gallery images with better descriptions
+  const galleryImages = [
+    { src: "https://source.unsplash.com/1200x800/?modern,architecture", title: "Master Plan Overview" },
+    { src: "https://source.unsplash.com/1200x800/?landscape,development", title: "Plot Layout" },
+    { src: "https://source.unsplash.com/1200x800/?construction,site", title: "Infrastructure Development" },
+    { src: "https://source.unsplash.com/1200x800/?road,modern", title: "30ft Internal Roads" },
+    { src: "https://source.unsplash.com/1200x800/?aerial,view", title: "Aerial Perspective" },
+    { src: "https://source.unsplash.com/1200x800/?security,camera", title: "Security Features" }
+  ];
 
   useEffect(() => {
     // GSAP Parallax for hero background
@@ -48,6 +58,20 @@ export default function AirportTown() {
         yoyo: true,
         ease: "power1.inOut",
       });
+    });
+
+    // Enhanced animations for cards
+    gsap.from(".feature-card", {
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".features-section",
+        start: "top 80%",
+        end: "bottom 20%",
+      }
     });
 
     // Load HubSpot script (deferred)
@@ -89,168 +113,228 @@ export default function AirportTown() {
 
   return (
     <>
-      {/* Full page background color applied here */}
-      <div className="min-h-screen w-full font-sans antialiased" style={{ backgroundColor: "#e0dfd8", color: "#44312b" }}>
+
+      {/* Enhanced Background with subtle gradient */}
+      <div className="min-h-screen w-full font-sans antialiased bg-gradient-to-br from-[#e0dfd8] via-[#f0efe8] to-[#e8e7e0]" style={{ color: "#44312b" }}>
         
-        {/* HERO */}
-        <section className="relative overflow-hidden h-screen">
+        {/* Enhanced HERO SECTION */}
+        <section className="relative overflow-hidden h-screen flex items-center justify-center">
+          {/* Dynamic Background with multiple layers */}
           <div
             ref={heroBgRef}
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "linear-gradient(rgba(68,49,43,0.25), rgba(68,49,43,0.25)), url('https://source.unsplash.com/1800x1200/?plot,land,field')",
-              willChange: "transform",
-              transformOrigin: "center",
+              backgroundImage: "linear-gradient(rgba(68,49,43,0.15), rgba(68,49,43,0.15)), url('https://source.unsplash.com/1920x1080/?luxury,real-estate,modern')",
             }}
-            aria-hidden="true"
           />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(224,223,216,0.18), rgba(224,223,216,0.85))" }} />
+          
+          {/* Enhanced gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#e0dfd8]/40 via-transparent to-[#44312b]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#e0dfd8] via-transparent to-transparent" />
 
-
-          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-full flex items-center">
-            <div className="w-full lg:w-3/5 py-20">
+          {/* Floating elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(5)].map((_, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                key={i}
+                className="absolute bg-white/10 rounded-full"
+                style={{
+                  width: Math.random() * 100 + 50,
+                  height: Math.random() * 100 + 50,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  x: [0, Math.random() * 20 - 10, 0],
+                  rotate: [0, 180, 360],
+                }}
+                transition={{
+                  duration: Math.random() * 10 + 10,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Main Content */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <motion.h1
+                <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight"
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6"
+                >
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <span className="text-sm font-medium">Limited Plots Available</span>
+                </motion.div>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight"
                   style={{ color: "#44312b" }}
                 >
-                  Airport Town
+                  Airport
+                  <span className="bg-gradient-to-r from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">
+                    Town
+                  </span>
                 </motion.h1>
-
-                <motion.div
-                  initial={{ opacity: 0, width: 0 }}
-                  animate={{ opacity: 1, width: "80px" }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="h-1 my-6"
-                  style={{ backgroundColor: "#44312b" }}
-                />
 
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="mt-5 text-lg sm:text-xl md:text-2xl max-w-2xl leading-relaxed"
-                  style={{ color: "#44312b" }}
+                  transition={{ delay: 0.5 }}
+                  className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl"
                 >
                   Premium open plots by Flivv Developers — just <strong>2 km</strong> from NH-44. Only <strong>36 exclusive plots</strong> with HMDA-approved GP layout.
                 </motion.p>
 
+                {/* Enhanced Location Badges */}
                 <motion.div 
-                  className="mt-8 flex flex-col sm:flex-row gap-4"
+                  className="mt-8 flex flex-wrap gap-3"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  {[
+                    { text: "19 km from RGIA", icon: <MapPin />, highlight: true },
+                    { text: "28 km from Aramghar", icon: <MapPin /> },
+                    { text: "2 km from NH-44", icon: <Road /> },
+                    { text: "2 km from Kothur Town", icon: <Home /> }
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className={`inline-flex items-center gap-2 px-4 py-3 rounded-2xl backdrop-blur-sm border ${
+                        item.highlight 
+                          ? "bg-[#44312b] text-[#e0dfd8] border-[#44312b]" 
+                          : "bg-white/20 border-white/30 text-[#44312b]"
+                      }`}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      {item.icon}
+                      <span className="text-sm font-medium">{item.text}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                {/* Enhanced CTA Buttons */}
+                <motion.div 
+                  className="mt-12 flex flex-col sm:flex-row gap-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.9 }}
                 >
                   <motion.a 
                     href="#contact" 
-                    className="inline-flex items-center justify-center px-8 py-4 rounded-lg text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="group relative inline-flex items-center justify-center px-8 py-4 rounded-2xl text-lg font-semibold overflow-hidden"
                     style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    Register Interest
-                    <ArrowRight />
+                    <span className="relative z-10 flex items-center gap-2">
+                      Register Interest
+                      <ArrowRight />
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#8b7355] to-[#44312b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.a>
+                  
                   <motion.a 
-                    href="#showcase" 
-                    className="inline-flex items-center justify-center px-8 py-4 rounded-lg text-base font-medium border-2 transition-all duration-300"
-                    style={{ borderColor: "#44312b", color: "#44312b" }}
+                    href="#gallery" 
+                    className="group inline-flex items-center justify-center px-8 py-4 rounded-2xl text-lg font-medium border-2 backdrop-blur-sm"
+                    style={{ borderColor: "#44312b", color: "#44312b", backgroundColor: "rgba(255,255,255,0.1)" }}
                     whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(68,49,43,0.05)" }}
                   >
-                    View Site Plan
+                    <span className="flex items-center gap-2">
+                      Virtual Tour
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                    </span>
                   </motion.a>
                 </motion.div>
+              </motion.div>
 
-                <motion.div 
-                  className="mt-8 text-sm text-[#44312b]/80 max-w-md"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  <div className="flex flex-wrap gap-3">
+              {/* Enhanced Stats Card */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="hidden lg:block"
+              >
+                <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20">
+                  <div className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-[#44312b]/10">
+                      <CheckCircle />
+                    </div>
+                    Quick Facts
+                  </div>
+                  
+                  <div className="space-y-2">
                     {[
-                      { text: "19 km from RGIA", icon: <MapPin /> },
-                      { text: "28 km from Aramghar", icon: <MapPin /> },
-                      { text: "2 km from NH-44", icon: <Road /> },
-                      { text: "2 km from Kothur Town", icon: <Home /> }
+                      { icon: <Home />, label: "Plots", value: "36", suffix: "Only" },
+                      { icon: <Document />, label: "Plot Sizes", value: "200+", suffix: "sq. yards" },
+                      { icon: <Road />, label: "Roads", value: "30", suffix: "ft internal" },
+                      { icon: <Shield />, label: "Approval", value: "HMDA GP", suffix: "LRS" }
                     ].map((item, index) => (
-                      <motion.span 
+                      <motion.div
                         key={index}
-                        className="inline-flex items-center gap-1 px-3 py-2 bg-[#44312b]/10 rounded-lg"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.7 + index * 0.1 }}
+                        className="flex items-center justify-between p-4 rounded-2xl hover:bg-[#44312b]/5 transition-colors"
+                        whileHover={{ x: 4 }}
                       >
-                        {item.icon}
-                        {item.text}
-                      </motion.span>
+                        <div className="flex items-center gap-4">
+                          <div className="p-2 rounded-xl bg-[#44312b]/10">
+                            {item.icon}
+                          </div>
+                          <div>
+                            <div className="font-semibold">{item.label}</div>
+                            <div className="text-sm text-gray-600">{item.suffix}</div>
+                          </div>
+                        </div>
+                        <div className="text-2xl font-bold" style={{ color: "#44312b" }}>
+                          {item.value}
+                        </div>
+                      </motion.div>
                     ))}
                   </div>
-                </motion.div>
-              </motion.div>
-            </div>
 
-            {/* Hero right accent card */}
-            <div className="hidden lg:block lg:w-2/5">
-              <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-                className="ml-8 bg-white rounded-2xl p-6 shadow-2xl"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div className="text-lg font-bold flex items-center gap-2" style={{ color: "#44312b" }}>
-                  <CheckCircle />
-                  Quick Facts
+                  <motion.a 
+                    href="#contact" 
+                    className="w-full mt-6 inline-flex items-center justify-center py-4 rounded-2xl font-semibold transition-all"
+                    style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                  >
+                    Get Brochure
+                  </motion.a>
                 </div>
-                <div className="mt-4 space-y-4 text-sm">
-                  {[
-                    { label: "Plots", value: "36", icon: <Home /> },
-                    { label: "Plot Sizes", value: "From 200 sq. yards", icon: <Document /> },
-                    { label: "Roads", value: "30 ft internal", icon: <Road /> },
-                    { label: "Approval", value: "HMDA GP (LRS)", icon: <Shield /> }
-                  ].map((item, index) => (
-                    <motion.div 
-                      key={index}
-                      className="flex justify-between items-center py-2 border-b border-gray-100"
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + index * 0.1 }}
-                    >
-                      <div className="flex items-center gap-2 text-gray-700">
-                        {item.icon}
-                        {item.label}
-                      </div>
-                      <div className="font-semibold" style={{ color: "#44312b" }}>{item.value}</div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <motion.a 
-                  href="#contact" 
-                  className="mt-6 inline-flex items-center justify-center w-full text-center py-3 rounded-lg font-semibold transition-all duration-300"
-                  style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                >
-                  Get Brochure
-                </motion.a>
               </motion.div>
             </div>
           </div>
 
-          {/* decorative wave separator */}
-          <div className="mt-6">
-            <svg viewBox="0 0 1440 60" className="w-full" preserveAspectRatio="none" style={{ display: "block" }}>
-              <path d="M0,0 C360,60 1080,0 1440,60 L1440 60 L0 60 Z" fill="#e0dfd8" />
-            </svg>
-          </div>
+          {/* Scroll Indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+          >
+            <motion.div
+              className="w-6 h-10 border-2 rounded-full border-[#44312b] flex justify-center"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <div className="w-1 h-3 bg-[#44312b] rounded-full mt-2" />
+            </motion.div>
+          </motion.div>
         </section>
 
         {/* SECOND SECTION - Showcase */}
@@ -267,15 +351,15 @@ export default function AirportTown() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
-                className="rounded-2xl overflow-hidden shadow-2xl relative bg-white"
+                className="rounded-3xl overflow-hidden shadow-2xl relative bg-white/90 backdrop-blur-sm border border-white/20"
                 whileHover={{ y: -5 }}
               >
                 <img 
                   src="https://source.unsplash.com/1200x900/?site-plan,real-estate" 
                   alt="Airport Town site plan" 
-                  className="w-full object-cover h-96 md:h-[520px] transition-transform duration-700 hover:scale-105" 
+                  className="w-full object-cover h-96 md:h-[450px] transition-transform duration-700 hover:scale-105" 
                 />
-                <div className="absolute left-6 bottom-6 bg-[#44312b] text-[#e0dfd8] px-4 py-3 rounded-lg shadow-lg">
+                <div className="absolute left-6 bottom-6 bg-[#44312b] text-[#e0dfd8] px-4 py-3 rounded-xl shadow-lg">
                   <div className="text-sm font-semibold">Exclusive - Only 36 Plots</div>
                   <div className="text-xs mt-1">Plot sizes from 200 sq. yards</div>
                 </div>
@@ -296,16 +380,16 @@ export default function AirportTown() {
                   <motion.div 
                     key={index}
                     variants={fadeInUp}
-                    className="bg-white rounded-xl p-5 shadow hover:shadow-lg transition-all duration-300"
-                    whileHover={{ y: -3 }}
+                    className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20"
+                    whileHover={{ y: -8, scale: 1.02 }}
                   >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-2 rounded-full" style={{ backgroundColor: "rgba(68,49,43,0.1)" }}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white">
                         {item.icon}
                       </div>
-                      <div className="text-sm font-semibold" style={{ color: "#44312b" }}>{item.title}</div>
+                      <div className="text-lg font-semibold" style={{ color: "#44312b" }}>{item.title}</div>
                     </div>
-                    <div className="text-xs text-gray-600 ml-11">{item.desc}</div>
+                    <div className="text-gray-600 ml-14">{item.desc}</div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -314,7 +398,7 @@ export default function AirportTown() {
             {/* Right: Info panels & CTAs */}
             <div className="order-1 lg:order-2 flex flex-col gap-6">
               <motion.div 
-                className="bg-white rounded-2xl p-8 shadow-lg"
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -334,9 +418,8 @@ export default function AirportTown() {
                   ].map((item, index) => (
                     <motion.div 
                       key={index}
-                      className="p-4 rounded-lg flex items-start gap-3"
-                      style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
-                      whileHover={{ scale: 1.02 }}
+                      className="p-4 rounded-xl flex items-start gap-3 bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white shadow-lg"
+                      whileHover={{ scale: 1.02, y: -2 }}
                     >
                       {item.icon}
                       <div>
@@ -350,7 +433,7 @@ export default function AirportTown() {
                 <div className="mt-8 flex gap-4">
                   <motion.a 
                     href="#contact" 
-                    className="px-6 py-3 rounded-lg font-semibold flex items-center gap-2"
+                    className="px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
                     style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
                     whileHover={{ scale: 1.05, y: -2 }}
                   >
@@ -359,7 +442,7 @@ export default function AirportTown() {
                   </motion.a>
                   <motion.a 
                     href="#gallery" 
-                    className="px-6 py-3 rounded-lg font-medium border-2 flex items-center gap-2 transition-all"
+                    className="px-6 py-3 rounded-xl font-medium border-2 flex items-center gap-2 transition-all"
                     style={{ borderColor: "#44312b", color: "#44312b" }}
                     whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(68,49,43,0.05)" }}
                   >
@@ -370,7 +453,7 @@ export default function AirportTown() {
 
               {/* Investment Snapshot */}
               <motion.div 
-                className="bg-white rounded-2xl p-8 shadow-lg"
+                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -395,7 +478,7 @@ export default function AirportTown() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                     >
-                      <div className="text-3xl font-bold" style={{ color: "#44312b" }}>{item.value}</div>
+                      <div className="text-3xl font-bold bg-gradient-to-br from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">{item.value}</div>
                       <div className="text-sm text-gray-600 mt-1">{item.label}</div>
                     </motion.div>
                   ))}
@@ -408,7 +491,7 @@ export default function AirportTown() {
 
         {/* FEATURE GRID */}
         <motion.section 
-          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20"
+          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 features-section"
           {...fadeInUp}
         >
           <motion.h3 
@@ -438,10 +521,10 @@ export default function AirportTown() {
               <motion.div 
                 key={i} 
                 variants={fadeInUp}
-                className="bg-white rounded-2xl p-6 shadow hover:shadow-xl transition-all duration-300 group"
+                className="feature-card bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/20 group"
                 whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="p-3 rounded-full inline-block mb-4 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: "rgba(68,49,43,0.1)" }}>
+                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#44312b] to-[#8b7355] w-fit mb-6 group-hover:scale-110 transition-transform duration-300 text-white">
                   {f.icon}
                 </div>
                 <div className="text-xl font-semibold mb-3" style={{ color: "#44312b" }}>{f.title}</div>
@@ -454,7 +537,7 @@ export default function AirportTown() {
         {/* LOCATION + MAP */}
         <motion.section 
           id="map" 
-          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 bg-[#f7f6f4] rounded-3xl"
+          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 bg-white/50 backdrop-blur-sm rounded-3xl"
           {...fadeInUp}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -485,7 +568,7 @@ export default function AirportTown() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#44312b" }} />
+                    <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[#44312b] to-[#8b7355]" />
                     {item}
                   </motion.li>
                 ))}
@@ -494,7 +577,7 @@ export default function AirportTown() {
               <div className="flex gap-4">
                 <motion.a 
                   href="#contact" 
-                  className="px-6 py-3 rounded-lg font-semibold flex items-center gap-2"
+                  className="px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
                   style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
                   whileHover={{ scale: 1.05, y: -2 }}
                 >
@@ -503,7 +586,7 @@ export default function AirportTown() {
                 </motion.a>
                 <motion.a 
                   href="#gallery" 
-                  className="px-6 py-3 rounded-lg font-medium border-2 flex items-center gap-2 transition-all"
+                  className="px-6 py-3 rounded-xl font-medium border-2 flex items-center gap-2 transition-all"
                   style={{ borderColor: "#44312b", color: "#44312b" }}
                   whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(68,49,43,0.05)" }}
                 >
@@ -513,7 +596,7 @@ export default function AirportTown() {
             </motion.div>
 
             <motion.div 
-              className="w-full h-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl"
+              className="w-full h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl border border-white/20"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -531,9 +614,7 @@ export default function AirportTown() {
           </div>
         </motion.section>
 
-
-
- {/* CTA SECTION */}
+        {/* CTA SECTION */}
         <motion.section 
           className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-20 text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -542,7 +623,7 @@ export default function AirportTown() {
           transition={{ duration: 0.7 }}
         >
           <motion.div 
-            className="bg-[#44312b] text-[#e0dfd8] p-12 rounded-3xl shadow-2xl"
+            className="bg-gradient-to-br from-[#44312b] to-[#8b7355] text-[#e0dfd8] p-12 rounded-3xl shadow-2xl"
             whileHover={{ y: -5 }}
           >
             <h3 className="text-3xl font-bold mb-4">Ready to Secure Your Plot?</h3>
@@ -550,7 +631,7 @@ export default function AirportTown() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a 
                 href="#contact" 
-                className="px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all"
+                className="px-8 py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all shadow-lg"
                 style={{ backgroundColor: "#e0dfd8", color: "#44312b" }}
                 whileHover={{ scale: 1.05, y: -2 }}
               >
@@ -559,7 +640,7 @@ export default function AirportTown() {
               </motion.a>
               <motion.a 
                 href="tel:+91XXXXXXXXXX"
-                className="px-8 py-4 rounded-lg font-medium border-2 flex items-center justify-center gap-2 transition-all"
+                className="px-8 py-4 rounded-xl font-medium border-2 flex items-center justify-center gap-2 transition-all"
                 style={{ borderColor: "#e0dfd8", color: "#e0dfd8" }}
                 whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(224,223,216,0.1)" }}
               >
@@ -569,9 +650,7 @@ export default function AirportTown() {
           </motion.div>
         </motion.section>
 
-
-
-        {/* GALLERY */}
+        {/* Enhanced GALLERY SECTION */}
         <motion.section 
           id="gallery" 
           className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20"
@@ -581,47 +660,53 @@ export default function AirportTown() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h3 className="text-3xl font-bold mb-4" style={{ color: "#44312b" }}>Project Gallery</h3>
-            <p className="text-gray-700 max-w-2xl mx-auto">High-resolution visuals help buyers visualize the potential of their investment. Each plot offers unique opportunities for construction and design.</p>
+            <h3 className="text-4xl font-bold mb-4 bg-gradient-to-br from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">Project Gallery</h3>
+            <p className="text-gray-700 max-w-2xl mx-auto text-lg">High-resolution visuals help buyers visualize the potential of their investment. Each plot offers unique opportunities for construction and design.</p>
           </motion.div>
 
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="whileInView"
+          {/* Main Gallery Image */}
+          <motion.div
+            className="relative rounded-3xl overflow-hidden shadow-2xl mb-8 border border-white/20"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            {[
-              "https://source.unsplash.com/1000x800/?plot,land,road",
-              "https://source.unsplash.com/1000x800/?plot,field",
-              "https://source.unsplash.com/1000x800/?village,road",
-              "https://source.unsplash.com/1000x800/?construction,site",
-              "https://source.unsplash.com/1000x800/?aerial,land",
-              "https://source.unsplash.com/1000x800/?infrastructure,road"
-            ].map((src, i) => (
-              <motion.div 
-                key={i} 
-                variants={fadeInUp}
-                className="rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
-                whileHover={{ scale: 1.03, y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="overflow-hidden">
-                  <img 
-                    src={src} 
-                    alt={`Airport Town ${i + 1}`} 
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
-                  />
-                </div>
-                <div className="p-4 bg-white">
-                  <div className="text-sm font-medium" style={{ color: "#44312b" }}>Plot View {i + 1}</div>
-                </div>
-              </motion.div>
-            ))}
+            <img 
+              src={galleryImages[activeImage].src}
+              alt={galleryImages[activeImage].title}
+              className="w-full h-96 object-cover"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-8">
+              <h3 className="text-2xl font-bold text-white mb-2">{galleryImages[activeImage].title}</h3>
+              <div className="flex items-center gap-2 text-white/80">
+                <div className="w-2 h-2 bg-white rounded-full" />
+                <span>{activeImage + 1} of {galleryImages.length}</span>
+              </div>
+            </div>
           </motion.div>
+
+          {/* Thumbnail Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {galleryImages.map((image, index) => (
+              <motion.button
+                key={index}
+                className={`relative rounded-2xl overflow-hidden shadow-lg transition-all duration-300 border-2 ${
+                  activeImage === index ? 'border-[#44312b] scale-105' : 'border-transparent hover:scale-105'
+                }`}
+                whileHover={{ y: -4 }}
+                onClick={() => setActiveImage(index)}
+              >
+                <img 
+                  src={image.src}
+                  alt={image.title}
+                  className="w-full h-24 object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20 hover:bg-transparent transition-colors" />
+              </motion.button>
+            ))}
+          </div>
         </motion.section>
 
         {/* CONTACT FORM */}
@@ -631,7 +716,7 @@ export default function AirportTown() {
           {...fadeInUp}
         >
           <motion.div 
-            className="bg-[#44312b] text-[#e0dfd8] rounded-3xl p-8 md:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+            className="bg-gradient-to-br from-[#44312b] to-[#8b7355] text-[#e0dfd8] rounded-3xl p-8 md:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-2 items-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -669,47 +754,8 @@ export default function AirportTown() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div id="hubspot-form" className="bg-white text-[#44312b] rounded-2xl p-6 shadow-lg">
-                <div className="text-center font-bold text-xl mb-6">Enquiry Form</div>
-
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert("This is a placeholder form. Replace with your HubSpot form ID in the script section.");
-                  }}
-                  className="space-y-4"
-                >
-                  {["Your name", "Phone number", "Email address"].map((placeholder, index) => (
-                    <motion.input 
-                      key={index}
-                      name={placeholder.toLowerCase().replace(' ', '_')}
-                      required 
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#44312b] focus:ring-2 focus:ring-[#44312b]/20 transition-all"
-                      placeholder={placeholder}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                    />
-                  ))}
-                  <motion.button 
-                    type="submit" 
-                    className="w-full py-3 rounded-lg mt-4 font-semibold flex items-center justify-center gap-2 transition-all"
-                    style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.6 }}
-                  >
-                    Submit Enquiry
-                    <ArrowRight />
-                  </motion.button>
-                </form>
-
-                <div className="mt-4 text-xs text-gray-500 text-center">
-                  Or the official HubSpot form will load here if you replace the portalId/formId below.
-                </div>
+              <div id="hubspot-form" className="bg-white text-[#44312b] rounded-2xl pt-10 shadow-lg">
+                <div className="text-center font-semibold text-4xl">Enquiry Form</div>
 
                 <script
                   // eslint-disable-next-line react/no-danger
@@ -719,8 +765,8 @@ export default function AirportTown() {
                         if(window.hbspt && window.hbspt.forms){
                           try{
                             hbspt.forms.create({
-                              portalId: "YOUR_HUBSPOT_PORTAL_ID",
-                              formId: "YOUR_HUBSPOT_FORM_ID",
+                              portalId: "21626983",
+                              formId: "7b23bd69-e828-4e55-b869-b895c8233781",
                               target: "#hubspot-form"
                             });
                           } catch(e) { console.error('HubSpot form error', e); }
