@@ -89,17 +89,11 @@ export default function AirportTown() {
 
   return (
     <>
-      <Head>
-        <title>Airport Town — Flivv Developers</title>
-        <meta name="description" content="Airport Town — premium open plots by Flivv Developers, 2 km from NH-44. Limited 36 plots. HMDA approved GP Layout." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
       {/* Full page background color applied here */}
       <div className="min-h-screen w-full font-sans antialiased" style={{ backgroundColor: "#e0dfd8", color: "#44312b" }}>
         
         {/* HERO */}
-        <section className="relative overflow-hidden" style={{ minHeight: "85vh" }}>
+        <section className="relative overflow-hidden h-screen">
           <div
             ref={heroBgRef}
             className="absolute inset-0 bg-cover bg-center"
@@ -112,9 +106,6 @@ export default function AirportTown() {
           />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(224,223,216,0.18), rgba(224,223,216,0.85))" }} />
 
-          {/* Floating decorative elements */}
-          <div ref={addToFloating} className="absolute top-1/4 right-1/4 w-6 h-6 rounded-full" style={{ backgroundColor: "rgba(68,49,43,0.1)" }} />
-          <div ref={addToFloating} className="absolute bottom-1/3 left-1/4 w-4 h-4 rounded-full" style={{ backgroundColor: "rgba(68,49,43,0.08)" }} />
 
           <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-full flex items-center">
             <div className="w-full lg:w-3/5 py-20">
@@ -540,6 +531,46 @@ export default function AirportTown() {
           </div>
         </motion.section>
 
+
+
+ {/* CTA SECTION */}
+        <motion.section 
+          className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-20 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <motion.div 
+            className="bg-[#44312b] text-[#e0dfd8] p-12 rounded-3xl shadow-2xl"
+            whileHover={{ y: -5 }}
+          >
+            <h3 className="text-3xl font-bold mb-4">Ready to Secure Your Plot?</h3>
+            <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">Only 36 exclusive plots available. Don't miss this opportunity to invest in a premium location with strong growth potential.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a 
+                href="#contact" 
+                className="px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all"
+                style={{ backgroundColor: "#e0dfd8", color: "#44312b" }}
+                whileHover={{ scale: 1.05, y: -2 }}
+              >
+                Book Site Visit
+                <ArrowRight />
+              </motion.a>
+              <motion.a 
+                href="tel:+91XXXXXXXXXX"
+                className="px-8 py-4 rounded-lg font-medium border-2 flex items-center justify-center gap-2 transition-all"
+                style={{ borderColor: "#e0dfd8", color: "#e0dfd8" }}
+                whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(224,223,216,0.1)" }}
+              >
+                Call Now
+              </motion.a>
+            </div>
+          </motion.div>
+        </motion.section>
+
+
+
         {/* GALLERY */}
         <motion.section 
           id="gallery" 
@@ -593,57 +624,6 @@ export default function AirportTown() {
           </motion.div>
         </motion.section>
 
-        {/* TESTIMONIAL */}
-        <motion.section 
-          className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-20"
-          {...fadeInUp}
-        >
-          <motion.div 
-            className="bg-white rounded-3xl p-8 sm:p-12 shadow-xl"
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-center">
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, type: "spring" }}
-                className="w-16 h-16 mx-auto mb-6 rounded-full overflow-hidden shadow-lg"
-              >
-                <img src="https://source.unsplash.com/200x200/?person,portrait" alt="buyer" className="w-full h-full object-cover" />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-2xl font-bold mb-6"
-                style={{ color: "#44312b" }}
-              >
-                What Our Buyers Say
-              </motion.div>
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="text-lg text-gray-700 italic mb-6 max-w-2xl mx-auto"
-              >
-                "Flivv's Airport Town offered us a perfect mix of location and value. The layout and approvals made the purchase smooth and hassle-free. We're excited to start construction on our dream home."
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="text-sm font-semibold"
-                style={{ color: "#44312b" }}
-              >
-                — Mohammed Haji, early buyer
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.section>
-
         {/* CONTACT FORM */}
         <motion.section 
           id="contact" 
@@ -681,12 +661,6 @@ export default function AirportTown() {
                   </motion.li>
                 ))}
               </ul>
-
-              <div className="text-sm opacity-85">
-                <div className="font-semibold mb-2">Contact Flivv Developers</div>
-                <div>Email: <span className="underline">info@flivv.in</span></div>
-                <div className="mt-1">Phone: +91 XXXXXXXXXX</div>
-              </div>
             </div>
 
             <motion.div
@@ -759,42 +733,6 @@ export default function AirportTown() {
                 />
               </div>
             </motion.div>
-          </motion.div>
-        </motion.section>
-
-        {/* CTA SECTION */}
-        <motion.section 
-          className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-20 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <motion.div 
-            className="bg-[#44312b] text-[#e0dfd8] p-12 rounded-3xl shadow-2xl"
-            whileHover={{ y: -5 }}
-          >
-            <h3 className="text-3xl font-bold mb-4">Ready to Secure Your Plot?</h3>
-            <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">Only 36 exclusive plots available. Don't miss this opportunity to invest in a premium location with strong growth potential.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a 
-                href="#contact" 
-                className="px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all"
-                style={{ backgroundColor: "#e0dfd8", color: "#44312b" }}
-                whileHover={{ scale: 1.05, y: -2 }}
-              >
-                Book Site Visit
-                <ArrowRight />
-              </motion.a>
-              <motion.a 
-                href="tel:+91XXXXXXXXXX"
-                className="px-8 py-4 rounded-lg font-medium border-2 flex items-center justify-center gap-2 transition-all"
-                style={{ borderColor: "#e0dfd8", color: "#e0dfd8" }}
-                whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(224,223,216,0.1)" }}
-              >
-                Call Now
-              </motion.a>
-            </div>
           </motion.div>
         </motion.section>
 
