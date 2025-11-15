@@ -9,24 +9,24 @@ const projectsData = {
   upcoming: {
     title: 'Upcoming Projects',
     projects: [
-      { name: 'Sukoon Villas', href: '' }
+      { name: 'Sukoon Villas', href: '/' }
     ]
   },
   current: {
     title: 'Current Projects', 
     projects: [
       { name: 'Gulmohar Villas', href: '/gulmoharvillas' },
-      { name: 'Gulmohar Homes', href: '' },
-      { name: 'Airport Town', href: '' },
-      { name: 'Sadhana City', href: '' }
+      { name: 'Gulmohar Homes', href: '/' },
+      { name: 'Airport Town', href: '/' },
+      { name: 'Sadhana City', href: '/' }
     ]
   },
   completed: {
     title: 'Completed Projects',
     projects: [
-      { name: 'NS Homes 1', href: '' },
-      { name: 'NS Homes 2.0', href: '' },
-      { name: 'Ideal Avenue', href: '' },
+      { name: 'NS Homes 1.0', href: '/' },
+      { name: 'NS Homes 2.0', href: '/' },
+      { name: 'Ideal Avenue', href: '/' },
       { name: 'Rivendell Farms', href: '/rivendellfarms' }
     ]
   }
@@ -61,7 +61,7 @@ export default function Navigation() {
             Projects
           </Link>
           
-          {/* Mega Menu Dropdown - Reduced width from 600px to 500px */}
+          {/* Mega Menu Dropdown */}
           <div className="absolute left-0 top-full mt-2 w-[500px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white/10 backdrop-blur-md border border-white/20">
             <div className="flex p-6">
               {/* Categories Sidebar */}
@@ -72,7 +72,7 @@ export default function Navigation() {
                       key={key}
                       onMouseEnter={() => setActiveCategory(key)}
                       className={`px-4 py-3 rounded-lg cursor-pointer transition-all ${
-                        activeCategory === key ? 'bg-white/20 text-white' : 'text-white/80 hover:bg-white/10'
+                        activeCategory === key ? 'bg-[#0192D3] text-white' : 'text-white/80 hover:bg-[#0192D3] hover:text-white'
                       }`}
                     >
                       {category.title}
@@ -89,7 +89,7 @@ export default function Navigation() {
                       <li key={index}>
                         <Link
                           href={project.href}
-                          className="block px-4 py-3 rounded-lg text-lg font-normal text-white hover:bg-white/20 transition-all"
+                          className="block px-4 py-3 rounded-lg text-lg font-normal text-white hover:bg-[#0192D3] transition-all"
                         >
                           {project.name}
                         </Link>
@@ -135,24 +135,23 @@ export default function Navigation() {
           transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
-        {/* Close Button */}
 
         <div className="flex flex-col h-full pt-20">
           {/* Main Menu Items */}
           {!mobileProjectsOpen ? (
             <ul className="flex flex-col items-start p-6 gap-6 font-medium text-lg text-white">
               <li>
-                <Link href="/" onClick={() => setIsOpen(false)} className="text-2xl">Home</Link>
+                <Link href="/" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">Home</Link>
               </li>
               <li>
-                <Link href="/about" onClick={() => setIsOpen(false)} className="text-2xl">About Us</Link>
+                <Link href="/about" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">About Us</Link>
               </li>
               
               {/* Mobile Projects Menu */}
               <li className="w-full">
                 <button
                   onClick={() => setMobileProjectsOpen(true)}
-                  className="flex items-center justify-between w-full text-2xl"
+                  className="flex items-center justify-between w-full text-2xl hover:text-[#0192D3] transition-all"
                 >
                   Projects
                   <ChevronDown size={24} className="transform rotate-90" />
@@ -160,7 +159,7 @@ export default function Navigation() {
               </li>
 
               <li>
-                <Link href="/contact" onClick={() => setIsOpen(false)} className="text-2xl">Contact</Link>
+                <Link href="/contact" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">Contact</Link>
               </li>
 
               {/* Mobile Event Buttons */}
@@ -168,7 +167,7 @@ export default function Navigation() {
                 <Link
                   href="/flivvksaevent"
                   onClick={() => setIsOpen(false)}
-                  className="border border-white py-3 px-6 rounded-full text-xl block w-full text-center"
+                  className="border border-white py-3 px-6 rounded-full text-xl block w-full text-center hover:bg-[#0192D3] hover:border-[#0192D3] transition-all"
                 >
                   KSA Event
                 </Link>
@@ -177,7 +176,7 @@ export default function Navigation() {
                 <Link
                   href="/flivvqatarevent"
                   onClick={() => setIsOpen(false)}
-                  className="py-3 px-6 rounded-full bg-[#871537] text-xl block w-full text-center"
+                  className="py-3 px-6 rounded-full bg-[#871537] text-xl block w-full text-center hover:bg-[#0192D3] transition-all"
                 >
                   Qatar Event
                 </Link>
@@ -190,7 +189,7 @@ export default function Navigation() {
               <div className="flex items-center p-6 border-b border-gray-700">
                 <button 
                   onClick={() => setMobileProjectsOpen(false)}
-                  className="flex items-center text-white text-xl"
+                  className="flex items-center text-white text-xl hover:text-[#0192D3] transition-all"
                 >
                   <ArrowLeft size={24} className="mr-2" />
                   Back
@@ -208,8 +207,8 @@ export default function Navigation() {
                           onClick={() => setActiveCategory(key)}
                           className={`w-full text-left px-6 py-4 text-lg transition-all ${
                             activeCategory === key 
-                              ? 'bg-white/20 text-white border-r-2 border-white' 
-                              : 'text-gray-300 hover:bg-white/10'
+                              ? 'bg-[#0192D3] text-white border-r-2 border-[#0192D3]' 
+                              : 'text-gray-300 hover:bg-[#0192D3] hover:text-white'
                           }`}
                         >
                           {category.title}
@@ -231,7 +230,7 @@ export default function Navigation() {
                               setIsOpen(false);
                               setMobileProjectsOpen(false);
                             }}
-                            className="block px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all border-b border-gray-800"
+                            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] hover:text-white transition-all border-b border-gray-800"
                           >
                             {project.name}
                           </Link>

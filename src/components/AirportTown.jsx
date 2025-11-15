@@ -183,10 +183,7 @@ export default function AirportTown() {
                   className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight"
                   style={{ color: "#44312b" }}
                 >
-                  Airport
-                  <span className="bg-gradient-to-r from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">
-                    Town
-                  </span>
+                  Airport <span className="bg-gradient-to-r from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">Town</span>
                 </motion.h1>
 
                 <motion.p
@@ -195,37 +192,8 @@ export default function AirportTown() {
                   transition={{ delay: 0.5 }}
                   className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl"
                 >
-                  Premium open plots by Flivv Developers — just <strong>2 km</strong> from NH-44. Only <strong>36 exclusive plots</strong> with HMDA-approved GP layout.
+                  Airport Town by Flivv Developers is a premium, R1-zone project just 2 km from Bangalore Highway (NH-44). With only 36 plots, 30 ft internal roads, and quality development by Flivv, it offers strong residential and investment value. The GP layout is HMDA-approved under LRS, making it ideal for both construction and long-term returns. Plot sizes start at 200 sq. yards. Close to Kothur town and daily conveniences, Airport Town is perfectly placed for future growth.
                 </motion.p>
-
-                {/* Enhanced Location Badges */}
-                <motion.div 
-                  className="mt-8 flex flex-wrap gap-3"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  {[
-                    { text: "19 km from RGIA", icon: <MapPin />, highlight: true },
-                    { text: "28 km from Aramghar", icon: <MapPin /> },
-                    { text: "2 km from NH-44", icon: <Road /> },
-                    { text: "2 km from Kothur Town", icon: <Home /> }
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className={`inline-flex items-center gap-2 px-4 py-3 rounded-2xl backdrop-blur-sm border ${
-                        item.highlight 
-                          ? "bg-[#44312b] text-[#e0dfd8] border-[#44312b]" 
-                          : "bg-white/20 border-white/30 text-[#44312b]"
-                      }`}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                    >
-                      {item.icon}
-                      <span className="text-sm font-medium">{item.text}</span>
-                    </motion.div>
-                  ))}
-                </motion.div>
 
                 {/* Enhanced CTA Buttons */}
                 <motion.div 
@@ -242,7 +210,7 @@ export default function AirportTown() {
                     whileTap={{ scale: 0.95 }}
                   >
                     <span className="relative z-10 flex items-center gap-2">
-                      Register Interest
+                      Inquire Now
                       <ArrowRight />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#8b7355] to-[#44312b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -276,14 +244,14 @@ export default function AirportTown() {
                     <div className="p-2 rounded-full bg-[#44312b]/10">
                       <CheckCircle />
                     </div>
-                    Quick Facts
+                    Quick Glance 
                   </div>
                   
                   <div className="space-y-2">
                     {[
-                      { icon: <Home />, label: "Plots", value: "36", suffix: "Only" },
+                      { icon: <Home />, label: "No. Of Units", value: "36", suffix: "Only" },
                       { icon: <Document />, label: "Plot Sizes", value: "200+", suffix: "sq. yards" },
-                      { icon: <Road />, label: "Roads", value: "30", suffix: "ft internal" },
+                      { icon: <Road />, label: "Infrastructure", value: "30", suffix: "ft internal" },
                       { icon: <Shield />, label: "Approval", value: "HMDA GP", suffix: "LRS" }
                     ].map((item, index) => (
                       <motion.div
@@ -409,7 +377,7 @@ export default function AirportTown() {
                   <CheckCircle />
                   Why Airport Town?
                 </h3>
-                <p className="mt-4 text-gray-700 leading-relaxed">A rare combination of strategic location and scarcity — only 36 plots. Ready-to-construct layout with approvals, wide internal roads, and neighbourhood conveniences nearby that support both living & investment growth.</p>
+                <p className="mt-4 text-gray-700 leading-relaxed">Airport Town, strategically positioned on the Kothur–Penjerla road, stands out as one of the most promising investment opportunities, thanks to its proximity to the city and being just 19 km from the airport. With Flivv’s developmental enhancements, the project is poised to deliver impressive and reliable returns for investors in the coming years!</p>
 
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
