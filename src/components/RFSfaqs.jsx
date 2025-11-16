@@ -1,0 +1,154 @@
+"use client";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, Minus } from 'lucide-react';
+
+const RFSfaqs = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+  
+  const faqs = [
+    {
+      question: "How far is Rivendell Farms from Hyderabad?",
+      answer: "Rivendell Farms is around 99 km from Aramghar."
+    },
+    {
+      question: "Is it agricultural land? What are the norms for construction?",
+      answer: "Yes, the project is a farmland project. We can construct on 15-20% of the land area."
+    },
+    {
+      question: "Is Rivendell DTCP or HMDA approved?",
+      answer: "None of the above. It is a purely farmland and comes with Patta Passbook documentation."
+    },
+    {
+      question: "What are the amenities in it?",
+      answer: "The project is equipped with recreational amenities on 2.2 Acres, including horse riding, swimming pool, indoor games, amphitheater & much more!"
+    },
+    {
+      question: "Is there an EMI plan? What is the registration process?",
+      answer: "Yes, we do have a 12-month EMI option. The registration process takes place at Jadcherla MRO"
+    },
+    {
+      question: "Is this good for short-term or long-term investment?",
+      answer: "Preferably long-term, as this project is designed for land ownership and intended to grow in value and purpose over time."
+    }
+  ];
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div 
+      className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8 bg-[#081C15]"
+    >
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-6xl font-normal text-[#D8F3DC] mb-4">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div className="space-y-6">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              className="rounded-xl overflow-hidden"
+              initial={false}
+              animate={{
+                boxShadow: openIndex === index 
+                  ? '0 0 20px #2D6A4F' 
+                  : '0 0 0px rgba(255, 255, 255, 0)'
+              }}
+              transition={{ duration: 0.3 }}
+              style={{
+                background: 'linear-gradient(145deg, #1B4332, #081C15)',
+                border: '1px solid #40916C',
+                backdropFilter: 'blur(10px)'
+              }}
+            >
+              <div 
+                className="flex justify-between items-center p-5 md:p-6 cursor-pointer"
+                onClick={() => toggleFAQ(index)}
+              >
+                <h3 className="text-lg md:text-2xl text-white pr-4">
+                  {faq.question}
+                </h3>
+                <div className="flex-shrink-0">
+                  {openIndex === index ? (
+                    <Minus className="h-5 w-5 md:h-6 md:w-6 text-[#40916C]" />
+                  ) : (
+                    <Plus className="h-5 w-5 md:h-6 md:w-6 text-[#40916C]" />
+                  )}
+                </div>
+              </div>
+              
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    className="overflow-hidden"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ 
+                      height: 'auto',
+                      opacity: 1,
+                      transition: { 
+                        height: { duration: 0.3, ease: "easeInOut" },
+                        opacity: { duration: 0.2 }
+                      }
+                    }}
+                    exit={{ 
+                      height: 0, 
+                      opacity: 0,
+                      transition: { 
+                        height: { duration: 0.25, ease: "easeInOut" },
+                        opacity: { duration: 0.15 }
+                      } 
+                    }}
+                  >
+                    <div className="px-5 md:px-6 pb-5 md:pb-6 text-gray-300">
+                      <p className="text-sm md:text-base pb-4">{faq.answer}</p>
+                      <motion.div 
+                        className="h-0.5 bg-gradient-to-r from-[#40916C] to-[#081C15] rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: '100%' }}
+                        transition={{ delay: 0.1, duration: 0.4 }}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
+
+
+        <div className="mt-16 text-center">
+  <p className="text-gray-400 mb-6">Still have questions?</p>
+  <a href="#rfsctaform">
+  <button
+    className="px-6 py-2 md:px-8 md:py-3 rounded-full bg-gradient-to-r from-[#D8F3DC] to-[#1B4332] text-[#081C15] font-medium shadow-lg text-sm md:text-base hover:shadow-[#2D6A4F] transition-all active:scale-95"
+    onClick={() => {
+      // 👉 Haptic Feedback (mobile devices that support it)
+      if (navigator.vibrate) {
+        navigator.vibrate(30);
+      }
+
+      // 👉 Play Click Sound (desktop + mobile)
+      const clickSound = new Audio("/sounds/RFSbuttonclick.mp3"); 
+      clickSound.volume = 1.0; // set volume (0.0 - 1.0)
+      clickSound.play().catch((err) => {
+        console.warn("Sound play blocked until user interacts:", err);
+      });
+    }}
+  >
+    Contact Support 
+  </button>
+  </a>
+</div>
+
+
+      </div>
+    </div>
+  );
+};
+
+export default RFSfaqs;

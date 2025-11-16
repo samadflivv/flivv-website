@@ -1,0 +1,16 @@
+{
+  "rules": [
+    {
+      "id": "AllowLocalAndSite",
+      "allowedOrigins": [
+        "http://localhost:3000",
+        "https://flivvdevelopers.com/",
+        "*"
+      ],
+      "allowedMethods": ["GET", "HEAD"],
+      "allowedHeaders": ["*"],
+      "exposeHeaders": ["ETag"],
+      "maxAgeSeconds": 3000
+    }
+  ]
+}

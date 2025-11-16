@@ -1,0 +1,332 @@
+{
+  "alkhobar1": {
+    "id": "alkhobar1",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar1/alkhobar1-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar1/alkhobar1-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar1/alkhobar1-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar1/alkhobar1-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar1/alkhobar1-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar1/alkhobar1-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRoYAAABXRUJQVlA4IHoAAADwBACdASoUAA0APp0+mUgloyKhMAgAsBOJbACdMoR4NuAwQABoVhafJMECigukhwAA/tK0UMdf6H1nv5AnH8yX204zbifAxQQL8xSapWzjwt113PhOMUczlX3BBQwiYHDZYHJyRdgvJyZZpDl9tmxxBFjiDhctOCAAAA==",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar1/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar1/alkhobar1-320.jpg"
+  },
+  "alkhobar2": {
+    "id": "alkhobar2",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar2/alkhobar2-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar2/alkhobar2-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar2/alkhobar2-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar2/alkhobar2-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar2/alkhobar2-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar2/alkhobar2-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRowAAABXRUJQVlA4IIAAAAAwBACdASoUAA0APp0+mkgloyKhMAgAsBOJZgCdMoACiXkmutoxIuOLHfAA/q+3dJqop3somjQl6yVWnt+oyrHAv09AVVqnXWgogXBTROvOOYTGp/e0Sld7C1+C4piQUn2NiF3conPLc51DYG1UdDN4gLxtAftxm5UzWI/kvbo4AA==",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar2/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar2/alkhobar2-320.jpg"
+  },
+  "alkhobar3": {
+    "id": "alkhobar3",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar3/alkhobar3-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar3/alkhobar3-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar3/alkhobar3-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar3/alkhobar3-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar3/alkhobar3-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar3/alkhobar3-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRpYAAABXRUJQVlA4IIoAAAAQBACdASoUAA0APp0+mkiloyKhMAgAsBOJbACdMoRwABCb0SaJI+qWRAD+qLnT+voRfDyiOGv0k4/TL/bNTnmH6CErGSxssfIrEk551IsPTF+/h68G5e/2dVzQsZaaz+pHHHAl/HL9STYG4c3LfF5GVLb2LQ5zX5dBkDOMOdtnnef5MVoJZmvgAAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar3/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar3/alkhobar3-320.jpg"
+  },
+  "alkhobar4": {
+    "id": "alkhobar4",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar4/alkhobar4-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar4/alkhobar4-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar4/alkhobar4-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar4/alkhobar4-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar4/alkhobar4-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar4/alkhobar4-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRogAAABXRUJQVlA4IHwAAAAwBACdASoUAA0APp0+mkgloyKhMAgAsBOJZgCdMoRwABohrEQP1QivpsgA/mbZx4TLqoqXstrzVc4DXUW3teVBfi/iWbNVYfwOIqxKLS83kV0jGJmpx43p+9moGQD4ss6/9EECRvZitwcMyD8PnUaEbF+TjCkBDCnqq/gA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar4/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar4/alkhobar4-320.jpg"
+  },
+  "alkhobar5": {
+    "id": "alkhobar5",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar5/alkhobar5-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar5/alkhobar5-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar5/alkhobar5-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar5/alkhobar5-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar5/alkhobar5-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar5/alkhobar5-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRnYAAABXRUJQVlA4IGoAAAAwBACdASoUAA0APp0+mkgloyKhMAgAsBOJZACdLwAByztEnc7FcP5blKAA/oURltqRoHlafrTGO8mIDmSji7QsyRPT0BYpidqja6b4e4UMlBipk7koCR9TMqtPTei+EQD+3JQAzuWKgAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar5/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar5/alkhobar5-320.jpg"
+  },
+  "alkhobar6": {
+    "id": "alkhobar6",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar6/alkhobar6-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar6/alkhobar6-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar6/alkhobar6-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar6/alkhobar6-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar6/alkhobar6-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar6/alkhobar6-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRowAAABXRUJQVlA4IIAAAAAwBACdASoUAA0APp1CnEglpCMhMAgAsBOJQBOjXVgLAOQ5LrRJI5FSgAAA/rX3QBE0q6l8fM6UDxHjxS1eKQDPOjyDPwDNAWR2PtKTYzaSRfrs9GszgEMzoeUcKdvaFLVsFtEZ4mUdFi++Aejci/ACRhwfsblVZ0KaKnkDKSAAAA==",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar6/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar6/alkhobar6-320.jpg"
+  },
+  "alkhobar7": {
+    "id": "alkhobar7",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar7/alkhobar7-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar7/alkhobar7-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar7/alkhobar7-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar7/alkhobar7-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar7/alkhobar7-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar7/alkhobar7-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRoIAAABXRUJQVlA4IHYAAADwAwCdASoUAA0APp0+mUgloyKhMAgAsBOJYgCdABEMzVeog+mxUmAAAPqK0/RSpxZq3tkhMd7eNZZk4ihXuQioQ0XH0wkrPDIoEfuTYTKRXPCq37hQMHdKdLHnT7qrCBARAo1AIcSmk4OEYYL6CZigtgS53GAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar7/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar7/alkhobar7-320.jpg"
+  },
+  "alkhobar8": {
+    "id": "alkhobar8",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar8/alkhobar8-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar8/alkhobar8-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar8/alkhobar8-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar8/alkhobar8-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar8/alkhobar8-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar8/alkhobar8-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAwCdASoUAA0APp0+mkgloyKhMAgAsBOJZwDE2Bu2UWBfznIFmNMAAP7XFjMESnpQ0rUlRiPGZ8mLeFMdz3OQ6XncRhMzYbMo0SEuGmisgf9qytQO62EVvuXkdjKAAAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar8/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar8/alkhobar8-320.jpg"
+  },
+  "alkhobar9": {
+    "id": "alkhobar9",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar9/alkhobar9-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar9/alkhobar9-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar9/alkhobar9-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar9/alkhobar9-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar9/alkhobar9-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar9/alkhobar9-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRn4AAABXRUJQVlA4IHIAAAAwBACdASoUAA0APp0+mkgloyKhMAgAsBOJZACdMoMYAEI0t/pJe3PamYAA/lgKoat/2EkO1oXdXSjIVWGHtvkGSNDyeM34QZ9gMJUEvUEOXF8UGk01wB0rgVXRgzAvaamsS5Bdf+ySLu0wj2RB9mlwAAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar9/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/alkhobar9/alkhobar9-320.jpg"
+  },
+  "event1": {
+    "id": "event1",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event1/event1-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event1/event1-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event1/event1-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event1/event1-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event1/event1-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event1/event1-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRn4AAABXRUJQVlA4IHIAAABQBACdASoUAA0APp1Amkilo6KhMAgAsBOJYgCdH8ACu8ESOPH7Ws7erS+AAP6Z7OZYGjkBJ3767+EPjRAJiQ+WSpcIyx3o8LlcDRaKlSCngj6eGRTdro+EDWtaZRDoFioKdf2R/Momu131nzEL1sQBAAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event1/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event1/event1-320.jpg"
+  },
+  "event2": {
+    "id": "event2",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event2/event2-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event2/event2-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event2/event2-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event2/event2-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event2/event2-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event2/event2-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoUAA0APp0+mkiloyKhMAgAsBOJQBOkBshBGCjDP3Ejab++gAD9vUwWnCxTdYulFLZo/NegUE7nz/CX2pjrLHRNB2LtuFWnvWe48+c7EzdtfvCelwRU+tB0SPcpQ3DbFnD4YLpxQ+9ZuX92vRlBsvil1YZVDKAh1zIw4AAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event2/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event2/event2-320.jpg"
+  },
+  "event3": {
+    "id": "event3",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event3/event3-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event3/event3-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event3/event3-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event3/event3-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event3/event3-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event3/event3-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQBACdASoUAA0APp0+mUgloyKhMAgAsBOJZQC1CIjDAGTTepajCob04AD+8nUgMHB8FWMGf1QyoncK4wn7GcvU23qQS1aoBVgaZxXtSimnThWh3gJVv2NXnvHpkZQcvsySDj7+5k1f58HkE3agAAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event3/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event3/event3-320.jpg"
+  },
+  "event4": {
+    "id": "event4",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event4/event4-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event4/event4-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event4/event4-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event4/event4-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event4/event4-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event4/event4-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoUAA0APp0+mUgloyKhMAgAsBOJQBOl4AAvR4P+c1svXAgA/t92PO8GPuDwbMTCu9tHVYmzmQDIYK+S/ALBwp2lvTJ6Vobk5tOXKsJTeVEfuNBya4AcxhM6WH8FQAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event4/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event4/event4-320.jpg"
+  },
+  "event5": {
+    "id": "event5",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event5/event5-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event5/event5-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event5/event5-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event5/event5-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event5/event5-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event5/event5-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBACdASoUAA0APp0+mkgloyKhMAgAsBOJbACdMoMYADjC5YBff2/RIz0AAP7AWKhks8dF8wC+WjDJ8ct5L6YsEHSicsV5BHa9ZtnQv6NOPd9ttzqWz1WwyOPfB3JnNaZ3q5QFU5I7+wCs8b/GjTh++4pLhxwE/Jnz6By5DgWIAAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event5/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event5/event5-320.jpg"
+  },
+  "event6": {
+    "id": "event6",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event6/event6-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event6/event6-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event6/event6-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event6/event6-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event6/event6-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event6/event6-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRogAAABXRUJQVlA4IHwAAABwBACdASoUAA0APp0+mUgloyKhMAgAsBOJZgCdMoRwACmzP6GcdklWDUZ6AAD+mqMkwwP3izIbZC2pQMSLqi4y/eyBbUa3qopOVKzZ/DvT5AfB8v0xojvkYRT5BAd6IeJ5hm1Ugf+cZiWK68Y4QJxSPoz8xEAdzDwGYAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event6/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/event6/event6-320.jpg"
+  },
+  "jeddah1": {
+    "id": "jeddah1",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah1/jeddah1-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah1/jeddah1-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah1/jeddah1-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah1/jeddah1-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah1/jeddah1-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah1/jeddah1-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRoQAAABXRUJQVlA4IHgAAACQBACdASoUAA0APp0+mUgloyKhMAgAsBOJbACdMoR4R8AAqPd/XfQrVeTktAAA/uufE7f8pdihvqeJpfWli6jRtSRTAzWverLXuX9vipMJfOjnLNhemwP2tYlpgupT0W+lmDs30hcoNQdhQMPDYzLNZ1M33648AAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah1/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah1/jeddah1-320.jpg"
+  },
+  "jeddah2": {
+    "id": "jeddah2",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah2/jeddah2-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah2/jeddah2-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah2/jeddah2-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah2/jeddah2-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah2/jeddah2-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah2/jeddah2-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRpoAAABXRUJQVlA4II4AAACQBACdASoUAA0APp0+mUgloyKhMAgAsBOJZgCdL1GUBvAAGaIs436DIbk27QAA/uAIfXHcU7VjRdycHiF9cwaDT/lUUq8mdBNWpXO3zd479gtzpTclzYJUunH2FE359ZPfWGvvZ4xjdt45n6tdEYcSZ/bkznhKYuKVeNJvDcODfamqrSG9ISvcgV4kgAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah2/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah2/jeddah2-320.jpg"
+  },
+  "jeddah3": {
+    "id": "jeddah3",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah3/jeddah3-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah3/jeddah3-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah3/jeddah3-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah3/jeddah3-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah3/jeddah3-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah3/jeddah3-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoUAA0APp0+mkgloyKhMAgAsBOJZACdMoRwABMWJztyfeSyS6AA+/Xi+Q/rrAqLXm/MjObEb0vJ8o/KL3q9fikMuehG1FOraQlBE817vPLCDA7Q5frk36Vs8HXPuDTZwFxsdn7mfPORffCXrOWw3jJw+XOkw6EKPCC8beUOAAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah3/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah3/jeddah3-320.jpg"
+  },
+  "jeddah4": {
+    "id": "jeddah4",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah4/jeddah4-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah4/jeddah4-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah4/jeddah4-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah4/jeddah4-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah4/jeddah4-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah4/jeddah4-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRogAAABXRUJQVlA4IHwAAACwBACdASoUAA0APp0+mUgloyKhMAgAsBOJbACdMoRwN5XTAAIiQUZzTMTk+t8QAPVT2shVfHKtXEWuWSJS8liqUvnH0QF/urevPbqXVAkSbWoX653my0u7MJ5uD/IIS6iEEkZZxuYfn5UvIGJ2MO/WBX6p5pcsNl05rAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah4/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah4/jeddah4-320.jpg"
+  },
+  "jeddah5": {
+    "id": "jeddah5",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah5/jeddah5-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah5/jeddah5-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah5/jeddah5-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah5/jeddah5-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah5/jeddah5-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah5/jeddah5-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRooAAABXRUJQVlA4IH4AAABQBACdASoUAA0APp0+mUgloyKhMAgAsBOJZACdMoR3ACV6xbKoimaLseCAAP7AXaD5aWvv+TUanzkEuis9kzerFE8BJrABcQid/itphW/avYoGN6rUSsjs2A5jlJ94iXHkFzGyVcoU6PZLFY6Io35Tnf50IZ2hj3xy+U2YAAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah5/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah5/jeddah5-320.jpg"
+  },
+  "jeddah6": {
+    "id": "jeddah6",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah6/jeddah6-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah6/jeddah6-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah6/jeddah6-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah6/jeddah6-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah6/jeddah6-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah6/jeddah6-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoUAA0APp0+mkgloyKhMAgAsBOJYgCdACDmM8sQeno8rN6AAP7BggqzNI5Ca3tNEeuUJjUb1dKZHL8Q8E33g/3NENueLHwWD28RNIYF+DaEnkUKw/Hxx0/JD6Y1i12O+ipC2BDsvUgYZAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah6/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah6/jeddah6-320.jpg"
+  },
+  "jeddah7": {
+    "id": "jeddah7",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah7/jeddah7-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah7/jeddah7-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah7/jeddah7-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah7/jeddah7-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah7/jeddah7-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah7/jeddah7-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBACdASoUAA0APp0+mkgloyKhMAgAsBOJZACdMoADQB/bXDUbWBL6AAD9v9zVoEZGb6d+SqU8JewB5rbIcLOnSMxIjI7v8+YDvzq3gHx9g3WVfAsO4GMHO/wR3lKg98glytIpnUCNwmWJOPGEIKUQgAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah7/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah7/jeddah7-320.jpg"
+  },
+  "jeddah8": {
+    "id": "jeddah8",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah8/jeddah8-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah8/jeddah8-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah8/jeddah8-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah8/jeddah8-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah8/jeddah8-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah8/jeddah8-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRpAAAABXRUJQVlA4IIQAAADwAwCdASoUAA0APp0+mUgloyKhMAgAsBOJQBOmUGUgBcMAqUaaqfjwAPv77hqi5mhJrmAP9rlxmbaADI34ApUVapGXeMpgoqhSti6rEneKCJF1QEJUZRfdRBP123KIaYb9TWHc4VyLd4gEnrDZaWJXJ9/qCu+FMfl9+2BFEjFGCPWoAAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah8/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah8/jeddah8-320.jpg"
+  },
+  "jeddah9": {
+    "id": "jeddah9",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah9/jeddah9-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah9/jeddah9-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah9/jeddah9-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah9/jeddah9-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah9/jeddah9-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah9/jeddah9-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRoIAAABXRUJQVlA4IHYAAACQBACdASoUAA0APp0+mUgloyKhMAgAsBOJaACdMoLUD//vjoBsGxLhYMx9hgAA/qvkJVY2X+zag8Sl2jYBHwOWjE2+L6jViQvc3fAOoDsSN8InAcc7v+mj8FeJWZdTxqnO0kMMwXMpAa56fyyeV8BbFNNLsAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah9/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/jeddah9/jeddah9-320.jpg"
+  },
+  "riyadh1": {
+    "id": "riyadh1",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh1/riyadh1-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh1/riyadh1-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh1/riyadh1-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh1/riyadh1-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh1/riyadh1-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh1/riyadh1-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoUAA0APp0+mUgloyKhMAgAsBOJQBdmUABwf5O2mEs0ANeev7gA/vOf3JBJ718xD2vAXIH/V94EjxnjIRIBEnuimq+f7Uwk1jFfWMgk11mLhnelf3LRvf7i5XygfnPhlXqIlV7PVRHnpTvN49scTwAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh1/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh1/riyadh1-320.jpg"
+  },
+  "riyadh2": {
+    "id": "riyadh2",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh2/riyadh2-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh2/riyadh2-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh2/riyadh2-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh2/riyadh2-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh2/riyadh2-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh2/riyadh2-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoUAA0APp1Amkilo6KhMAgAsBOJQBOmUABpzmi/9m32gPcRhwAA9r6d70hez6Trr4+mXYL9Zal6MlWHGaTj2r6Z5c7NPUKi5+TbQca/8klw59e/Fxys/J02zgTv/xygESTTcLQrNjTgUPlsZ+Q0BOAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh2/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh2/riyadh2-320.jpg"
+  },
+  "riyadh3": {
+    "id": "riyadh3",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh3/riyadh3-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh3/riyadh3-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh3/riyadh3-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh3/riyadh3-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh3/riyadh3-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh3/riyadh3-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRn4AAABXRUJQVlA4IHIAAACwAwCdASoUAA0APp0+mUgloyKhMAgAsBOJQBOgBDE1VvLw1cEWAAD+2DQZfW6Ob9xXCUGxetjkr1S+OghvqI2LckNKCYznb0vnYkEMAQbb0tX+fbU46IKTyOl4cPJY+8WzybbXoRx7Lm9EXTHyatT4kAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh3/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh3/riyadh3-320.jpg"
+  },
+  "riyadh4": {
+    "id": "riyadh4",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh4/riyadh4-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh4/riyadh4-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh4/riyadh4-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh4/riyadh4-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh4/riyadh4-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh4/riyadh4-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBACdASoUAA0APp0+mUgloyKhMAgAsBOJZACdMoRwACVUYFpjXU3c/VygAP7F+w7DA7c5itM8aSyyP4146/LzuybyaRMln9iIoZJ8zNfHMYq9DNBY/ZNjQuY1xzOgAUxq3bxGedbNyPPNMdvVc/Ck11mIg8rMDfsfgUMAPFxxAgAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh4/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh4/riyadh4-320.jpg"
+  },
+  "riyadh5": {
+    "id": "riyadh5",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh5/riyadh5-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh5/riyadh5-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh5/riyadh5-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh5/riyadh5-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh5/riyadh5-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh5/riyadh5-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRnoAAABXRUJQVlA4IG4AAADQAwCdASoUAA0APp0+mkgloyKhMAgAsBOJQBOgBDwH6dI/OhcREgAA/vPvloq8M4npigzqNVoBFYOHjaqqjVPlfgb/T2VUjsTOIbvdFIyZ+Mtlql+1DJTx0EJqr6mFRdALc14sudvsHhScxuIAAA==",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh5/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh5/riyadh5-320.jpg"
+  },
+  "riyadh6": {
+    "id": "riyadh6",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh6/riyadh6-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh6/riyadh6-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh6/riyadh6-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh6/riyadh6-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh6/riyadh6-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh6/riyadh6-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQBACdASoUAA0APp1Amkglo6KhMAgAsBOJQBOmUABYLavq4p8m30iwgAD41i3oGoXJGaqUWEEAxh6gnhQnwBoWdDLAA8NzQdxa5kC5ujfIu1CS6udvp9kKTBD7o8VPl2OODZslJZJobAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh6/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh6/riyadh6-320.jpg"
+  },
+  "riyadh7": {
+    "id": "riyadh7",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh7/riyadh7-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh7/riyadh7-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh7/riyadh7-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh7/riyadh7-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh7/riyadh7-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh7/riyadh7-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRo4AAABXRUJQVlA4IIIAAAAQBACdASoUAA0APp0+mkgloyKhMAgAsBOJagCdMoACLyIvDmc4V37flgD+g42o5qRTdbJilrszXHjPcW5VR+vj7eb5OLhORPlC91s7Xl3Ry2LBK412UPuvA4O2CyIyYCwMYQAsAAt3h7HqfgFXsAOBvvA8/tptZXH9n3VcgjD0AAAA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh7/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh7/riyadh7-320.jpg"
+  },
+  "riyadh8": {
+    "id": "riyadh8",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh8/riyadh8-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh8/riyadh8-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh8/riyadh8-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh8/riyadh8-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh8/riyadh8-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh8/riyadh8-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRo4AAABXRUJQVlA4IIIAAADQBACdASoUAA0APp1Am0ilo6KhMAgAsBOJbACdMoR3N5Kyv8BXrf7tboAzquaaAAD+mRu3LIag8sA1muSKqKTNPX9j4wGROgXC6o5OoQjyR1S0V59PTBKUnA2U6e43NzjnbBFWuzm/N7/ryg6r+FBRQB8bABQnjLY/j1V9pV3vK2gA",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh8/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh8/riyadh8-320.jpg"
+  },
+  "riyadh9": {
+    "id": "riyadh9",
+    "variants": {
+      "jpg": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh9/riyadh9-320.jpg 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh9/riyadh9-640.jpg 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh9/riyadh9-1024.jpg 1024w",
+      "webp": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh9/riyadh9-320.webp 320w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh9/riyadh9-640.webp 640w, https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh9/riyadh9-1024.webp 1024w"
+    },
+    "placeholder": "data:image/jpeg;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoUAA0APp0+mUgloyKhMAgAsBOJaACdMoRwACHk2/YowbSzqpwA/vUy2o6RKrHhwnuWW+Dgsaj/53tcgFSp4kpcq+UMmDIxFhafEV0x/bGyfi7MDq/rWgMjZHGI8fxcoiY9yGNTfYwlwX0xH1rZr5ytPcyFEtY2+HOg/uG2gAA=",
+    "original": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh9/original.jpg",
+    "low": "https://flivv-web-cdn.s3.amazonaws.com/ksa-gallery/riyadh9/riyadh9-320.jpg"
+  }
+}
