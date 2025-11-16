@@ -2,6 +2,8 @@
 node_modules/
 .pnp
 .pnp.*
+
+# Yarn
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
@@ -36,6 +38,9 @@ pnpm-debug.log*
 
 # Vercel
 .vercel
+
+# Testing
+coverage/
 
 # TypeScript
 *.tsbuildinfo
