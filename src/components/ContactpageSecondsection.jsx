@@ -39,16 +39,11 @@ const ContactpageSecondsection = () => {
       city: "Thimmajipet, Jadcherla",
       address: "A premium farmland project with 10+ amenities, sustainable living concept, exclusive memberships, and full of experience.",
       link: "/rivendellfarms",
-      status: "active"
+      status: "sold-out"
     },  
+
     {
-      country: "Lake City",
-      city: "Nandikandi",
-      address: "A 10.5-acre open plot project on Mumbai Highway (NH65) in Nandikandi's prime growth corridor",
-      status: "active"
-    },
-    {
-      country: "NS Homes",
+      country: "NS Homes 1.0",
       city: "Meerkhanpet",
       address: "NS Homes is our maiden open plot project located on the 100ft. main road connecting Srisailam & Nagarjuna Sagar Highways",
       status: "sold-out"
@@ -105,9 +100,6 @@ const ContactpageSecondsection = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal mb-4 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
             Experience Our Projects
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover our carefully curated real estate projects designed to offer premium living experiences and excellent investment opportunities.
-          </p>
         </div>
 
         {/* Projects Grid - Modern Card Layout */}
@@ -140,7 +132,7 @@ const ContactpageSecondsection = () => {
                 </p>
 
                 {/* Action Button */}
-                <div className="pt-4 border-t border-gray-100">
+                {/* <div className="pt-4 border-t border-gray-100">
                   <a
                     href={office.link}
                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 group/btn ${
@@ -169,14 +161,14 @@ const ContactpageSecondsection = () => {
                       />
                     </svg>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 mb-12">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 mb-12">
           <div className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
             <div className="text-3xl font-bold text-blue-600 mb-2">10</div>
             <div className="text-gray-600 font-semibold">Projects</div>
@@ -193,7 +185,7 @@ const ContactpageSecondsection = () => {
             <div className="text-3xl font-bold text-blue-600 mb-2">97%</div>
             <div className="text-gray-600 font-semibold">Satisfaction Rate</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

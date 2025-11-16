@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useInView } from 'framer-motion';
 
 // Icons (using simple outline icons)
 const MapPin = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
@@ -14,6 +15,9 @@ const Road = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" vi
 const Shield = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>;
 const Document = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>;
 const ArrowRight = () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>;
+const PlotIcon = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15V9a2 2 0 012-2h14a2 2 0 012 2v6" /></svg>;
+const SizeIcon = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" /></svg>;
+
 
 gsap.registerPlugin && gsap.registerPlugin(ScrollTrigger);
 
@@ -118,13 +122,13 @@ export default function AirportTown() {
       <div className="min-h-screen w-full font-sans antialiased bg-gradient-to-br from-[#e0dfd8] via-[#f0efe8] to-[#e8e7e0]" style={{ color: "#44312b" }}>
         
         {/* Enhanced HERO SECTION */}
-        <section className="relative overflow-hidden h-screen flex items-center justify-center">
+        <section className="relative overflow-hidden lg:h-screen flex items-center justify-center pt-40 lg:pt-25">
           {/* Dynamic Background with multiple layers */}
           <div
             ref={heroBgRef}
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "linear-gradient(rgba(68,49,43,0.15), rgba(68,49,43,0.15)), url('https://source.unsplash.com/1920x1080/?luxury,real-estate,modern')",
+              backgroundImage: "linear-gradient(rgba(68,49,43,0.15), rgba(68,49,43,0.15))",
             }}
           />
           
@@ -158,7 +162,7 @@ export default function AirportTown() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+          <div className="relative z-10 max-w-7xl mx-auto px-8 sm:px-8 lg:px-12 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Main Content */}
               <motion.div
@@ -190,9 +194,18 @@ export default function AirportTown() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl"
+                  className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl text-justify"
                 >
-                  Airport Town by Flivv Developers is a premium, R1-zone project just 2 km from Bangalore Highway (NH-44). With only 36 plots, 30 ft internal roads, and quality development by Flivv, it offers strong residential and investment value. The GP layout is HMDA-approved under LRS, making it ideal for both construction and long-term returns. Plot sizes start at 200 sq. yards. Close to Kothur town and daily conveniences, Airport Town is perfectly placed for future growth.
+                  <strong>Airport Town by Flivv Developers </strong> is a premium, R1-zone project just 2 km from Bangalore Highway (NH-44). With only 36 plots, 30 ft internal roads, and quality development by Flivv, it offers strong residential and investment value.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl text-justify"
+                >
+                  The GP layout is HMDA-approved under LRS, making it ideal for both construction and long-term returns. Plot sizes start at 200 sq. yards. Close to Kothur town and daily conveniences, Airport Town is perfectly placed for future growth.
                 </motion.p>
 
                 {/* Enhanced CTA Buttons */}
@@ -233,274 +246,263 @@ export default function AirportTown() {
               </motion.div>
 
               {/* Enhanced Stats Card */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="hidden lg:block"
-              >
-                <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20">
-                  <div className="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <div className="p-2 rounded-full bg-[#44312b]/10">
-                      <CheckCircle />
-                    </div>
-                    Quick Glance 
-                  </div>
-                  
-                  <div className="space-y-2">
-                    {[
-                      { icon: <Home />, label: "No. Of Units", value: "36", suffix: "Only" },
-                      { icon: <Document />, label: "Plot Sizes", value: "200+", suffix: "sq. yards" },
-                      { icon: <Road />, label: "Infrastructure", value: "30", suffix: "ft internal" },
-                      { icon: <Shield />, label: "Approval", value: "HMDA GP", suffix: "LRS" }
-                    ].map((item, index) => (
-                      <motion.div
-                        key={index}
-                        className="flex items-center justify-between p-4 rounded-2xl hover:bg-[#44312b]/5 transition-colors"
-                        whileHover={{ x: 4 }}
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className="p-2 rounded-xl bg-[#44312b]/10">
-                            {item.icon}
-                          </div>
-                          <div>
-                            <div className="font-semibold">{item.label}</div>
-                            <div className="text-sm text-gray-600">{item.suffix}</div>
-                          </div>
-                        </div>
-                        <div className="text-2xl font-bold" style={{ color: "#44312b" }}>
-                          {item.value}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <motion.a 
-                    href="#contact" 
-                    className="w-full mt-6 inline-flex items-center justify-center py-4 rounded-2xl font-semibold transition-all"
-                    style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                  >
-                    Get Brochure
-                  </motion.a>
-                </div>
-              </motion.div>
+<motion.div
+  initial={{ opacity: 0, x: 20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8, delay: 0.6 }}
+  className="hidden lg:block"
+>
+  <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20">
+    <div className="text-2xl font-bold mb-6 flex items-center gap-3">
+      <div className="p-2 rounded-full bg-[#44312b]/10">
+        <CheckCircle />
+      </div>
+      Quick Glance 
+    </div>
+    
+    <div>
+      {[
+        { icon: <PlotIcon />, label: "No. Of Units", value: "36", suffix: "Only" },
+        { icon: <SizeIcon />, label: "Minimum Plot Size", value: "200", suffix: "sq. yards" },
+        { icon: <Shield />, label: "Approval", value: "HMDA GP", suffix: "LRS" }
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          className="flex items-center justify-between p-4 rounded-2xl hover:bg-[#44312b]/5 transition-colors"
+          whileHover={{ x: 4 }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="p-2 rounded-xl bg-[#44312b]/10">
+              {item.icon}
+            </div>
+            <div>
+              <div className="font-semibold">{item.label}</div>
+              <div className="text-sm text-gray-600">{item.suffix}</div>
             </div>
           </div>
+          <div className="text-2xl font-bold" style={{ color: "#44312b" }}>
+            {item.value}
+          </div>
+        </motion.div>
+      ))}
+    </div>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-          >
-            <motion.div
-              className="w-6 h-10 border-2 rounded-full border-[#44312b] flex justify-center"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <div className="w-1 h-3 bg-[#44312b] rounded-full mt-2" />
-            </motion.div>
-          </motion.div>
+    <motion.a 
+      href="#contact" 
+      className="w-full mt-6 inline-flex items-center justify-center py-4 rounded-2xl font-semibold transition-all"
+      style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
+      whileHover={{ scale: 1.02, y: -2 }}
+    >
+      Get Brochure
+    </motion.a>
+  </div>
+</motion.div>
+            </div>
+          </div>
         </section>
 
         {/* SECOND SECTION - Showcase */}
-        <motion.section 
-          id="showcase" 
-          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20"
-          {...fadeInUp}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left: Large interactive mock-up / site-plan */}
-            <div className="order-2 lg:order-1">
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="rounded-3xl overflow-hidden shadow-2xl relative bg-white/90 backdrop-blur-sm border border-white/20"
-                whileHover={{ y: -5 }}
-              >
-                <img 
-                  src="https://source.unsplash.com/1200x900/?site-plan,real-estate" 
-                  alt="Airport Town site plan" 
-                  className="w-full object-cover h-96 md:h-[450px] transition-transform duration-700 hover:scale-105" 
-                />
-                <div className="absolute left-6 bottom-6 bg-[#44312b] text-[#e0dfd8] px-4 py-3 rounded-xl shadow-lg">
-                  <div className="text-sm font-semibold">Exclusive - Only 36 Plots</div>
-                  <div className="text-xs mt-1">Plot sizes from 200 sq. yards</div>
+       <motion.section 
+  id="showcase" 
+  className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-20"
+  {...fadeInUp}
+>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+    {/* Left: Large interactive mock-up / site-plan */}
+    <div className="order-2 lg:order-1">
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="rounded-3xl overflow-hidden shadow-2xl relative bg-white/90 backdrop-blur-sm border border-white/20"
+        whileHover={{ y: -5 }}
+      >
+        <img 
+          src="https://source.unsplash.com/1200x900/?site-plan,real-estate" 
+          alt="Airport Town site plan" 
+          className="w-full object-cover h-64 sm:h-80 md:h-96 lg:h-[450px] transition-transform duration-700 hover:scale-105" 
+        />
+        <div className="absolute left-4 sm:left-6 bottom-4 sm:bottom-6 bg-[#44312b] text-[#e0dfd8] px-3 sm:px-4 py-2 sm:py-3 rounded-xl shadow-lg">
+          <div className="text-xs sm:text-sm font-semibold">Exclusive - Only 36 Plots</div>
+          <div className="text-xs mt-1">Plot sizes from 200 sq. yards</div>
+        </div>
+      </motion.div>
+
+      {/* Feature highlights - FIXED FOR MOBILE */}
+      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {[
+          { title: "Infrastructure", desc: "CC roads, street lighting & concealed drainage", icon: <Road /> },
+          { title: "Connectivity", desc: "Quick access to NH-44 and RGIA", icon: <MapPin /> }
+        ].map((item, index) => (
+          <div 
+            key={index}
+            className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg border border-white/20"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <div className="p-2 sm:p-3 rounded-xl bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white w-fit flex-shrink-0">
+                {item.icon}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-base sm:text-lg font-semibold mb-1 sm:mb-0" style={{ color: "#44312b" }}>
+                  {item.title}
                 </div>
-              </motion.div>
-
-              {/* Feature highlights */}
-              <motion.div 
-                className="mt-8 grid grid-cols-2 gap-4"
-                variants={staggerChildren}
-                initial="initial"
-                whileInView="whileInView"
-                viewport={{ once: true }}
-              >
-                {[
-                  { title: "Infrastructure", desc: "CC roads, street lighting & concealed drainage", icon: <Road /> },
-                  { title: "Connectivity", desc: "Quick access to NH-44 and RGIA", icon: <MapPin /> }
-                ].map((item, index) => (
-                  <motion.div 
-                    key={index}
-                    variants={fadeInUp}
-                    className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20"
-                    whileHover={{ y: -8, scale: 1.02 }}
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white">
-                        {item.icon}
-                      </div>
-                      <div className="text-lg font-semibold" style={{ color: "#44312b" }}>{item.title}</div>
-                    </div>
-                    <div className="text-gray-600 ml-14">{item.desc}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Right: Info panels & CTAs */}
-            <div className="order-1 lg:order-2 flex flex-col gap-6">
-              <motion.div 
-                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                whileHover={{ y: -5 }}
-              >
-                <h3 className="text-2xl font-bold flex items-center gap-2" style={{ color: "#44312b" }}>
-                  <CheckCircle />
-                  Why Airport Town?
-                </h3>
-                <p className="mt-4 text-gray-700 leading-relaxed">Airport Town, strategically positioned on the Kothur–Penjerla road, stands out as one of the most promising investment opportunities, thanks to its proximity to the city and being just 19 km from the airport. With Flivv’s developmental enhancements, the project is poised to deliver impressive and reliable returns for investors in the coming years!</p>
-
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[
-                    { title: "HMDA Approved", desc: "GP Layout under LRS", icon: <Shield /> },
-                    { title: "Ready to Construct", desc: "No long delays", icon: <Home /> }
-                  ].map((item, index) => (
-                    <motion.div 
-                      key={index}
-                      className="p-4 rounded-xl flex items-start gap-3 bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white shadow-lg"
-                      whileHover={{ scale: 1.02, y: -2 }}
-                    >
-                      {item.icon}
-                      <div>
-                        <div className="text-sm font-semibold">{item.title}</div>
-                        <div className="text-xs mt-1 opacity-90">{item.desc}</div>
-                      </div>
-                    </motion.div>
-                  ))}
+                <div className="text-sm text-gray-600 sm:mt-1 break-words leading-relaxed">
+                  {item.desc}
                 </div>
-
-                <div className="mt-8 flex gap-4">
-                  <motion.a 
-                    href="#contact" 
-                    className="px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
-                    style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                  >
-                    Check Availability
-                    <ArrowRight />
-                  </motion.a>
-                  <motion.a 
-                    href="#gallery" 
-                    className="px-6 py-3 rounded-xl font-medium border-2 flex items-center gap-2 transition-all"
-                    style={{ borderColor: "#44312b", color: "#44312b" }}
-                    whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(68,49,43,0.05)" }}
-                  >
-                    View Photos
-                  </motion.a>
-                </div>
-              </motion.div>
-
-              {/* Investment Snapshot */}
-              <motion.div 
-                className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <h4 className="text-xl font-semibold flex items-center gap-2" style={{ color: "#44312b" }}>
-                  <Document />
-                  Investment Snapshot
-                </h4>
-                <div className="mt-6 grid grid-cols-3 gap-6">
-                  {[
-                    { value: "36", label: "Plots" },
-                    { value: "200+", label: "sq. yards" },
-                    { value: "24/7", label: "Security" }
-                  ].map((item, index) => (
-                    <motion.div 
-                      key={index}
-                      className="text-center"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                    >
-                      <div className="text-3xl font-bold bg-gradient-to-br from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">{item.value}</div>
-                      <div className="text-sm text-gray-600 mt-1">{item.label}</div>
-                    </motion.div>
-                  ))}
-                </div>
-                <p className="mt-6 text-sm text-gray-600">Nearby conveniences, growing connectivity corridors, and proximity to RGIA make this project well-positioned for both appreciation and owner-use.</p>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.section>
+        ))}
+      </div>
+    </div>
+
+    {/* Right: Info panels & CTAs */}
+    <div className="order-1 lg:order-2 flex flex-col gap-6">
+      <motion.div 
+        className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-xl border border-white/20"
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        whileHover={{ y: -5 }}
+      >
+        <h3 className="text-xl sm:text-2xl font-bold flex items-center gap-2" style={{ color: "#44312b" }}>
+          <CheckCircle />
+          Why Airport Town?
+        </h3>
+        <p className="mt-3 sm:mt-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+          Airport Town, strategically positioned on the <strong>Kothur–Penjerla road,</strong> stands out as one of the most promising investment opportunities, thanks to its proximity to the city and being just 19 km from the airport. With Flivv's developmental enhancements, the project is poised to deliver impressive and reliable returns for investors in the coming years!
+        </p>
+
+        <div className="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          {[
+            { title: "HMDA Approved", desc: "GP Layout under LRS", icon: <Shield /> },
+            { title: "Ideal Investment", desc: "Close to City", icon: <Home /> }
+          ].map((item, index) => (
+            <motion.div 
+              key={index}
+              className="p-3 sm:p-4 rounded-xl flex items-start gap-3 bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white shadow-lg"
+              whileHover={{ scale: 1.02, y: -2 }}
+            >
+              {item.icon}
+              <div>
+                <div className="text-sm font-semibold">{item.title}</div>
+                <div className="text-xs mt-1 opacity-90">{item.desc}</div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Investment Snapshot */}
+      <motion.div 
+        className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-xl border border-white/20"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        whileHover={{ y: -5 }}
+      >
+        <h4 className="text-lg sm:text-xl font-semibold flex items-center gap-2" style={{ color: "#44312b" }}>
+          <Document />
+          Investment Snapshot
+        </h4>
+        <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-4 sm:gap-6">
+          {[
+            { value: "36", label: "Plots" },
+            { value: "200+", label: "sq. yards" },
+            { value: "24/7", label: "Security" }
+          ].map((item, index) => (
+            <motion.div 
+              key={index}
+              className="text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+            >
+              <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-br from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">
+                {item.value}
+              </div>
+              <div className="text-xs sm:text-sm text-gray-600 mt-1">{item.label}</div>
+            </motion.div>
+          ))}
+        </div>
+        <p className="mt-4 sm:mt-6 text-sm text-gray-600">
+          Nearby conveniences, growing connectivity corridors, and proximity to RGIA make this project well-positioned for both appreciation and owner-use.
+        </p>
+      </motion.div>
+    </div>
+  </div>
+</motion.section>
+
+
+      
+        {/* VIDEO SECTION */}
+<section className="relative w-full overflow-hidden">
+  <div className="relative h-[50vh] sm:h-screen w-full">
+    <video
+      className="absolute inset-0 w-full h-full object-cover"
+      muted
+      loop
+      playsInline
+      controlsList="nodownload"
+      disablePictureInPicture
+      ref={(el) => {
+        // Auto play/pause based on visibility
+        if (el) {
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) {
+                el.play().catch(console.log);
+              } else {
+                el.pause();
+              }
+            },
+            { threshold: 0.5 }
+          );
+          observer.observe(el);
+        }
+      }}
+    >
+      <source 
+        src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AIRPORT%20TOWN%20DRONE.mp4" 
+        type="video/mp4" 
+      />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
 
         {/* FEATURE GRID */}
-        <motion.section 
-          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 features-section"
-          {...fadeInUp}
-        >
-          <motion.h3 
-            className="text-3xl font-bold mb-12 text-center"
-            style={{ color: "#44312b" }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Project Highlights
-          </motion.h3>
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-          >
-            {[
-              { title: "30 ft Internal Roads", desc: "Wide internal carriageways for smooth drive & planning", icon: <Road /> },
-              { title: "CC Roads", desc: "Durable cement concrete paving for low maintenance", icon: <Document /> },
-              { title: "Electricity", desc: "Reliable electrical infrastructure & street lighting", icon: <CheckCircle /> },
-              { title: "24/7 Security", desc: "Gated, patrolled, and secure community", icon: <Shield /> },
-              { title: "HMDA Approved", desc: "GP layout under LRS — legal and ready", icon: <Shield /> },
-              { title: "Close to Kothur", desc: "Daily essentials within short distance", icon: <MapPin /> },
-            ].map((f, i) => (
-              <motion.div 
-                key={i} 
-                variants={fadeInUp}
-                className="feature-card bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/20 group"
-                whileHover={{ y: -8, scale: 1.02 }}
-              >
-                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#44312b] to-[#8b7355] w-fit mb-6 group-hover:scale-110 transition-transform duration-300 text-white">
-                  {f.icon}
-                </div>
-                <div className="text-xl font-semibold mb-3" style={{ color: "#44312b" }}>{f.title}</div>
-                <div className="text-gray-700 leading-relaxed">{f.desc}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
+        {/* FEATURE GRID */}
+<section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 features-section">
+  <h3 className="text-3xl font-bold mb-12 text-center" style={{ color: "#44312b" }}>
+    Project Highlights
+  </h3>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {[
+      { title: "30 ft Internal Roads", desc: "Wide internal carriageways for smooth drive & planning", icon: <Road /> },
+      { title: "CC Roads", desc: "Durable cement concrete paving for low maintenance", icon: <Document /> },
+      { title: "Electricity", desc: "Reliable electrical infrastructure & street lighting", icon: <CheckCircle /> },
+      { title: "24/7 Security", desc: "Gated, patrolled, and secure community", icon: <Shield /> },
+      { title: "HMDA Approved", desc: "GP layout under LRS — legal and ready", icon: <Shield /> },
+      { title: "Close to Kothur", desc: "Daily essentials within short distance", icon: <MapPin /> },
+    ].map((f, i) => (
+      <div 
+        key={i} 
+        className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20"
+      >
+        <div className="p-4 rounded-2xl bg-gradient-to-br from-[#44312b] to-[#8b7355] w-fit mb-6 text-white">
+          {f.icon}
+        </div>
+        <div className="text-xl font-semibold mb-3" style={{ color: "#44312b" }}>{f.title}</div>
+        <div className="text-gray-700 leading-relaxed">{f.desc}</div>
+      </div>
+    ))}
+  </div>
+</section>
 
         {/* LOCATION + MAP */}
         <motion.section 
@@ -619,8 +621,7 @@ export default function AirportTown() {
         </motion.section>
 
         {/* Enhanced GALLERY SECTION */}
-        <motion.section 
-          id="gallery" 
+        <motion.section  
           className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20"
           {...fadeInUp}
         >
