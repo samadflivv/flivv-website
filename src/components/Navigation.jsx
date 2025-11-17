@@ -17,7 +17,7 @@ const projectsData = {
     projects: [
       { name: 'Gulmohar Villas', href: '/gulmoharvillas' },
       { name: 'Gulmohar Homes', href: '/' },
-      { name: 'Airport Town', href: '/' },
+      { name: 'Airport Town', href: '/airporttown' },
       { name: 'Sadhana City', href: '/' }
     ]
   },
@@ -62,17 +62,17 @@ export default function Navigation() {
           </Link>
           
           {/* Mega Menu Dropdown */}
-          <div className="absolute left-0 top-full mt-2 w-[500px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white/10 backdrop-blur-md border border-white/20">
+          <div className="absolute left-0 top-full mt-2 w-[500px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
             <div className="flex p-6">
               {/* Categories Sidebar */}
-              <div className="w-1/3 pr-6 border-r border-white/20">
+              <div className="w-1/3 pr-6 border-r border-gray">
                 <ul className="space-y-4">
                   {Object.entries(projectsData).map(([key, category]) => (
                     <li
                       key={key}
                       onMouseEnter={() => setActiveCategory(key)}
                       className={`px-4 py-3 rounded-lg cursor-pointer transition-all ${
-                        activeCategory === key ? 'bg-[#0192D3] text-white' : 'text-white/80 hover:bg-[#0192D3] hover:text-white'
+                        activeCategory === key ? 'bg-[#0192D3] text-white' : 'text-black hover:bg-[#0192D3] hover:text-white'
                       }`}
                     >
                       {category.title}
@@ -89,7 +89,7 @@ export default function Navigation() {
                       <li key={index}>
                         <Link
                           href={project.href}
-                          className="block px-4 py-3 rounded-lg text-lg font-normal text-white hover:bg-[#0192D3] transition-all"
+                          className="block px-4 py-3 rounded-lg text-lg font-normal text-black hover:text-white hover:bg-[#0192D3] transition-all"
                         >
                           {project.name}
                         </Link>

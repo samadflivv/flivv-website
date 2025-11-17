@@ -1,14 +1,13 @@
 'use client';
 
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useInView } from 'framer-motion';
+import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 
-// Icons (using simple outline icons)
+/* ---------------------------
+   Icons (unchanged)
+   --------------------------- */
 const MapPin = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
+const MapPinandlocation = () => <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
 const Home = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>;
 const CheckCircle = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
 const Road = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" /></svg>;
@@ -18,222 +17,252 @@ const ArrowRight = () => <svg className="w-4 h-4" fill="none" stroke="currentCol
 const PlotIcon = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15V9a2 2 0 012-2h14a2 2 0 012 2v6" /></svg>;
 const SizeIcon = () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" /></svg>;
 
-
-gsap.registerPlugin && gsap.registerPlugin(ScrollTrigger);
-
+/* ---------------------------
+   Component
+   --------------------------- */
 export default function AirportTown() {
-  const heroBgRef = useRef(null);
-  const floatingElementsRef = useRef([]);
+  // gallery state
   const [activeImage, setActiveImage] = useState(0);
 
-  // Enhanced gallery images with better descriptions
-  const galleryImages = [
-    { src: "https://source.unsplash.com/1200x800/?modern,architecture", title: "Master Plan Overview" },
-    { src: "https://source.unsplash.com/1200x800/?landscape,development", title: "Plot Layout" },
-    { src: "https://source.unsplash.com/1200x800/?construction,site", title: "Infrastructure Development" },
-    { src: "https://source.unsplash.com/1200x800/?road,modern", title: "30ft Internal Roads" },
-    { src: "https://source.unsplash.com/1200x800/?aerial,view", title: "Aerial Perspective" },
-    { src: "https://source.unsplash.com/1200x800/?security,camera", title: "Security Features" }
-  ];
+  // video state
+  const videoRef = useRef(null);
+  const videoWrapperRef = useRef(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
+  // retry counter for video errors (use ref so updates don't re-render)
+  const videoRetryRef = useRef(0);
+
+  // memoize gallery images so array isn't recreated every render
+  const galleryImages = useMemo(() => ([
+    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013083416_0013_D-min.jpg",
+    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013085037_0036_D-min.jpg",
+    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/WhatsApp%20Image%202025-11-17%20at%2012.32.02%20PM%20(1).jpeg",
+    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/WhatsApp%20Image%202025-11-17%20at%2012.32.02%20PM.jpeg",
+    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/WhatsApp%20Image%202025-11-17%20at%2012.32.01%20PM.jpeg",
+    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/WhatsApp%20Image%202025-11-17%20at%2012.32.00%20PM.jpeg"
+  ]), []);
+
+  // small optimization: stable handler
+  const onThumbClick = useCallback((i) => {
+    setActiveImage(i);
+  }, []);
+
+  /* ---------------------------
+     HubSpot script (load once)
+     --------------------------- */
   useEffect(() => {
-    // GSAP Parallax for hero background
-    try {
-      gsap.to(heroBgRef.current, {
-        y: 60,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroBgRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    } catch (e) {
-      // fail gracefully
-    }
-
-    // Floating animation for decorative elements
-    floatingElementsRef.current.forEach((el) => {
-      gsap.to(el, {
-        y: -10,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-      });
-    });
-
-    // Enhanced animations for cards
-    gsap.from(".feature-card", {
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".features-section",
-        start: "top 80%",
-        end: "bottom 20%",
-      }
-    });
-
-    // Load HubSpot script (deferred)
-    if (typeof window !== "undefined" && !window.hbspt) {
-      const s = document.createElement("script");
+    if (typeof window === "undefined") return;
+    if (window.__hs_forms_injected) return; // guard
+    if (!window.hbspt) {
+      const s = document.createElement('script');
       s.src = "https://js.hsforms.net/forms/v2.js";
-      s.defer = true;
+      s.async = true;
+      s.onload = () => { window.__hs_forms_injected = true; };
       document.head.appendChild(s);
+    } else {
+      window.__hs_forms_injected = true;
     }
+  }, []);
 
-    // Cleanup ScrollTriggers on unmount
+  /* ---------------------------
+     Video: lazy load + robust handling
+     - We DO NOT place <source> in the DOM initially.
+     - When the wrapper intersects, setShouldLoadVideo(true).
+     - When shouldLoadVideo flips, set video.src programmatically, call load() and try to play (muted).
+     - Listen for loadeddata / canplay to switch isVideoLoaded.
+     - onerror -> retry a couple of times with small backoff.
+     --------------------------- */
+  useEffect(() => {
+    const wrapper = videoWrapperRef.current;
+    if (!wrapper) return;
+
+    // Create observer to start loading the video only when visible
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setShouldLoadVideo(true);
+          } else {
+            // pause to save CPU/bandwidth when user scrolls away
+            try {
+              if (videoRef.current && !videoRef.current.paused) {
+                videoRef.current.pause();
+              }
+            } catch (e) { /* ignore */ }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    obs.observe(wrapper);
     return () => {
-      try {
-        ScrollTrigger.getAll().forEach((t) => t.kill());
-      } catch (e) {}
+      obs.disconnect();
     };
   }, []);
 
-  const addToFloating = (el) => {
-    if (el && !floatingElementsRef.current.includes(el)) {
-      floatingElementsRef.current.push(el);
+  // When we should load the video, programmatically add source and play
+  useEffect(() => {
+    if (!shouldLoadVideo) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    // If source already exists and loaded, do nothing
+    if (video.dataset.srcset === "1") {
+      // ensure playback attempt
+      video.play().catch(() => {});
+      return;
     }
-  };
 
-  // Animation variants
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.6 }
-  };
+    const SRC = "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AIRPORT%20TOWN%20DRONE.mp4";
 
-  const staggerChildren = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true },
-    transition: { staggerChildren: 0.1 }
-  };
+    // helper to attempt load+play
+    let cancelled = false;
+    const tryLoad = async () => {
+      if (cancelled) return;
+      try {
+        // set src directly on video to avoid <source> load quirks across browsers
+        video.src = SRC;
+        // ensure we don't preload until explicitly told
+        video.preload = "auto";
+        // attach listeners
+        const onLoadedData = () => {
+          setIsVideoLoaded(true);
+          // autoplay (muted) attempt
+          video.play().catch(() => {});
+        };
+        const onCanPlay = () => {
+          setIsVideoLoaded(true);
+        };
+        const onError = async () => {
+          // attempt a couple of retries. Some browsers/network states can fail transiently.
+          videoRetryRef.current += 1;
+          if (videoRetryRef.current <= 2 && !cancelled) {
+            // small exponential backoff
+            const backoff = 400 * videoRetryRef.current;
+            setTimeout(() => {
+              // reload without cache-busting (prefer cached), just reassign src and load
+              try {
+                video.load();
+                video.play().catch(() => {});
+              } catch (e) {}
+            }, backoff);
+          } else {
+            // failed permanently: show loader + keep trying silently in background
+            setIsVideoLoaded(false);
+          }
+        };
 
+        video.addEventListener('loadeddata', onLoadedData);
+        video.addEventListener('canplay', onCanPlay);
+        video.addEventListener('error', onError);
+
+        // start load
+        video.load();
+
+        // try to play (muted) - many browsers allow muted autoplay
+        video.muted = true;
+        video.playsInline = true;
+        await video.play().catch(() => {
+          // play() can fail - not a blocker, the 'loadeddata' event will still fire
+        });
+
+        // mark we've set the source so subsequent effects won't redo work
+        video.dataset.srcset = "1";
+
+        // cleanup function for listeners
+        return () => {
+          cancelled = true;
+          try {
+            video.removeEventListener('loadeddata', onLoadedData);
+            video.removeEventListener('canplay', onCanPlay);
+            video.removeEventListener('error', onError);
+          } catch (e) {}
+        };
+      } catch (err) {
+        // any unexpected error, set not loaded
+        setIsVideoLoaded(false);
+      }
+    };
+
+    const cleanupPromise = tryLoad();
+
+    // no-op cleanup (if tryLoad returned cleanup)
+    return () => {
+      // If tryLoad returned a cleanup function synchronously, call it.
+      // In our implementation above it's enough to rely on cancelled flag and removeEventListener in closure.
+      // But we'll also attempt to pause the video.
+      try {
+        if (video) {
+          video.pause();
+        }
+      } catch (e) {}
+    };
+  }, [shouldLoadVideo]);
+
+  // handler for loaded event (visual)
+  const handleVideoLoad = useCallback(() => {
+    setIsVideoLoaded(true);
+  }, []);
+
+  /* ---------------------------
+     Render
+     --------------------------- */
   return (
     <>
+      <Head>
+        <title>Airport Town — Flivv Developers</title>
+        <meta name="description" content="Airport Town — premium open plots by Flivv Developers, 2 km from NH-44. Limited 36 plots. HMDA approved GP Layout." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* preconnect to CDN to speed up initial image requests */}
+        <link rel="preconnect" href="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com" />
+      </Head>
 
-      {/* Enhanced Background with subtle gradient */}
       <div className="min-h-screen w-full font-sans antialiased bg-gradient-to-br from-[#e0dfd8] via-[#f0efe8] to-[#e8e7e0]" style={{ color: "#44312b" }}>
         
-        {/* Enhanced HERO SECTION */}
+        {/* HERO SECTION */}
         <section className="relative overflow-hidden lg:h-screen flex items-center justify-center pt-40 lg:pt-25">
-          {/* Dynamic Background with multiple layers */}
-          <div
-            ref={heroBgRef}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: "linear-gradient(rgba(68,49,43,0.15), rgba(68,49,43,0.15))",
-            }}
-          />
-          
-          {/* Enhanced gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#e0dfd8]/40 via-transparent to-[#44312b]/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#e0dfd8] via-transparent to-transparent" />
-
-          {/* Floating elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute bg-white/10 rounded-full"
-                style={{
-                  width: Math.random() * 100 + 50,
-                  height: Math.random() * 100 + 50,
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -30, 0],
-                  x: [0, Math.random() * 20 - 10, 0],
-                  rotate: [0, 180, 360],
-                }}
-                transition={{
-                  duration: Math.random() * 10 + 10,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-            ))}
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#44312b]/40 via-transparent to-[#e0dfd8]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#e0dfd8] via-transparent to-[#44312b]/40" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-8 sm:px-8 lg:px-12 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Main Content */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6"
-                >
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 border border-white/30 mb-6">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                   <span className="text-sm font-medium">Limited Plots Available</span>
-                </motion.div>
+                </div>
 
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight"
-                  style={{ color: "#44312b" }}
-                >
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight" style={{ color: "#44312b" }}>
                   Airport <span className="bg-gradient-to-r from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">Town</span>
-                </motion.h1>
+                </h1>
 
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl text-justify"
-                >
+                <p className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl text-justify">
                   <strong>Airport Town by Flivv Developers </strong> is a premium, R1-zone project just 2 km from Bangalore Highway (NH-44). With only 36 plots, 30 ft internal roads, and quality development by Flivv, it offers strong residential and investment value.
-                </motion.p>
+                </p>
 
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl text-justify"
-                >
+                <p className="mt-6 text-xl text-[#44312b]/90 leading-relaxed max-w-2xl text-justify">
                   The GP layout is HMDA-approved under LRS, making it ideal for both construction and long-term returns. Plot sizes start at 200 sq. yards. Close to Kothur town and daily conveniences, Airport Town is perfectly placed for future growth.
-                </motion.p>
+                </p>
 
-                {/* Enhanced CTA Buttons */}
-                <motion.div 
-                  className="mt-12 flex flex-col sm:flex-row gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9 }}
-                >
-                  <motion.a 
+                <div className="mt-12 flex flex-col sm:flex-row gap-4">
+                  <a 
                     href="#contact" 
-                    className="group relative inline-flex items-center justify-center px-8 py-4 rounded-2xl text-lg font-semibold overflow-hidden"
+                    className="group relative inline-flex items-center justify-center px-8 py-4 rounded-2xl text-lg font-semibold overflow-hidden transition-all duration-300 hover:scale-105"
                     style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       Inquire Now
                       <ArrowRight />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#8b7355] to-[#44312b] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </motion.a>
+                  </a>
                   
-                  <motion.a 
-                    href="#gallery" 
-                    className="group inline-flex items-center justify-center px-8 py-4 rounded-2xl text-lg font-medium border-2 backdrop-blur-sm"
-                    style={{ borderColor: "#44312b", color: "#44312b", backgroundColor: "rgba(255,255,255,0.1)" }}
-                    whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(68,49,43,0.05)" }}
+                  <a 
+                    href="#ATvideo" 
+                    className="group inline-flex items-center justify-center px-8 py-4 rounded-2xl text-lg font-medium border-2 transition-all duration-300 hover:scale-105"
+                    style={{ borderColor: "#44312b", color: "#44312b", backgroundColor: "rgba(255,255,255,0.08)" }}
                   >
                     <span className="flex items-center gap-2">
                       Virtual Tour
@@ -241,284 +270,218 @@ export default function AirportTown() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                     </span>
-                  </motion.a>
-                </motion.div>
-              </motion.div>
+                  </a>
+                </div>
+              </div>
 
-              {/* Enhanced Stats Card */}
-<motion.div
-  initial={{ opacity: 0, x: 20 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8, delay: 0.6 }}
-  className="hidden lg:block"
->
-  <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20">
-    <div className="text-2xl font-bold mb-6 flex items-center gap-3">
-      <div className="p-2 rounded-full bg-[#44312b]/10">
-        <CheckCircle />
-      </div>
-      Quick Glance 
-    </div>
-    
-    <div>
-      {[
-        { icon: <PlotIcon />, label: "No. Of Units", value: "36", suffix: "Only" },
-        { icon: <SizeIcon />, label: "Minimum Plot Size", value: "200", suffix: "sq. yards" },
-        { icon: <Shield />, label: "Approval", value: "HMDA GP", suffix: "LRS" }
-      ].map((item, index) => (
-        <motion.div
-          key={index}
-          className="flex items-center justify-between p-4 rounded-2xl hover:bg-[#44312b]/5 transition-colors"
-          whileHover={{ x: 4 }}
-        >
-          <div className="flex items-center gap-4">
-            <div className="p-2 rounded-xl bg-[#44312b]/10">
-              {item.icon}
-            </div>
-            <div>
-              <div className="font-semibold">{item.label}</div>
-              <div className="text-sm text-gray-600">{item.suffix}</div>
-            </div>
-          </div>
-          <div className="text-2xl font-bold" style={{ color: "#44312b" }}>
-            {item.value}
-          </div>
-        </motion.div>
-      ))}
-    </div>
+              <div className="hidden lg:block">
+                <div className="bg-white/90 rounded-3xl p-8 shadow-2xl border border-white/20">
+                  <div className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-[#44312b]/10">
+                      <CheckCircle />
+                    </div>
+                    Quick Glance 
+                  </div>
+                  
+                  <div>
+                    {[
+                      { icon: <PlotIcon />, label: "No. Of Units", value: "36", suffix: "Only" },
+                      { icon: <SizeIcon />, label: "Minimum Plot Size", value: "200", suffix: "sq. yards" },
+                      { icon: <Shield />, label: "Approval", value: "HMDA GP", suffix: "LRS" }
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-4 rounded-2xl hover:bg-[#44312b]/5 transition-colors"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="p-2 rounded-xl bg-[#44312b]/10">
+                            {item.icon}
+                          </div>
+                          <div>
+                            <div className="font-semibold">{item.label}</div>
+                            <div className="text-sm text-gray-600">{item.suffix}</div>
+                          </div>
+                        </div>
+                        <div className="text-2xl font-bold" style={{ color: "#44312b" }}>
+                          {item.value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
 
-    <motion.a 
-      href="#contact" 
-      className="w-full mt-6 inline-flex items-center justify-center py-4 rounded-2xl font-semibold transition-all"
-      style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
-      whileHover={{ scale: 1.02, y: -2 }}
-    >
-      Get Brochure
-    </motion.a>
-  </div>
-</motion.div>
+                  <a 
+                    href="#contact" 
+                    className="w-full mt-6 inline-flex items-center justify-center py-4 rounded-2xl font-semibold transition-all hover:scale-105"
+                    style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
+                  >
+                    Get Brochure
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* SECOND SECTION - Showcase */}
-       <motion.section 
-  id="showcase" 
-  className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-20"
-  {...fadeInUp}
->
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
-    {/* Left: Large interactive mock-up / site-plan */}
-    <div className="order-2 lg:order-1">
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="rounded-3xl overflow-hidden shadow-2xl relative bg-white/90 backdrop-blur-sm border border-white/20"
-        whileHover={{ y: -5 }}
-      >
-        <img 
-          src="https://source.unsplash.com/1200x900/?site-plan,real-estate" 
-          alt="Airport Town site plan" 
-          className="w-full object-cover h-64 sm:h-80 md:h-96 lg:h-[450px] transition-transform duration-700 hover:scale-105" 
-        />
-        <div className="absolute left-4 sm:left-6 bottom-4 sm:bottom-6 bg-[#44312b] text-[#e0dfd8] px-3 sm:px-4 py-2 sm:py-3 rounded-xl shadow-lg">
-          <div className="text-xs sm:text-sm font-semibold">Exclusive - Only 36 Plots</div>
-          <div className="text-xs mt-1">Plot sizes from 200 sq. yards</div>
-        </div>
-      </motion.div>
-
-      {/* Feature highlights - FIXED FOR MOBILE */}
-      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {[
-          { title: "Infrastructure", desc: "CC roads, street lighting & concealed drainage", icon: <Road /> },
-          { title: "Connectivity", desc: "Quick access to NH-44 and RGIA", icon: <MapPin /> }
-        ].map((item, index) => (
-          <div 
-            key={index}
-            className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg border border-white/20"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-              <div className="p-2 sm:p-3 rounded-xl bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white w-fit flex-shrink-0">
-                {item.icon}
+        {/* SHOWCASE SECTION */}
+        <section id="showcase" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+            <div className="order-2 lg:order-1">
+              <div className="rounded-3xl overflow-hidden shadow-2xl relative bg-white/90 border border-white/20">
+                <img 
+                  src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013083416_0013_D-min.jpg" 
+                  alt="Airport Town site plan" 
+                  className="w-full object-cover h-64 lg:h-[450px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute left-4 sm:left-6 bottom-4 sm:bottom-6 bg-[#44312b] text-[#e0dfd8] px-3 sm:px-4 py-2 sm:py-3 rounded-xl shadow-lg">
+                  <div className="text-xs sm:text-sm font-semibold">Exclusive - Only 36 Plots</div>
+                  <div className="text-xs mt-1">Plot sizes from 200 sq. yards</div>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-base sm:text-lg font-semibold mb-1 sm:mb-0" style={{ color: "#44312b" }}>
-                  {item.title}
+
+              <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { title: "Infrastructure", desc: "CC roads, street lighting & concealed drainage", icon: <Road /> },
+                  { title: "Connectivity", desc: "Quick access to NH-44 and RGIA", icon: <MapPin /> }
+                ].map((item, index) => (
+                  <div 
+                    key={index}
+                    className="bg-white/90 rounded-2xl p-4 sm:p-6 shadow-lg border border-white/20"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                      <div className="p-2 sm:p-3 rounded-xl bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white w-fit flex-shrink-0">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-base sm:text-lg font-semibold mb-1 sm:mb-0" style={{ color: "#44312b" }}>
+                          {item.title}
+                        </div>
+                        <div className="text-sm text-gray-600 sm:mt-1 break-words leading-relaxed">
+                          {item.desc}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2 flex flex-col gap-6">
+              <div className="bg-white/90 rounded-3xl p-6 sm:p-8 shadow-xl border border-white/20">
+                <h3 className="text-xl sm:text-2xl font-bold flex items-center gap-2" style={{ color: "#44312b" }}>
+                  <CheckCircle />
+                  Why Airport Town?
+                </h3>
+                <p className="mt-3 sm:mt-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+                  Airport Town, strategically positioned on the <strong>Kothur–Penjerla road,</strong> stands out as one of the most promising investment opportunities, thanks to its proximity to the city and being just 19 km from the airport. With Flivv's developmental enhancements, the project is poised to deliver impressive and reliable returns for investors in the coming years!
+                </p>
+
+                <div className="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  {[
+                    { title: "HMDA Approved", desc: "GP Layout under LRS", icon: <Shield /> },
+                    { title: "Ideal Investment", desc: "Close to City", icon: <Home /> }
+                  ].map((item, index) => (
+                    <div 
+                      key={index}
+                      className="p-3 sm:p-4 rounded-xl flex items-start gap-3 bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white shadow-lg"
+                    >
+                      {item.icon}
+                      <div>
+                        <div className="text-sm font-semibold">{item.title}</div>
+                        <div className="text-xs mt-1 opacity-90">{item.desc}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="text-sm text-gray-600 sm:mt-1 break-words leading-relaxed">
-                  {item.desc}
+              </div>
+
+              <div className="bg-white/90 rounded-3xl p-6 sm:p-8 shadow-xl border border-white/20">
+                <h4 className="text-lg sm:text-xl font-semibold flex items-center gap-2" style={{ color: "#44312b" }}>
+                  <Document />
+                  Investment Snapshot
+                </h4>
+                <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-4 sm:gap-6">
+                  {[
+                    { value: "36", label: "Plots" },
+                    { value: "200+", label: "sq. yards" },
+                    { value: "24/7", label: "Security" }
+                  ].map((item, index) => (
+                    <div key={index} className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-br from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">
+                        {item.value}
+                      </div>
+                      <div className="text-xs sm:text-sm text-gray-600 mt-1">{item.label}</div>
+                    </div>
+                  ))}
                 </div>
+                <p className="mt-4 sm:mt-6 text-sm text-gray-600">
+                  Nearby conveniences, growing connectivity corridors, and proximity to RGIA make this project well-positioned for both appreciation and owner-use.
+                </p>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
+        </section>
 
-    {/* Right: Info panels & CTAs */}
-    <div className="order-1 lg:order-2 flex flex-col gap-6">
-      <motion.div 
-        className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-xl border border-white/20"
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        whileHover={{ y: -5 }}
-      >
-        <h3 className="text-xl sm:text-2xl font-bold flex items-center gap-2" style={{ color: "#44312b" }}>
-          <CheckCircle />
-          Why Airport Town?
-        </h3>
-        <p className="mt-3 sm:mt-4 text-gray-700 leading-relaxed text-sm sm:text-base">
-          Airport Town, strategically positioned on the <strong>Kothur–Penjerla road,</strong> stands out as one of the most promising investment opportunities, thanks to its proximity to the city and being just 19 km from the airport. With Flivv's developmental enhancements, the project is poised to deliver impressive and reliable returns for investors in the coming years!
-        </p>
-
-        <div className="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          {[
-            { title: "HMDA Approved", desc: "GP Layout under LRS", icon: <Shield /> },
-            { title: "Ideal Investment", desc: "Close to City", icon: <Home /> }
-          ].map((item, index) => (
-            <motion.div 
-              key={index}
-              className="p-3 sm:p-4 rounded-xl flex items-start gap-3 bg-gradient-to-br from-[#44312b] to-[#8b7355] text-white shadow-lg"
-              whileHover={{ scale: 1.02, y: -2 }}
-            >
-              {item.icon}
-              <div>
-                <div className="text-sm font-semibold">{item.title}</div>
-                <div className="text-xs mt-1 opacity-90">{item.desc}</div>
+        {/* VIDEO SECTION - improved */}
+        <section id="ATvideo" className="relative w-full overflow-hidden bg-black">
+          <div ref={videoWrapperRef} className="relative h-[50vh] sm:h-screen w-full">
+            <video
+              ref={videoRef}
+              className="absolute inset-0 w-full h-full object-cover"
+              muted
+              loop
+              playsInline
+              preload="none"          /* don't preload until we explicitly set src */
+              onLoadedData={handleVideoLoad}
+              style={{ opacity: isVideoLoaded ? 1 : 0, transition: 'opacity 300ms ease' }}
+            />
+            {!isVideoLoaded && (
+              <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
+                <div className="text-white text-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+                  <p>Loading video...</p>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Investment Snapshot */}
-      <motion.div 
-        className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-xl border border-white/20"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        whileHover={{ y: -5 }}
-      >
-        <h4 className="text-lg sm:text-xl font-semibold flex items-center gap-2" style={{ color: "#44312b" }}>
-          <Document />
-          Investment Snapshot
-        </h4>
-        <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-4 sm:gap-6">
-          {[
-            { value: "36", label: "Plots" },
-            { value: "200+", label: "sq. yards" },
-            { value: "24/7", label: "Security" }
-          ].map((item, index) => (
-            <motion.div 
-              key={index}
-              className="text-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-            >
-              <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-br from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">
-                {item.value}
-              </div>
-              <div className="text-xs sm:text-sm text-gray-600 mt-1">{item.label}</div>
-            </motion.div>
-          ))}
-        </div>
-        <p className="mt-4 sm:mt-6 text-sm text-gray-600">
-          Nearby conveniences, growing connectivity corridors, and proximity to RGIA make this project well-positioned for both appreciation and owner-use.
-        </p>
-      </motion.div>
-    </div>
-  </div>
-</motion.section>
-
-
-      
-        {/* VIDEO SECTION */}
-<section className="relative w-full overflow-hidden">
-  <div className="relative h-[50vh] sm:h-screen w-full">
-    <video
-      className="absolute inset-0 w-full h-full object-cover"
-      muted
-      loop
-      playsInline
-      controlsList="nodownload"
-      disablePictureInPicture
-      ref={(el) => {
-        // Auto play/pause based on visibility
-        if (el) {
-          const observer = new IntersectionObserver(
-            ([entry]) => {
-              if (entry.isIntersecting) {
-                el.play().catch(console.log);
-              } else {
-                el.pause();
-              }
-            },
-            { threshold: 0.5 }
-          );
-          observer.observe(el);
-        }
-      }}
-    >
-      <source 
-        src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AIRPORT%20TOWN%20DRONE.mp4" 
-        type="video/mp4" 
-      />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
+            )}
+          </div>
+        </section>
 
         {/* FEATURE GRID */}
-        {/* FEATURE GRID */}
-<section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 features-section">
-  <h3 className="text-3xl font-bold mb-12 text-center" style={{ color: "#44312b" }}>
-    Project Highlights
-  </h3>
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    {[
-      { title: "30 ft Internal Roads", desc: "Wide internal carriageways for smooth drive & planning", icon: <Road /> },
-      { title: "CC Roads", desc: "Durable cement concrete paving for low maintenance", icon: <Document /> },
-      { title: "Electricity", desc: "Reliable electrical infrastructure & street lighting", icon: <CheckCircle /> },
-      { title: "24/7 Security", desc: "Gated, patrolled, and secure community", icon: <Shield /> },
-      { title: "HMDA Approved", desc: "GP layout under LRS — legal and ready", icon: <Shield /> },
-      { title: "Close to Kothur", desc: "Daily essentials within short distance", icon: <MapPin /> },
-    ].map((f, i) => (
-      <div 
-        key={i} 
-        className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20"
-      >
-        <div className="p-4 rounded-2xl bg-gradient-to-br from-[#44312b] to-[#8b7355] w-fit mb-6 text-white">
-          {f.icon}
-        </div>
-        <div className="text-xl font-semibold mb-3" style={{ color: "#44312b" }}>{f.title}</div>
-        <div className="text-gray-700 leading-relaxed">{f.desc}</div>
-      </div>
-    ))}
-  </div>
-</section>
+        <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+          <h3 className="text-3xl font-bold mb-12 text-center" style={{ color: "#44312b" }}>
+            Project Highlights
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "30 ft Internal Roads", desc: "Wide internal carriageways for smooth drive & planning", icon: <Road /> },
+              { title: "CC Roads", desc: "Durable cement concrete paving for low maintenance", icon: <Document /> },
+              { title: "Electricity", desc: "Reliable electrical infrastructure & street lighting", icon: <CheckCircle /> },
+              { title: "24/7 Security", desc: "Gated, patrolled, and secure community", icon: <Shield /> },
+              { title: "HMDA Approved", desc: "GP layout under LRS — legal and ready", icon: <Shield /> },
+              { title: "Close to Kothur", desc: "Daily essentials within short distance", icon: <MapPin /> },
+            ].map((f, i) => (
+              <div 
+                key={i} 
+                className="bg-white/90 rounded-3xl p-8 shadow-lg border border-white/20"
+              >
+                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#44312b] to-[#8b7355] w-fit mb-6 text-white">
+                  {f.icon}
+                </div>
+                <div className="text-xl font-semibold mb-3" style={{ color: "#44312b" }}>{f.title}</div>
+                <div className="text-gray-700 leading-relaxed">{f.desc}</div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* LOCATION + MAP */}
-        <motion.section 
-          id="map" 
-          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 bg-white/50 backdrop-blur-sm rounded-3xl"
-          {...fadeInUp}
-        >
+        <section id="map" className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 bg-white/50 rounded-3xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <div>
               <h3 className="text-3xl font-bold mb-6 flex items-center gap-3" style={{ color: "#44312b" }}>
-                <MapPin />
+                <MapPinandlocation
+                 />
                 Location & Connectivity
               </h3>
               <p className="text-gray-700 mb-8 leading-relaxed">Airport Town sits strategically near major connectivity hubs — making it suitable for both long-term investment and owners who want quick travel access.</p>
@@ -530,167 +493,112 @@ export default function AirportTown() {
                   "2 Km from NH-44 (Bangalore Highway)",
                   "2 Km from Kothur Town"
                 ].map((item, index) => (
-                  <motion.li 
-                    key={index}
-                    className="flex items-center gap-3 text-gray-700"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
+                  <li key={index} className="flex items-center gap-3 text-gray-700">
                     <div className="w-2 h-2 rounded-full bg-gradient-to-br from-[#44312b] to-[#8b7355]" />
                     {item}
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
 
               <div className="flex gap-4">
-                <motion.a 
+                <a 
                   href="#contact" 
-                  className="px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg"
+                  className="px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg transition-all hover:scale-105"
                   style={{ backgroundColor: "#44312b", color: "#e0dfd8" }}
-                  whileHover={{ scale: 1.05, y: -2 }}
                 >
                   Speak to Sales
                   <ArrowRight />
-                </motion.a>
-                <motion.a 
+                </a>
+                <a 
                   href="#gallery" 
-                  className="px-6 py-3 rounded-xl font-medium border-2 flex items-center gap-2 transition-all"
+                  className="px-6 py-3 rounded-xl font-medium border-2 flex items-center gap-2 transition-all hover:scale-105"
                   style={{ borderColor: "#44312b", color: "#44312b" }}
-                  whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(68,49,43,0.05)" }}
                 >
                   Explore Gallery
-                </motion.a>
+                </a>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              className="w-full h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl border border-white/20"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              whileHover={{ scale: 1.02 }}
-            >
+            <div className="w-full h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl border border-white/20">
               <iframe
                 title="Airport Town map"
-                src="https://www.google.com/maps?q=Kothur+India&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1029.514124073472!2d78.30521531151966!3d17.13197920602622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA3JzU1LjQiTiA3OMKwMTgnMTkuNSJF!5e1!3m2!1sen!2sin!4v1763363763119!5m2!1sen!2sin"
                 className="w-full h-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-            </motion.div>
+            </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* CTA SECTION */}
-        <motion.section 
-          className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-20 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <motion.div 
-            className="bg-gradient-to-br from-[#44312b] to-[#8b7355] text-[#e0dfd8] p-12 rounded-3xl shadow-2xl"
-            whileHover={{ y: -5 }}
-          >
+        <section className="max-w-4xl mx-auto px-6 sm:px-8 py-12 text-center">
+          <div className="bg-gradient-to-br from-[#44312b] to-[#8b7355] text-[#e0dfd8] p-8 lg:p-12 rounded-3xl shadow-2xl">
             <h3 className="text-3xl font-bold mb-4">Ready to Secure Your Plot?</h3>
             <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">Only 36 exclusive plots available. Don't miss this opportunity to invest in a premium location with strong growth potential.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a 
+              <a 
                 href="#contact" 
-                className="px-8 py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all shadow-lg"
+                className="px-8 py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all shadow-lg hover:scale-105"
                 style={{ backgroundColor: "#e0dfd8", color: "#44312b" }}
-                whileHover={{ scale: 1.05, y: -2 }}
               >
                 Book Site Visit
                 <ArrowRight />
-              </motion.a>
-              <motion.a 
-                href="tel:+91XXXXXXXXXX"
-                className="px-8 py-4 rounded-xl font-medium border-2 flex items-center justify-center gap-2 transition-all"
-                style={{ borderColor: "#e0dfd8", color: "#e0dfd8" }}
-                whileHover={{ scale: 1.05, y: -2, backgroundColor: "rgba(224,223,216,0.1)" }}
-              >
-                Call Now
-              </motion.a>
+              </a>
             </div>
-          </motion.div>
-        </motion.section>
+          </div>
+        </section>
 
-        {/* Enhanced GALLERY SECTION */}
-        <motion.section  
-          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20"
-          {...fadeInUp}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h3 className="text-4xl font-bold mb-4 bg-gradient-to-br from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">Project Gallery</h3>
-            <p className="text-gray-700 max-w-2xl mx-auto text-lg">High-resolution visuals help buyers visualize the potential of their investment. Each plot offers unique opportunities for construction and design.</p>
-          </motion.div>
+        {/* OPTIMIZED GALLERY SECTION */}
+        <section id="gallery" className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold mb-4 bg-gradient-to-br from-[#44312b] to-[#8b7355] bg-clip-text text-transparent">Gallery</h3>
+          </div>
 
           {/* Main Gallery Image */}
-          <motion.div
-            className="relative rounded-3xl overflow-hidden shadow-2xl mb-8 border border-white/20"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl mb-8 border border-white/20 bg-gray-100">
             <img 
-              src={galleryImages[activeImage].src}
-              alt={galleryImages[activeImage].title}
-              className="w-full h-96 object-cover"
+              src={galleryImages[activeImage]}
+              alt="Airport Town Gallery"
+              className="w-full h-80 lg:h-150 object-cover"
+              loading="lazy"            /* changed from eager -> lazy */
+              decoding="async"
+              fetchPriority="auto"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-8">
-              <h3 className="text-2xl font-bold text-white mb-2">{galleryImages[activeImage].title}</h3>
               <div className="flex items-center gap-2 text-white/80">
                 <div className="w-2 h-2 bg-white rounded-full" />
                 <span>{activeImage + 1} of {galleryImages.length}</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Thumbnail Grid */}
+          {/* Simple Thumbnail Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {galleryImages.map((image, index) => (
-              <motion.button
+              <button
                 key={index}
-                className={`relative rounded-2xl overflow-hidden shadow-lg transition-all duration-300 border-2 ${
-                  activeImage === index ? 'border-[#44312b] scale-105' : 'border-transparent hover:scale-105'
-                }`}
-                whileHover={{ y: -4 }}
-                onClick={() => setActiveImage(index)}
+                className={`relative rounded-2xl overflow-hidden shadow-lg border-2 ${activeImage === index ? 'border-[#44312b]' : 'border-transparent'}`}
+                onClick={() => onThumbClick(index)}
+                aria-pressed={activeImage === index}
+                style={{ height: 96 }}
               >
                 <img 
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-24 object-cover"
+                  src={image}
+                  alt={"Gallery thumbnail " + (index+1)}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                 />
-                <div className="absolute inset-0 bg-black/20 hover:bg-transparent transition-colors" />
-              </motion.button>
+              </button>
             ))}
           </div>
-        </motion.section>
+        </section>
 
         {/* CONTACT FORM */}
-        <motion.section 
-          id="contact" 
-          className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20"
-          {...fadeInUp}
-        >
-          <motion.div 
-            className="bg-gradient-to-br from-[#44312b] to-[#8b7355] text-[#e0dfd8] rounded-3xl p-8 md:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-2 items-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
+        <section id="contact" className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+          <div className="bg-gradient-to-br from-[#44312b] to-[#8b7355] text-[#e0dfd8] rounded-3xl p-8 md:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-2 items-center">
             <div>
               <h3 className="text-3xl font-bold mb-6">Register Your Interest</h3>
               <p className="text-lg mb-8 opacity-90">Fill the short form and our sales team will contact you with brochure, pricing & plot availability.</p>
@@ -699,35 +607,20 @@ export default function AirportTown() {
                 {[
                   "HMDA approved GP layout (LRS)",
                   "Only 36 exclusive plots",
-                  "Plot sizes from 200 sq. yards",
-                  "Ready for immediate construction"
+                  "Plot sizes from 200 sq. yards"
                 ].map((item, index) => (
-                  <motion.li 
-                    key={index}
-                    className="flex items-center gap-3"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
+                  <li key={index} className="flex items-center gap-3">
                     <CheckCircle />
                     {item}
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            <div>
               <div id="hubspot-form" className="bg-white text-[#44312b] rounded-2xl pt-10 shadow-lg">
                 <div className="text-center font-semibold text-4xl">Enquiry Form</div>
-
                 <script
-                  // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{
                     __html: `
                       (function loadHs(){
@@ -747,11 +640,10 @@ export default function AirportTown() {
                   }}
                 />
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.section>
+            </div>
+          </div>
+        </section>
 
-        {/* small spacer */}
         <div className="h-16" />
       </div>
     </>
