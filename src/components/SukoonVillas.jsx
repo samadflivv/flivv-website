@@ -118,7 +118,7 @@ const SukoonLandingPage = () => {
   };
 
   // Hero Section
-  const HeroSection = () => {
+  const SVHeroSection = () => {
     return (
       <section className="min-h-screen relative px-4 sm:px-6 lg:px-20 py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-[#5a108f] via-[#5a108f] to-[#f0fff1]">
         {/* Background Elements */}
@@ -225,7 +225,7 @@ const SukoonLandingPage = () => {
   };
 
   // Video Section
-  const VideoSection = () => {
+  const SVVideoSection = () => {
     const videoRef = useRef(null);
 
     useVideoPlayback(videoRef);
@@ -252,7 +252,7 @@ const SukoonLandingPage = () => {
   };
 
   // Features Section
-  const FeaturesSection = () => {
+  const SVFeaturesSection = () => {
     const features = [
       {
         icon: <LocationIcon />,
@@ -315,7 +315,7 @@ const SukoonLandingPage = () => {
   };
 
   // Amenities Section
-  const AmenitiesSection = () => {
+  const SVAmenitiesSection = () => {
     const amenities = [
       { icon: <ClubhouseIcon />, name: "Club House" },
       { icon: <RoadIcon />, name: "40ft Wide Roads" },
@@ -357,7 +357,7 @@ const SukoonLandingPage = () => {
   };
 
   // CTA Section
-  const CTASection = () => {
+  const SVCTASection = () => {
     return (
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#5a108f] to-[#7c3aed] relative overflow-hidden">
         {/* Background Pattern */}
@@ -408,7 +408,7 @@ const SukoonLandingPage = () => {
   };
 
   // Location Section
-  const LocationSection = () => {
+  const SVLocationSection = () => {
     return (
       <section id="location" className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-20">
@@ -461,7 +461,7 @@ const SukoonLandingPage = () => {
   };
 
   // HubSpot Contact Form Section
-  const HubSpotContactSection = () => {
+  const SVHubSpotContactSection = () => {
     useEffect(() => {
       // Load HubSpot form script
       const script = document.createElement('script');
@@ -518,13 +518,13 @@ const SukoonLandingPage = () => {
 
   return (
     <div className="min-h-screen bg-[#f0fff1]">
-      <HeroSection />
-      <FeaturesSection />
-      <VideoSection />
-      <AmenitiesSection />
-      <CTASection />
-      <LocationSection />
-      <HubSpotContactSection />
+      <SVHeroSection />
+      <SVFeaturesSection />
+      <SVVideoSection />
+      <SVAmenitiesSection />
+      <SVCTASection />
+      <SVLocationSection />
+      <SVHubSpotContactSection />
     </div>
   );
 };

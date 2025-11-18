@@ -1,658 +1,101 @@
-'use client';
+// components/GVHerotop.jsx
+import AnimatedBTN from "./AnimatedBTN";
 
-import React, { useEffect, useRef, useState } from 'react';
-
-const SukoonLandingPage = () => {
-  const [isClient, setIsClient] = useState(false);
-  
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Custom hook for video intersection playback
-  const useVideoPlayback = (videoRef) => {
-    useEffect(() => {
-      if (!isClient) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              videoRef.current?.play().catch(console.error);
-            } else {
-              videoRef.current?.pause();
-            }
-          });
-        },
-        { threshold: 0.7 }
-      );
-
-      if (videoRef.current) {
-        observer.observe(videoRef.current);
-      }
-
-      return () => observer.disconnect();
-    }, [isClient]);
-  };
-
-  // Monochrome purple icons as SVG components
-  const LocationIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
-    </svg>
-  );
-
-  const AreaIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 19V5h14v14H5z"/>
-      <path d="M7 12h10v2H7zM7 8h10v2H7z"/>
-    </svg>
-  );
-
-  const ApprovalIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-    </svg>
-  );
-
-  const RoadIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
-    </svg>
-  );
-
-  const ClubhouseIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-    </svg>
-  );
-
-  const ElectricityIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M7 2l10 10-5 1 5 5v1l-7-7 5-1-5-5z"/>
-    </svg>
-  );
-
-  const WaterIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"/>
-    </svg>
-  );
-
-  const SecurityIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-    </svg>
-  );
-
-  const ParkIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
-    </svg>
-  );
-
-  const DrainageIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M2 16h20v2H2zm0 4h20v2H2zm0 4h20v2H2z"/>
-    </svg>
-  );
-
-  const LightingIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M7 2v11h3v9l7-12h-4l4-8H7z"/>
-    </svg>
-  );
-
-  const CalendarIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-    </svg>
-  );
-
-  const PhoneIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM12 3v10l3-3h6V3h-9z"/>
-    </svg>
-  );
-
-  const EmailIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-    </svg>
-  );
-
-  const MapPinIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
-    </svg>
-  );
-
-  // Scroll to section function
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Hero Section
-  const HeroSection = () => {
-    return (
-      <section className="min-h-screen relative px-4 sm:px-6 lg:px-20 py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-[#5a108f] via-[#5a108f] to-[#f0fff1]">
-        {/* Background Glow Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-64 h-64 sm:w-96 sm:h-96 bg-white opacity-5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-white opacity-5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#5a108f] opacity-10 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="relative z-10 container mx-auto pt-12 sm:pt-20 lg:pt-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 mb-6 lg:mb-8">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span className="text-white font-semibold text-sm">New Launch • Main Road Venture</span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4 lg:mb-6 leading-tight">
-                <span className="text-white">Sukoon</span>
-                <span className="block text-[#f0fff1]">Villas</span>
-              </h1>
-
-              <p className="text-lg sm:text-xl text-white/90 mb-6 lg:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Premium residential venture 1.5 km from ORR Exit No.14. 
-                Where comfort meets convenience in perfect harmony.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="bg-white text-[#5a108f] px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg text-sm sm:text-base"
-                >
-                  Enquire Now
-                </button>
-                <button
-                  onClick={() => scrollToSection('location')}
-                  className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold hover:bg-white hover:text-[#5a108f] transition-all duration-300 text-sm sm:text-base"
-                >
-                  View Location
-                </button>
-              </div>
-
-              {/* Quick Stats - Improved Visibility */}
-              <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8 lg:mt-12 max-w-md bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20">
-                {[
-                  { value: '6 Acres', label: 'Land Area' },
-                  { value: '1.5 km', label: 'From ORR' },
-                  { value: '2026', label: 'Completion' }
-                ].map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-white drop-shadow-lg">{stat.value}</div>
-                    <div className="text-xs sm:text-sm text-white/90 font-medium">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Content - Elegant Image Showcase */}
-            <div className="relative">
-              <div className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-white/20">
-                {/* Main Image Container */}
-                <div className="aspect-[4/3] relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5">
-                  <img
-                    src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Our-Projects-section/DJI_20251017151106_0138_D.jpg"
-                    alt="Sukoon Villas Premium Development"
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#5a108f]/40 via-transparent to-transparent"></div>
-                  
-                  {/* Floating Badge */}
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-[#5a108f] font-semibold text-sm">Premium</span>
-                  </div>
-                </div>
-                
-                {/* Elegant Floating Cards */}
-                <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 bg-white/95 backdrop-blur-sm rounded-2xl p-3 sm:p-4 shadow-xl border border-white/50">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#5a108f] rounded-2xl flex items-center justify-center text-white">
-                      <LocationIcon />
-                    </div>
-                    <div>
-                      <p className="text-xs sm:text-sm font-semibold text-gray-900">Prime Location</p>
-                      <p className="text-xs text-gray-600">ORR Exit 14</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Info Strip */}
-                <div className="mt-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm text-white">Limited Plots Available</span>
-                  </div>
-                  <div className="text-white font-semibold text-sm">6 Acre Gated Community</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Video Section
-  const VideoSection = () => {
-    const videoRef = useRef(null);
-
-    useVideoPlayback(videoRef);
-
-    return (
-      <section className="relative overflow-hidden">
-        <div className="container mx-auto">
-          <div className="relative overflow-hidden">
-            <video
-              ref={videoRef}
-              className="w-full h-auto max-h-screen object-cover"
-              muted
-              playsInline
-              preload="metadata"
-              controlsList="nodownload"
-            >
-              <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/SukoonVillas/TUKKUGUDA%20SUKOON%20VILLAS%20(1).mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Features Section
-  const FeaturesSection = () => {
-    const features = [
-      {
-        icon: <LocationIcon />,
-        title: "Strategic Location",
-        description: "1.5 km from ORR Exit No.14 with excellent connectivity to city centers and amenities"
-      },
-      {
-        icon: <AreaIcon />,
-        title: "6 Acre Development",
-        description: "Spacious gated community with carefully planned infrastructure and green spaces"
-      },
-      {
-        icon: <CalendarIcon />,
-        title: "Timely Delivery",
-        description: "HMDA approvals in progress with registry expected by March 2026"
-      },
-      {
-        icon: <RoadIcon />,
-        title: "Main Road Access",
-        description: "Premium road-facing venture with easy access and high visibility"
-      }
-    ];
-
-    return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1] relative overflow-hidden">
-        {/* Background Glow Effect */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="text-[#5a108f]">Sukoon Villas</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              Designed for those who value quality, location, and peaceful living
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="group relative">
-                <div className="relative bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#5a108f] rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      {feature.icon}
-                    </div>
-                  </div>
-                  
-                  <div className="pt-8 sm:pt-10 text-center">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
-                  </div>
-                  
-                  {/* Hover Effect */}
-                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#5a108f]/20 transition-all duration-300"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Amenities Section
-  const AmenitiesSection = () => {
-    const amenities = [
-      { icon: <ClubhouseIcon />, name: "Club House" },
-      { icon: <RoadIcon />, name: "40ft Wide Roads" },
-      { icon: <ElectricityIcon />, name: "Underground Electricity" },
-      { icon: <WaterIcon />, name: "24/7 Water Supply" },
-      { icon: <DrainageIcon />, name: "Modern Drainage" },
-      { icon: <LightingIcon />, name: "LED Street Lighting" },
-      { icon: <ParkIcon />, name: "Landscaped Parks" },
-      { icon: <SecurityIcon />, name: "Gated Security" }
-    ];
-
-    return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-[#f0fff1] relative overflow-hidden">
-        {/* Background Glow Effect */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Premium <span className="text-[#5a108f]">Amenities</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need for comfortable and luxurious living
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            {amenities.map((amenity, index) => (
-              <div key={index} className="group">
-                <div className="bg-white rounded-2xl p-4 sm:p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 h-full">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#5a108f] rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 text-white group-hover:scale-110 transition-transform duration-300">
-                    {amenity.icon}
-                  </div>
-                  <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{amenity.name}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // CTA Section - Redesigned
-  const CTASection = () => {
-    return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1] relative overflow-hidden">
-        {/* Background Glow Effects */}
-        <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#5a108f] opacity-10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#5a108f] opacity-10 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-[#5a108f] to-[#7c3aed] rounded-3xl p-8 sm:p-12 shadow-2xl border border-[#5a108f]/20 relative overflow-hidden">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full"></div>
-              </div>
-              
-              <div className="text-center relative z-10">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-                  Ready to Experience <span className="text-[#f0fff1]">Sukoon Living?</span>
-                </h2>
-                <p className="text-lg sm:text-xl text-white/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto">
-                  Don't miss this opportunity to own a premium plot in Hyderabad's most promising residential venture.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-                  <button
-                    onClick={() => scrollToSection('contact')}
-                    className="bg-white text-[#5a108f] px-8 sm:px-12 py-3 sm:py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all duration-300 shadow-2xl text-sm sm:text-base"
-                  >
-                    Schedule Site Visit
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('location')}
-                    className="border-2 border-white text-white px-8 sm:px-12 py-3 sm:py-4 rounded-2xl font-bold hover:bg-white hover:text-[#5a108f] transition-all duration-300 text-sm sm:text-base"
-                  >
-                    View Location Map
-                  </button>
-                </div>
-
-                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-white/60 text-xs sm:text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#f0fff1] rounded-full"></div>
-                    <span>Premium Road-Facing Plots</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#f0fff1] rounded-full"></div>
-                    <span>HMDA Approved • March 2026</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Location Section
-  const LocationSection = () => {
-    return (
-      <section id="location" className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1] relative overflow-hidden">
-        {/* Background Glow Effect */}
-        <div className="absolute top-1/3 right-10 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-                Prime <span className="text-[#5a108f]">Location</span>
-              </h2>
-              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                Strategically positioned for ultimate convenience, Sukoon Villas offers 
-                the perfect harmony between serene living and urban accessibility.
-              </p>
-
-              <div className="space-y-3 sm:space-y-4">
-                {[
-                  { icon: <LocationIcon />, text: "1.5 km from ORR Exit No.14" },
-                  { icon: <RoadIcon />, text: "Main road frontage with easy access" },
-                  { icon: <AreaIcon />, text: "Adjacent to PistaHouse & AVM Mall" },
-                  { icon: <ParkIcon />, text: "Proximity to schools and healthcare" },
-                  { icon: <ApprovalIcon />, text: "Planned neighborhood development" }
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white/60 rounded-xl border border-white/50 hover:shadow-lg transition-all duration-300">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#5a108f] rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                      {item.icon}
-                    </div>
-                    <span className="text-gray-700 font-medium text-sm sm:text-base">{item.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-gradient-to-br from-white to-[#f8fff8] rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-white/50">
-                <div className="aspect-square bg-gradient-to-br from-[#5a108f]/5 to-[#5a108f]/10 rounded-2xl overflow-hidden">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4099.513639258699!2d78.47433027516034!3d17.187012883666437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDExJzEzLjMiTiA3OMKwMjgnMzYuOSJF!5e1!3m2!1sen!2sin!4v1763403000302!5m2!1sen!2sin" 
-                    className="w-full h-full rounded-2xl border-0"
-                    allowFullScreen 
-                    loading="lazy" 
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Sukoon Villas Location Map"
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // HubSpot Contact Form Section - Redesigned
-  const HubSpotContactSection = () => {
-    useEffect(() => {
-      // Load HubSpot form script
-      const script = document.createElement('script');
-      script.src = 'https://js-na2.hsforms.net/forms/embed/21626983.js';
-      script.defer = true;
-      document.head.appendChild(script);
-
-      return () => {
-        // Cleanup if needed
-        document.head.removeChild(script);
-      };
-    }, []);
-
-    return (
-      <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#f0fff1] to-white relative overflow-hidden">
-        {/* Background Glow Effects */}
-        <div className="absolute top-0 left-10 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-10 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                Begin Your <span className="text-[#5a108f]">Journey</span>
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                Let us help you find your perfect home. Share your details and our team will connect with you.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              {/* Contact Information */}
-              <div className="space-y-6">
-                <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Project Highlights</h3>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4 p-4 bg-[#f8fff8] rounded-xl border border-gray-100">
-                      <div className="w-10 h-10 bg-[#5a108f] rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                        <LocationIcon />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">Prime Location</h4>
-                        <p className="text-gray-600 text-sm">1.5 km from ORR Exit 14 with main road access</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-4 bg-[#f8fff8] rounded-xl border border-gray-100">
-                      <div className="w-10 h-10 bg-[#5a108f] rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                        <AreaIcon />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">6 Acre Development</h4>
-                        <p className="text-gray-600 text-sm">Spacious gated community with premium amenities</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-4 bg-[#f8fff8] rounded-xl border border-gray-100">
-                      <div className="w-10 h-10 bg-[#5a108f] rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                        <CalendarIcon />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">Timely Delivery</h4>
-                        <p className="text-gray-600 text-sm">HMDA approvals in progress for March 2026 registry</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 p-4 bg-[#5a108f]/5 rounded-xl border border-[#5a108f]/10">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-[#5a108f] rounded-lg flex items-center justify-center text-white">
-                        <ApprovalIcon />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Quick Response Guaranteed</p>
-                        <p className="text-gray-600 text-sm">Our team responds within 2 hours during business hours</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Contact Details */}
-                <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100">
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">Contact Information</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-colors">
-                      <div className="w-12 h-12 bg-[#5a108f] rounded-xl flex items-center justify-center text-white">
-                        <PhoneIcon />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Call Us</p>
-                        <p className="text-gray-600">+91 98765 43210</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-colors">
-                      <div className="w-12 h-12 bg-[#5a108f] rounded-xl flex items-center justify-center text-white">
-                        <EmailIcon />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Email Us</p>
-                        <p className="text-gray-600">info@sukoonvillas.com</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-colors">
-                      <div className="w-12 h-12 bg-[#5a108f] rounded-xl flex items-center justify-center text-white">
-                        <MapPinIcon />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Visit Us</p>
-                        <p className="text-gray-600">1.5 km from ORR Exit 14, Main Road Venture</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* HubSpot Form */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-100">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h3>
-                  <p className="text-gray-600">Fill in your details and we'll contact you shortly</p>
-                </div>
-                
-                <div 
-                  className="hs-form-frame min-h-[500px]" 
-                  data-region="na2" 
-                  data-form-id="20ddbc02-a58e-4528-b34a-b8f5a347a89c" 
-                  data-portal-id="21626983"
-                >
-                  {/* HubSpot form will be loaded here */}
-                  <div className="flex items-center justify-center h-64 text-gray-500">
-                    Loading contact form...
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
-
+export default function GVHerotop() {
   return (
-    <div className="min-h-screen bg-[#f0fff1]">
-      <HeroSection />
-      <FeaturesSection />
-      <VideoSection />
-      <AmenitiesSection />
-      <CTASection />
-      <LocationSection />
-      <HubSpotContactSection />
+    <div className="relative w-full overflow-hidden bg-[#03050B]">
+      {/* Background Glow Effect - Visible on both layouts */}
+      <div className="absolute bottom-2 right-1/4 w-80 h-60 bg-[#E509EF] rounded-full filter blur-3xl"></div>
+      
+      {/* Mobile Layout - Only shows on screens < 768px */}
+      <div className="md:hidden flex flex-col py-12 px-4">
+        {/* Centered Titles with Enhanced Visibility */}
+        <div className="flex flex-col items-center mb-6 relative z-20">
+          <h1 
+            className="text-6xl font-light uppercase tracking-wider text-white leading-[0.85] text-center"
+            // style={{ textShadow: '0 0 15px rgba(255,255,255,0.4)' }}
+          >
+            Gulmohar
+          </h1>
+          <h1 
+            className="text-6xl font-light uppercase tracking-wider text-white leading-[0.85] text-center mt-2"
+            // style={{ textShadow: '0 0 15px rgba(255,255,255,0.4)' }}
+          >
+            Villas
+          </h1>
+        </div>
+        
+        {/* Image */}
+        <div className="w-full my-6 rounded-xl overflow-hidden flex justify-center">
+          <img 
+            src="/GVtinyimg.png" 
+            alt="Gulmohar Villas" 
+            className="h-full object-cover z-10"
+          />
+        </div>
+        
+        {/* Button and Services in Single Line */}
+        <div className="w-full flex items-center justify-between mt-4 z-20">
+          <div className="scale-110">
+            <AnimatedBTN />
+          </div>
+          
+          <div className="pt-6 text-right text-sm tracking-wider uppercase text-white space-y-1 font-medium">
+            <p>SHADNAGAR</p>
+            <p>HMDA APPROVED</p>
+            <p>VILLA PLOT PROJECT</p>
+          </div>
+        </div>
+      </div>
+      
+      {/* Desktop Layout - Exactly as you provided - Only shows on screens >= 768px */}
+      <div className="hidden md:block relative z-10 w-full max-w-7xl mx-auto">
+        <div className="grid grid-cols-3 grid-rows-2">
+          {/* Row 1: Top Section */}
+          <div className="flex items-end">
+            <h1 className="text-[14vw] md:text-[130px] font-light uppercase tracking-wider text-white leading-[0.85]">
+              Gulmohar
+            </h1>
+          </div>
+          
+          <div className="">
+            <img src="/GVtinyimg.png" alt="" className="relative w-[400px] h-[100px] ml-85 mt-18 rounded-xl"/>
+          </div>  
+          
+          <div className="flex items-start justify-end mt-18">
+            <div className="text-right text-sm tracking-wider uppercase text-white/80">
+              {/* Empty */}
+            </div>
+          </div>
+          
+          {/* Row 2: Bottom Section */}
+          <div className="flex items-end mb-10">
+            <AnimatedBTN/>
+          </div>
+          
+          <div className="flex items-end">
+            <div className="text-right text-sm md:text-sm tracking-wider uppercase text-white/80 ml-25 mb-10">
+            <p>SHADNAGAR</p>
+            <p>HMDA APPROVED</p>
+            <p>VILLA PLOT PROJECT</p>
+            </div>
+          </div>
+
+          <div className="flex items-start justify-center">
+            <h1 className="text-[14vw] md:text-[150px] font-light uppercase tracking-wider text-white leading-[0.85] mr-55">
+              Villas
+            </h1>
+          </div>
+        </div>
+      </div>
+      
+      {/* Gradient Overlays - Visible on both layouts */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 md:w-1/3 h-45 bg-gradient-to-r from-[#03050B] to-transparent z-10"></div>
+        <div className="absolute top-0 right-0 md:w-1/3 h-full bg-gradient-to-l from-[#03050B] to-transparent z-10"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1/4 md:h-1/3 bg-gradient-to-t from-[#03050B] to-transparent z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(3,5,11,0.5)_0%,rgba(3,5,11,0.9)_70%)] z-0"></div>
+      </div>
     </div>
   );
-};
-
-export default SukoonLandingPage;
+}

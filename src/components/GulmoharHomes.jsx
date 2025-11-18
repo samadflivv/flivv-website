@@ -456,7 +456,7 @@ export default function GulmoharHomes() {
       {/* Enhanced Stats Section */}
       <section className="py-30 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
             {projectStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -467,7 +467,7 @@ export default function GulmoharHomes() {
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 text-center group hover:shadow-3xl transition-all duration-500"
               >
-                <div className="text-5xl lg:text-6xl font-black text-[#602437] mb-4 group-hover:text-[#E05780] transition-colors duration-300 font-lancelot">
+                <div className="text-5xl lg:text-6xl font-black text-[#602437] mb-4 group-hover:text-[#E05780] transition-colors duration-300">
                   {stat.number}<span className="text-[#E05780]">{stat.suffix}</span>
                 </div>
                 <div className="text-gray-600 font-bold uppercase tracking-widest text-sm font-montserrat">
@@ -491,29 +491,18 @@ export default function GulmoharHomes() {
               transition={{ duration: 0.8 }}
               className="text-white"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ delay: 0.2 }}
-                className="inline-block text-[#602437] bg-white/20 px-4 py-2 rounded-full text-sm font-bold mb-6 font-montserrat"
-              >
-                LEGACY OF EXCELLENCE
-              </motion.div>
               
-              <h2 className="font-lancelot text-5xl mb-8 leading-tight">
-                Building on
-                <span className="block text-[#602437] drop-shadow-lg">Success</span>
+              <h2 className="font-lancelot text-5xl mb-8 font-bold">
+                About
+                <span className="block text-[#602437] drop-shadow-lg">Gulmohar Homes</span>
               </h2>
               
-              <div className="space-y-6 text-lg leading-relaxed font-light font-montserrat">
+              <div className="space-y-6 text-lg leading-relaxed font-light font-montserrat text-justify">
                 <p>
-                  Gulmohar Villas stands as one of our proudest achievements, a premium HMDA-approved villa plot project 
-                  that practically sold itself and set a benchmark in both quality and appeal.
+                  Located just 2 bits away from Gulmohar Villas, Gulmohar Homes in Farooqnagar, Shadnagar is a premium HMDA and RERA-approved project spread across 10 acres, offering 110 villa plots with ample space reserved for essential social infrastructure. Residents will also enjoy a sense of community and shared amenities through Gulmohar Villas.
                 </p>
                 <p>
-                  Building on this legacy, we are now excited to introduce Gulmohar Homes, an extension of this successful 
-                  development, with a vision to recreate the same floral serenity and aesthetic charm.
+                  At Flivv Developers, we prioritize quality in every development, and Gulmohar Homes is no exception. With a vision to build on the success of Gulmohar Villas, this project is set to become another standout in our growing portfolio!
                 </p>
               </div>
             </motion.div>
@@ -540,7 +529,7 @@ export default function GulmoharHomes() {
                   viewport={{ once: false }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ scale: 1.05, rotate: 1 }}
-                  className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border border-white/20 text-white group hover:bg-white/20 transition-all duration-300"
+                  className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border shadow-2xl shadow-[#602437] text-white group hover:bg-white/20 transition-all duration-300"
                 >
                   <div className="text-3xl text-[#602437] mb-3 group-hover:scale-110 transition-transform">✓</div>
                   <h3 className="font-bold text-sm leading-tight text-[#602437] group-hover:text-white transition-colors font-montserrat">{highlight}</h3>

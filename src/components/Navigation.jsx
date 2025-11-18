@@ -13,7 +13,7 @@ const projectsData = {
     ]
   },
   current: {
-    title: 'Current Projects', 
+    title: 'Current Projects',
     projects: [
       { name: 'Gulmohar Villas', href: '/gulmoharvillas' },
       { name: 'Gulmohar Homes', href: '/' },
