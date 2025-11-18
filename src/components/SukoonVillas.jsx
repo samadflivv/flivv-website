@@ -109,24 +109,6 @@ const SukoonLandingPage = () => {
     </svg>
   );
 
-  const PhoneIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM12 3v10l3-3h6V3h-9z"/>
-    </svg>
-  );
-
-  const EmailIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-    </svg>
-  );
-
-  const MapPinIcon = () => (
-    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
-    </svg>
-  );
-
   // Scroll to section function
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -139,11 +121,10 @@ const SukoonLandingPage = () => {
   const HeroSection = () => {
     return (
       <section className="min-h-screen relative px-4 sm:px-6 lg:px-20 py-8 sm:py-12 overflow-hidden bg-gradient-to-b from-[#5a108f] via-[#5a108f] to-[#f0fff1]">
-        {/* Background Glow Effects */}
+        {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-64 h-64 sm:w-96 sm:h-96 bg-white opacity-5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-white opacity-5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#5a108f] opacity-10 rounded-full blur-3xl"></div>
+          <div className="absolute top-10 left-10 w-64 h-64 sm:w-96 sm:h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative z-10 container mx-auto pt-12 sm:pt-20 lg:pt-32">
@@ -180,16 +161,16 @@ const SukoonLandingPage = () => {
                 </button>
               </div>
 
-              {/* Quick Stats - Improved Visibility */}
-              <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8 lg:mt-12 max-w-md bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20">
+              {/* Quick Stats */}
+              <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8 lg:mt-12 max-w-md">
                 {[
                   { value: '6 Acres', label: 'Land Area' },
                   { value: '1.5 km', label: 'From ORR' },
                   { value: '2026', label: 'Completion' }
                 ].map((stat, index) => (
                   <div key={index} className="text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-white drop-shadow-lg">{stat.value}</div>
-                    <div className="text-xs sm:text-sm text-white/90 font-medium">{stat.label}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-white">{stat.value}</div>
+                    <div className="text-xs sm:text-sm text-white/80">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -296,11 +277,8 @@ const SukoonLandingPage = () => {
     ];
 
     return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1] relative overflow-hidden">
-        {/* Background Glow Effect */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Why Choose <span className="text-[#5a108f]">Sukoon Villas</span>
@@ -350,12 +328,8 @@ const SukoonLandingPage = () => {
     ];
 
     return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-[#f0fff1] relative overflow-hidden">
-        {/* Background Glow Effect */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-white to-[#f0fff1]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Premium <span className="text-[#5a108f]">Amenities</span>
@@ -382,56 +356,49 @@ const SukoonLandingPage = () => {
     );
   };
 
-  // CTA Section - Redesigned
+  // CTA Section
   const CTASection = () => {
     return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1] relative overflow-hidden">
-        {/* Background Glow Effects */}
-        <div className="absolute top-0 left-1/4 w-80 h-80 bg-[#5a108f] opacity-10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#5a108f] opacity-10 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-[#5a108f] to-[#7c3aed] rounded-3xl p-8 sm:p-12 shadow-2xl border border-[#5a108f]/20 relative overflow-hidden">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full"></div>
-              </div>
-              
-              <div className="text-center relative z-10">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-                  Ready to Experience <span className="text-[#f0fff1]">Sukoon Living?</span>
-                </h2>
-                <p className="text-lg sm:text-xl text-white/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto">
-                  Don't miss this opportunity to own a premium plot in Hyderabad's most promising residential venture.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-                  <button
-                    onClick={() => scrollToSection('contact')}
-                    className="bg-white text-[#5a108f] px-8 sm:px-12 py-3 sm:py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all duration-300 shadow-2xl text-sm sm:text-base"
-                  >
-                    Schedule Site Visit
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('location')}
-                    className="border-2 border-white text-white px-8 sm:px-12 py-3 sm:py-4 rounded-2xl font-bold hover:bg-white hover:text-[#5a108f] transition-all duration-300 text-sm sm:text-base"
-                  >
-                    View Location Map
-                  </button>
-                </div>
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#5a108f] to-[#7c3aed] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-48 h-48 sm:w-72 sm:h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-48 h-48 sm:w-72 sm:h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
+        </div>
 
-                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-white/60 text-xs sm:text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#f0fff1] rounded-full"></div>
-                    <span>Premium Road-Facing Plots</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#f0fff1] rounded-full"></div>
-                    <span>HMDA Approved • March 2026</span>
-                  </div>
-                </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
+              Your Dream Home <span className="text-[#f0fff1]">Awaits</span>
+            </h2>
+            <p className="text-lg sm:text-xl text-white/80 mb-6 sm:mb-8 leading-relaxed">
+              Join the exclusive community of discerning homeowners at Sukoon Villas. 
+              Experience the perfect blend of luxury, comfort, and strategic location.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="bg-white text-[#5a108f] px-8 sm:px-12 py-3 sm:py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all duration-300 shadow-2xl text-sm sm:text-base"
+              >
+                Schedule Site Visit
+              </button>
+              <button
+                onClick={() => scrollToSection('location')}
+                className="border-2 border-white text-white px-8 sm:px-12 py-3 sm:py-4 rounded-2xl font-bold hover:bg-white hover:text-[#5a108f] transition-all duration-300 text-sm sm:text-base"
+              >
+                View Location
+              </button>
+            </div>
+
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-white/60 text-xs sm:text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#f0fff1] rounded-full"></div>
+                <span>Premium Road-Facing Plots</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-[#f0fff1] rounded-full"></div>
+                <span>HMDA Approved • March 2026</span>
               </div>
             </div>
           </div>
@@ -443,11 +410,8 @@ const SukoonLandingPage = () => {
   // Location Section
   const LocationSection = () => {
     return (
-      <section id="location" className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1] relative overflow-hidden">
-        {/* Background Glow Effect */}
-        <div className="absolute top-1/3 right-10 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
+      <section id="location" className="py-12 sm:py-16 lg:py-20 bg-[#f0fff1]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
@@ -496,7 +460,7 @@ const SukoonLandingPage = () => {
     );
   };
 
-  // HubSpot Contact Form Section - Redesigned
+  // HubSpot Contact Form Section
   const HubSpotContactSection = () => {
     useEffect(() => {
       // Load HubSpot form script
@@ -512,12 +476,8 @@ const SukoonLandingPage = () => {
     }, []);
 
     return (
-      <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#f0fff1] to-white relative overflow-hidden">
-        {/* Background Glow Effects */}
-        <div className="absolute top-0 left-10 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-10 w-64 h-64 bg-[#5a108f] opacity-5 rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-[#f0fff1] to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -529,92 +489,6 @@ const SukoonLandingPage = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              {/* Contact Information */}
-              <div className="space-y-6">
-                <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Project Highlights</h3>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4 p-4 bg-[#f8fff8] rounded-xl border border-gray-100">
-                      <div className="w-10 h-10 bg-[#5a108f] rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                        <LocationIcon />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">Prime Location</h4>
-                        <p className="text-gray-600 text-sm">1.5 km from ORR Exit 14 with main road access</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-4 bg-[#f8fff8] rounded-xl border border-gray-100">
-                      <div className="w-10 h-10 bg-[#5a108f] rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                        <AreaIcon />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">6 Acre Development</h4>
-                        <p className="text-gray-600 text-sm">Spacious gated community with premium amenities</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-4 bg-[#f8fff8] rounded-xl border border-gray-100">
-                      <div className="w-10 h-10 bg-[#5a108f] rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                        <CalendarIcon />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-1">Timely Delivery</h4>
-                        <p className="text-gray-600 text-sm">HMDA approvals in progress for March 2026 registry</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 p-4 bg-[#5a108f]/5 rounded-xl border border-[#5a108f]/10">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-[#5a108f] rounded-lg flex items-center justify-center text-white">
-                        <ApprovalIcon />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Quick Response Guaranteed</p>
-                        <p className="text-gray-600 text-sm">Our team responds within 2 hours during business hours</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Contact Details */}
-                <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-100">
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">Contact Information</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-colors">
-                      <div className="w-12 h-12 bg-[#5a108f] rounded-xl flex items-center justify-center text-white">
-                        <PhoneIcon />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Call Us</p>
-                        <p className="text-gray-600">+91 98765 43210</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-colors">
-                      <div className="w-12 h-12 bg-[#5a108f] rounded-xl flex items-center justify-center text-white">
-                        <EmailIcon />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Email Us</p>
-                        <p className="text-gray-600">info@sukoonvillas.com</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-xl transition-colors">
-                      <div className="w-12 h-12 bg-[#5a108f] rounded-xl flex items-center justify-center text-white">
-                        <MapPinIcon />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">Visit Us</p>
-                        <p className="text-gray-600">1.5 km from ORR Exit 14, Main Road Venture</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               {/* HubSpot Form */}
               <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-100">
@@ -624,7 +498,7 @@ const SukoonLandingPage = () => {
                 </div>
                 
                 <div 
-                  className="hs-form-frame min-h-[500px]" 
+                  className="hs-form-frame" 
                   data-region="na2" 
                   data-form-id="20ddbc02-a58e-4528-b34a-b8f5a347a89c" 
                   data-portal-id="21626983"

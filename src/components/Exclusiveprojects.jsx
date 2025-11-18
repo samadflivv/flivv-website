@@ -14,7 +14,7 @@ const CDN_IMAGES = {
   SukoonVillas1: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Our-Projects-section/DJI_20251017151106_0138_D.jpg",
   GulmoharHomes1: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Our-Projects-section/DJI_20251013114348_0094_D-min.jpg",
   AirportTown1: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013083416_0013_D-min.jpg",
-  SadhanaCity1: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Our-Projects-section/DJI_20251017142145_0132_D-min.jpg",
+  SadhanaCity1: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Our-Projects-section/DJI_20251017100732_0045_D-min.JPG",
   GulmoharVillas1: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Our-Projects-section/DJI_20251013111255_0025_D-min.jpg",
   // Rivendell: local path per your request (place /RFS2.jpeg in /public)
   RivendellRFS2: "/RFS2.jpeg"
@@ -53,7 +53,7 @@ const projectsData = [
     title: "Airport Town",
     location: "Kothur - Penjerla Road",
     imageKey: "AirportTown1",
-    description: "Premium HMDA-approved open plot project near Bangalore Highway.",
+    description: "Premium open plot project near Bangalore Highway.",
     hasBadge: false,
     href: "/airporttown",
     priority: false

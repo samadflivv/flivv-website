@@ -841,9 +841,11 @@ useEffect(() => {
               Register for the Mega Sales Event
             </h2>
             <div className="w-20 md:w-24 h-1 bg-white/50 mx-auto mb-4 md:mb-6 rounded-full"></div>
+            <p className="text-white/90 text-lg md:text-xl mx-auto">
+              Join our exclusive gathering on 20th November at Holiday Inn Doha, The Business Park.
+            </p>
             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-              Join our exclusive gathering on 20th November at Holiday Inn Doha.
-               Limited seats available 
+              Limited seats available 
             </p>
           </motion.div>
           

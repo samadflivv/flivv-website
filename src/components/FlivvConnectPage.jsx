@@ -112,9 +112,9 @@ const galleryData = {
 };
 
 const cityContent = {
-  alkhobar: { title: 'Al Khobar - KSA', stats: 'Venue : VOCO Hotel' },
-  riyadh: { title: 'Riyadh - KSA', stats: 'Venue : Marriott Hotel' },
-  jeddah: { title: 'Jeddah - KSA', stats: 'Venue : Intercontinental Hotel' }
+  alkhobar: { title: 'Al Khobar - KSA', stats: 'Venue : Voco Al Khobar by IHG' },
+  riyadh: { title: 'Riyadh - KSA', stats: 'Venue : Riyadh Marriott Hotel' },
+  jeddah: { title: 'Jeddah - KSA', stats: 'Venue : InterContinental Jeddah by IHG' }
 };
 
 export default function FlivvconnectPage() {
@@ -245,7 +245,7 @@ export default function FlivvconnectPage() {
           <div className="w-20 md:w-24 h-1 bg-white mb-6 rounded-full" />
 
           <div className="space-y-3 text-white/90 text-base md:text-lg">
-            <p>October 2025 marked a significant milestone for us — our very first International Sales Meet in the Kingdom of Saudi Arabia. We were truly honored to host over 1,000 families across Al-Khobar, Riyadh, and Jeddah, and the experience was nothing short of remarkable.</p>
+            <p>October 2025 marked a significant milestone for us — our very first International Sales Event in the Kingdom of Saudi Arabia. We were truly honored to host over 1,000 families across Al-Khobar, Riyadh, and Jeddah, and the experience was nothing short of remarkable.</p>
             <p>From the launch of our latest project, Gulmohar Homes, to the soft launch of our upcoming premium villa project in Tukkuguda, the response was overwhelmingly positive. The enthusiasm and trust shown by our guests inspired us to extend our stay in Riyadh, where we conducted exclusive 1:1 sales sessions to cater to the growing interest.</p>
             <p>A heartfelt thank you to everyone who showed up, believed in us, and became part of the Flivv Developers family, now 500+ strong and growing. We are committed to delivering excellence and upholding the trust placed in us by the wonderful people of the Kingdom of Saudi Arabia.</p>
           </div>

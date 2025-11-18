@@ -18,7 +18,7 @@ const ContactpageSecondsection = () => {
     {
       country: "Airport Town",
       city: "Kothur - Penjerla Road",
-      address: "Premium HMDA-approved open plot project just 2 km from Bangalore Highway, featuring limited plots with top-notch development.",
+      address: "Premium open plot project just 2 km from Bangalore Highway, featuring limited plots with top-notch development.",
       status: "active"
     },
     {
