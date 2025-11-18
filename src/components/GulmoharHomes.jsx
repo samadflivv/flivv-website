@@ -848,7 +848,7 @@ const whyGulmoharFeatures = [
               <img 
                 src="/ghicon2.png" 
                 alt="Seamless Connectivity"
-                className="w-full h-full object-cover"
+                className="w-100 h-40 lg:w-full lg:h-full object-contain"
               />
             </div>
           </div>
@@ -882,7 +882,7 @@ const whyGulmoharFeatures = [
               <img 
                 src="/ghicon3.png" 
                 alt="24/7 Security"
-                className="w-full h-full object-cover"
+                className="w-100 h-40 lg:w-full lg:h-full object-contain"
               />
             </div>
           </div>
