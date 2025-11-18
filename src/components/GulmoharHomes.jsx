@@ -50,7 +50,7 @@ export default function GulmoharHomes() {
     id: 6, 
     title: 'Approvals & Docs', 
     category: 'Legal', 
-    imageUrl: 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GulmoharHomes/WhatsApp%20Image%202025-11-18%20at%207.00.11%20PM.jpeg' 
+    imageUrl: 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GulmoharHomes/upscalemedia-transformed%20(1).jpeg' 
   }
 ];
 
@@ -448,14 +448,14 @@ const whyGulmoharFeatures = [
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <motion.h1 
               className="font-lancelot text-6xl lg:text-9xl text-white leading-tight"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
             >
               Gulmohar Homes
@@ -465,7 +465,7 @@ const whyGulmoharFeatures = [
               className="font-lancelot text-2xl lg:text-6xl text-white/90"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               Carrying Forward the <span className='text-[#E05780]'>Legacy</span>
@@ -475,7 +475,7 @@ const whyGulmoharFeatures = [
               className="font-montserrat text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto mt-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <a href="/gulmoharvillas" className="text-[#E05780] ml-1 font-semibold"> Gulmohar Villas </a> 
@@ -486,7 +486,7 @@ const whyGulmoharFeatures = [
               className="mt-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 1 }}
             >
               <motion.button 
@@ -541,7 +541,7 @@ const whyGulmoharFeatures = [
                 key={stat.label}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 text-center group hover:shadow-3xl transition-all duration-500"
@@ -596,7 +596,7 @@ const whyGulmoharFeatures = [
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="text-white"
             >
@@ -619,7 +619,7 @@ const whyGulmoharFeatures = [
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="grid grid-cols-2 gap-6"
             >
@@ -635,7 +635,7 @@ const whyGulmoharFeatures = [
                   key={highlight}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ scale: 1.05, rotate: 1 }}
                   className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border shadow-2xl shadow-[#602437] text-white group hover:bg-white/20 transition-all duration-300"
@@ -655,7 +655,7 @@ const whyGulmoharFeatures = [
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="relative overflow-hidden shadow-2xl"
           >
@@ -709,7 +709,7 @@ const whyGulmoharFeatures = [
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       className="text-center mb-16"
     >
@@ -730,7 +730,7 @@ const whyGulmoharFeatures = [
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
         whileHover={{ y: -5, scale: 1.02 }}
         className="lg:col-span-6 group relative"
@@ -767,7 +767,7 @@ const whyGulmoharFeatures = [
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           whileHover={{ y: -5, scale: 1.02 }}
           className="group relative"
@@ -795,7 +795,7 @@ const whyGulmoharFeatures = [
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
           whileHover={{ y: -5, scale: 1.02 }}
           className="group relative"
@@ -824,7 +824,7 @@ const whyGulmoharFeatures = [
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
         whileHover={{ y: -5, scale: 1.02 }}
         className="lg:col-span-5 group relative"
@@ -858,7 +858,7 @@ const whyGulmoharFeatures = [
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.5 }}
         whileHover={{ y: -5, scale: 1.02 }}
         className="lg:col-span-5 group relative"
@@ -929,7 +929,7 @@ const whyGulmoharFeatures = [
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
@@ -947,7 +947,7 @@ const whyGulmoharFeatures = [
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="bg-white rounded-3xl shadow-3xl overflow-hidden border-2 border-white/20"
           >
@@ -989,7 +989,7 @@ const whyGulmoharFeatures = [
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       className="text-center mb-20"
     >
@@ -1010,7 +1010,7 @@ const whyGulmoharFeatures = [
           key={item.id}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
           whileHover={{ scale: 1.03, y: -5 }}
           className="group cursor-pointer relative"
@@ -1079,7 +1079,7 @@ const whyGulmoharFeatures = [
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="text-white"
             >
@@ -1119,7 +1119,7 @@ const whyGulmoharFeatures = [
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="bg-white rounded-3xl lg:mt-8 p-8 shadow-2xl"
             >
@@ -1153,6 +1153,7 @@ const whyGulmoharFeatures = [
       </section>
 
       {/* Enhanced Lightbox */}
+{/* Enhanced Lightbox */}
 {lightboxIndex >= 0 && (
   <motion.div 
     initial={{ opacity: 0 }}
@@ -1171,12 +1172,13 @@ const whyGulmoharFeatures = [
         Close ×
       </button>
       
-      <div className="bg-white rounded-3xl overflow-hidden shadow-3xl">
-        <div className="aspect-video bg-gray-100 flex items-center justify-center">
+      {/* Removed white background and shadow */}
+      <div className="rounded-3xl overflow-hidden">
+        <div className="aspect-video bg-transparent flex items-center justify-center">
           <img 
             src={gallery[lightboxIndex].imageUrl} 
             alt={gallery[lightboxIndex].title}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
           />
         </div>  
       </div>
