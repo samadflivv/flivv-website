@@ -9,7 +9,7 @@ const projectsData = {
   upcoming: {
     title: 'Upcoming Projects',
     projects: [
-      { name: 'Sukoon Villas', href: '/' }
+      { name: 'Sukoon Villas', href: '/sukoonvillas' }
     ]
   },
   current: {
