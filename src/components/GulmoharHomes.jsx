@@ -720,7 +720,7 @@ const whyGulmoharFeatures = [
         Why <span className="text-[#E05780]">Gulmohar Homes</span>?
       </h2>
       <p className="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed font-montserrat">
-        Discover what makes Gulmohar Homes the perfect choice for your dream home and investment
+        Discover what makes Gulmohar Homes the perfect choice for investment in Shadnagar
       </p>
     </motion.div>
 
@@ -934,13 +934,13 @@ const whyGulmoharFeatures = [
             className="text-center mb-16"
           >
             <div className="inline-block bg-white/20 backdrop-blur-lg text-white px-8 py-3 rounded-2xl text-sm font-bold mb-6 font-montserrat border border-white/30">
-              PRIME LOCATION
+              38-Kms from Aramghar
             </div>
             <h2 className="font-lancelot text-5xl text-white mb-6">
-              Strategic <span className="text-[#602437] drop-shadow-lg">Location</span>
+              Location & Connectivity
             </h2>
             <p className="text-white/90 text-xl max-w-3xl mx-auto leading-relaxed font-montserrat">
-              Perfectly situated in Farooqnagar, Shadnagar with excellent connectivity and growth potential
+
             </p>
           </motion.div>
 
@@ -1000,7 +1000,7 @@ const whyGulmoharFeatures = [
         Visual <span className="text-[#E05780]">Journey</span>
       </h2>
       <p className="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed font-montserrat">
-        Explore master plans, location maps, and visualizations of Gulmohar Homes
+        Explore visual updates of Gulmohar Homes
       </p>
     </motion.div>
 
@@ -1099,7 +1099,7 @@ const whyGulmoharFeatures = [
 
               <div className="grid grid-cols-2 gap-6 lg:mb-12">
                 {[
-                  { label: 'Projects Completed', value: '10' },
+                  { label: 'Projects', value: '10+' },
                   { label: 'Years Experience', value: '14' },
                   { label: 'Happy Customers', value: '500+' },
                   { label: 'Satisfaction Rate', value: '97%' }
