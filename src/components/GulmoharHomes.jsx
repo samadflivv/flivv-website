@@ -1101,7 +1101,7 @@ const whyGulmoharFeatures = [
                 {[
                   { label: 'Projects', value: '10+' },
                   { label: 'Years Experience', value: '14' },
-                  { label: 'Happy Customers', value: '500+' },
+                  { label: 'Growing Customers', value: '500+' },
                   { label: 'Satisfaction Rate', value: '97%' }
                 ].map((stat, index) => (
                   <motion.div
