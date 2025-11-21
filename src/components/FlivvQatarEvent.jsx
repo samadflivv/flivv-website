@@ -141,21 +141,21 @@ useEffect(() => {
     }
   ];
 
-  // Updated schedule days to November 20, 2025
-  const scheduleDays = [
+ // Updated schedule days with first event completed and second event highlighted
+const scheduleDays = [
   {
     date: "November 20, 2025",
     location: "Holiday Inn Doha",
-    title: "Mega Sales Event"
+    title: "Mega Sales Event",
+    completed: true
   },
   {
     date: "November 21, 2025", 
-    location: "Venue : TBA",
-    title: "1:1 Sales Session"
+    title: "1:1 Sales Session",
+    highlight: true
   },
   {
     date: "November 22, 2025",
-    location: "Venue : TBA",
     title: "1:1 Sales Session"
   }
 ];
@@ -482,97 +482,7 @@ useEffect(() => {
         </motion.div>
       </section>
 
-      {/* Countdown Section - Reverted to Previous Style with Blobs */}
-      <section className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Animated Blobs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#8A1538] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
-          <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-[#6A102B] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-[#8A1538] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
-        </div>
-
-        <div className="w-full max-w-6xl mx-auto relative z-10">
-          <motion.div 
-            className="text-center mb-12 md:mb-16"
-            {...fadeInUp}
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#8A1538] mb-6">
-              Mega Sales Event
-            </h2>
-            <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
-            <p className="text-gray-600 mt-4">November 20 | Thursday | Holiday Inn Doha</p>
-          </motion.div>
-          
-          <motion.div 
-            className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 max-w-4xl mx-auto px-4"
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-          >
-            {Object.entries(timeLeft).map(([unit, value], index) => (
-              <motion.div
-                key={unit}
-                className="flex-1 min-w-[70px] md:min-w-[100px] text-center"
-                variants={fadeInUp}
-              >
-                <motion.div 
-                  className="bg-white premium-shadow rounded-xl md:rounded-2xl p-4 md:p-6 mb-3 relative overflow-hidden group hover-lift"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  {/* Background Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#8A1538] to-[#6A102B] opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
-                  
-                  <div className="relative z-10">
-                    <span className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#8A1538] block mb-2">{value}</span>
-                    <div className="w-8 md:w-12 h-0.5 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto mb-2"></div>
-                    <span className="text-gray-600 font-medium capitalize text-xs md:text-sm tracking-wider">{unit}</span>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Countdown CTA */}
-          <motion.div 
-            className="text-center mt-8 md:mt-12"
-            {...fadeInUp}
-          >
-            <p className="text-gray-600 mb-6 text-sm md:text-base">Let's Get Connected!</p>
-            <motion.a
-              href="#registration"
-              className="inline-block bg-gradient-to-r from-[#8A1538] to-[#6A102B] text-white px-6 md:px-8 py-3 md:py-4 rounded-2xl font-semibold hover-lift premium-shadow text-sm md:text-base"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Register Now
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Full Screen Video Section with Auto Play/Pause and Loop */}
-      <section 
-        ref={videoSectionRef}
-        className="video-container relative flex items-center justify-center bg-black"
-      >
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover md:object-contain"
-          controls
-          controlsList="nodownload"
-          muted
-          playsInline
-          loop
-          onContextMenu={(e) => e.preventDefault()}
-        >
-          <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/QATAR%20WEBSITE%20VIDEO.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </section>
-
-      {/* About Section with Image on Right Side */}
+ {/* About Section with Image on Right Side */}
       <section id="details" className="section-padding bg-white">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -657,7 +567,117 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* Updated Event Highlights Section with Better Icons */}
+      {/* Full Screen Video Section with Auto Play/Pause and Loop */}
+      <section 
+        ref={videoSectionRef}
+        className="video-container relative flex items-center justify-center bg-black"
+      >
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover md:object-contain"
+          controls
+          controlsList="nodownload"
+          muted
+          playsInline
+          loop
+          onContextMenu={(e) => e.preventDefault()}
+        >
+          <source src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/QATAR%20WEBSITE%20VIDEO.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
+
+     {/* Updated Schedule Section - First Event Completed, Second Event Highlighted */}
+<section className="section-padding bg-white">
+  <div className="w-full max-w-6xl mx-auto">
+    <motion.div 
+      className="text-center mb-12 md:mb-16"
+      {...fadeInUp}
+    >
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        Our Schedule
+      </h2>
+      <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
+    </motion.div>
+    
+    <motion.div 
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+      variants={staggerChildren}
+      initial="initial"
+      whileInView="whileInView"
+      viewport={{ once: true }}
+    >
+      {scheduleDays.map((day, index) => (
+        <motion.div
+          key={index}
+          className={`rounded-2xl p-6 md:p-8 text-center group hover-lift premium-shadow border ${
+            day.completed 
+              ? 'bg-gradient-to-br from-gray-100 to-gray-200 text-gray-600 border-gray-300' 
+              : day.highlight
+              ? 'bg-gradient-to-br from-[#8A1538] to-[#6A102B] text-white border-[#8A1538]'
+              : 'bg-gradient-to-br from-gray-50 to-white text-gray-900 border-gray-200'
+          }`}
+          variants={fadeInUp}
+          whileHover={{ scale: day.completed ? 1 : 1.05 }}
+        >
+          <div className="flex justify-center mb-4">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill={
+              day.completed ? "#9CA3AF" : 
+              day.highlight ? "#ffffff" : "#8A1538"
+            }>
+              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+            </svg>
+          </div>
+          
+          <h3 className={`text-xl md:text-2xl font-bold mb-3 ${
+            day.completed ? 'text-gray-700' : 
+            day.highlight ? 'text-white' : 'text-gray-900'
+          }`}>
+            {day.date}
+          </h3>
+          
+          {/* Only show location for completed event */}
+          {day.location && (
+            <p className={`mb-2 text-lg ${
+              day.completed ? 'text-gray-600' : 'text-white/90'
+            }`}>
+              {day.location}
+            </p>
+          )}
+          
+          {/* Event Title */}
+          {day.title && (
+            <p className={`text-lg font-semibold mb-4 ${
+              day.completed ? 'text-gray-700' : 
+              day.highlight ? 'text-white' : 'text-[#8A1538]'
+            }`}>
+              {day.title}
+            </p>
+          )}
+          
+          <motion.a
+            href="#registration"
+            className={`inline-block px-6 py-3 rounded-xl font-semibold transition-colors text-sm md:text-base ${
+              day.completed 
+                ? 'bg-gray-400 text-gray-700 cursor-not-allowed' 
+                : day.highlight
+                ? 'bg-white text-[#8A1538] hover:bg-gray-100'
+                : 'bg-[#8A1538] text-white hover:bg-[#6A102B]'
+            }`}
+            whileHover={{ scale: day.completed ? 1 : 1.05 }}
+            whileTap={{ scale: day.completed ? 1 : 0.95 }}
+            onClick={day.completed ? (e) => e.preventDefault() : undefined}
+          >
+            {day.completed ? 'Event Completed' : 'Register Now'}
+          </motion.a>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
+
+    {/* Updated Event Highlights Section with Better Icons */}
       <section className="section-padding gradient-bg">
         <div className="w-full max-w-6xl mx-auto">
           <motion.div 
@@ -721,73 +741,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* Schedule Section with Three Days - First Card Special Styling */}
-      <section className="section-padding bg-white">
-        <div className="w-full max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-12 md:mb-16"
-            {...fadeInUp}
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Our Schedule
-            </h2>
-            <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-[#8A1538] to-[#6A102B] mx-auto rounded-full"></div>
-          </motion.div>
-          
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-          >
-            {scheduleDays.map((day, index) => (
-              <motion.div
-                key={index}
-                className={`rounded-2xl p-6 md:p-8 text-center group hover-lift premium-shadow border ${
-                  index === 0 
-                    ? 'bg-gradient-to-br from-[#8A1538] to-[#6A102B] text-white border-[#8A1538]' 
-                    : 'bg-gradient-to-br from-gray-50 to-white text-gray-900 border-gray-200'
-                }`}
-                variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="flex justify-center mb-4">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill={index === 0 ? "#ffffff" : "#8A1538"}>
-                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                </div>
-                <h3 className={`text-xl md:text-2xl font-bold mb-3 ${index === 0 ? 'text-white' : 'text-gray-900'}`}>
-                  {day.date}
-                </h3>
-                <p className={`mb-2 text-lg ${index === 0 ? 'text-white/90' : 'text-gray-600'}`}>
-                  {day.location}
-                </p>
-                {/* Added title below location */}
-                {day.title && (
-                  <p className={`text-lg font-semibold mb-4 ${index === 0 ? 'text-white' : 'text-[#8A1538]'}`}>
-                    {day.title}
-                  </p>
-                )}
-                <motion.a
-                  href="#registration"
-                  className={`inline-block px-6 py-3 rounded-xl font-semibold transition-colors text-sm md:text-base ${
-                    index === 0 
-                      ? 'bg-white text-[#8A1538] hover:bg-gray-100' 
-                      : 'bg-[#8A1538] text-white hover:bg-[#6A102B]'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Register Now
-                </motion.a>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
-      
       {/* Enhanced Our Journey Section */}
       <section id="about" className="section-padding bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
         {/* Background Pattern */}
