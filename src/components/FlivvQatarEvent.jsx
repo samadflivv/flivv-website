@@ -141,7 +141,7 @@ useEffect(() => {
     }
   ];
 
- // Updated schedule days with first event completed and second event highlighted
+// Updated schedule days with 21st completed and 22nd highlighted
 const scheduleDays = [
   {
     date: "November 20, 2025",
@@ -152,11 +152,12 @@ const scheduleDays = [
   {
     date: "November 21, 2025", 
     title: "1:1 Sales Session",
-    highlight: true
+    completed: true
   },
   {
     date: "November 22, 2025",
-    title: "1:1 Sales Session"
+    title: "1:1 Sales Session",
+    highlight: true
   }
 ];
 
@@ -510,7 +511,7 @@ const scheduleDays = [
                 </p>
                 
                 <p>
-                  Join us on November 20, 2025, at Holiday Inn Doha for an exclusive sales event featuring project showcases, meaningful connections, and personalized 1:1 sales sessions. We can't wait to assist you in connecting and building a long-lasting relationship with us!
+                  Join us for an exclusive sales event featuring project showcases, meaningful connections, and personalized 1:1 sales sessions. We can't wait to assist you in connecting and building a long-lasting relationship with us!
                 </p>
               </div>
 
@@ -587,7 +588,8 @@ const scheduleDays = [
         </video>
       </section>
 
-     {/* Updated Schedule Section - First Event Completed, Second Event Highlighted */}
+
+{/* Updated Schedule Section - 20th & 21st Completed, 22nd Highlighted */}
 <section className="section-padding bg-white">
   <div className="w-full max-w-6xl mx-auto">
     <motion.div 
@@ -636,7 +638,7 @@ const scheduleDays = [
             {day.date}
           </h3>
           
-          {/* Only show location for completed event */}
+          {/* Only show location for first completed event */}
           {day.location && (
             <p className={`mb-2 text-lg ${
               day.completed ? 'text-gray-600' : 'text-white/90'
