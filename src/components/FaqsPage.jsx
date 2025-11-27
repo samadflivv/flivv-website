@@ -7,7 +7,7 @@ import { motion, AnimatePresence, useScroll, useTransform, useInView, useReduced
 // --- 1. ASSETS & CONFIG ---
 
 // High-end moody architecture
-const HERO_IMAGE_URL = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop";
+const HERO_IMAGE_URL = "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/QatarEvent/LW0A7183.jpg";
 // A secondary image for the About section
 const ABOUT_IMAGE_URL = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop";
 
@@ -89,8 +89,8 @@ const HeroSection = () => {
       >
         <img
           src={HERO_IMAGE_URL}
-          alt="Luxury Architecture"
-          className="w-full h-full object-cover opacity-60"
+          alt=""
+          className="w-full h-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F19]/40 via-transparent to-[#0B0F19]" />
       </motion.div>
