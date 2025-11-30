@@ -43,20 +43,15 @@ const allGalleryImages = [
   
 ];
 
-const scheduleDays = [
-  {
-    date: "Nov 28, 2025",
-    day: "Friday",
-    title: "1:1 Sales Session",
-    highlight: false
-  },
-  {
-    date: "Nov 29, 2025",
-    day: "Saturday",
-    title: "1:1 Sales Session",
-    highlight: false
-  }
-];
+// const scheduleDays = [
+//   {
+//     date: "Nov 28, 2025",
+//     day: "Friday",
+//     title: "1:1 Sales Session",
+//     highlight: false
+//   },
+
+// ];
 
 // Animation Variants
 const fadeInUp = {
@@ -193,7 +188,7 @@ useEffect(() => {
         1. HERO SECTION (Schedule is now here)
         ========================================
       */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center py-40 px-4 hero-gradient overflow-hidden">
+      <section className="relative min-h-[50vh] flex flex-col justify-center items-center pt-40 py-20 px-4 hero-gradient overflow-hidden">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#FFD700] rounded-full mix-blend-overlay filter blur-3xl opacity-10 animate-pulse"></div>
@@ -209,17 +204,17 @@ useEffect(() => {
             className="mb-12"
           >
             
-            <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-5 leading-tight">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-5 leading-tight">
               Qatar Sales Meet <br/><span className="italic font-light opacity-90">2025</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/80 font-light max-w-2xl mx-auto mb-16">
+            {/* <p className="text-xl md:text-2xl text-white/80 font-light max-w-2xl mx-auto mb-16">
               Join us for 1:1 Sales Meets in <strong className='font-bold'>Crowne Plaza Doha</strong>  - The Business Park
-            </p>
+            </p> */}
           </motion.div>
 
           {/* Schedule Cards displayed as Hero Content */}
-          <motion.div 
+          {/* <motion.div 
             variants={staggerChildren}
             initial="initial"
             whileInView="whileInView"
@@ -258,7 +253,7 @@ useEffect(() => {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
 
           <motion.div 
             initial={{ opacity: 0 }}
@@ -276,11 +271,10 @@ useEffect(() => {
         2. LOCATION / VENUE SECTION (Image removed, Map placeholder added)
         ========================================
       */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12 items-center max-w-6xl mx-auto">
             
-            {/* Text Content & Details */}
             <motion.div 
               className="lg:w-1/2"
               variants={fadeInUp}
@@ -318,7 +312,7 @@ useEffect(() => {
               </div>
             </motion.div>
 
-            {/* Map Placeholder (Replaced Image) */}
+            
             <motion.div 
               className="lg:w-1/2 w-full"
               variants={scaleIn}
@@ -345,7 +339,7 @@ useEffect(() => {
 
           </div>
         </div>
-      </section>
+      </section> */}
 
 
    {/* ========================================
@@ -601,7 +595,7 @@ useEffect(() => {
             <div className="md:w-1/2 bg-gray-900 p-8 lg:p-12 text-white flex flex-col justify-center items-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
                 <div className="relative z-10">
-                  <h3 className="text-3xl lg:text-5xl font-serif font-bold mb-6">Secure Your Spot</h3>
+                  <h3 className="text-3xl lg:text-4xl font-serif font-bold mb-6">Get in touch with us</h3>
                   <img className='w-full rounded-xl' src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/QatarEvent/LW0A7318.jpg" alt="" />
                 </div>
             </div>

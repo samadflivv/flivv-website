@@ -343,7 +343,7 @@ export default function LandingPage() {
     <main className="bg-[#050505] min-h-screen text-slate-200 selection:bg-[#CE1126] selection:text-white font-sans">
         {/* Global Texture Overlay for Film Grain Effect */}
         <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50 mix-blend-overlay" style={{ backgroundImage: `url(${ASSETS.texture})` }}></div>
-        
+            
         <Hero />
         <CountdownBar />
         <AboutEvent />
