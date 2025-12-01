@@ -208,7 +208,7 @@ const Schedule = () => {
                                 </div>
 
                                 <div className="hidden md:block">
-                                    <button className="px-6 py-2 border border-white/20 text-white text-sm rounded-full hover:bg-white hover:text-black transition-colors">
+                                    <button onClick={() => document.getElementById('registration').scrollIntoView({behavior: 'smooth'})} className="px-6 py-2 border border-white/20 text-white text-sm rounded-full hover:bg-white hover:text-black transition-colors">
                                         Book Slot
                                     </button>
                                 </div>
