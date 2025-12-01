@@ -36,6 +36,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('current');
+  const [mobileInternationalOpen, setMobileInternationalOpen] = useState(false);
 
   return (
     <div className="flex justify-between items-center px-6 md:px-[100px] w-full z-50 text-white absolute">
@@ -62,7 +63,7 @@ export default function Navigation() {
           </Link>
           
           {/* Mega Menu Dropdown */}
-          <div className="absolute left-0 top-full mt-2 w-[500px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
+          <div className="absolute left-0 top-full mt-2 w-[450px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
             <div className="flex p-6">
               {/* Categories Sidebar */}
               <div className="w-1/3 pr-6 border-r border-gray">
@@ -104,22 +105,29 @@ export default function Navigation() {
 
         <li><Link href="/contact">Contact</Link></li>
 
-        {/* Event Buttons */}
-        <li>
-          <Link
-            href="/flivvksaevent"
-            className="py-2 px-4 rounded-full"
-          >
-            KSA Event
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/flivvqatarevent"
-            className="border border-white py-2 px-4 rounded-full bg-[#871537]"
-          >
-            Qatar Event
-          </Link>
+
+        {/* International Events Dropdown (new) */}
+        <li className="relative group">
+          <button className="flex items-center">
+            International Events
+            <ChevronDown size={16} className="ml-2" />
+          </button>
+
+          {/* Dropdown - appears on hover, matches existing dropdown behavior */}
+          <div className="absolute right-0 top-full mt-2 w-[220px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
+            <ul className="p-3">
+              {/* First item highlighted */}
+              <li>
+                <Link href="/flivvbahrainvisit" className="block px-4 py-2 rounded-md text-black bg-[#0192D3] text-white">Bahrain Event</Link>
+              </li>
+              <li>
+                <Link href="/flivvqatarevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">Qatar Event</Link>
+              </li>
+              <li>
+                <Link href="/flivvksaevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">KSA Event</Link>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
 
@@ -138,7 +146,7 @@ export default function Navigation() {
 
         <div className="flex flex-col h-full pt-20">
           {/* Main Menu Items */}
-          {!mobileProjectsOpen ? (
+          {!mobileProjectsOpen && !mobileInternationalOpen ? (
             <ul className="flex flex-col items-start p-6 gap-6 font-medium text-lg text-white">
               <li>
                 <Link href="/" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">Home</Link>
@@ -162,27 +170,19 @@ export default function Navigation() {
                 <Link href="/contact" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">Contact</Link>
               </li>
 
-              {/* Mobile Event Buttons */}
-              <li className="w-full mt-4">
-                <Link
-                  href="/flivvksaevent"
-                  onClick={() => setIsOpen(false)}
-                  className="border border-white py-3 px-6 rounded-full text-xl block w-full text-center hover:bg-[#0192D3] hover:border-[#0192D3] transition-all"
-                >
-                  KSA Event
-                </Link>
-              </li>
+
+              {/* Mobile International Dropdown Trigger (new) */}
               <li className="w-full">
-                <Link
-                  href="/flivvqatarevent"
-                  onClick={() => setIsOpen(false)}
-                  className="py-3 px-6 rounded-full bg-[#871537] text-xl block w-full text-center hover:bg-[#0192D3] transition-all"
+                <button
+                  onClick={() => setMobileInternationalOpen(true)}
+                  className="flex items-center justify-between w-full text-2xl hover:text-[#0192D3] transition-all"
                 >
-                  Qatar Event
-                </Link>
+                  International Events
+                  <ChevronDown size={24} className="transform rotate-90" />
+                </button>
               </li>
             </ul>
-          ) : (
+          ) : mobileProjectsOpen ? (
             /* Projects Submenu - Two Column Layout */
             <div className="flex flex-col h-full">
               {/* Back Button */}
@@ -239,6 +239,63 @@ export default function Navigation() {
                     </ul>
                   )}
                 </div>
+              </div>
+            </div>
+          ) : (
+            /* Mobile International Submenu */
+            <div className="flex flex-col h-full">
+              <div className="flex items-center p-6 border-b border-gray-700">
+                <button 
+                  onClick={() => setMobileInternationalOpen(false)}
+                  className="flex items-center text-white text-xl hover:text-[#0192D3] transition-all"
+                >
+                  <ArrowLeft size={24} className="mr-2" />
+                  Back
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-4">
+                <ul className="space-y-4">
+                  {/* First item highlighted */}
+                  <li>
+                    <Link
+                      href="/flivvbahrainvisit"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setMobileInternationalOpen(false);
+                      }}
+                      className="block px-6 py-4 text-lg rounded-md bg-[#0192D3] text-white w-full"
+                    >
+                      Flivv Bahrain Visit
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      href="/flivvqatarevent"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setMobileInternationalOpen(false);
+                      }}
+                      className="block px-6 py-4 text-lg rounded-md text-gray-300 hover:bg-[#0192D3] hover:text-white w-full"
+                    >
+                      Qatar Event
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      href="/flivvksaevent"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setMobileInternationalOpen(false);
+                      }}
+                      className="block px-6 py-4 text-lg rounded-md text-gray-300 hover:bg-[#0192D3] hover:text-white w-full"
+                    >
+                      KSA Event
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           )}

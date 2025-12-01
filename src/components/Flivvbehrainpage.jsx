@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { Clock, Calendar, Star, CheckCircle2, ArrowRight, MapPin, Building2, Users } from 'lucide-react';
-
+import { Clock, Calendar, Star, CheckCircle2, ArrowRight, MapPin, Building2, Users, Volume2, Presentation, HelpCircle } from 'lucide-react'; 
 
 const ASSETS = {
   heroBg: "/charles-adrien-fournier-lDxs85UO7lU-unsplash.jpg", // Bahrain skyline
@@ -70,7 +69,7 @@ const Hero = () => {
 
         <FadeIn delay={0.4}>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Experience the pinnacle of real estate investment. Join us for exclusive sales sessions and premium land opportunities.
+            Explore premium open-plot investment opportunities around Hyderabad. Connect with us in Manama and take the next step toward choosing Flivv’s projects as your preferred investment option.
           </p>
         </FadeIn>
 
@@ -87,8 +86,7 @@ const Hero = () => {
 };
 
 const CountdownBar = () => {
-    // Set target to Dec 4th, 2025 (Sample date based on prompt)
-    const target = new Date("2025-12-04T09:00:00").getTime();
+    const target = new Date("2025-12-05T09:00:00").getTime();
     const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
   
     useEffect(() => {
@@ -132,16 +130,16 @@ const AboutEvent = () => {
         <section className="py-20 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <FadeIn>
                 <h2 className="text-4xl md:text-6xl font-serif text-white leading-tight">
-                    An Invitation to <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CE1126] to-[#D4AF37]">Excellence.</span>
+                    Invest Wisely in <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CE1126] to-[#D4AF37]">Real Estate.</span>
                 </h2>
             </FadeIn>
             <FadeIn delay={0.2} className="space-y-6">
                 <p className="text-gray-300 text-lg font-light leading-relaxed border-l-2 border-[#CE1126] pl-6">
-                    Unlock a world of premium real estate opportunities. The Flivv Bahrain Sales Sessions are meticulously designed for discerning investors seeking clarity, trust, and high returns.
+                    Resuming our successful sales tour across the Kingdom of Saudi Arabia and Qatar, we are excited to visit Bahrain and present the best investment opportunities around Hyderabad.
                 </p>
                 <p className="text-gray-400 font-light leading-relaxed pl-6">
-                    Whether you are an NRI looking to reconnect with your roots or a local investor seeking strong asset appreciation, our founders and experts are here to guide you through every legal and financial nuance.
+                    Having hosted more than 1,000+ families in each country, it is our pleasure and honor to assist you with safe, secure, and high-value land investment options backed by Flivv Developers.
                 </p>
             </FadeIn>
         </section>
@@ -150,9 +148,9 @@ const AboutEvent = () => {
 
 const Highlights = () => {
     const cards = [
-        { icon: Users, title: "1:1 Founder Access", desc: "Private consultations with Flivv leadership to discuss bespoke investment strategies." },
-        { icon: Star, title: "Exclusive Inventory", desc: "Access premium plots and projects not available to the general public." },
-        { icon: CheckCircle2, title: "Legal Transparency", desc: "Full documentation review and approval briefings on the spot." },
+        { icon: Volume2, title: "Public Address"},
+        { icon: Presentation, title: "Projects Presentation"},
+        { icon: HelpCircle, title: "Q&A Session" },
     ];
 
     return (
@@ -167,8 +165,7 @@ const Highlights = () => {
                     {cards.map((c, i) => (
                         <FadeIn key={i} delay={i * 0.1} className="group bg-[#0F1115] p-10 hover:bg-[#161920] transition-colors border-r border-white/5 last:border-0">
                             <c.icon className="text-[#CE1126] w-8 h-8 mb-6 group-hover:scale-110 transition-transform" />
-                            <h4 className="text-xl text-white mb-3 font-medium">{c.title}</h4>
-                            <p className="text-gray-400 font-light text-sm leading-relaxed">{c.desc}</p>
+                            <h4 className="text-xl lg:text-2xl text-white mb-3 font-medium">{c.title}</h4>
                         </FadeIn>
                     ))}
                 </div>
@@ -179,9 +176,9 @@ const Highlights = () => {
 
 const Schedule = () => {
     const days = [
-        { date: "04", month: "DEC", title: "1:1 Sales Sessions", desc: "Private bookings & Portfolio Review", time: "10:00 AM - 6:00 PM" },
-        { date: "05", month: "DEC", title: "The Main Event", desc: "Keynote Presentation & Dinner", time: "7:00 PM - 10:00 PM" },
-        { date: "06", month: "DEC", title: "Highlights & Closing", desc: "Final Q&A and Site Briefings", time: "10:00 AM - 2:00 PM" },
+        { date: "04", month: "DEC", title: "1:1 Sales Session", time: "07:30 PM Onwards" },
+        { date: "05", month: "DEC", title: "The Main Event", time: "07:30 PM Onwards" },
+        { date: "06", month: "DEC", title: "1:1 Sales Session", time: "07:30 PM Onwards" },
     ];
 
     return (
@@ -192,7 +189,6 @@ const Schedule = () => {
             <div className="max-w-5xl mx-auto">
                 <FadeIn className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">Event Schedule</h2>
-                    <p className="text-gray-400">Join us at the InterContinental Regency Bahrain</p>
                 </FadeIn>
 
                 <div className="space-y-4">
@@ -209,7 +205,6 @@ const Schedule = () => {
                                 <div className="flex-grow">
                                     <h3 className="text-xl md:text-2xl text-white mb-1">{day.title}</h3>
                                     <p className="text-[#D4AF37] text-sm mb-1 font-medium">{day.time}</p>
-                                    <p className="text-gray-400 text-sm font-light">{day.desc}</p>
                                 </div>
 
                                 <div className="hidden md:block">
@@ -265,7 +260,7 @@ const AboutFlivv = () => {
                             <div>
                                 <Building2 className="text-[#D4AF37] mb-3" size={28} />
                                 <h4 className="text-white text-xl font-serif">10+ Projects</h4>
-                                <p className="text-sm text-gray-500">Successfully Delivered</p>
+                                <p className="text-sm text-gray-500">Under Portfolio</p>
                             </div>
                             <div>
                                 <Users className="text-[#D4AF37] mb-3" size={28} />
@@ -281,25 +276,37 @@ const AboutFlivv = () => {
 };
 
 const Registration = () => {
-    
     useEffect(() => {
-        const script = document.createElement('script');
-        script.src = "//js-na2.hsforms.net/forms/embed/21626983.js";
-        script.defer = true;
-        script.onload = () => {
+        // 1. Define the standard HubSpot V2 script source
+        const scriptSrc = "//js.hsforms.net/forms/embed/v2.js";
+
+        // 2. Helper to render the form safely
+        const renderForm = () => {
             if (window.hbspt) {
                 window.hbspt.forms.create({
                     region: "na2",
                     portalId: "21626983",
                     formId: "85df73b8-ea56-459c-9eaa-4126006d1a3e",
-                    target: '#hubspot-target',
-                    // This CSS removes the default HubSpot background to match our theme
-                    css: '' 
+                    target: '#hubspot-target'
                 });
             }
         };
+
+        // 3. Check if script is already present (prevents duplicates)
+        if (document.querySelector(`script[src="${scriptSrc}"]`)) {
+            renderForm();
+            return;
+        }
+
+        // 4. Load the script if not present
+        const script = document.createElement('script');
+        script.src = scriptSrc;
+        script.async = true;
+        script.onload = renderForm;
         document.body.appendChild(script);
-        return () => { document.body.removeChild(script); }
+
+        // Cleanup isn't strictly necessary for the global script, 
+        // and removing it can sometimes break re-renders in React Strict Mode.
     }, []);
 
     return (
@@ -319,24 +326,14 @@ const Registration = () => {
                     </div>
                     
                     {/* Form Container */}
-                    <div id="hubspot-target" className="min-h-[400px]">
-                        {/* The form renders here. 
-                            NOTE: In HubSpot settings, set "Form Style" to "Raw HTML" 
-                            or ensure background is transparent for best results. 
-                        */}
+                    <div id="hubspot-target">
+                        {/* The form renders here */}
                     </div>
                 </div>
             </FadeIn>
         </section>
     );
 };
-
-const Footer = () => (
-    <footer className="bg-black text-white/30 py-12 text-center text-sm border-t border-white/5">
-        <p className="mb-2 uppercase tracking-widest font-semibold text-white/50">Flivv Developers</p>
-        <p>&copy; {new Date().getFullYear()} All Rights Reserved. Bahrain Sales Sessions.</p>
-    </footer>
-);
 
 export default function LandingPage() {
   return (
@@ -351,7 +348,6 @@ export default function LandingPage() {
         <Schedule />
         <AboutFlivv />
         <Registration />
-        <Footer />
     </main>
   );
 }
