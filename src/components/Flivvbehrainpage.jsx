@@ -92,7 +92,7 @@ const Hero = () => {
 };
 
 const CountdownBar = () => {
-    const target = new Date("2025-12-05T09:00:00").getTime();
+    const target = new Date("2025-12-05T19:30:00+03:00").getTime();
     const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
   
     useEffect(() => {
@@ -112,7 +112,7 @@ const CountdownBar = () => {
     }, []);
   
     return (
-      <div className="relative z-30 -mt-24 px-6 mb-24">
+      <div className="relative z-30 -mt-10 lg:-mt-24 px-6 mb-24">
         <div className="max-w-4xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-10 shadow-2xl flex flex-wrap md:flex-nowrap justify-between items-center gap-8">
             <div>
                 <p className="text-[#D4AF37] text-sm uppercase tracking-widest mb-1">Next Session Starts In</p>
@@ -183,7 +183,7 @@ const Highlights = () => {
 const Schedule = () => {
     const days = [
         { date: "04", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
-        { date: "05", month: "DEC", title: "The Main Event", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
+        { date: "05", month: "DEC", title: "The Main Event", time: "07:30 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
         { date: "06", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
     ];
 
@@ -210,7 +210,7 @@ const Schedule = () => {
                                 
                                 <div className="flex-grow">
                                     <h3 className="text-xl md:text-2xl text-white mb-2">{day.title}</h3>
-                                    <h2 className="text-xl text-gray-500 mb-1">{day.venue}</h2>
+                                    <h2 className="text-base lg:text-xl text-gray-500 mb-1">{day.venue}</h2>
                                     <p className="text-[#D4AF37] text-sm mb-1 font-medium">{day.time}</p>
                                 </div>
 
