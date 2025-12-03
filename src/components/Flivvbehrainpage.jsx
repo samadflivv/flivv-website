@@ -67,6 +67,12 @@ const Hero = () => {
           </h1>
         </FadeIn>
 
+        <FadeIn delay={0.2}>
+          <h2 className="text-4xl lg:text-5xl font-serif text-white leading-[0.95] tracking-tight mb-8">
+             <span className="italic font-light text-white">Ramada Resort by Wyndham, Manama City Centre</span> 
+          </h2>
+        </FadeIn>
+
         <FadeIn delay={0.4}>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
             Explore premium open-plot investment opportunities around Hyderabad. Connect with us in Manama and take the next step toward choosing Flivv’s projects as your preferred investment option.
@@ -176,9 +182,9 @@ const Highlights = () => {
 
 const Schedule = () => {
     const days = [
-        { date: "04", month: "DEC", title: "1:1 Sales Session", time: "07:30 PM Onwards" },
-        { date: "05", month: "DEC", title: "The Main Event", time: "07:30 PM Onwards" },
-        { date: "06", month: "DEC", title: "1:1 Sales Session", time: "07:30 PM Onwards" },
+        { date: "04", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
+        { date: "05", month: "DEC", title: "The Main Event", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
+        { date: "06", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
     ];
 
     return (
@@ -203,7 +209,8 @@ const Schedule = () => {
                                 <div className="w-px h-16 bg-white/10 hidden md:block"></div>
                                 
                                 <div className="flex-grow">
-                                    <h3 className="text-xl md:text-2xl text-white mb-1">{day.title}</h3>
+                                    <h3 className="text-xl md:text-2xl text-white mb-2">{day.title}</h3>
+                                    <h2 className="text-xl text-gray-500 mb-1">{day.venue}</h2>
                                     <p className="text-[#D4AF37] text-sm mb-1 font-medium">{day.time}</p>
                                 </div>
 
