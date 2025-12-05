@@ -183,7 +183,7 @@ const Highlights = () => {
 const Schedule = () => {
     const days = [
         { date: "04", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
-        { date: "05", month: "DEC", title: "The Main Event", time: "07:30 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
+        { date: "05", month: "DEC", title: "The Main Event", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
         { date: "06", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
     ];
 
