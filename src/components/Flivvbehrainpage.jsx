@@ -91,45 +91,45 @@ const Hero = () => {
   );
 };
 
-const CountdownBar = () => {
-    const target = new Date("2025-12-05T19:30:00+03:00").getTime();
-    const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+// const CountdownBar = () => {
+//     const target = new Date("2025-12-05T19:30:00+03:00").getTime();
+//     const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
   
-    useEffect(() => {
-      const interval = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = target - now;
-        if (distance > 0) {
-            setTimeLeft({
-                d: Math.floor(distance / (1000 * 60 * 60 * 24)),
-                h: Math.floor((distance / (1000 * 60 * 60)) % 24),
-                m: Math.floor((distance / 1000 / 60) % 60),
-                s: Math.floor((distance / 1000) % 60),
-            });
-        }
-      }, 1000);
-      return () => clearInterval(interval);
-    }, []);
+//     useEffect(() => {
+//       const interval = setInterval(() => {
+//         const now = new Date().getTime();
+//         const distance = target - now;
+//         if (distance > 0) {
+//             setTimeLeft({
+//                 d: Math.floor(distance / (1000 * 60 * 60 * 24)),
+//                 h: Math.floor((distance / (1000 * 60 * 60)) % 24),
+//                 m: Math.floor((distance / 1000 / 60) % 60),
+//                 s: Math.floor((distance / 1000) % 60),
+//             });
+//         }
+//       }, 1000);
+//       return () => clearInterval(interval);
+//     }, []);
   
-    return (
-      <div className="relative z-30 -mt-10 lg:-mt-24 px-6 mb-24">
-        <div className="max-w-4xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-10 shadow-2xl flex flex-wrap md:flex-nowrap justify-between items-center gap-8">
-            <div>
-                <p className="text-[#D4AF37] text-sm uppercase tracking-widest mb-1">Next Session Starts In</p>
-                <p className="text-white/60 text-xs">Bahrain Local Time</p>
-            </div>
-            <div className="flex gap-8 md:gap-12 text-center">
-                {Object.entries(timeLeft).map(([unit, val]) => (
-                    <div key={unit}>
-                        <span className="block text-4xl md:text-5xl font-serif text-white">{val < 10 ? `0${val}` : val}</span>
-                        <span className="text-xs text-white/40 uppercase tracking-widest">{unit}</span>
-                    </div>
-                ))}
-            </div>
-        </div>
-      </div>
-    );
-};
+//     return (
+//       <div className="relative z-30 -mt-10 lg:-mt-24 px-6 mb-24">
+//         <div className="max-w-4xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-10 shadow-2xl flex flex-wrap md:flex-nowrap justify-between items-center gap-8">
+//             <div>
+//                 <p className="text-[#D4AF37] text-sm uppercase tracking-widest mb-1">Next Session Starts In</p>
+//                 <p className="text-white/60 text-xs">Bahrain Local Time</p>
+//             </div>
+//             <div className="flex gap-8 md:gap-12 text-center">
+//                 {Object.entries(timeLeft).map(([unit, val]) => (
+//                     <div key={unit}>
+//                         <span className="block text-4xl md:text-5xl font-serif text-white">{val < 10 ? `0${val}` : val}</span>
+//                         <span className="text-xs text-white/40 uppercase tracking-widest">{unit}</span>
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//       </div>
+//     );
+// };
 
 const AboutEvent = () => {
     return (
@@ -182,7 +182,6 @@ const Highlights = () => {
 
 const Schedule = () => {
     const days = [
-        { date: "04", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
         { date: "05", month: "DEC", title: "The Main Event", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
         { date: "06", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
     ];
@@ -349,7 +348,7 @@ export default function LandingPage() {
         <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50 mix-blend-overlay" style={{ backgroundImage: `url(${ASSETS.texture})` }}></div>
             
         <Hero />
-        <CountdownBar />
+        {/* <CountdownBar /> */}
         <AboutEvent />
         <Highlights />
         <Schedule />
