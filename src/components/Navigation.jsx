@@ -6,12 +6,12 @@ import { Menu, X, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
 
 // Projects data structure
 const projectsData = {
-  upcoming: {
-    title: 'Upcoming Projects',
-    projects: [
-      { name: 'Sukoon Villas', href: '/sukoonvillas' }
-    ]
-  },
+  // upcoming: {
+  //   title: 'Upcoming Projects',
+  //   projects: [
+  //     { name: 'Sukoon Villas', href: '/sukoonvillas' }
+  //   ]
+  // },
   current: {
     title: 'Current Projects',
     projects: [

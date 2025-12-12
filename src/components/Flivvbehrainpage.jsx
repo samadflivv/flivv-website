@@ -79,13 +79,13 @@ const Hero = () => {
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.6} className="mt-10 flex flex-col md:flex-row gap-5 justify-center">
+        {/* <FadeIn delay={0.6} className="mt-10 flex flex-col md:flex-row gap-5 justify-center">
             <button onClick={() => document.getElementById('registration').scrollIntoView({behavior: 'smooth'})} className="group relative px-8 py-4 bg-[#CE1126] text-white rounded-none overflow-hidden transition-all hover:bg-[#a30d1d]">
                 <div className="relative z-10 flex items-center gap-3 font-medium tracking-wide">
                     RESERVE YOUR SPOT <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
             </button>
-        </FadeIn>
+        </FadeIn> */}
       </motion.div>
     </section>
   );
@@ -152,79 +152,79 @@ const AboutEvent = () => {
     );
 };
 
-const Highlights = () => {
-    const cards = [
-        { icon: Volume2, title: "Public Address"},
-        { icon: Presentation, title: "Projects Presentation"},
-        { icon: HelpCircle, title: "Q&A Session" },
-    ];
+// const Highlights = () => {
+//     const cards = [
+//         { icon: Volume2, title: "Public Address"},
+//         { icon: Presentation, title: "Projects Presentation"},
+//         { icon: HelpCircle, title: "Q&A Session" },
+//     ];
 
-    return (
-        <section className="py-20 px-6 bg-[#0a0a0a]">
-            <div className="max-w-7xl mx-auto">
-                <div className="mb-12 border-b border-white/10 pb-6 flex justify-between items-end">
-                    <h3 className="text-2xl font-serif text-white">Event Highlights</h3>
-                    <p className="text-[#D4AF37] text-sm hidden md:block">EXPERIENCE THE DIFFERENCE</p>
-                </div>
+//     return (
+//         <section className="py-20 px-6 bg-[#0a0a0a]">
+//             <div className="max-w-7xl mx-auto">
+//                 <div className="mb-12 border-b border-white/10 pb-6 flex justify-between items-end">
+//                     <h3 className="text-2xl font-serif text-white">Event Highlights</h3>
+//                     <p className="text-[#D4AF37] text-sm hidden md:block">EXPERIENCE THE DIFFERENCE</p>
+//                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
-                    {cards.map((c, i) => (
-                        <FadeIn key={i} delay={i * 0.1} className="group bg-[#0F1115] p-10 hover:bg-[#161920] transition-colors border-r border-white/5 last:border-0">
-                            <c.icon className="text-[#CE1126] w-8 h-8 mb-6 group-hover:scale-110 transition-transform" />
-                            <h4 className="text-xl lg:text-2xl text-white mb-3 font-medium">{c.title}</h4>
-                        </FadeIn>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
+//                 <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+//                     {cards.map((c, i) => (
+//                         <FadeIn key={i} delay={i * 0.1} className="group bg-[#0F1115] p-10 hover:bg-[#161920] transition-colors border-r border-white/5 last:border-0">
+//                             <c.icon className="text-[#CE1126] w-8 h-8 mb-6 group-hover:scale-110 transition-transform" />
+//                             <h4 className="text-xl lg:text-2xl text-white mb-3 font-medium">{c.title}</h4>
+//                         </FadeIn>
+//                     ))}
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// };
 
-const Schedule = () => {
-    const days = [
-        { date: "06", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
-    ];
+// const Schedule = () => {
+//     const days = [
+//         { date: "06", month: "DEC", title: "1:1 Sales Session", time: "04:00 PM to 11:00 PM", venue: "Venue : Ramada Resort by Wyndham, Manama City Centre" },
+//     ];
 
-    return (
-        <section className="py-24 px-6 relative overflow-hidden">
-            {/* Background Accent */}
-            <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#CE1126] rounded-full mix-blend-screen filter blur-[120px] opacity-10 pointer-events-none"></div>
+//     return (
+//         <section className="py-24 px-6 relative overflow-hidden">
+//             {/* Background Accent */}
+//             <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#CE1126] rounded-full mix-blend-screen filter blur-[120px] opacity-10 pointer-events-none"></div>
 
-            <div className="max-w-5xl mx-auto">
-                <FadeIn className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">Event Schedule</h2>
-                </FadeIn>
+//             <div className="max-w-5xl mx-auto">
+//                 <FadeIn className="text-center mb-16">
+//                     <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">Event Schedule</h2>
+//                 </FadeIn>
 
-                <div className="space-y-4">
-                    {days.map((day, i) => (
-                        <FadeIn key={i} delay={i * 0.1}>
-                            <div className="group relative flex items-center gap-6 md:gap-12 p-6 md:p-8 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-[#CE1126]/30 transition-all duration-300">
-                                <div className="flex flex-col items-center justify-center min-w-[80px]">
-                                    <span className="text-4xl md:text-5xl font-serif text-white group-hover:text-[#CE1126] transition-colors">{day.date}</span>
-                                    <span className="text-xs tracking-widest text-gray-500">{day.month}</span>
-                                </div>
+//                 <div className="space-y-4">
+//                     {days.map((day, i) => (
+//                         <FadeIn key={i} delay={i * 0.1}>
+//                             <div className="group relative flex items-center gap-6 md:gap-12 p-6 md:p-8 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-[#CE1126]/30 transition-all duration-300">
+//                                 <div className="flex flex-col items-center justify-center min-w-[80px]">
+//                                     <span className="text-4xl md:text-5xl font-serif text-white group-hover:text-[#CE1126] transition-colors">{day.date}</span>
+//                                     <span className="text-xs tracking-widest text-gray-500">{day.month}</span>
+//                                 </div>
                                 
-                                <div className="w-px h-16 bg-white/10 hidden md:block"></div>
+//                                 <div className="w-px h-16 bg-white/10 hidden md:block"></div>
                                 
-                                <div className="flex-grow">
-                                    <h3 className="text-xl md:text-2xl text-white mb-2">{day.title}</h3>
-                                    <h2 className="text-base lg:text-xl text-gray-500 mb-1">{day.venue}</h2>
-                                    <p className="text-[#D4AF37] text-sm mb-1 font-medium">{day.time}</p>
-                                </div>
+//                                 <div className="flex-grow">
+//                                     <h3 className="text-xl md:text-2xl text-white mb-2">{day.title}</h3>
+//                                     <h2 className="text-base lg:text-xl text-gray-500 mb-1">{day.venue}</h2>
+//                                     <p className="text-[#D4AF37] text-sm mb-1 font-medium">{day.time}</p>
+//                                 </div>
 
-                                <div className="hidden md:block">
-                                    <button onClick={() => document.getElementById('registration').scrollIntoView({behavior: 'smooth'})} className="px-6 py-2 border border-white/20 text-white text-sm rounded-full hover:bg-white hover:text-black transition-colors">
-                                        Book Slot
-                                    </button>
-                                </div>
-                            </div>
-                        </FadeIn>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
+//                                 <div className="hidden md:block">
+//                                     <button onClick={() => document.getElementById('registration').scrollIntoView({behavior: 'smooth'})} className="px-6 py-2 border border-white/20 text-white text-sm rounded-full hover:bg-white hover:text-black transition-colors">
+//                                         Book Slot
+//                                     </button>
+//                                 </div>
+//                             </div>
+//                         </FadeIn>
+//                     ))}
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// };
 
 const AboutFlivv = () => {
     return (
@@ -320,7 +320,7 @@ const Registration = () => {
             
             <div className="max-w-4xl mx-auto text-center mb-12">
                 <h2 className="text-4xl font-serif text-white mb-4">Secure Your Investment</h2>
-                <p className="text-gray-400">Register below for your preferred session type.</p>
+                {/* <p className="text-gray-400">Register below for your preferred session type.</p> */}
             </div>
 
             <FadeIn>
@@ -349,8 +349,8 @@ export default function LandingPage() {
         <Hero />
         {/* <CountdownBar /> */}
         <AboutEvent />
-        <Highlights />
-        <Schedule />
+        {/* <Highlights /> */}
+        {/* <Schedule /> */}
         <AboutFlivv />
         <Registration />
     </main>
