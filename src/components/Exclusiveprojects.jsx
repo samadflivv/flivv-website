@@ -26,20 +26,9 @@ const IMAGE_OPTIONS = {
 };
 
 const projectsData = [
+  
   {
     id: 1,
-    title: "Sukoon Villas",
-    location: "Tukkuguda",
-    imageKey: "SukoonVillas1",
-    description: "Launching Soon!",
-    hasBadge: true,
-    badgeText: "Coming Soon",
-    badgeColor: "bg-yellow-500",
-    href: "#",
-    priority: false
-  },
-  {
-    id: 2,
     title: "Gulmohar Homes",
     location: "Shadnagar",
     imageKey: "GulmoharHomes1",
@@ -49,7 +38,7 @@ const projectsData = [
     priority: false
   },
   {
-    id: 3,
+    id: 2,
     title: "Airport Town",
     location: "Kothur - Penjerla Road",
     imageKey: "AirportTown1",
@@ -59,7 +48,7 @@ const projectsData = [
     priority: false
   },
   {
-    id: 4,
+    id: 3,
     title: "Sadhana City",
     location: "Veldanda, Kalwakurthy",
     imageKey: "SadhanaCity1",
@@ -69,7 +58,7 @@ const projectsData = [
     priority: false
   },
   {
-    id: 5,
+    id: 4,
     title: "Gulmohar Villas",
     location: "Shadnagar",
     imageKey: "GulmoharVillas1",
@@ -79,7 +68,7 @@ const projectsData = [
     priority: true
   },
   {
-    id: 6,
+    id: 5,
     title: "Rivendell Farms",
     location: "Thimmajipet, Jadcherla",
     imageKey: "RivendellRFS2",
