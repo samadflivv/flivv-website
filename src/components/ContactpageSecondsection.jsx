@@ -4,12 +4,6 @@ const ContactpageSecondsection = () => {
   const offices = [
     
     {
-      country: "Sukoon Villas",
-      city: "Tukkuguda",
-      address: "Premium villa plots with modern amenities and excellent connectivity. Launching soon with exclusive pre-launch offers.",
-      status: "coming-soon"
-    },
-    {
       country: "Gulmohar Homes",
       city: "Shadnagar",
       address: "An elegant extension of Gulmohar Villas, offering HMDA & RERA-approved villa plots with serene living and excellent investment potential.",
