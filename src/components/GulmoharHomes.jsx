@@ -4,13 +4,18 @@ import { motion } from 'framer-motion';
 
 export default function GulmoharHomes() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
-  const [isFormLoaded, setIsFormLoaded] = useState(false);
-  const formRef = useRef(null);
-  const observerRef = useRef(null);
+  const [isFormLoadedLeft, setIsFormLoadedLeft] = useState(false);
+  const [isFormLoadedContact, setIsFormLoadedContact] = useState(false);
+
+  // Separate refs for both form containers
+  const leftFormRef = useRef(null);
+  const contactFormRef = useRef(null);
+
+  const observerMapRef = useRef(new Map()); // store MutationObservers per ref
   const fallbackTimeoutRef = useRef(null);
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
-  const formVideoRef = useRef(null); 
+  const formVideoRef = useRef(null);
 
   // HubSpot identifiers
   const PORTAL_ID = '21626983';
@@ -187,54 +192,65 @@ const whyGulmoharFeatures = [
   }, []);
 
 
-  // HubSpot form functions
+   // ---------- HubSpot helpers ----------
   const appendScriptOnce = (src, id) => {
-    const existing = document.querySelector(id ? `#${id}` : `script[src="${src}"]`);
+    // prefer id lookup if provided
+    const existing = id ? document.getElementById(id) : document.querySelector(`script[src="${src}"]`);
     if (existing) return existing;
+
     const s = document.createElement('script');
     if (id) s.id = id;
     s.src = src;
     s.defer = true;
+    s.async = true;
+    // mark when it loads
+    s.addEventListener('load', () => s.setAttribute('data-hs-loaded', '1'));
     document.body.appendChild(s);
     return s;
   };
 
-  const startObservingFormContainer = () => {
-    if (!formRef.current) return;
-    const hasForm = () => !!(formRef.current.querySelector('form') || formRef.current.querySelector('iframe') || formRef.current.querySelector('.hs-form'));
-    if (hasForm()) {
-      setIsFormLoaded(true);
+  const hasFormIn = (ref) => {
+    if (!ref || !ref.current) return false;
+    return !!(ref.current.querySelector('form') || ref.current.querySelector('iframe') || ref.current.querySelector('.hs-form') || ref.current.querySelector('.hs-form-iframe'));
+  };
+
+  const startObservingFormContainer = (ref, setLoadedState) => {
+    if (!ref || !ref.current) return;
+    if (hasFormIn(ref)) {
+      setLoadedState(true);
       return;
     }
 
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-      observerRef.current = null;
+    // remove previous observer for this ref if present
+    const prev = observerMapRef.current.get(ref);
+    if (prev) {
+      try { prev.disconnect(); } catch (e) {}
     }
 
-    const mo = new MutationObserver((mutations) => {
-      if (hasForm()) {
-        setIsFormLoaded(true);
-        if (observerRef.current) {
-          observerRef.current.disconnect();
-          observerRef.current = null;
+    const mo = new MutationObserver(() => {
+      if (hasFormIn(ref)) {
+        setLoadedState(true);
+        const obs = observerMapRef.current.get(ref);
+        if (obs) {
+          try { obs.disconnect(); } catch (e) {}
+          observerMapRef.current.delete(ref);
         }
       }
     });
 
-    mo.observe(formRef.current, { childList: true, subtree: true });
-    observerRef.current = mo;
+    mo.observe(ref.current, { childList: true, subtree: true });
+    observerMapRef.current.set(ref, mo);
   };
 
-  const createHubSpotViaAPI = () => {
+  const createHubSpotViaAPI = (targetRef, setLoadedState) => {
     if (typeof window === 'undefined') return;
     if (!window.hbspt || !window.hbspt.forms) {
       console.warn('hbspt.forms not available for v2.create fallback');
       return;
     }
 
-    if (formRef.current.querySelector('form') || formRef.current.querySelector('iframe')) {
-      setIsFormLoaded(true);
+    if (hasFormIn(targetRef)) {
+      setLoadedState(true);
       return;
     }
 
@@ -243,11 +259,11 @@ const whyGulmoharFeatures = [
         portalId: PORTAL_ID,
         formId: FORM_ID,
         region: REGION,
-        target: formRef.current,
+        target: targetRef.current,
         onFormReady: (form) => {
-          setIsFormLoaded(true);
+          setLoadedState(true);
           try {
-            const iframe = formRef.current.querySelector('iframe');
+            const iframe = targetRef.current.querySelector('iframe');
             if (iframe) {
               iframe.style.width = '100%';
               iframe.style.border = 'none';
@@ -258,7 +274,7 @@ const whyGulmoharFeatures = [
           }
         },
         onFormSubmit: () => {
-          console.log('HubSpot form (fallback v2) submitted');
+          console.log('HubSpot form submitted (fallback v2)');
         }
       });
     } catch (err) {
@@ -266,77 +282,76 @@ const whyGulmoharFeatures = [
     }
   };
 
-  useEffect(() => {
+
+useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const embedScript = appendScriptOnce(EMBED_SRC, `hs-embed-${PORTAL_ID}`);
 
-    embedScript.addEventListener('load', () => {
-      setTimeout(() => {
-        startObservingFormContainer();
-      }, 100);
-    });
+    const ensureStart = () => {
+      // call start observing both containers
+      startObservingFormContainer(leftFormRef, setIsFormLoadedLeft);
+      startObservingFormContainer(contactFormRef, setIsFormLoadedContact);
+    };
 
-    embedScript.addEventListener('error', () => {
-      console.error('Failed to load portal-specific HubSpot embed script:', EMBED_SRC);
-    });
+    // if hbspt is already available, start immediately
+    if ((embedScript && embedScript.getAttribute('data-hs-loaded') === '1') || (window.hbspt && window.hbspt.forms)) {
+      ensureStart();
+    } else {
+      // otherwise attach load handler (if script not already loaded)
+      embedScript.addEventListener('load', () => {
+        ensureStart();
+      });
+      embedScript.addEventListener('error', (e) => {
+        console.error('Failed to load portal-specific HubSpot embed script:', EMBED_SRC, e);
+      });
+    }
 
-    startObservingFormContainer();
-
+    // Fallback loader: after delay, if a container still doesn't have a form, load v2 and create for that container
     const FALLBACK_DELAY = 3500;
     if (fallbackTimeoutRef.current) clearTimeout(fallbackTimeoutRef.current);
     fallbackTimeoutRef.current = setTimeout(() => {
-      if (isFormLoaded) return;
-      const v2 = appendScriptOnce(V2_SRC, 'hs-v2-loader');
-      v2.addEventListener('load', () => {
-        setTimeout(() => {
-          createHubSpotViaAPI();
-        }, 50);
-      });
-      v2.addEventListener('error', () => {
-        console.error('Failed to load HubSpot v2 loader', V2_SRC);
-      });
+      // for left container
+      if (!hasFormIn(leftFormRef)) {
+        const v2 = appendScriptOnce(V2_SRC, 'hs-v2-loader');
+        if ((v2 && v2.getAttribute('data-hs-loaded') === '1') || (window.hbspt && window.hbspt.forms)) {
+          createHubSpotViaAPI(leftFormRef, setIsFormLoadedLeft);
+        } else {
+          v2.addEventListener('load', () => createHubSpotViaAPI(leftFormRef, setIsFormLoadedLeft));
+        }
+      }
+      // for contact container
+      if (!hasFormIn(contactFormRef)) {
+        const v2b = appendScriptOnce(V2_SRC, 'hs-v2-loader');
+        if ((v2b && v2b.getAttribute('data-hs-loaded') === '1') || (window.hbspt && window.hbspt.forms)) {
+          createHubSpotViaAPI(contactFormRef, setIsFormLoadedContact);
+        } else {
+          v2b.addEventListener('load', () => createHubSpotViaAPI(contactFormRef, setIsFormLoadedContact));
+        }
+      }
     }, FALLBACK_DELAY);
 
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
+      // cleanup observers for both
+      for (const obs of observerMapRef.current.values()) {
+        try { obs.disconnect(); } catch (e) {}
       }
+      observerMapRef.current.clear();
+
       if (fallbackTimeoutRef.current) {
         clearTimeout(fallbackTimeoutRef.current);
         fallbackTimeoutRef.current = null;
       }
     };
-  }, []);
+  }, []); // run once on mount
 
+  // immediate checks in case script already injected before react mounted
   useEffect(() => {
-    if (!formRef.current) return;
-    const immediateCheck = () => {
-      if (formRef.current.querySelector('form') || formRef.current.querySelector('iframe') || formRef.current.querySelector('.hs-form')) {
-        setIsFormLoaded(true);
-      }
-    };
-    immediateCheck();
-  }, [formRef.current]);
+    if (hasFormIn(leftFormRef)) setIsFormLoadedLeft(true);
+    if (hasFormIn(contactFormRef)) setIsFormLoadedContact(true);
+  }, [leftFormRef.current, contactFormRef.current]);
 
-  function openLightbox(idx) {
-    setLightboxIndex(idx);
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    setLightboxIndex(-1);
-    document.body.style.overflow = '';
-  }
-
-  useEffect(() => {
-    function onKey(e) {
-      if (lightboxIndex >= 0 && e.key === 'Escape') closeLightbox();
-    }
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [lightboxIndex]);
+    
 
   const scrollToForm = () => {
     document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
@@ -362,7 +377,7 @@ const whyGulmoharFeatures = [
       `}</style>
 
       {/* Enhanced Hero Section with More Flowers */}
-      <section className="relative min-h-screen py-45 bg-[#602437] overflow-hidden flex items-center justify-center">
+      <section className="relative min-h-screen pt-30 lg:py-45 bg-[#602437] overflow-hidden flex items-center justify-center">
         {/* Enhanced Animated Flowers and Leaves */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Large Background Flowers */}
@@ -588,19 +603,16 @@ const whyGulmoharFeatures = [
                     Join us on 21st December, Sunday for our Sales Meet. Avail exclusive offers and secure your villa plot backed by Flivv Developers in a premium community. 
                   </p>
 
-                  <div 
-                    id="hubspot-form-container" 
-                    ref={formRef}
-                    className="w-full bg-white rounded-xl p-2 shadow-inner"
-                  >
-                    <div
-                      className="hs-form-frame w-full"
-                      data-region={REGION}
-                      data-form-id={FORM_ID}
-                      data-portal-id={PORTAL_ID}
-                      style={{ width: '100%' }}
-                    />
-                  </div>
+                  <div id="hubspot-form-left" ref={leftFormRef} className="w-full bg-white rounded-xl p-2 shadow-inner">
+        <div
+          className="hs-form-frame w-full"
+          data-region={REGION}
+          data-form-id={FORM_ID}
+          data-portal-id={PORTAL_ID}
+          style={{ width: '100%' }}
+        />
+      </div>
+
                 </div>
               </div>
             </motion.div>
@@ -1266,27 +1278,15 @@ const whyGulmoharFeatures = [
               <h3 className="font-lancelot text-3xl text-[#602437] mb-2">Schedule a Visit</h3>
               <p className="text-gray-600 mb-8 font-montserrat">Get in touch with our team for a personalized site tour</p>
               
-              <div 
-                id="hubspot-form-container" 
-                ref={formRef}
-                className="min-h-[400px] bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200 flex items-center justify-center"
-              >
-                <div
-                  className="hs-form-frame w-full"
-                  data-region={REGION}
-                  data-form-id={FORM_ID}
-                  data-portal-id={PORTAL_ID}
-                  style={{ width: '100%' }}
-                />
-
-                {!isFormLoaded && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                    <div className="w-16 h-16 border-4 border-[#E05780] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                    <div className="text-gray-600 font-semibold font-montserrat">Loading contact form...</div>
-                    <div className="text-gray-500 text-sm mt-2 font-montserrat">If it keeps loading, check console (CSP or network issues)</div>
-                  </div>
-                )}
-              </div>
+              <div id="hubspot-form-contact" ref={contactFormRef} className="min-h-[400px] bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200 flex items-center justify-center">
+        <div
+          className="hs-form-frame w-full"
+          data-region={REGION}
+          data-form-id={FORM_ID}
+          data-portal-id={PORTAL_ID}
+          style={{ width: '100%' }}
+        />
+      </div>
             </motion.div>
           </div>
         </div>
