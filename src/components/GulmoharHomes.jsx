@@ -9,6 +9,8 @@ export default function GulmoharHomes() {
   const observerRef = useRef(null);
   const fallbackTimeoutRef = useRef(null);
   const videoRef = useRef(null);
+  const sectionRef = useRef(null);
+  const formVideoRef = useRef(null); 
 
   // HubSpot identifiers
   const PORTAL_ID = '21626983';
@@ -121,7 +123,38 @@ const whyGulmoharFeatures = [
     { number: '2', label: 'Entrance Points', suffix: '' },
   ];
 
-  // Video intersection observer
+
+
+  // ✅ FIX: specific observer for the Form Section Video
+  useEffect(() => {
+    const videoEl = formVideoRef.current;
+    if (!videoEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Try to play unmuted
+            videoEl.muted = false;
+            videoEl.play().catch((err) => {
+              console.warn("Autoplay blocked, falling back to muted", err);
+              videoEl.muted = true; // Fallback if browser blocks unmuted
+              videoEl.play();
+            });
+          } else {
+            videoEl.pause();
+          }
+        });
+      },
+      { threshold: 0.4 } // Play when 40% visible
+    );
+
+    observer.observe(videoEl);
+    return () => observer.disconnect();
+  }, []);
+
+ 
+// Video intersection observer
   useEffect(() => {
     const videoElement = videoRef.current;
     if (!videoElement) return;
@@ -130,13 +163,20 @@ const whyGulmoharFeatures = [
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            videoElement.play().catch(console.error);
+            // Attempt to play unmuted
+            videoElement.muted = false; 
+            videoElement.play().catch((error) => {
+              console.warn("Browser blocked unmuted autoplay. User interaction required.", error);
+              // Fallback: Mute and play if unmuted fails
+              videoElement.muted = true;
+              videoElement.play();
+            });
           } else {
             videoElement.pause();
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 } // Trigger when 40% of video is visible
     );
 
     observer.observe(videoElement);
@@ -145,6 +185,7 @@ const whyGulmoharFeatures = [
       observer.unobserve(videoElement);
     };
   }, []);
+
 
   // HubSpot form functions
   const appendScriptOnce = (src, id) => {
@@ -501,6 +542,105 @@ const whyGulmoharFeatures = [
           </motion.div>
         </div>
       </section>
+
+
+      {/* Enhanced Registration Section */}
+      {/* SECTION 2: Registration & Video Showcase */}
+      <section ref={sectionRef} className="py-20 bg-[#602437] relative overflow-hidden">
+        
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-10 right-10 w-72 h-72 bg-[#E05780]/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-10 left-10 w-72 h-72 bg-[#E05780]/20 rounded-full blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[40rem] opacity-5 text-white font-lancelot pointer-events-none select-none">
+            &
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+
+            {/* LEFT COLUMN: Heading + Form (Aligned Height) */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col h-full"
+            >
+              {/* Form Card */}
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-8 lg:p-12 shadow-2xl h-full flex flex-col justify-center relative overflow-hidden group">
+                
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E05780]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E05780]/20 text-[#FF7AA2] text-xs font-bold tracking-widest uppercase mb-6 border border-[#E05780]/30">
+                    <span className="w-2 h-2 rounded-full bg-[#E05780] animate-pulse" />
+                    Gulmohar Homes Sales Meet at Shadnagar
+                  </div>
+
+                  <h2 className="font-lancelot text-4xl lg:text-5xl text-white mb-4 leading-tight">
+                    Book Your <span className="text-[#E05780]">Site Visit</span>
+                  </h2>
+                  
+                  <p className="text-white/80 font-montserrat text-lg mb-8 max-w-md">
+                    Join us on 21st December, Sunday for our Sales Meet. Avail exclusive offers and secure your villa plot backed by Flivv Developers in a premium community. 
+                  </p>
+
+                  <div 
+                    id="hubspot-form-container" 
+                    ref={formRef}
+                    className="w-full bg-white rounded-xl p-2 shadow-inner"
+                  >
+                    <div
+                      className="hs-form-frame w-full"
+                      data-region={REGION}
+                      data-form-id={FORM_ID}
+                      data-portal-id={PORTAL_ID}
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Portrait Video (Fixed Height to align) */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-full" // Ensures the column takes full height available
+            >
+              {/* Set a specific height (e.g., h-[650px]) or aspect ratio. 
+                  Here we use h-full to match the form card if flex items stretch, 
+                  but setting a min-height ensures it looks good on all screens.
+              */}
+              <div className="relative h-full min-h-[600px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/20 group">
+                <video
+                  ref={formVideoRef} // ✅ UNIQUE REF
+                  className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                  playsInline
+                  loop
+                  muted={false} // ✅ Unmuted
+                  controls={false}
+                >
+                  <source
+                    src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GulmoharHomes/AQMiE4JZmgQK9Qdk7QN3p4FlevhwqTKKqHaKjksi1aaYBKNYPgL5GO7PjJ3v-Ibf0ccZJIEipAImEO7wzLK_lzI8n_mCEuz1.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+                
+                {/* Gradient Overlay for Text Visibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
 
       {/* Enhanced Stats Section */}
       <section className="py-30 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
