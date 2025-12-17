@@ -65,14 +65,7 @@ export default function AirportTown() {
     }
   }, []);
 
-  /* ---------------------------
-     Video: lazy load + robust handling
-     - We DO NOT place <source> in the DOM initially.
-     - When the wrapper intersects, setShouldLoadVideo(true).
-     - When shouldLoadVideo flips, set video.src programmatically, call load() and try to play (muted).
-     - Listen for loadeddata / canplay to switch isVideoLoaded.
-     - onerror -> retry a couple of times with small backoff.
-     --------------------------- */
+
   useEffect(() => {
     const wrapper = videoWrapperRef.current;
     if (!wrapper) return;
@@ -205,6 +198,57 @@ export default function AirportTown() {
   const handleVideoLoad = useCallback(() => {
     setIsVideoLoaded(true);
   }, []);
+
+
+
+
+  // Add this useEffect with your other useEffects
+useEffect(() => {
+  // Load HubSpot form for sales meet
+  const loadSalesMeetForm = () => {
+    if (window.hbspt && window.hbspt.forms) {
+      try {
+        hbspt.forms.create({
+          portalId: "21626983",
+          formId: "7b23bd69-e828-4e55-b869-b895c8233781",
+          target: "#hubspot-form-sales-meet",
+          css: "",
+          submitButtonClass: "w-full py-3 rounded-lg font-semibold transition-all hover:scale-105",
+          cssClass: "hs-form sales-meet-form",
+          onFormReady: function($form) {
+            // Customize form appearance after it loads
+            const submitButton = $form.querySelector('.hs-button');
+            if (submitButton) {
+              submitButton.style.backgroundColor = "#44312b";
+              submitButton.style.color = "#e0dfd8";
+            }
+            
+            // Add placeholders if needed
+            const inputs = $form.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+              if (!input.placeholder) {
+                if (input.type === 'text') input.placeholder = "Enter your " + (input.name || "information");
+                if (input.type === 'email') input.placeholder = "your@email.com";
+                if (input.type === 'tel') input.placeholder = "Phone number";
+              }
+            });
+          }
+        });
+      } catch (e) { 
+        console.error('HubSpot sales meet form error', e); 
+      }
+    } else {
+      setTimeout(loadSalesMeetForm, 500);
+    }
+  };
+
+  if (typeof window !== "undefined") {
+    loadSalesMeetForm();
+  }
+}, []);
+
+
+
 
   /* ---------------------------
      Render
@@ -422,6 +466,112 @@ export default function AirportTown() {
             </div>
           </div>
         </section>
+
+
+
+                  {/* SALES MEET CTA SECTION - Add this right before the VIDEO SECTION */}
+<section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+  <div className="relative rounded-4xl overflow-hidden shadow-2xl">
+    {/* Background Gradient */}
+    <div className="absolute inset-0 bg-gradient-to-br from-[#44312b] via-[#8b7355] to-[#44312b]" />
+    
+    {/* Decorative Pattern */}
+    <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: '60px 60px'
+      }} />
+    </div>
+
+    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center p-6 sm:p-8 lg:p-12">
+      {/* Content Column */}
+      <div className="text-center lg:text-left">
+        {/* Event Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+          <span className="text-sm font-medium text-white">Airport Town Sales Meet at Kothur</span>
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-6xl font-bold text-white mb-4">
+          Book Your <span className="text-[#e0dfd8]">Site Visit</span>
+        </h2>
+        
+        {/* Date Highlight */}
+        <div className="inline-flex items-center gap-2 px-4 py-3 bg-white/10 rounded-xl mb-6">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span className="font-semibold text-white">21st December (Sunday)</span>
+        </div>
+
+        {/* Event Details */}
+        <div className="space-y-3 mb-6">
+          <div className="flex items-center gap-3 text-white/90">
+            <svg className="w-5 h-5 text-[#e0dfd8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>10:00 AM Onwards</span>
+          </div>
+          <div className="flex items-center gap-3 text-white/90">
+            <MapPin />
+            <span>Kothur - Penjerla Road</span>
+          </div>
+        </div>
+
+        {/* Features */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          {[
+            "19 Km from RGIA",
+            "28 KM from Aramghar",
+            "2 Km from NH-44",
+            "2 Km from Kothur Town"
+          ].map((feature, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-green-400" />
+              <span className="text-sm text-white/90">{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Additional Info */}
+        <p className="text-white/80 text-sm mb-6">
+        Join us on 21st December, Sunday for our Sales Meet. Avail exclusive offers and secure your plot backed by Flivv Developers</p>
+        {/* Quick Info Cards */}
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          <div className="bg-white/10 rounded-lg p-3 text-center">
+            <div className="text-lg font-bold text-white">22</div>
+            <div className="text-xs text-white/70">Plots Left</div>
+          </div>
+          <div className="bg-white/10 rounded-lg p-3 text-center">
+            <div className="text-lg font-bold text-white">200 Sq. Yds</div>
+            <div className="text-xs text-white/70">Std. Plot Size</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Form Column */}
+      <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold mb-2" style={{ color: "#44312b" }}>Reserve Your Slot</h3>
+          <p className="text-gray-600 text-sm">Book your appointment for the exclusive sales meet</p>
+        </div>
+
+        {/* HubSpot Form for Sales Meet */}
+        <div id="hubspot-form-sales-meet" className="space-y-4">
+        </div>
+
+      </div>
+    </div>
+
+    {/* Decorative Elements */}
+    <div className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20" />
+    <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20" />
+  </div>
+
+</section>
+
+
 
         {/* VIDEO SECTION - improved */}
         <section id="ATvideo" className="relative w-full overflow-hidden bg-black">
