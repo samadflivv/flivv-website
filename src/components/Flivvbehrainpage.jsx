@@ -171,8 +171,7 @@ function GallerySection() {
     <section className="py-20 px-6 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 border-l-4 border-[#CE1126] pl-6">
-          <h2 className="text-[#D4AF37] text-sm tracking-[0.2em] uppercase mb-2">Portfolio</h2>
-          <h3 className="text-3xl md:text-5xl font-serif text-white uppercase italic">Event Gallery</h3>
+          <h3 className="text-3xl md:text-5xl font-serif text-white uppercase italic">Gallery</h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[250px]">
