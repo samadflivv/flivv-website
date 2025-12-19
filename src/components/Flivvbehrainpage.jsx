@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { Clock, Calendar, Star, CheckCircle2, ArrowRight, MapPin, Building2, Users, Volume2, Presentation, HelpCircle } from 'lucide-react'; 
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
+import { Clock, Calendar, Star, CheckCircle2, ArrowRight, MapPin, Building2, Users, Volume2, Presentation, HelpCircle, Plus, X } from 'lucide-react'; 
 
 const ASSETS = {
   heroBg: "/charles-adrien-fournier-lDxs85UO7lU-unsplash.jpg", // Bahrain skyline
@@ -151,6 +151,79 @@ const AboutEvent = () => {
         </section>
     );
 };
+
+
+
+const BAHRAIN_GALLERY = [
+  { id: 1, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Bahrain-Event/WhatsApp%20Image%202025-12-18%20at%207.01.21%20PM.jpeg", alt: "" },
+  { id: 2, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Bahrain-Event/WhatsApp%20Image%202025-12-18%20at%207.01.22%20PM%20(2).jpeg", alt: "" },
+  { id: 3, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Bahrain-Event/WhatsApp%20Image%202025-12-18%20at%207.01.22%20PM.jpeg", alt: "" },
+  { id: 4, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Bahrain-Event/WhatsApp%20Image%202025-12-18%20at%207.01.23%20PM%20(1).jpeg", alt: "" },
+  { id: 5, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Bahrain-Event/WhatsApp%20Image%202025-12-18%20at%207.01.22%20PM%20(1).jpeg", alt: "" },
+  { id: 6, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Bahrain-Event/WhatsApp%20Image%202025-12-18%20at%207.01.23%20PM%20(2).jpeg", alt: "" },
+  { id: 7, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Bahrain-Event/WhatsApp%20Image%202025-12-18%20at%207.01.23%20PM.jpeg", alt: "" },
+];
+
+function GallerySection() {
+  const [selectedImg, setSelectedImg] = React.useState(null);
+
+  return (
+    <section className="py-20 px-6 bg-[#0a0a0a]">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12 border-l-4 border-[#CE1126] pl-6">
+          <h2 className="text-[#D4AF37] text-sm tracking-[0.2em] uppercase mb-2">Portfolio</h2>
+          <h3 className="text-3xl md:text-5xl font-serif text-white uppercase italic">Event Gallery</h3>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[250px]">
+          {/* Image 1: Big Feature */}
+          <div onClick={() => setSelectedImg(BAHRAIN_GALLERY[0].src)} className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-xl cursor-pointer">
+            <img src={BAHRAIN_GALLERY[0].src} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Gallery" />
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><Plus className="text-white w-12 h-12" /></div>
+          </div>
+
+          {/* Standard Images 2-3 */}
+          {[1, 2].map((idx) => (
+            <div key={idx} onClick={() => setSelectedImg(BAHRAIN_GALLERY[idx].src)} className="relative group overflow-hidden rounded-xl cursor-pointer">
+              <img src={BAHRAIN_GALLERY[idx].src} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Gallery" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><Plus className="text-white w-8 h-8" /></div>
+            </div>
+          ))}
+
+          {/* Image 4: Tall Feature */}
+          <div onClick={() => setSelectedImg(BAHRAIN_GALLERY[3].src)} className="md:row-span-2 relative group overflow-hidden rounded-xl cursor-pointer">
+            <img src={BAHRAIN_GALLERY[3].src} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Gallery" />
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><Plus className="text-white w-8 h-8" /></div>
+          </div>
+
+          {/* Images 5-6 */}
+          {[4, 5].map((idx) => (
+            <div key={idx} onClick={() => setSelectedImg(BAHRAIN_GALLERY[idx].src)} className="relative group overflow-hidden rounded-xl cursor-pointer">
+              <img src={BAHRAIN_GALLERY[idx].src} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Gallery" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><Plus className="text-white w-8 h-8" /></div>
+            </div>
+          ))}
+
+          {/* Image 7: Wide Bottom Feature */}
+          <div onClick={() => setSelectedImg(BAHRAIN_GALLERY[6].src)} className="md:col-span-2 relative group overflow-hidden rounded-xl cursor-pointer">
+            <img src={BAHRAIN_GALLERY[6].src} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Gallery" />
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><Plus className="text-white w-8 h-8" /></div>
+          </div>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {selectedImg && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedImg(null)} className="fixed inset-0 z-[999] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out">
+            <X className="absolute top-8 right-8 text-white w-10 h-10 cursor-pointer" />
+            <motion.img initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} src={selectedImg} className="max-w-full max-h-[90vh] rounded-lg shadow-2xl object-contain" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}
+
 
 // const Highlights = () => {
 //     const cards = [
@@ -343,12 +416,12 @@ const Registration = () => {
 export default function LandingPage() {
   return (
     <main className="bg-[#050505] min-h-screen text-slate-200 selection:bg-[#CE1126] selection:text-white font-sans">
-        {/* Global Texture Overlay for Film Grain Effect */}
         <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50 mix-blend-overlay" style={{ backgroundImage: `url(${ASSETS.texture})` }}></div>
             
         <Hero />
         {/* <CountdownBar /> */}
         <AboutEvent />
+        <GallerySection />
         {/* <Highlights /> */}
         {/* <Schedule /> */}
         <AboutFlivv />
