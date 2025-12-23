@@ -11,7 +11,7 @@ const PopupModal = () => {
       const timer = setTimeout(() => {
         setIsVisible(true);
         sessionStorage.setItem("popupShown", "true");
-      }, 5000); // 3 seconds delay
+      }, 15000); // 3 seconds delay
 
       // Load HubSpot form script
       const script = document.createElement("script");

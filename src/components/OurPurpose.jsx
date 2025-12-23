@@ -14,12 +14,6 @@ const OurPurpose = () => {
       description:
         'To be one of the most known online platforms in Hyderabad for educating the audience in the field of Real Estate while providing convenient open plot investment options and delivering the best exceptional value to our customers. This vision is what drives us to give our best and establish disciplined practices at work.',
     },
-    {
-      number: '03',
-      title: 'Goal',
-      description:
-        'Our goal is to be recognized all over the country and to maintain customer satisfaction along with expansion and accessibility to all in and around Hyderabad and strengthen community engagement by constantly producing content that shall be beneficial for all the stakeholders in Real Estate in Hyderabad.',
-    },
   ];
 
   return (
@@ -27,8 +21,8 @@ const OurPurpose = () => {
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
         {/* Left Section - Heading */}
         <div className="md:w-1/2">
-          <p className="text-sm tracking-widest text-black uppercase mb-2">Goal</p>
-          <h2 className="sm:text-5xl text-4xl font-normal">Our Purpose</h2>
+          <p className="text-xl tracking-widest text-black uppercase mb-2">Goal</p>
+          <h2 className="sm:text-6xl text-4xl font-normal">Our Purpose</h2>
         </div>
 
         {/* Right Section - Items */}

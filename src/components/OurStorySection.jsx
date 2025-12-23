@@ -12,9 +12,9 @@ const OurStorySection = () => {
       <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8">
         {/* Left bullet and heading */}
         <div className="md:w-1/2">
-          <p className="text-sm tracking-widest text-black uppercase mb-2">About Us</p>
-          <h2 className="sm:text-5xl text-4xl font-normal">
-            The Future of Real Estate with Flivv Developers
+          <p className="text-xl tracking-widest text-black uppercase mb-2">About Us</p>
+          <h2 className="sm:text-6xl text-4xl font-normal">
+           Flivv Developers
           </h2>
         </div>
 

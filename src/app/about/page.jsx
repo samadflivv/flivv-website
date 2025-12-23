@@ -1,3 +1,4 @@
+import AboutMD from '@/components/AboutMD'
 import AboutpageHeroSection from '@/components/AboutpageHeroSection'
 import FaqSection from '@/components/FaqSection'
 import Footer from '@/components/Footer'
@@ -13,6 +14,7 @@ const About = () => {
       <AboutpageHeroSection/>
       <OurStorySection/>
       <OurPurpose/>
+      <AboutMD/>
       <FaqSection/>
       <Footer/>
     </div>
