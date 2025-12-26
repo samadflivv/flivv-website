@@ -15,8 +15,6 @@ const AboutUs = () => {
   const statsRef = useRef(null);
   const sectionRefs = useRef([]);
 
-  
-
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { 

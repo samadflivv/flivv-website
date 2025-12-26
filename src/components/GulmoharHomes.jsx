@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import ProgressRoadmap from './ProgressRoadmap';
 
 export default function GulmoharHomes() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -558,12 +559,12 @@ useEffect(() => {
         </div>
       </section>
 
+{/* <ProgressRoadmap/> */}
 
-      {/* Enhanced Registration Section */}
+     
       {/* SECTION 2: Registration & Video Showcase */}
-      <section ref={sectionRef} className="py-20 bg-[#602437] relative overflow-hidden">
+      {/* <section ref={sectionRef} className="py-20 bg-[#602437] relative overflow-hidden">
         
-        {/* Decorative Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-10 right-10 w-72 h-72 bg-[#E05780]/20 rounded-full blur-[100px]" />
           <div className="absolute bottom-10 left-10 w-72 h-72 bg-[#E05780]/20 rounded-full blur-[100px]" />
@@ -575,7 +576,6 @@ useEffect(() => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
 
-            {/* LEFT COLUMN: Heading + Form (Aligned Height) */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -583,10 +583,10 @@ useEffect(() => {
               transition={{ duration: 0.8 }}
               className="flex flex-col h-full"
             >
-              {/* Form Card */}
+             
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[2rem] p-8 lg:p-12 shadow-2xl h-full flex flex-col justify-center relative overflow-hidden group">
                 
-                {/* Hover Glow Effect */}
+             
                 <div className="absolute inset-0 bg-gradient-to-br from-[#E05780]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="relative z-10">
@@ -617,7 +617,6 @@ useEffect(() => {
               </div>
             </motion.div>
 
-            {/* RIGHT COLUMN: Portrait Video (Fixed Height to align) */}
             <motion.div 
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -625,10 +624,7 @@ useEffect(() => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="h-full" // Ensures the column takes full height available
             >
-              {/* Set a specific height (e.g., h-[650px]) or aspect ratio. 
-                  Here we use h-full to match the form card if flex items stretch, 
-                  but setting a min-height ensures it looks good on all screens.
-              */}
+             
               <div className="relative h-full min-h-[600px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/20 group">
                 <video
                   ref={formVideoRef} // ✅ UNIQUE REF
@@ -644,14 +640,13 @@ useEffect(() => {
                   />
                 </video>
                 
-                {/* Gradient Overlay for Text Visibility */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
               </div>
             </motion.div>
 
           </div>
         </div>
-      </section>
+      </section> */}
 
 
       {/* Enhanced Stats Section */}
@@ -1328,11 +1323,6 @@ useEffect(() => {
     </div>
   );
 }
-
-
-
-
-
 
 
 

@@ -11,12 +11,14 @@ import RFSgallery from '@/components/RFSgallery'
 import RFSfaqs from '@/components/RFSfaqs'
 import PopupRFS from '@/components/PopupRFS'
 import RFSalesmeetcta from '@/components/RFSalesmeetcta'
+import FarmFestCTA from '@/components/FarmFestCTA'
 
 const page = () => {
   return (
     <div>
         <Navigation/>
         <RivendellHeader/>
+        <FarmFestCTA/>
         <RivendellAbout/>
         <RFShighlights/>
         <WhyRFS/>
