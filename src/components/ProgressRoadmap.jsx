@@ -4,18 +4,17 @@ import useSWR from 'swr'
 import { motion } from 'framer-motion'
 
 /* ---------- CONFIG: set these ---------- */
-const SPREADSHEET_ID = '1PdnFzC_opkk_z9pn7Ba7o2TXH1h2qPeYAyNf-siGrOs'    // replace
-const SHEET_NAME = 'gulmohar_homes'                    // replace if different
-const REFRESH_INTERVAL = 20000                 // 20s polling (ms)
-/* --------------------------------------- */
+const SPREADSHEET_ID = '1PdnFzC_opkk_z9pn7Ba7o2TXH1h2qPeYAyNf-siGrOs'    
+const SHEET_NAME = 'gulmohar_homes'                    
+const REFRESH_INTERVAL = 20000                 
 
 
-// GViz JSON fetcher (Google publishes this wrapper)
+
 const gvizFetcher = async (url) => {
   const res = await fetch(url)
   const text = await res.text()
 
-  // Extract JSON safely between the parentheses
+
   const start = text.indexOf('{')
   const end = text.lastIndexOf('}')
   if (start === -1 || end === -1) {
@@ -35,10 +34,10 @@ const clamp = (n, a, b) => Math.max(a, Math.min(b, n))
 const parseDateVal = (v) => {
   if (!v) return null
 
-  // Case 1: already a Date object
+  
   if (v instanceof Date) return v
 
-  // Case 2: GViz Date(YYYY,MM,DD)
+  
   if (typeof v === 'string' && v.startsWith('Date(')) {
     const nums = v.replace('Date(', '').replace(')', '').split(',').map(Number)
     if (nums.length >= 3) {
@@ -47,7 +46,7 @@ const parseDateVal = (v) => {
     }
   }
 
-  // Case 3: normal date string
+  
   const parsed = Date.parse(v)
   if (!isNaN(parsed)) return new Date(parsed)
 
@@ -70,7 +69,7 @@ export default function ProgressRoadmap() {
         obj[col] = cells[i] ? cells[i].v : ''
       })
 
-      // case-insensitive getters
+      
       const get = (names) => {
         for (const n of names) {
           const match = Object.keys(obj).find(k => k.toLowerCase() === n.toLowerCase())
@@ -92,7 +91,7 @@ export default function ProgressRoadmap() {
 
       return { id, title, start, end, status, description: desc, progress }
     })
-    // keep only rows with valid start & end (so computed progress works)
+    
     const items = rows.filter(r => r.start && r.end)
     return { items, lastUpdated: new Date() }
   }, [data])
@@ -101,7 +100,7 @@ export default function ProgressRoadmap() {
   if (!data) return <div className="p-6">Loading milestones…</div>
   if (!items.length) return <div className="p-6 text-gray-600">No tasks found (check START & END columns).</div>
 
-  // compute computed/progress and overall
+  
   const today = new Date()
   const itemsWithProgress = items.map(it => {
     const computed = it.progress !== null
@@ -111,7 +110,7 @@ export default function ProgressRoadmap() {
   })
   const overall = Math.round(itemsWithProgress.reduce((s, it) => s + it.computed, 0) / itemsWithProgress.length)
 
-  // color for status
+  
   const statusClass = (st) => {
     if (st === 'completed') return 'text-green-600 bg-green-100'
     if (st === 'inprogress') return 'text-yellow-700 bg-yellow-100'
