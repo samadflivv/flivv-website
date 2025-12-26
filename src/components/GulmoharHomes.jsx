@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import ProgressRoadmap from './ProgressRoadmap';
+import GHProgressRoadmap from './GHProgressRoadmap';
 
 export default function GulmoharHomes() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -559,8 +559,6 @@ useEffect(() => {
         </div>
       </section>
 
-{/* <ProgressRoadmap/> */}
-
      
       {/* SECTION 2: Registration & Video Showcase */}
       {/* <section ref={sectionRef} className="py-20 bg-[#602437] relative overflow-hidden">
@@ -1113,6 +1111,10 @@ useEffect(() => {
           </motion.div>
         </div>
       </section>
+
+
+<GHProgressRoadmap/>
+
 
       {/* Enhanced Gallery Section */}
 <section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">

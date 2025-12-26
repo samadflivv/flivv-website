@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import GVProgressRoadmap from './GVProgressRoadmap';
 
 export default function GVLocationMapSection() {
   const [isMobile, setIsMobile] = useState(false);
@@ -75,6 +76,10 @@ export default function GVLocationMapSection() {
             />
           )}
         </div>
+      </div>
+
+      <div>
+        <GVProgressRoadmap/>
       </div>
     </section>
   );

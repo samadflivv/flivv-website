@@ -6,6 +6,7 @@ import GVcta from '@/components/GVcta'
 import GVFaqs from '@/components/GVFaqs'
 import GVgallery from '@/components/GVgallery'
 import GVLocationMapSection from '@/components/GVLocationMapSection'
+import GVProgressRoadmap from '@/components/GVProgressRoadmap'
 import Navigation from '@/components/Navigation'
 import React from 'react'
 
