@@ -18,7 +18,6 @@ const page = () => {
     <div>
         <Navigation/>
         <RivendellHeader/>
-        <FarmFestCTA/>
         <RivendellAbout/>
         <RFShighlights/>
         <WhyRFS/>

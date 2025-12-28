@@ -100,8 +100,8 @@ export default function ProgressRoadmap() {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-16">
         <div>
           <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex items-center gap-2 mb-2">
-            <div className="h-1 w-6 bg-[#612437] rounded-full" />
-            <span className="text-[#612437] font-bold tracking-widest text-[10px] uppercase">Real-Time Development Dashboard</span>
+            <div className="w-4 h-4 rounded-full bg-[#612437] animate-pulse"></div>
+            <span className="text-[#612437] font-bold tracking-widest text-lg lg:text-xl uppercase animate-pulse">Real-Time Development Dashboard</span>
           </motion.div>
           <h1 className="text-5xl font-black text-slate-900 tracking-tight">Gulmohar <span className="text-[#612437]">Homes</span></h1>
         </div>
