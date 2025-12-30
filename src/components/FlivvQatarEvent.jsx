@@ -205,8 +205,13 @@ useEffect(() => {
           >
             
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-5 leading-tight">
-              Qatar Sales Meet <br/><span className="italic font-light opacity-90">2025</span>
+              Qatar Sales Trip <br/><span className="italic font-light opacity-90">2025</span>
             </h1>
+
+            <h2 className="text-4xl lg:text-6xl  font-bold text-white mb-5 leading-tight">
+             Sales Meet, 2nd Jan <br/><span className="font-light opacity-90">Holiday Inn, Doha</span>
+             <br/><span className="font-light text-4xl opacity-90">The Business Park | Meeting Room-2</span>
+            </h2>
             
             {/* <p className="text-xl md:text-2xl text-white/80 font-light max-w-2xl mx-auto mb-16">
               Join us for 1:1 Sales Meets in <strong className='font-bold'>Crowne Plaza Doha</strong>  - The Business Park

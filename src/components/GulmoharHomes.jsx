@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import ProgressRoadmap from './GHProgressRoadmap';
 import GHProgressRoadmap from './GHProgressRoadmap';
+import FloatingJumpNav from './FloatingJumpNav';
 
 export default function GulmoharHomes() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -25,6 +26,21 @@ export default function GulmoharHomes() {
   const REGION = 'na2';
   const EMBED_SRC = `https://js-${REGION}.hsforms.net/forms/embed/${PORTAL_ID}.js`;
   const V2_SRC = 'https://js.hsforms.net/forms/v2.js';
+
+
+
+  const sections = [
+  { id: 'ghhero', label: 'Introduction', tooltip: 'Jump to hero section' },
+  { id: 'ghstat', label: 'Features', tooltip: 'View key features' },
+  { id: 'ghabout', label: 'Gallery', tooltip: 'Browse gallery' },
+  { id: 'ghvideo', label: 'Contact', tooltip: 'Get in touch' },
+  { id: 'whygh', label: 'Contact', tooltip: 'Get in touch' },
+  { id: 'ghlocation', label: 'Contact', tooltip: 'Get in touch' },
+  { id: 'ghgallery', label: 'Contact', tooltip: 'Get in touch' },
+  { id: 'contact-form', label: 'Contact', tooltip: 'Get in touch' }, 
+];
+
+
 
   const gallery = [
   { 
@@ -379,7 +395,7 @@ useEffect(() => {
       `}</style>
 
       {/* Enhanced Hero Section with More Flowers */}
-      <section className="relative min-h-screen pt-30 lg:py-45 bg-[#602437] overflow-hidden flex items-center justify-center">
+      <section id='ghhero' className="relative min-h-screen pt-30 lg:py-45 bg-[#602437] overflow-hidden flex items-center justify-center">
         {/* Enhanced Animated Flowers and Leaves */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Large Background Flowers */}
@@ -560,7 +576,13 @@ useEffect(() => {
         </div>
       </section>
 
-
+{/* <FloatingJumpNav 
+        sections={sections}
+        position="right"
+        showLabels={false}
+        collapsedOnMobile={true}
+      /> */}
+      
 <GHProgressRoadmap/>
 
      
@@ -652,7 +674,7 @@ useEffect(() => {
 
 
       {/* Enhanced Stats Section */}
-      <section className="py-30 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+      <section id='ghstats' className="py-30 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
         {/* Background Flowers */}
         <motion.div
           animate={{ 
@@ -709,7 +731,7 @@ useEffect(() => {
       </section>
 
       {/* Enhanced About Section */}
-      <section className="py-20 bg-gradient-to-br from-[#E05780] via-[#E05780] to-[#E05780] relative overflow-hidden">
+      <section id='ghabout' className="py-20 bg-gradient-to-br from-[#E05780] via-[#E05780] to-[#E05780] relative overflow-hidden">
         {/* Background Floral Elements */}
         <motion.div
           animate={{ 
@@ -799,7 +821,7 @@ useEffect(() => {
       </section>
 
       {/* Video Section */}
-      <section className="w-full">
+      <section id='ghvideo' className="w-full">
         <div>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -823,7 +845,7 @@ useEffect(() => {
       </section>
 
      {/* New: Why Gulmohar Homes Section */}
-<section className="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+<section id='whygh' className="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
   {/* Background Floral Elements */}
   <motion.div
     animate={{ 
@@ -1043,7 +1065,7 @@ useEffect(() => {
 </section>
 
       {/* New: Location Map Section */}
-      <section className="py-20 bg-gradient-to-br from-[#602437] to-[#E05780] relative overflow-hidden">
+      <section id='ghlocation' className="py-20 bg-gradient-to-br from-[#602437] to-[#E05780] relative overflow-hidden">
         {/* Background Floral Elements */}
         <motion.div
           animate={{ 
@@ -1117,7 +1139,7 @@ useEffect(() => {
       </section>
 
       {/* Enhanced Gallery Section */}
-<section className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+<section id='ghgallery' className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
   {/* Background Flowers */}
   <motion.div
     animate={{ 
