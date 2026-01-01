@@ -34,7 +34,7 @@ const projectsData = [
     imageKey: "GulmoharHomes1",
     description: "Gulmohar Homes — HMDA & RERA-approved villa plots with excellent investment potential.",
     hasBadge: false,
-    href: "#",
+    href: "/gulmoharhomes",
     priority: false
   },
   {

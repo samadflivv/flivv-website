@@ -279,7 +279,7 @@ const FarmFestCTA = () => {
               }}
             >
               <div className="p-8 md:p-12">
-                <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex flex-col md:flex-row items-center gap-8"> 
 
                   {/* Content */}
                   <div className="flex-grow">

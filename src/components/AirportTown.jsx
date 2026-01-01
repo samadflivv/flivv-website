@@ -1,5 +1,4 @@
 'use client';
-
 import Head from "next/head";
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import ATProgressRoadmap from "./ATProgressRoadmap";
@@ -47,23 +46,6 @@ export default function AirportTown() {
   // small optimization: stable handler
   const onThumbClick = useCallback((i) => {
     setActiveImage(i);
-  }, []);
-
-  /* ---------------------------
-     HubSpot script (load once)
-     --------------------------- */
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.__hs_forms_injected) return; // guard
-    if (!window.hbspt) {
-      const s = document.createElement('script');
-      s.src = "https://js.hsforms.net/forms/v2.js";
-      s.async = true;
-      s.onload = () => { window.__hs_forms_injected = true; };
-      document.head.appendChild(s);
-    } else {
-      window.__hs_forms_injected = true;
-    }
   }, []);
 
 
@@ -202,6 +184,23 @@ export default function AirportTown() {
 
 
 
+   /* ---------------------------
+     HubSpot script (load once)
+     --------------------------- */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.__hs_forms_injected) return; // guard
+    if (!window.hbspt) {
+      const s = document.createElement('script');
+      s.src = "https://js.hsforms.net/forms/v2.js";
+      s.async = true;
+      s.onload = () => { window.__hs_forms_injected = true; };
+      document.head.appendChild(s);
+    } else {
+      window.__hs_forms_injected = true;
+    }
+  }, []);
+  
 
   // Add this useEffect with your other useEffects
 useEffect(() => {
@@ -367,7 +366,7 @@ useEffect(() => {
           </div>
         </section>
 
- <ATProgressRoadmap/>
+ <ATProgressRoadmap/> 
  
 
         {/* SHOWCASE SECTION */}

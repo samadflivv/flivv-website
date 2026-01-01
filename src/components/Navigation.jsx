@@ -108,10 +108,12 @@ export default function Navigation() {
 
         {/* International Events Dropdown (new) */}
         <li className="relative group">
+          <Link href="/internationalevents">
           <button className="flex items-center">
             International Events
             <ChevronDown size={16} className="ml-2" />
           </button>
+          </Link>
 
           {/* Dropdown - appears on hover, matches existing dropdown behavior */}
           <div className="absolute right-0 top-full mt-2 w-[220px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
