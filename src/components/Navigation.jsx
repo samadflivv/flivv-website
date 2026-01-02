@@ -109,8 +109,8 @@ export default function Navigation() {
         {/* International Events Dropdown (new) */}
         <li className="relative group">
           <Link href="/internationalevents">
-          <button className="flex items-center">
-            International Events
+          <button className="flex items-center cursor-pointer">
+            International Sales Meet
             <ChevronDown size={16} className="ml-2" />
           </button>
           </Link>
@@ -120,13 +120,13 @@ export default function Navigation() {
             <ul className="p-3">
               {/* First item highlighted */}
               <li>
-                <Link href="/flivvbahrainvisit" className="block px-4 py-2 rounded-md text-black bg-[#0192D3] text-white">Bahrain Event</Link>
+                <Link href="/flivvbahrainvisit" className="block px-4 py-2 rounded-md text-black bg-[#0192D3] text-white">Bahrain</Link>
               </li>
               <li>
-                <Link href="/flivvqatarevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">Qatar Event</Link>
+                <Link href="/flivvqatarevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">Qatar</Link>
               </li>
               <li>
-                <Link href="/flivvksaevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">KSA Event</Link>
+                <Link href="/flivvksaevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">KSA - Riyadh</Link>
               </li>
             </ul>
           </div>
@@ -159,6 +159,7 @@ export default function Navigation() {
               
               {/* Mobile Projects Menu */}
               <li className="w-full">
+                <Link href='/projects'>
                 <button
                   onClick={() => setMobileProjectsOpen(true)}
                   className="flex items-center justify-between w-full text-2xl hover:text-[#0192D3] transition-all"
@@ -166,6 +167,7 @@ export default function Navigation() {
                   Projects
                   <ChevronDown size={24} className="transform rotate-90" />
                 </button>
+                </Link>
               </li>
 
               <li>
@@ -175,6 +177,7 @@ export default function Navigation() {
 
               {/* Mobile International Dropdown Trigger (new) */}
               <li className="w-full">
+                <Link href="/internationalevents">
                 <button
                   onClick={() => setMobileInternationalOpen(true)}
                   className="flex items-center justify-between w-full text-2xl hover:text-[#0192D3] transition-all"
@@ -182,6 +185,7 @@ export default function Navigation() {
                   International Events
                   <ChevronDown size={24} className="transform rotate-90" />
                 </button>
+                </Link>
               </li>
             </ul>
           ) : mobileProjectsOpen ? (

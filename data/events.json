@@ -1,7 +1,7 @@
 [
   {
     "title": "Sales Meet Doha",
-    "description": "1:1 Sales Meet at your door step",
+    "description": "1:1 Sales Meet",
     "start": "2026-01-02T09:30:00.000Z",
     "end": "2026-01-02T17:30:00.000Z",
     "country": "QA",
@@ -14,13 +14,13 @@
     "organizer": "Flivv",
     "id": "evt-1767273777395-qs24hge25",
     "createdAt": "2026-01-01T13:22:57.395Z",
-    "updatedAt": "2026-01-01T13:23:23.034Z",
+    "updatedAt": "2026-01-02T06:30:37.845Z",
     "isPublished": true,
     "capacity": ""
   },
   {
-    "title": "Sales Meet Hyd",
-    "description": "Gulmohar Homes Sales Meet",
+    "title": "Sales Meet Hyderabad",
+    "description": "Gulmohar Homes - Held at Site",
     "start": "2026-01-04T04:30:00.000Z",
     "end": "2026-01-04T12:30:00.000Z",
     "country": "India",
@@ -33,15 +33,15 @@
     "organizer": "Flivv",
     "id": "evt-1767273902198-rrnep4sec",
     "createdAt": "2026-01-01T13:25:02.198Z",
-    "updatedAt": "2026-01-01T13:28:41.567Z",
+    "updatedAt": "2026-01-02T06:32:02.820Z",
     "isPublished": true,
     "capacity": ""
   },
   {
     "title": "Sales Meet Doha",
-    "description": "1:1 Sales Meet at your door step",
+    "description": "1:1 Sales Meet ",
     "start": "2026-01-09T09:30:00.000Z",
-    "end": "2026-01-09T13:29:00.000Z",
+    "end": "2026-01-09T17:30:00.000Z",
     "country": "QA",
     "countryLabel": "Qatar",
     "city": "Doha",
@@ -52,7 +52,8 @@
     "organizer": "Flivv",
     "id": "evt-1767274213677-yeottd4kh",
     "createdAt": "2026-01-01T13:30:13.677Z",
-    "updatedAt": "2026-01-01T13:30:13.677Z",
-    "isPublished": true
+    "updatedAt": "2026-01-02T06:32:42.422Z",
+    "isPublished": true,
+    "capacity": ""
   }
 ]

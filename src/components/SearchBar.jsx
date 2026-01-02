@@ -4,7 +4,7 @@ import { Search, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { debounce } from 'lodash';
 
-const SearchBar = ({ value, onChange, placeholder = "Search events..." }) => {
+const SearchBar = ({ value, onChange, placeholder = "Search meets..." }) => {
   const [localValue, setLocalValue] = useState(value);
   const [isFocused, setIsFocused] = useState(false);
   const [recentSearches, setRecentSearches] = useState([]);

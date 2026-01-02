@@ -1,4 +1,3 @@
-// components/EventCalendar.jsx
 'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
@@ -203,15 +202,6 @@ export default function EventCalendar({ enableAdmin = true }) {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <div className="container mx-auto px-4 py-8">
-          <div className="animate-pulse">
-            <div className="h-10 bg-gray-200 rounded w-64 mb-8"></div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="h-96 bg-gray-200 rounded"></div>
-              <div className="h-96 bg-gray-200 rounded"></div>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
@@ -240,7 +230,7 @@ export default function EventCalendar({ enableAdmin = true }) {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900">Events Calendar</h1>
+              <h1 className="text-4xl font-bold text-gray-900">Sales Meet Calendar</h1>
               {/* <p className="text-gray-600 mt-1">View and manage upcoming events</p> */}
             </div>
             
@@ -252,7 +242,7 @@ export default function EventCalendar({ enableAdmin = true }) {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search events..."
+                  placeholder="Search meets..."
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
@@ -370,7 +360,7 @@ export default function EventCalendar({ enableAdmin = true }) {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <h2 className="text-xl font-bold text-gray-900">
-                      Upcoming Events
+                      Upcoming Sales Meets
                       <span className="ml-2 text-sm font-normal text-gray-500">
                         ({filteredEvents.length} found)
                       </span>
@@ -469,7 +459,7 @@ function EventCard({ event, enableAdmin, onEdit, onDelete }) {
       Lecture: 'border-l-blue-500',
       Meetup: 'border-l-green-500',
       Conference: 'border-l-red-500',
-      SalesSession: 'border-l-orange-500',
+      SalesSession: 'border-l-[#ff002b]',
       Other: 'border-l-gray-500'
     };
     return colors[type] || colors.Other;
@@ -486,7 +476,7 @@ function EventCard({ event, enableAdmin, onEdit, onDelete }) {
       <div className="flex flex-col lg:flex-row lg:items-start gap-6">
         {/* Date Badge */}
         <div className="flex-shrink-0">
-          <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 text-white flex flex-col items-center justify-center">
+          <div className="w-20 h-20 rounded-xl bg-[#ffea00] text-black flex flex-col items-center justify-center">
             <div className="text-2xl font-bold">
               {format(eventDate, 'd')}
             </div>
@@ -567,7 +557,7 @@ function EventCard({ event, enableAdmin, onEdit, onDelete }) {
             {event.rsvpUrl && (
               <button
                 onClick={() => handleRedirect(event.rsvpUrl)}
-                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center gap-2"
+                className="px-5 py-2.5 bg-[#ff002b] hover:bg-[#dc2f02] text-white rounded-lg transition-colors flex items-center gap-2"
               >
                 Register Now
                 <ExternalLink size={18} />
