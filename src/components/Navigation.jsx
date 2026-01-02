@@ -272,7 +272,7 @@ export default function Navigation() {
                       }}
                       className="block px-6 py-4 text-lg rounded-md bg-[#0192D3] text-white w-full"
                     >
-                      Flivv Bahrain Visit
+                       Bahrain
                     </Link>
                   </li>
 
@@ -285,7 +285,7 @@ export default function Navigation() {
                       }}
                       className="block px-6 py-4 text-lg rounded-md text-gray-300 hover:bg-[#0192D3] hover:text-white w-full"
                     >
-                      Qatar Event
+                      Qatar 
                     </Link>
                   </li>
 
@@ -298,7 +298,7 @@ export default function Navigation() {
                       }}
                       className="block px-6 py-4 text-lg rounded-md text-gray-300 hover:bg-[#0192D3] hover:text-white w-full"
                     >
-                      KSA Event
+                      KSA - Riyadh
                     </Link>
                   </li>
                 </ul>
