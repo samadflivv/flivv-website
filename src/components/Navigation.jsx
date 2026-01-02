@@ -182,7 +182,7 @@ export default function Navigation() {
                   onClick={() => setMobileInternationalOpen(true)}
                   className="flex items-center justify-between w-full text-2xl hover:text-[#0192D3] transition-all"
                 >
-                  International Events
+                  International Sales Meet
                   <ChevronDown size={24} className="transform rotate-90" />
                 </button>
                 </Link>
