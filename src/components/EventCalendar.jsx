@@ -1,13 +1,18 @@
 'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Search, Plus, Calendar as CalendarIcon, MapPin, Clock, Users, ExternalLink, X, Edit, Trash2 } from 'lucide-react';
-import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, parseISO, isToday, addMonths, subMonths, getDay, startOfWeek, endOfWeek, addDays, isPast } from 'date-fns';
+import { ChevronLeft, ChevronRight, Search, Plus, Calendar as CalendarIcon, MapPin, Clock, Users, ExternalLink, X, Edit, Trash2, Copy } from 'lucide-react';
+import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, parseISO, isToday, addMonths, subMonths, startOfWeek, endOfWeek, isPast } from 'date-fns';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 // API base URL
 const API_BASE = '/api/events';
 
 export default function EventCalendar({ enableAdmin = true }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [isAddEventModalOpen, setIsAddEventModalOpen] = useState(false);
@@ -17,6 +22,20 @@ export default function EventCalendar({ enableAdmin = true }) {
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  // Country mapping for display names
+  const countryMapping = {
+    'SA': 'KSA (Riyadh)',
+    'QA': 'Qatar',
+    'India': 'Hyderabad'
+  };
+
+  // Extract and react to country from URL params (works on navigation and initial load)
+  useEffect(() => {
+    const countryParam = searchParams.get('country');
+    setSelectedCountry(countryParam || null);
+  }, [searchParams]);
 
   // Fetch events from API
   const fetchEvents = useCallback(async () => {
@@ -50,6 +69,12 @@ export default function EventCalendar({ enableAdmin = true }) {
     fetchEvents();
   }, [fetchEvents]);
 
+  // Filter events by country
+  const countryFilteredEvents = useMemo(() => {
+    if (!selectedCountry) return events;
+    return events.filter(event => event.country === selectedCountry);
+  }, [events, selectedCountry]);
+
   // Calculate calendar days
   const calendarDays = useMemo(() => {
     const monthStart = startOfMonth(currentDate);
@@ -66,7 +91,7 @@ export default function EventCalendar({ enableAdmin = true }) {
       isToday: isToday(day),
       isSelected: selectedDate && isSameDay(day, selectedDate),
       isPast: isPast(day) && !isToday(day),
-      events: events.filter(event => {
+      events: countryFilteredEvents.filter(event => {
         try {
           const eventDate = parseISO(event.start);
           return isSameDay(eventDate, day);
@@ -75,11 +100,11 @@ export default function EventCalendar({ enableAdmin = true }) {
         }
       })
     }));
-  }, [currentDate, events, selectedDate]);
+  }, [currentDate, countryFilteredEvents, selectedDate]);
 
   // Filter events
   const filteredEvents = useMemo(() => {
-    let result = [...events];
+    let result = [...countryFilteredEvents];
 
     // Filter by search
     if (searchQuery) {
@@ -105,7 +130,7 @@ export default function EventCalendar({ enableAdmin = true }) {
     }
 
     return result;
-  }, [events, searchQuery, selectedDate]);
+  }, [countryFilteredEvents, searchQuery, selectedDate]);
 
   // Handlers
   const handleDateClick = useCallback((date) => {
@@ -122,6 +147,11 @@ export default function EventCalendar({ enableAdmin = true }) {
   const clearDateFilter = useCallback(() => {
     setSelectedDate(null);
   }, []);
+
+  const clearCountryFilter = useCallback(() => {
+    // Update URL to remove country parameter
+    router.push(pathname);
+  }, [router, pathname]);
 
   // Event CRUD operations
   const handleAddEvent = useCallback(async (eventData) => {
@@ -194,14 +224,39 @@ export default function EventCalendar({ enableAdmin = true }) {
     }
   }, [fetchEvents]);
 
+  const handleDuplicateEvent = useCallback((event) => {
+    // Create a copy of the event with modified title
+    const duplicatedEvent = {
+      ...event,
+      title: `${event.title} (Copy)`,
+      id: undefined // Remove ID so a new one will be generated
+    };
+    
+    // Open edit modal with duplicated data
+    setEditingEvent(duplicatedEvent);
+    setIsEditEventModalOpen(true);
+  }, []);
+
   const handleEditClick = useCallback((event) => {
     setEditingEvent(event);
     setIsEditEventModalOpen(true);
   }, []);
 
+  // Dynamic page title with proper formatting
+  const pageTitle = useMemo(() => {
+    if (selectedCountry && countryMapping[selectedCountry]) {
+      return `Sales Meet Calendar – ${countryMapping[selectedCountry]}`;
+    }
+    return 'Sales Meet Calendar';
+  }, [selectedCountry]);
+
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading events...</p>
+        </div>
       </div>
     );
   }
@@ -230,8 +285,7 @@ export default function EventCalendar({ enableAdmin = true }) {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900">Sales Meet Calendar</h1>
-              {/* <p className="text-gray-600 mt-1">View and manage upcoming events</p> */}
+              <h1 className="text-4xl font-bold text-gray-900">{pageTitle}</h1>
             </div>
             
             <div className="flex items-center gap-4">
@@ -250,7 +304,7 @@ export default function EventCalendar({ enableAdmin = true }) {
               {enableAdmin && (
                 <button
                   onClick={() => setIsAddEventModalOpen(true)}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   <Plus size={20} />
                   Add Event
@@ -262,16 +316,16 @@ export default function EventCalendar({ enableAdmin = true }) {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <div className="container mx-auto px-4 py-8 ">
+        <div className="flex flex-col lg:flex-row gap-8 ">
           {/* Calendar */}
           <div className="lg:w-5/12">
-            <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-10">
               {/* Calendar Header */}
               <div className="flex items-center justify-between mb-6">
                 <button
                   onClick={() => handleMonthChange('prev')}
-                  className="p-2 hover:bg-gray-100 rounded-lg"
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                 >
                   <ChevronLeft size={20} />
                 </button>
@@ -280,7 +334,7 @@ export default function EventCalendar({ enableAdmin = true }) {
                 </h2>
                 <button
                   onClick={() => handleMonthChange('next')}
-                  className="p-2 hover:bg-gray-100 rounded-lg"
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                 >
                   <ChevronRight size={20} />
                 </button>
@@ -323,7 +377,7 @@ export default function EventCalendar({ enableAdmin = true }) {
                         {day.events.slice(0, 3).map((event, idx) => (
                           <div
                             key={idx}
-                            className="w-1.5 h-1.5 rounded-full bg-blue-500"
+                            className={`w-1.5 h-1.5 rounded-full ${day.isSelected ? 'bg-white' : 'bg-blue-500'}`}
                           />
                         ))}
                       </div>
@@ -342,7 +396,7 @@ export default function EventCalendar({ enableAdmin = true }) {
                     </div>
                     <button
                       onClick={clearDateFilter}
-                      className="text-sm text-blue-600 hover:text-blue-800"
+                      className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
                     >
                       Clear
                     </button>
@@ -353,7 +407,7 @@ export default function EventCalendar({ enableAdmin = true }) {
           </div>
 
           {/* Events List */}
-          <div className="lg:w-7/12">
+          <div className="lg:w-7/12 ">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               {/* Events Header */}
               <div className="border-b border-gray-200 p-6">
@@ -370,25 +424,41 @@ export default function EventCalendar({ enableAdmin = true }) {
                         Showing events for {format(selectedDate, 'MMMM d, yyyy')}
                       </p>
                     )}
+                    {selectedCountry && (
+                      <p className="text-sm text-blue-600 mt-1 font-medium">
+                        Filtered by: {countryMapping[selectedCountry]}
+                      </p>
+                    )}
+
+
+                    {selectedCountry && (
+                <button
+                  onClick={clearCountryFilter}
+                  className="mt-2 text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors"
+                >
+                  <X size={16} />
+                  Clear country filter
+                </button>
+              )}
                   </div>
                 </div>
               </div>
 
               {/* Events List */}
-              <div className="divide-y divide-gray-100">
+              <div className="">
                 {filteredEvents.length === 0 ? (
                   <div className="p-12 text-center">
                     <CalendarIcon className="mx-auto h-12 w-12 text-gray-400" />
                     <h3 className="mt-4 text-lg font-medium text-gray-900">No events found</h3>
                     <p className="mt-2 text-gray-600">
-                      {searchQuery || selectedDate
-                        ? "Try adjusting your search or date filter"
+                      {searchQuery || selectedDate || selectedCountry
+                        ? "Try adjusting your search or filters"
                         : "No upcoming events scheduled"}
                     </p>
                     {enableAdmin && (
                       <button
                         onClick={() => setIsAddEventModalOpen(true)}
-                        className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                        className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                       >
                         <Plus size={18} />
                         Add Your First Event
@@ -403,6 +473,7 @@ export default function EventCalendar({ enableAdmin = true }) {
                       enableAdmin={enableAdmin}
                       onEdit={() => handleEditClick(event)}
                       onDelete={() => handleDeleteEvent(event.id)}
+                      onDuplicate={() => handleDuplicateEvent(event)}
                     />
                   ))
                 )}
@@ -430,8 +501,15 @@ export default function EventCalendar({ enableAdmin = true }) {
             setIsEditEventModalOpen(false);
             setEditingEvent(null);
           }}
-          onSave={(updates) => handleEditEvent(editingEvent.id, updates)}
-          mode="edit"
+          onSave={(updates) => {
+            if (editingEvent.id) {
+              handleEditEvent(editingEvent.id, updates);
+            } else {
+              // This is a duplicate (no ID), so create new
+              handleAddEvent(updates);
+            }
+          }}
+          mode={editingEvent.id ? "edit" : "add"}
           initialData={editingEvent}
         />
       )}
@@ -440,7 +518,7 @@ export default function EventCalendar({ enableAdmin = true }) {
 }
 
 // Event Card Component
-function EventCard({ event, enableAdmin, onEdit, onDelete }) {
+function EventCard({ event, enableAdmin, onEdit, onDelete, onDuplicate }) {
   let eventDate;
   let eventEnd = null;
   
@@ -501,6 +579,13 @@ function EventCard({ event, enableAdmin, onEdit, onDelete }) {
             
             {enableAdmin && (
               <div className="flex items-center gap-2">
+                <button
+                  onClick={onDuplicate}
+                  className="p-1.5 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+                  title="Duplicate event"
+                >
+                  <Copy size={18} />
+                </button>
                 <button
                   onClick={onEdit}
                   className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
@@ -618,7 +703,7 @@ function AddEditEventModal({ isOpen, onClose, onSave, mode = 'add', initialData 
 
   // Initialize form
   useEffect(() => {
-    if (mode === 'edit' && initialData) {
+    if ((mode === 'edit' || !initialData?.id) && initialData) {
       setFormData({
         title: initialData.title || '',
         description: initialData.description || '',
@@ -696,11 +781,7 @@ function AddEditEventModal({ isOpen, onClose, onSave, mode = 'add', initialData 
       const countryLabels = {
         SA: 'KSA',
         QA: 'Qatar',
-        OM: 'Oman',
-        AE: 'UAE',
-        BH: 'Bahrain',
-        KW: 'Kuwait',
-        Hyd: 'Hyderabad'
+        India: 'Hyderabad'
       };
       setFormData(prev => ({
         ...prev,
@@ -710,6 +791,8 @@ function AddEditEventModal({ isOpen, onClose, onSave, mode = 'add', initialData 
   };
 
   if (!isOpen) return null;
+
+  const modalTitle = initialData?.id ? 'Edit Event' : initialData ? 'Duplicate Event' : 'Add New Event';
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
@@ -721,11 +804,11 @@ function AddEditEventModal({ isOpen, onClose, onSave, mode = 'add', initialData 
           <div className="border-b border-gray-200 p-6">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-gray-900">
-                {mode === 'add' ? 'Add New Event' : 'Edit Event'}
+                {modalTitle}
               </h2>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-gray-100 rounded-lg"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                 disabled={isSubmitting}
               >
                 <X size={24} />
@@ -825,10 +908,6 @@ function AddEditEventModal({ isOpen, onClose, onSave, mode = 'add', initialData 
                   >
                     <option value="SA">Saudi Arabia (KSA)</option>
                     <option value="QA">Qatar</option>
-                    <option value="OM">Oman</option>
-                    <option value="AE">UAE</option>
-                    <option value="BH">Bahrain</option>
-                    <option value="KW">Kuwait</option>
                     <option value="India">India</option>
                   </select>
                 </div>
@@ -924,22 +1003,22 @@ function AddEditEventModal({ isOpen, onClose, onSave, mode = 'add', initialData 
                 type="button"
                 onClick={onClose}
                 disabled={isSubmitting}
-                className="px-6 py-3 text-gray-700 hover:text-gray-900 font-medium disabled:opacity-50"
+                className="px-6 py-3 text-gray-700 hover:text-gray-900 font-medium disabled:opacity-50 transition-colors"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
               >
                 {isSubmitting ? (
                   <>
                     <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    {mode === 'add' ? 'Creating...' : 'Updating...'}
+                    {mode === 'add' || !initialData?.id ? 'Creating...' : 'Updating...'}
                   </>
                 ) : (
-                  mode === 'add' ? 'Create Event' : 'Update Event'
+                  mode === 'add' || !initialData?.id ? 'Create Event' : 'Update Event'
                 )}
               </button>
             </div>

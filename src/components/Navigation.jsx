@@ -134,29 +134,57 @@ export default function Navigation() {
         </li>
 
         <li className="relative group">
-          <Link href="/internationalevents">
-          <button className="flex items-center">
-            Sales Meets
-            <ChevronDown size={16} className="ml-2" />
-          </button>
-          </Link>
+  <Link href="/internationalevents">
+    <button className="flex items-center">
+      Sales Meets
+      <ChevronDown size={16} className="ml-2" />
+    </button>
+  </Link>
 
-          {/* Dropdown - appears on hover, matches existing dropdown behavior */}
-          <div className="absolute right-0 top-full mt-2 w-[220px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
-            <ul className="p-3">
-              {/* First item highlighted */}
-              <li>
-                <Link href="/internationalevents" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">Qatar</Link>
-              </li>
-              <li>
-                <Link href="/internationalevents" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">KSA - Riyadh</Link>
-              </li>
-              <li>
-                <Link href="/internationalevents" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">Hyderabad</Link>
-              </li>
-            </ul>
-          </div>
-        </li>
+  {/* Dropdown - appears on hover, matches existing dropdown behavior */}
+  <div className="absolute right-0 top-full mt-2 w-[220px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
+    <ul className="p-3">
+      <li>
+        <Link 
+          href="/internationalevents" 
+          className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
+        >
+          All Events
+        </Link>
+      </li>
+      
+      {/* Qatar */}
+      <li>
+        <Link 
+          href="/internationalevents?country=QA" 
+          className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
+        >
+          Qatar
+        </Link>
+      </li>
+      
+      {/* KSA - Riyadh */}
+      <li>
+        <Link 
+          href="/internationalevents?country=SA" 
+          className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
+        >
+          KSA - Riyadh
+        </Link>
+      </li>
+      
+      {/* Hyderabad */}
+      <li>
+        <Link 
+          href="/internationalevents?country=India" 
+          className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
+        >
+          Hyderabad
+        </Link>
+      </li>
+    </ul>
+  </div>
+</li>
       </ul>
 
       {/* Hamburger */}
@@ -165,7 +193,8 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Menu - Full Screen */}
-      <nav
+      {/* Mobile Menu - Full Screen */}
+<nav
   className={`
     md:hidden fixed top-0 left-0 h-full w-full bg-black z-40
     transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}
@@ -285,7 +314,7 @@ export default function Navigation() {
 
     ) : mobileInternationalOpen ? (
 
-      /* SALES EVENTS SUBMENU */
+      /* SALES EVENTS SUBMENU - FIXED */
       <div className="flex flex-col h-full">
         <div className="flex items-center p-6 border-b border-gray-700">
           <button
@@ -298,13 +327,36 @@ export default function Navigation() {
         </div>
 
         <div className="p-4 space-y-4">
-          <Link href="/flivvbahrainvisit" className="block bg-[#0192D3] px-6 py-4 text-lg rounded-md">
+          <Link 
+            href="/flivvbahrainvisit" 
+            onClick={() => {
+              setIsOpen(false);
+              setMobileInternationalOpen(false);
+            }}
+            className="block bg-[#0192D3] px-6 py-4 text-lg rounded-md"
+          >
             Bahrain
           </Link>
-          <Link href="/flivvqatarevent" className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md">
+          
+          <Link 
+            href="/flivvqatarevent" 
+            onClick={() => {
+              setIsOpen(false);
+              setMobileInternationalOpen(false);
+            }}
+            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
+          >
             Qatar
           </Link>
-          <Link href="/flivvksaevent" className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md">
+          
+          <Link 
+            href="/flivvksaevent" 
+            onClick={() => {
+              setIsOpen(false);
+              setMobileInternationalOpen(false);
+            }}
+            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
+          >
             KSA
           </Link>
         </div>
@@ -312,7 +364,7 @@ export default function Navigation() {
 
     ) : (
 
-      /* INTERNATIONAL EVENTS SUBMENU (NEW) */
+      /* INTERNATIONAL EVENTS SUBMENU (NEW) - FIXED */
       <div className="flex flex-col h-full">
         <div className="flex items-center p-6 border-b border-gray-700">
           <button
@@ -325,13 +377,47 @@ export default function Navigation() {
         </div>
 
         <div className="p-4 space-y-4">
-          <Link href="/internationalevents" className="block bg-[#0192D3] px-6 py-4 text-lg rounded-md">
+          <Link 
+            href="/internationalevents" 
+            onClick={() => {
+              setIsOpen(false);
+              setMobileInternationalEventsOpen(false);
+            }}
+            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
+          >
+            All Events
+          </Link>
+
+          <Link 
+            href="/internationalevents?country=QA" 
+            onClick={() => {
+              setIsOpen(false);
+              setMobileInternationalEventsOpen(false);
+            }}
+            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
+          >
             Qatar
           </Link>
-          <Link href="/internationalevents" className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md">
+          
+          <Link 
+            href="/internationalevents?country=SA" 
+            onClick={() => {
+              setIsOpen(false);
+              setMobileInternationalEventsOpen(false);
+            }}
+            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
+          >
             KSA - Riyadh
           </Link>
-          <Link href="/internationalevents" className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md">
+          
+          <Link 
+            href="/internationalevents?country=India" 
+            onClick={() => {
+              setIsOpen(false);
+              setMobileInternationalEventsOpen(false);
+            }}
+            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
+          >
             Hyderabad
           </Link>
         </div>
