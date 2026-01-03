@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useSWR } from 'swr'
+import useSWR from 'swr'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle2, Clock, AlertCircle, Calendar, ArrowUpRight, ArrowRight } from 'lucide-react'
 
