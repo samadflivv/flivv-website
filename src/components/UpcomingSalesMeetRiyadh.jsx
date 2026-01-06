@@ -17,7 +17,7 @@ const UpcomingSalesMeetRiyadh = () => {
   const eventDetails = [
     {
       label: 'Date',
-      value: '9th January 2025',
+      value: '9th January 2026',
       icon: (
         <svg className="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
@@ -81,7 +81,7 @@ const UpcomingSalesMeetRiyadh = () => {
 
   return (
     <section 
-      className="relative w-full bg-[#002200] py-40 px-6 lg:px-16"
+      className="relative w-full bg-[#002200] pt-40 lg:py-40 px-6 lg:px-16"
       aria-labelledby="sales-meet-heading"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
