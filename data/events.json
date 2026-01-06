@@ -327,5 +327,23 @@
     "createdAt": "2026-01-03T09:50:50.959Z",
     "updatedAt": "2026-01-03T09:50:50.959Z",
     "isPublished": true
+  },
+  {
+    "title": "Sales Meet Riyadh",
+    "description": "1:1 Sales Meet ",
+    "start": "2026-01-09T09:30:00.000Z",
+    "end": "2026-01-09T17:30:00.000Z",
+    "country": "SA",
+    "countryLabel": "KSA",
+    "city": "Riyadh",
+    "venue": "Crowne Plaza, Janadriyah Hall",
+    "type": "SalesSession",
+    "tags": [],
+    "rsvpUrl": "https://flivvdevelopers.com/flivvksaevent",
+    "organizer": "Flivv",
+    "id": "evt-1767699346191-s68ocgyuv",
+    "createdAt": "2026-01-06T11:35:46.191Z",
+    "updatedAt": "2026-01-06T11:35:46.191Z",
+    "isPublished": true
   }
 ]

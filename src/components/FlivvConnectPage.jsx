@@ -1,5 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
+import FlivvConnectBanner from './FlivvConnectBanner';
+import UpcomingSalesMeetRiyadh from './UpcomingSalesMeetRiyadh';
 
 // ----- CONFIG: update this if your manifest lives elsewhere -----
 const MANIFEST_URL = "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/ksa-gallery/manifest.json";
@@ -231,6 +233,9 @@ export default function FlivvconnectPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
+
+    <UpcomingSalesMeetRiyadh/>
+
       {/* Hero Section */}
       <section className="relative flex flex-col md:flex-row items-start md:items-center justify-center px-4 md:px-8 lg:px-16 py-20 pt-40 gap-8 md:h-screen">
         <div className="absolute inset-0 bg-[#002200] z-0" />
