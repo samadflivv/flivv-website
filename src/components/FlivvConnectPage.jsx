@@ -237,7 +237,7 @@ export default function FlivvconnectPage() {
     <UpcomingSalesMeetRiyadh/>
 
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-start md:items-center justify-center px-4 md:px-8 lg:px-16 py-20 pt-40 gap-8 md:h-screen">
+      <section className="relative flex flex-col md:flex-row items-start md:items-center justify-center px-4 md:px-8 lg:px-16 py-20 gap-8">
         <div className="absolute inset-0 bg-[#002200] z-0" />
 
         <div className="w-full md:w-1/2 mb-6 md:mb-0 relative z-10 px-4 text-justify">

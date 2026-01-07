@@ -135,8 +135,8 @@ const UpcomingSalesMeetRiyadh = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInScale}
         >
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl shadow-lg lg:p-8">
+            <h3 className="text-4xl font-bold text-gray-900 p-6">
               Register for the Sales Meet
             </h3>
             

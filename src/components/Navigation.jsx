@@ -174,14 +174,14 @@ export default function Navigation() {
       </li>
       
       {/* Hyderabad */}
-      {/* <li>
+      <li>
         <Link 
           href="/internationalevents?country=India" 
           className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
         >
-          Hyderabad
+          India
         </Link>
-      </li> */}
+      </li>
     </ul>
   </div>
 </li>
@@ -410,7 +410,7 @@ export default function Navigation() {
             KSA - Riyadh
           </Link>
           
-          {/* <Link 
+          <Link 
             href="/internationalevents?country=India" 
             onClick={() => {
               setIsOpen(false);
@@ -418,8 +418,8 @@ export default function Navigation() {
             }}
             className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
           >
-            Hyderabad
-          </Link> */}
+            India
+          </Link>
         </div>
       </div>
     )}
