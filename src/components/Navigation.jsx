@@ -134,7 +134,7 @@ export default function Navigation() {
         </li>
 
         <li className="relative group">
-  <Link href="/internationalevents">
+  <Link href="/salesmeets">
     <button className="flex items-center">
       Sales Meets
       <ChevronDown size={16} className="ml-2" />
@@ -146,7 +146,7 @@ export default function Navigation() {
     <ul className="p-3">
       <li>
         <Link 
-          href="/internationalevents" 
+          href="/salesmeets" 
           className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
         >
           All Events
@@ -156,7 +156,7 @@ export default function Navigation() {
       {/* Qatar */}
       <li>
         <Link 
-          href="/internationalevents?country=QA" 
+          href="/salesmeets?country=QA" 
           className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
         >
           Qatar
@@ -166,7 +166,7 @@ export default function Navigation() {
       {/* KSA - Riyadh */}
       <li>
         <Link 
-          href="/internationalevents?country=SA" 
+          href="/salesmeets?country=SA" 
           className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
         >
           KSA - Riyadh
@@ -176,7 +176,7 @@ export default function Navigation() {
       {/* Hyderabad */}
       <li>
         <Link 
-          href="/internationalevents?country=India" 
+          href="/salesmeets?country=India" 
           className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
         >
           India
@@ -378,7 +378,7 @@ export default function Navigation() {
 
         <div className="p-4 space-y-4">
           <Link 
-            href="/internationalevents" 
+            href="/salesmeets" 
             onClick={() => {
               setIsOpen(false);
               setMobileInternationalEventsOpen(false);
@@ -389,7 +389,7 @@ export default function Navigation() {
           </Link>
 
           <Link 
-            href="/internationalevents?country=QA" 
+            href="/salesmeets?country=QA" 
             onClick={() => {
               setIsOpen(false);
               setMobileInternationalEventsOpen(false);
@@ -400,7 +400,7 @@ export default function Navigation() {
           </Link>
           
           <Link 
-            href="/internationalevents?country=SA" 
+            href="/salesmeets?country=SA" 
             onClick={() => {
               setIsOpen(false);
               setMobileInternationalEventsOpen(false);
@@ -411,7 +411,7 @@ export default function Navigation() {
           </Link>
           
           <Link 
-            href="/internationalevents?country=India" 
+            href="/salesmeets?country=India" 
             onClick={() => {
               setIsOpen(false);
               setMobileInternationalEventsOpen(false);
