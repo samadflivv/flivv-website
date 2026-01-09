@@ -121,13 +121,13 @@ export default function Navigation() {
             <ul className="p-3">
               {/* First item highlighted */}
               <li>
-                <Link href="/flivvbahrainvisit" className="block px-4 py-2 rounded-md text-black bg-[#0192D3] text-white">Bahrain</Link>
-              </li>
-              <li>
                 <Link href="/flivvqatarevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">Qatar</Link>
               </li>
               <li>
                 <Link href="/flivvksaevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">KSA</Link>
+              </li>
+              <li>
+                <Link href="/flivvbahrainvisit" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white text-black">Bahrain</Link>
               </li>
             </ul>
           </div>
@@ -144,14 +144,6 @@ export default function Navigation() {
   {/* Dropdown - appears on hover, matches existing dropdown behavior */}
   <div className="absolute right-0 top-full mt-2 w-[220px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
     <ul className="p-3">
-      <li>
-        <Link 
-          href="/salesmeets" 
-          className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2"
-        >
-          All Events
-        </Link>
-      </li>
       
       {/* Qatar */}
       <li>
@@ -328,17 +320,6 @@ export default function Navigation() {
 
         <div className="p-4 space-y-4">
           <Link 
-            href="/flivvbahrainvisit" 
-            onClick={() => {
-              setIsOpen(false);
-              setMobileInternationalOpen(false);
-            }}
-            className="block bg-[#0192D3] px-6 py-4 text-lg rounded-md"
-          >
-            Bahrain
-          </Link>
-          
-          <Link 
             href="/flivvqatarevent" 
             onClick={() => {
               setIsOpen(false);
@@ -359,6 +340,17 @@ export default function Navigation() {
           >
             KSA
           </Link>
+
+          <Link 
+            href="/flivvbahrainvisit" 
+            onClick={() => {
+              setIsOpen(false);
+              setMobileInternationalOpen(false);
+            }}
+            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
+          >
+            Bahrain
+          </Link>
         </div>
       </div>
 
@@ -377,16 +369,6 @@ export default function Navigation() {
         </div>
 
         <div className="p-4 space-y-4">
-          <Link 
-            href="/salesmeets" 
-            onClick={() => {
-              setIsOpen(false);
-              setMobileInternationalEventsOpen(false);
-            }}
-            className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
-          >
-            All Events
-          </Link>
 
           <Link 
             href="/salesmeets?country=QA" 

@@ -282,7 +282,7 @@ export default function EventCalendar({ enableAdmin = true }) {
     <div className="min-h-screen bg-[#03045e] py-35 lg:px-20">
       {/* Header */}
       <div className="bg-white shadow-sm border-b lg:rounded-2xl">
-        <div className="container mx-auto px-4 py-6">
+        <div className="container px-4 py-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <h1 className="text-4xl font-bold text-gray-900">{pageTitle}</h1>
