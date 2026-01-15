@@ -1,12 +1,12 @@
-// import Omanpage from '@/components/Omanpage'
-// import React from 'react'
+import Omanpage from '@/components/Omanpage'
+import React from 'react'
 
-// const page = () => {
-//   return (
-//     <div>
-//       <Omanpage/>
-//     </div>
-//   )
-// }
+const page = () => {
+  return (
+    <div>
+      <Omanpage/>
+    </div>
+  )
+}
 
-// export default page
+export default page

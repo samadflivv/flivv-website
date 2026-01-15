@@ -1,1018 +1,1006 @@
-// 'use client';
-// import { motion, useReducedMotion, AnimatePresence, useInView } from "framer-motion";
-// import { useState, useEffect, useRef } from "react";
-// import muscatHero from "@/assets/muscat-hero.jpg";
-
-// const easeOut = [0.22, 1, 0.36, 1];
-
-// // ============= ANIMATED COUNTER =============
-// const AnimatedCounter = ({ target, suffix, isInView }) => {
-//   const [count, setCount] = useState(0);
-//   const shouldReduceMotion = useReducedMotion();
-
-//   useEffect(() => {
-//     if (!isInView) return;
-//     if (shouldReduceMotion) {
-//       setCount(target);
-//       return;
-//     }
-
-//     let start = 0;
-//     const duration = 2000;
-//     const increment = target / (duration / 16);
-
-//     const timer = setInterval(() => {
-//       start += increment;
-//       if (start >= target) {
-//         setCount(target);
-//         clearInterval(timer);
-//       } else {
-//         setCount(Math.floor(start));
-//       }
-//     }, 16);
-
-//     return () => clearInterval(timer);
-//   }, [isInView, target, shouldReduceMotion]);
-
-//   return (
-//     <span>
-//       {count}
-//       {suffix}
-//     </span>
-//   );
-// };
-
-// // ============= HERO SECTION =============
-// const HeroSection = () => {
-//   const shouldReduceMotion = useReducedMotion();
-
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: {
-//         staggerChildren: shouldReduceMotion ? 0 : 0.15,
-//         delayChildren: 0.2,
-//       },
-//     },
-//   };
-
-//   const itemVariants = {
-//     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       transition: { duration: 0.6, ease: easeOut },
-//     },
-//   };
-
-//   return (
-//     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-//       <div className="absolute inset-0 z-0">
-//         <motion.img
-//           src={muscatHero}
-//           alt="Scenic view of Muscat, Oman at golden hour with mountains and traditional architecture"
-//           className="w-full h-full object-cover"
-//           initial={{ scale: shouldReduceMotion ? 1 : 1.1 }}
-//           animate={{ scale: 1 }}
-//           transition={{ duration: 1.5, ease: "easeOut" }}
-//         />
-//         <div
-//           className="absolute inset-0"
-//           style={{
-//             background: "linear-gradient(135deg, hsl(220 40% 8% / 0.85), hsl(220 40% 8% / 0.5))",
-//           }}
-//         />
-//       </div>
-
-//       <motion.div
-//         className="relative z-10 container-content section-padding w-full"
-//         variants={containerVariants}
-//         initial="hidden"
-//         animate="visible"
-//       >
-//         <div className="max-w-3xl">
-//           <motion.div variants={itemVariants} className="mb-6">
-//             <span className="eyebrow inline-flex items-center gap-3">
-//               <span className="oman-motif" />
-//               FLIVV IN MUSCAT
-//             </span>
-//           </motion.div>
-
-//           <motion.h1 variants={itemVariants} className="heading-display text-white mb-6 text-balance">
-//             Muscat Sales Sessions <span className="text-gradient-gold">2026</span>
-//           </motion.h1>
-
-//           <motion.p variants={itemVariants} className="text-lg md:text-xl text-white/80 mb-8 max-w-xl font-body leading-relaxed">
-//             Exclusive 1:1 consultations, investor briefings, and early-bird offers for premium land investments in India.
-//           </motion.p>
-
-//           <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-//             <a href="#form" className="btn-primary inline-flex items-center gap-2">
-//               Register Now
-//               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-//               </svg>
-//             </a>
-//             <a href="/brochure-muscat.pdf" className="btn-outline-hero">
-//               Download Brochure
-//             </a>
-//           </motion.div>
-
-//           <motion.div
-//             variants={itemVariants}
-//             className="mt-12 inline-flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-accent/30"
-//           >
-//             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-//             <span className="text-sm text-white/90 font-medium">Limited VIP Slots Available</span>
-//           </motion.div>
-//         </div>
-//       </motion.div>
-
-//       <motion.div
-//         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-//         initial={{ opacity: 0 }}
-//         animate={{ opacity: 1 }}
-//         transition={{ delay: 1.5 }}
-//       >
-//         <motion.div
-//           className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
-//           animate={{ y: [0, 8, 0] }}
-//           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-//         >
-//           <div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
-//         </motion.div>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// // ============= COUNTDOWN SECTION =============
-// const CountdownSection = () => {
-//   const targetDate = new Date("2026-11-10T09:00:00+04:00").getTime();
-//   const [timeLeft, setTimeLeft] = useState([]);
-//   const [eventStatus, setEventStatus] = useState("upcoming");
-//   const ref = useRef(null);
-//   const isInView = useInView(ref, { once: true, margin: "-50px" });
-//   const shouldReduceMotion = useReducedMotion();
-
-//   useEffect(() => {
-//     const calculateTimeLeft = () => {
-//       const now = new Date().getTime();
-//       const difference = targetDate - now;
-
-//       if (difference <= 0) {
-//         const eventEndDate = new Date("2026-11-11T18:00:00+04:00").getTime();
-//         if (now < eventEndDate) {
-//           setEventStatus("live");
-//         } else {
-//           setEventStatus("ended");
-//         }
-//         return [
-//           { value: 0, label: "Days" },
-//           { value: 0, label: "Hours" },
-//           { value: 0, label: "Minutes" },
-//           { value: 0, label: "Seconds" },
-//         ];
-//       }
-
-//       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-//       const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-//       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-//       return [
-//         { value: days, label: "Days" },
-//         { value: hours, label: "Hours" },
-//         { value: minutes, label: "Minutes" },
-//         { value: seconds, label: "Seconds" },
-//       ];
-//     };
-
-//     setTimeLeft(calculateTimeLeft());
-//     const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
-//     return () => clearInterval(timer);
-//   }, [targetDate]);
-
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: { staggerChildren: shouldReduceMotion ? 0 : 0.1 },
-//     },
-//   };
-
-//   const itemVariants = {
-//     hidden: { opacity: 0, scale: shouldReduceMotion ? 1 : 0.8 },
-//     visible: {
-//       opacity: 1,
-//       scale: 1,
-//       transition: { duration: 0.5, ease: easeOut },
-//     },
-//   };
-
-//   if (eventStatus === "live") {
-//     return (
-//       <section ref={ref} className="py-12 bg-secondary">
-//         <div className="container-content text-center">
-//           <motion.div
-//             initial={{ opacity: 0, scale: 0.9 }}
-//             animate={{ opacity: 1, scale: 1 }}
-//             className="inline-flex items-center gap-3 px-8 py-4 bg-white rounded-full shadow-lg"
-//           >
-//             <span className="w-3 h-3 bg-primary rounded-full animate-pulse" />
-//             <span className="text-xl font-display font-semibold text-foreground">Event is Live Now!</span>
-//           </motion.div>
-//         </div>
-//       </section>
-//     );
-//   }
-
-//   if (eventStatus === "ended") {
-//     return (
-//       <section ref={ref} className="py-12 bg-muted">
-//         <div className="container-content text-center">
-//           <p className="text-xl font-display font-semibold text-muted-foreground">
-//             Event has ended. Thank you for attending!
-//           </p>
-//         </div>
-//       </section>
-//     );
-//   }
-
-//   return (
-//     <section ref={ref} className="py-16 bg-gradient-to-b from-background to-muted/50">
-//       <motion.div
-//         className="container-content"
-//         variants={containerVariants}
-//         initial="hidden"
-//         animate={isInView ? "visible" : "hidden"}
-//       >
-//         <motion.p variants={itemVariants} className="text-center text-muted-foreground mb-8 font-medium">
-//           Event starts in
-//         </motion.p>
-//         <div className="flex justify-center items-center gap-3 md:gap-6 px-4" role="timer" aria-live="polite">
-//           {timeLeft.map((unit, index) => (
-//             <motion.div key={unit.label} variants={itemVariants} className="relative">
-//               <div className="card-premium text-center min-w-[70px] md:min-w-[100px] py-4 md:py-6">
-//                 <motion.span
-//                   key={unit.value}
-//                   initial={shouldReduceMotion ? false : { opacity: 0.5, y: -5 }}
-//                   animate={{ opacity: 1, y: 0 }}
-//                   className="block text-3xl md:text-5xl font-display font-bold text-foreground"
-//                 >
-//                   {String(unit.value).padStart(2, "0")}
-//                 </motion.span>
-//                 <span className="block text-xs md:text-sm text-muted-foreground mt-2 font-medium uppercase tracking-wider">
-//                   {unit.label}
-//                 </span>
-//               </div>
-//               {index < timeLeft.length - 1 && (
-//                 <span className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 text-2xl md:text-3xl text-muted-foreground/30 font-light">
-//                   :
-//                 </span>
-//               )}
-//             </motion.div>
-//           ))}
-//         </div>
-//         <motion.div variants={itemVariants} className="text-center mt-8">
-//           <p className="text-sm text-muted-foreground">November 10-11, 2026 • Muscat, Oman</p>
-//         </motion.div>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// // ============= ABOUT EVENT SECTION =============
-// const AboutEventSection = () => {
-//   const ref = useRef(null);
-//   const isInView = useInView(ref, { once: true, margin: "-100px" });
-//   const shouldReduceMotion = useReducedMotion();
-
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: { staggerChildren: shouldReduceMotion ? 0 : 0.1 },
-//     },
-//   };
-
-//   const itemVariants = {
-//     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       transition: { duration: 0.5, ease: easeOut },
-//     },
-//   };
-
-//   const whoShouldAttend = [
-//     "NRIs and regional investors",
-//     "High-net-worth individuals seeking land investments",
-//     "Advisors and investment partners",
-//   ];
-
-//   return (
-//     <section ref={ref} id="about" className="section-padding bg-background">
-//       <motion.div
-//         className="container-content max-w-4xl mx-auto"
-//         variants={containerVariants}
-//         initial="hidden"
-//         animate={isInView ? "visible" : "hidden"}
-//       >
-//         <motion.div variants={itemVariants} className="text-center mb-8">
-//           <span className="eyebrow mb-4 block">About The Event</span>
-//           <h2 className="heading-section text-foreground mb-6">About the Muscat Sales Sessions</h2>
-//         </motion.div>
-
-//         <motion.div variants={itemVariants} className="prose prose-lg max-w-none text-center md:text-left">
-//           <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-//             Flivv invites investors to private Muscat sessions to learn about premium land projects, legal processes, and
-//             pre-launch offers. Sessions feature presentations, live Q&A, and 1:1 consultation slots with our founders and
-//             legal team.
-//           </p>
-//         </motion.div>
-
-//         <motion.div variants={itemVariants} className="mt-12 card-premium">
-//           <h3 className="font-display text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
-//             <span className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
-//               <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                 <path
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth={2}
-//                   d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-//                 />
-//               </svg>
-//             </span>
-//             Who Should Attend
-//           </h3>
-//           <ul className="space-y-4">
-//             {whoShouldAttend.map((item, index) => (
-//               <motion.li key={index} variants={itemVariants} className="flex items-start gap-3">
-//                 <span className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-//                   <svg className="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-//                   </svg>
-//                 </span>
-//                 <span className="text-foreground font-medium">{item}</span>
-//               </motion.li>
-//             ))}
-//           </ul>
-//         </motion.div>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// // ============= EVENT TIMELINE SECTION =============
-// const EventTimelineSection = () => {
-//   const ref = useRef(null);
-//   const isInView = useInView(ref, { once: true, margin: "-100px" });
-//   const shouldReduceMotion = useReducedMotion();
-
-//   const days = [
-//     {
-//       label: "Day 1 — Presentations",
-//       date: "November 10, 2026",
-//       items: [
-//         { time: "10:00 AM", title: "Welcome & Keynote", speaker: "Founder" },
-//         { time: "11:30 AM", title: "Project Deep Dive", speaker: "Project Head" },
-//         { time: "02:00 PM", title: "Investor Q&A Panel", speaker: "Legal Head" },
-//       ],
-//     },
-//     {
-//       label: "Day 2 — 1:1 Consultations",
-//       date: "November 11, 2026",
-//       items: [
-//         { time: "09:00 AM", title: "Private 1:1 Slots", note: "Pre-book via registration" },
-//         { time: "02:00 PM", title: "Site Visit Briefing", note: "Optional local site visit" },
-//       ],
-//     },
-//   ];
-
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: { staggerChildren: shouldReduceMotion ? 0 : 0.15 },
-//     },
-//   };
-
-//   const itemVariants = {
-//     hidden: { opacity: 0, x: shouldReduceMotion ? 0 : -20 },
-//     visible: {
-//       opacity: 1,
-//       x: 0,
-//       transition: { duration: 0.5, ease: easeOut },
-//     },
-//   };
-
-//   return (
-//     <section ref={ref} id="timeline" className="section-padding bg-muted/30">
-//       <motion.div
-//         className="container-content max-w-5xl mx-auto"
-//         variants={containerVariants}
-//         initial="hidden"
-//         animate={isInView ? "visible" : "hidden"}
-//       >
-//         <motion.div variants={itemVariants} className="text-center mb-12">
-//           <span className="eyebrow mb-4 block">Schedule</span>
-//           <h2 className="heading-section text-foreground mb-4">Event Details & Timeline</h2>
-//           <p className="text-muted-foreground max-w-xl mx-auto">
-//             Detailed schedule for presentations and 1:1 consultation slots. Pre-select time slots via the registration
-//             form.
-//           </p>
-//         </motion.div>
-
-//         <div className="grid md:grid-cols-2 gap-8" role="list">
-//           {days.map((day, dayIndex) => (
-//             <motion.div key={day.label} variants={itemVariants} className="card-premium">
-//               <div className="flex items-center gap-4 mb-6 pb-4 border-b border-border">
-//                 <div
-//                   className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-//                     dayIndex === 0 ? "bg-primary/10 text-primary" : "bg-secondary/10 text-secondary"
-//                   }`}
-//                 >
-//                   <span className="font-display font-bold text-lg">{dayIndex + 1}</span>
-//                 </div>
-//                 <div>
-//                   <h3 className="font-display font-semibold text-foreground">{day.label}</h3>
-//                   <p className="text-sm text-muted-foreground">{day.date}</p>
-//                 </div>
-//               </div>
-
-//               <div className="space-y-4" role="list">
-//                 {day.items.map((item, index) => (
-//                   <motion.div
-//                     key={index}
-//                     variants={itemVariants}
-//                     className="relative pl-6 border-l-2 border-border hover:border-accent transition-colors"
-//                     role="listitem"
-//                   >
-//                     <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-background border-2 border-accent" />
-//                     <div className="pb-4">
-//                       <span className="inline-block text-xs font-semibold text-accent bg-accent/10 rounded-full px-2.5 py-1 mb-2">
-//                         {item.time}
-//                       </span>
-//                       <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
-//                       {item.speaker && (
-//                         <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-//                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                             <path
-//                               strokeLinecap="round"
-//                               strokeLinejoin="round"
-//                               strokeWidth={2}
-//                               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-//                             />
-//                           </svg>
-//                           {item.speaker}
-//                         </p>
-//                       )}
-//                       {item.note && <p className="text-sm text-muted-foreground italic">{item.note}</p>}
-//                     </div>
-//                   </motion.div>
-//                 ))}
-//               </div>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// // ============= HIGHLIGHTS GRID SECTION =============
-// const HighlightsGridSection = () => {
-//   const ref = useRef(null);
-//   const isInView = useInView(ref, { once: true, margin: "-100px" });
-//   const shouldReduceMotion = useReducedMotion();
-
-//   const highlights = [
-//     {
-//       title: "One-on-One Consultations",
-//       description: "Personalized investment planning and documentation guidance",
-//       icon: (
-//         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//           <path
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             strokeWidth={1.5}
-//             d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
-//           />
-//         </svg>
-//       ),
-//       isExclusive: true,
-//     },
-//     {
-//       title: "Pre-launch Pricing",
-//       description: "Access exclusive early-bird offers and priority bookings",
-//       icon: (
-//         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//           <path
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             strokeWidth={1.5}
-//             d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-//           />
-//         </svg>
-//       ),
-//       isExclusive: true,
-//     },
-//     {
-//       title: "Legal Assistance",
-//       description: "On-site legal guidance for NRIs and investors",
-//       icon: (
-//         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//           <path
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             strokeWidth={1.5}
-//             d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-//           />
-//         </svg>
-//       ),
-//     },
-//     {
-//       title: "Project Walkthrough",
-//       description: "Live project deep-dive and Q&A sessions",
-//       icon: (
-//         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//           <path
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             strokeWidth={1.5}
-//             d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-//           />
-//         </svg>
-//       ),
-//     },
-//     {
-//       title: "Site Visit Options",
-//       description: "Arrange local site visits post session",
-//       icon: (
-//         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//           <path
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             strokeWidth={1.5}
-//             d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-//           />
-//           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-//         </svg>
-//       ),
-//     },
-//     {
-//       title: "Post-Event Support",
-//       description: "Continued assistance for booking and registration",
-//       icon: (
-//         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//           <path
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             strokeWidth={1.5}
-//             d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
-//           />
-//         </svg>
-//       ),
-//     },
-//   ];
-
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: { staggerChildren: shouldReduceMotion ? 0 : 0.08 },
-//     },
-//   };
-
-//   const itemVariants = {
-//     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       transition: { duration: 0.5, ease: easeOut },
-//     },
-//   };
-
-//   return (
-//     <section ref={ref} id="highlights" className="section-padding bg-background">
-//       <motion.div
-//         className="container-content max-w-6xl mx-auto"
-//         variants={containerVariants}
-//         initial="hidden"
-//         animate={isInView ? "visible" : "hidden"}
-//       >
-//         <motion.div variants={itemVariants} className="text-center mb-12">
-//           <span className="eyebrow mb-4 block">What You Get</span>
-//           <h2 className="heading-section text-foreground">Event Highlights</h2>
-//         </motion.div>
-
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//           {highlights.map((item, index) => (
-//             <motion.div
-//               key={index}
-//               variants={itemVariants}
-//               whileHover={shouldReduceMotion ? {} : { y: -4, transition: { duration: 0.2 } }}
-//               className="card-premium relative group"
-//             >
-//               {item.isExclusive && (
-//                 <span className="absolute -top-2 -right-2 text-[10px] font-bold uppercase tracking-wider bg-accent text-accent-foreground px-2.5 py-1 rounded-full shadow-sm">
-//                   Exclusive
-//                 </span>
-//               )}
-//               <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-//                 {item.icon}
-//               </div>
-//               <h3 className="font-display font-semibold text-lg text-foreground mb-2">{item.title}</h3>
-//               <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// // ============= ABOUT FLIVV SECTION =============
-// const AboutFlivvSection = () => {
-//   const ref = useRef(null);
-//   const isInView = useInView(ref, { once: true, margin: "-100px" });
-//   const shouldReduceMotion = useReducedMotion();
-
-//   const stats = [
-//     { value: 15, suffix: "+", label: "Projects Delivered" },
-//     { value: 2500, suffix: "+", label: "Happy Investors" },
-//     { value: 10, suffix: "+", label: "Years Experience" },
-//   ];
-
-//   const trustBadges = ["DTCP / HMDA Approvals", "Clear Title Assurance", "Spot Registration Support"];
-
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: { staggerChildren: shouldReduceMotion ? 0 : 0.1 },
-//     },
-//   };
-
-//   const itemVariants = {
-//     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       transition: { duration: 0.5, ease: easeOut },
-//     },
-//   };
-
-//   return (
-//     <section ref={ref} id="about-flivv" className="section-padding bg-foreground text-background">
-//       <motion.div
-//         className="container-content max-w-4xl mx-auto text-center"
-//         variants={containerVariants}
-//         initial="hidden"
-//         animate={isInView ? "visible" : "hidden"}
-//       >
-//         <motion.div variants={itemVariants}>
-//           <span className="eyebrow mb-4 block text-accent">Who We Are</span>
-//           <h2 className="heading-section mb-8">About Flivv</h2>
-//         </motion.div>
-
-//         <motion.div variants={itemVariants} className="space-y-6 mb-12">
-//           <p className="text-lg leading-relaxed opacity-90">
-//             Flivv Developers is a trusted real estate developer with experience delivering premium projects. We guide
-//             investors through legal, documentation and site-selection processes with transparency.
-//           </p>
-//           <p className="text-lg leading-relaxed opacity-80">
-//             Our team includes project leads, sales consultants and legal advisors to support NRI investments from
-//             discovery to possession.
-//           </p>
-//         </motion.div>
-
-//         <motion.div variants={itemVariants} className="grid grid-cols-3 gap-4 md:gap-8 mb-12">
-//           {stats.map((stat, index) => (
-//             <div key={index} className="text-center">
-//               <div className="text-3xl md:text-4xl font-display font-bold text-accent mb-1">
-//                 <AnimatedCounter target={stat.value} suffix={stat.suffix} isInView={isInView} />
-//               </div>
-//               <div className="text-xs md:text-sm opacity-70">{stat.label}</div>
-//             </div>
-//           ))}
-//         </motion.div>
-
-//         <motion.div variants={itemVariants}>
-//           <div className="flex flex-wrap justify-center gap-3">
-//             {trustBadges.map((badge, index) => (
-//               <span
-//                 key={index}
-//                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm border border-white/10"
-//               >
-//                 <svg className="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                   <path
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth={2}
-//                     d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-//                   />
-//                 </svg>
-//                 {badge}
-//               </span>
-//             ))}
-//           </div>
-//         </motion.div>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// // ============= REGISTRATION SECTION =============
-// const RegistrationSection = () => {
-//   const ref = useRef(null);
-//   const hubspotContainerRef = useRef(null);
-//   const isInView = useInView(ref, { once: true, margin: "-100px" });
-//   const formVisible = useInView(hubspotContainerRef, { once: true, margin: "100px" });
-//   const shouldReduceMotion = useReducedMotion();
-//   const [scriptLoaded, setScriptLoaded] = useState(false);
-//   const [formMounted, setFormMounted] = useState(false);
-
-//   useEffect(() => {
-//     if (formVisible && !scriptLoaded) {
-//       const existingScript = document.querySelector('script[src="https://js-na2.hsforms.net/forms/embed/21626983.js"]');
-//       if (existingScript) {
-//         setScriptLoaded(true);
-//         return;
-//       }
-
-//       const script = document.createElement("script");
-//       script.src = "https://js-na2.hsforms.net/forms/embed/21626983.js";
-//       script.defer = true;
-//       script.onload = () => setScriptLoaded(true);
-//       document.head.appendChild(script);
-//     }
-//   }, [formVisible, scriptLoaded]);
-
-//   useEffect(() => {
-//     if (scriptLoaded && hubspotContainerRef.current && !formMounted) {
-//       const formDiv = document.createElement("div");
-//       formDiv.className = "hs-form-frame";
-//       formDiv.setAttribute("data-region", "na2");
-//       formDiv.setAttribute("data-form-id", "417fd073-67f4-4e82-90f6-20d056f919fa");
-//       formDiv.setAttribute("data-portal-id", "21626983");
-//       hubspotContainerRef.current.appendChild(formDiv);
-//       setFormMounted(true);
-//     }
-//   }, [scriptLoaded, formMounted]);
-
-//   const bullets = [
-//     "Limited 1:1 consultation slots — priority to early registrants",
-//     "Pre-select preferred date/time in the form",
-//     "Travel & local arrangement assistance available on request",
-//   ];
-
-//   const containerVariants = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: { staggerChildren: shouldReduceMotion ? 0 : 0.1 },
-//     },
-//   };
-
-//   const itemVariants = {
-//     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       transition: { duration: 0.5, ease: easeOut },
-//     },
-//   };
-
-//   return (
-//     <section ref={ref} id="form" className="section-padding bg-muted/30" aria-labelledby="registration-heading">
-//       <motion.div
-//         className="container-content max-w-6xl mx-auto"
-//         variants={containerVariants}
-//         initial="hidden"
-//         animate={isInView ? "visible" : "hidden"}
-//       >
-//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-//           <motion.div variants={itemVariants} className="lg:sticky lg:top-8">
-//             <span className="eyebrow mb-4 block">Reserve Your Spot</span>
-//             <h2 id="registration-heading" className="heading-section text-foreground mb-6">
-//               Register for Muscat Sales Sessions
-//             </h2>
-
-//             <ul className="space-y-4 mb-8">
-//               {bullets.map((bullet, index) => (
-//                 <motion.li key={index} variants={itemVariants} className="flex items-start gap-3">
-//                   <span className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-//                     <svg className="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-//                     </svg>
-//                   </span>
-//                   <span className="text-foreground">{bullet}</span>
-//                 </motion.li>
-//               ))}
-//             </ul>
-
-//             <div className="p-4 bg-accent/10 rounded-xl border border-accent/20">
-//               <p className="text-sm text-foreground flex items-start gap-2">
-//                 <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                   <path
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth={2}
-//                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-//                   />
-//                 </svg>
-//                 <span>After registration, you'll receive a confirmation email with calendar invite and brochure download link.</span>
-//               </p>
-//             </div>
-
-//             <div className="mt-8 pt-8 border-t border-border">
-//               <p className="text-sm text-muted-foreground mb-4">Questions? Contact us directly:</p>
-//               <div className="space-y-2">
-//                 <a href="mailto:events@flivv.com" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
-//                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                     <path
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                       strokeWidth={2}
-//                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-//                     />
-//                   </svg>
-//                   events@flivv.com
-//                 </a>
-//                 <a href="tel:+96812345678" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
-//                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                     <path
-//                       strokeLinecap="round"
-//                       strokeLinejoin="round"
-//                       strokeWidth={2}
-//                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-//                     />
-//                   </svg>
-//                   +968 1234 5678
-//                 </a>
-//               </div>
-//             </div>
-//           </motion.div>
-
-//           <motion.div variants={itemVariants} className="card-premium border border-border" style={{ boxShadow: "var(--shadow-elevated)" }}>
-//             <div ref={hubspotContainerRef} className="min-h-[400px]" aria-live="polite">
-//               {!formMounted && (
-//                 <div className="flex items-center justify-center h-[400px]">
-//                   <div className="text-center">
-//                     <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-//                     <p className="text-muted-foreground">Loading form...</p>
-//                   </div>
-//                 </div>
-//               )}
-//             </div>
-//           </motion.div>
-//         </div>
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// // ============= FLOATING CTA =============
-// const FloatingCTAButton = () => {
-//   const [isVisible, setIsVisible] = useState(false);
-//   const shouldReduceMotion = useReducedMotion();
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const heroSection = document.getElementById("hero");
-//       const formSection = document.getElementById("form");
-
-//       if (heroSection && formSection) {
-//         const heroBottom = heroSection.getBoundingClientRect().bottom;
-//         const formTop = formSection.getBoundingClientRect().top;
-//         const windowHeight = window.innerHeight;
-//         setIsVisible(heroBottom < 0 && formTop > windowHeight * 0.5);
-//       }
-//     };
-
-//     window.addEventListener("scroll", handleScroll, { passive: true });
-//     handleScroll();
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   return (
-//     <AnimatePresence mode="wait">
-//       {isVisible && (
-//         <motion.a
-//           key="floating-cta"
-//           href="#form"
-//           initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-//           transition={{ duration: 0.3 }}
-//           className="fixed bottom-6 right-6 z-50 btn-primary flex items-center gap-2 shadow-2xl"
-//           style={{ boxShadow: "var(--shadow-glow-red)" }}
-//         >
-//           <span>Register Now</span>
-//           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-//           </svg>
-//         </motion.a>
-//       )}
-//     </AnimatePresence>
-//   );
-// };
-
-// // ============= FOOTER =============
-// const FooterSection = () => {
-//   const currentYear = new Date().getFullYear();
-
-//   return (
-//     <footer className="bg-foreground text-background/70 py-12">
-//       <div className="container-content max-w-6xl mx-auto px-6">
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-//           <div>
-//             <h3 className="font-display text-xl font-semibold text-background mb-4">Flivv Developers</h3>
-//             <p className="text-sm leading-relaxed">
-//               Premium real estate investments with transparency and trust. Your partner from discovery to possession.
-//             </p>
-//           </div>
-
-//           <div>
-//             <h4 className="font-semibold text-background mb-4">Muscat Sessions 2026</h4>
-//             <ul className="space-y-2 text-sm">
-//               <li className="flex items-start gap-2">
-//                 <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                   <path
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth={2}
-//                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-//                   />
-//                 </svg>
-//                 November 10-11, 2026
-//               </li>
-//               <li className="flex items-start gap-2">
-//                 <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                   <path
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth={2}
-//                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-//                   />
-//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-//                 </svg>
-//                 Grand Hyatt Muscat, Oman
-//               </li>
-//             </ul>
-//           </div>
-
-//           <div>
-//             <h4 className="font-semibold text-background mb-4">Contact</h4>
-//             <ul className="space-y-2 text-sm">
-//               <li>
-//                 <a href="mailto:events@flivv.com" className="hover:text-background transition-colors">
-//                   events@flivv.com
-//                 </a>
-//               </li>
-//               <li>
-//                 <a href="tel:+96812345678" className="hover:text-background transition-colors">
-//                   +968 1234 5678
-//                 </a>
-//               </li>
-//             </ul>
-//           </div>
-//         </div>
-
-//         <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
-//           <p className="text-sm">© {currentYear} Flivv Developers. All rights reserved.</p>
-//           <div className="flex items-center gap-6 text-sm">
-//             <a href="#" className="hover:text-background transition-colors">
-//               Privacy Policy
-//             </a>
-//             <a href="#" className="hover:text-background transition-colors">
-//               Terms of Service
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// // ============= MAIN COMPONENT =============
-// const FlivvMuscatLandingPage = () => {
-//   return (
-//     <main className="overflow-x-hidden">
-//       <HeroSection />
-//       <CountdownSection />
-//       <AboutEventSection />
-//       <EventTimelineSection />
-//       <HighlightsGridSection />
-//       <AboutFlivvSection />
-//       <RegistrationSection />
-//       <FooterSection />
-//       <FloatingCTAButton />
-//     </main>
-//   );
-// };
-
-// export default FlivvMuscatLandingPage;
+"use client";
+
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Calendar, MapPin, ArrowRight, ShieldCheck, 
+  TrendingUp, Clock, Users, Check, 
+  Star, Building, Target, Award, Globe,
+  Phone, Mail, ChevronRight, ArrowUpRight,
+  Sparkles, Zap, Target as TargetIcon, BarChart3,
+  Grid3x3, Layers, Landmark, Home, Briefcase,
+  Navigation, Eye, Globe2, Compass, Map,
+  FileText, PieChart, DollarSign, TrendingUp as ChartUp,
+  CheckCircle, LucideIcon
+} from 'lucide-react';
+import OmnRegistrationform from './OmnRegistrationform';
+
+// --- THEME ---
+const COLORS = {
+  red: "#CE1126",    // Oman Red
+  green: "#007A3D",  // Oman Green
+  gold: "#D9B44A",   // Gold accent
+  dark: "#0B1220",   // Dark text
+  light: "#FFFFFF",   // White
+  gradientStart: "#CE1126",
+  gradientEnd: "#007A3D"
+};
+
+// --- SUPER SAFE WRAPPER ---
+const SafeRender = ({ children }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
+  if (!isMounted) return <div className="min-h-screen bg-white" />;
+  return <>{children}</>;
+};
+
+// --- GLASS MORPHISM STYLE ---
+const glassStyle = "bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl";
+
+// --- 1. CINEMATIC HERO WITH IMAGE BACKGROUND ---
+const Hero = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const maxScroll = window.innerHeight;
+      const progress = Math.min(scrolled / maxScroll, 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section className="relative min-h-screen w-full overflow-hidden flex items-center">
+      {/* Background Image with Parallax Effect */}
+      <div className="absolute inset-0 z-0">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=2070)',
+            transform: `translateY(${scrollProgress * 30}px)`,
+            transition: 'transform 0.1s ease-out'
+          }}
+        />
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1220]/90 via-[#0B1220]/70 to-[#007A3D]/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-transparent to-transparent" />
+        
+        {/* Animated Gradient Orbs */}
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#CE1126]/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-[#007A3D]/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(90deg, transparent 95%, #CE1126 100%),
+                             linear-gradient(0deg, transparent 95%, #007A3D 100%)`,
+            backgroundSize: '50px 50px',
+          }} />
+        </div>
+      </div>
+
+      {/* Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-[#D9B44A] rounded-full"
+            animate={{
+              y: [0, -20, 0],
+              x: [0, Math.sin(i) * 10, 0]
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              delay: i * 0.2
+            }}
+            style={{
+              left: `${10 + i * 10}%`,
+              top: `${20 + i * 7}%`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main Content */}
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column */}
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-4"
+            >
+              {/* Animated Tag */}
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                <Sparkles className="w-4 h-4 text-[#D9B44A]" />
+                <span className="text-sm font-semibold text-white tracking-widest">EXCLUSIVE ACCESS</span>
+                <div className="w-2 h-2 bg-[#D9B44A] rounded-full animate-pulse" />
+              </div>
+
+              {/* Main Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-5xl sm:text-7xl md:text-8xl font-bold text-white leading-[0.9] tracking-tight"
+              >
+                <span className="bg-gradient-to-r from-white via-white to-[#D9B44A] bg-clip-text text-transparent">
+                  MUSCAT
+                </span>
+                <br />
+                <span className="text-4xl sm:text-6xl md:text-7xl text-[#D9B44A]">
+                  SALES SESSIONS
+                </span>
+                <br />
+                <span className="text-3xl sm:text-5xl text-white/60">
+                  2026
+                </span>
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-xl text-white/70 font-light max-w-xl leading-relaxed"
+              >
+                Join Oman's most exclusive real estate investment forum. 
+                Premium opportunities, private consultations, and strategic insights.
+              </motion.p>
+            </motion.div>
+
+            {/* Stats Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4"
+            >
+              {[
+                { value: "24", label: "VIP SEATS", color: "text-[#D9B44A]" },
+                { value: "2", label: "DAYS", color: "text-white" },
+                { value: "1:1", label: "CONSULTATIONS", color: "text-[#CE1126]" },
+                { value: "20%", label: "EARLY BIRD", color: "text-[#007A3D]" },
+              ].map((stat, index) => (
+                <div key={index} className={`text-center p-4 ${glassStyle} rounded-2xl`}>
+                  <div className={`text-2xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
+                  <div className="text-xs text-white/60 tracking-widest">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a
+                href="#register"
+                className="group relative overflow-hidden bg-gradient-to-r from-[#CE1126] to-[#007A3D] text-white rounded-full px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3"
+              >
+                <span className="relative z-10">Secure Your Invitation</span>
+                <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#D9B44A] to-[#CE1126] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+
+              <a
+                href="#highlights"
+                className="group relative overflow-hidden bg-transparent border-2 border-white/30 text-white rounded-full px-8 py-4 text-lg font-semibold hover:border-white/60 transition-all duration-300 flex items-center justify-center gap-3"
+              >
+                <span>View Highlights</span>
+                <Eye className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right Column - Event Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="relative"
+          >
+            {/* Floating Card */}
+            <div className={`relative ${glassStyle} rounded-3xl p-8 backdrop-blur-xl`}>
+              {/* Decorative Border */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#CE1126] via-[#D9B44A] to-[#007A3D] rounded-3xl opacity-50 blur" />
+              <div className="absolute inset-0 bg-[#0B1220] rounded-[calc(1.5rem-2px)]" />
+              
+              {/* Card Content */}
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-[#CE1126]/20 to-[#CE1126]/10">
+                    <Calendar className="w-6 h-6 text-[#CE1126]" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-white/60 uppercase tracking-widest">Event Details</div>
+                    <div className="text-2xl font-bold text-white">Grand Hyatt Muscat</div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  {[
+                    { icon: MapPin, label: "Venue", value: "Grand Hyatt Muscat", color: "#007A3D" },
+                    { icon: Calendar, label: "Dates", value: "November 15-16, 2026", color: "#CE1126" },
+                    { icon: Clock, label: "Time", value: "9:00 AM - 6:00 PM", color: "#D9B44A" },
+                    { icon: Users, label: "Format", value: "Private VIP Sessions", color: "#007A3D" },
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-4 p-4 rounded-xl bg-white/5">
+                      <div className="p-2 rounded-lg" style={{ backgroundColor: `${item.color}20` }}>
+                        <item.icon className="w-5 h-5" style={{ color: item.color }} />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-sm text-white/60">{item.label}</div>
+                        <div className="font-semibold text-white">{item.value}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Quick Action */}
+                <div className="mt-8 pt-8 border-t border-white/10">
+                  <a
+                    href="#register"
+                    className="group w-full bg-gradient-to-r from-[#0B1220] to-[#1a1f2e] hover:from-[#CE1126] hover:to-[#007A3D] text-white rounded-xl px-6 py-4 font-semibold flex items-center justify-center gap-3 transition-all duration-300"
+                  >
+                    <span>Register Now</span>
+                    <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Elements */}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-[#CE1126]/20 to-[#D9B44A]/20 rounded-full blur-xl"
+            />
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-[#007A3D]/20 to-[#D9B44A]/20 rounded-full blur-xl"
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      >
+        <div className="flex flex-col items-center">
+          <div className="text-white/50 text-sm mb-2 tracking-widest">SCROLL</div>
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-bounce" />
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+// --- 2. MODERN COUNTDOWN SECTION ---
+const Countdown = () => {
+  const [timeLeft, setTimeLeft] = useState({ days: 45, hours: 12, minutes: 30, seconds: 0 });
+
+  useEffect(() => {
+    const eventDate = new Date('2026-11-15T09:00:00+04:00');
+    
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const diff = eventDate - now;
+      
+      if (diff <= 0) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      }
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      return { days, hours, minutes, seconds };
+    };
+
+    setTimeLeft(calculateTimeLeft());
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="relative py-24 overflow-hidden">
+      {/* Background with Gradient Mesh */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1220] via-[#0B1220] to-[#1a1f2e]" />
+        <div className="absolute inset-0 opacity-30" style={{
+          backgroundImage: `radial-gradient(circle at 20% 50%, #CE1126 0%, transparent 50%),
+                           radial-gradient(circle at 80% 20%, #007A3D 0%, transparent 50%)`,
+        }} />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#CE1126]/20 to-[#007A3D]/20 rounded-full mb-6">
+              <Zap className="w-4 h-4 text-[#D9B44A]" />
+              <span className="text-sm font-semibold text-white tracking-widest">LIMITED TIME OFFER</span>
+            </div>
+            <h2 className="text-4xl sm:text-6xl font-bold text-white mb-6">
+              Early Registration <span className="text-[#D9B44A]">Ends In</span>
+            </h2>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto">
+              Secure exclusive benefits and pre-launch pricing before time runs out
+            </p>
+          </motion.div>
+
+          {/* Countdown Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
+            {Object.entries(timeLeft).map(([key, value], index) => (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`${glassStyle} rounded-2xl p-6 text-center`}
+              >
+                <div className="text-4xl sm:text-5xl font-bold text-white mb-2 font-mono">
+                  {value.toString().padStart(2, '0')}
+                </div>
+                <div className="text-sm text-white/60 uppercase tracking-widest">
+                  {key}
+                </div>
+                {/* Animated Bar */}
+                <div className="mt-4 h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-[#CE1126] to-[#007A3D]"
+                    initial={{ width: '0%' }}
+                    whileInView={{ width: '100%' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 2, delay: index * 0.2 }}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA with Progress Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto"
+          >
+            <div className={`${glassStyle} rounded-2xl p-6 mb-6`}>
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-white">
+                  <div className="text-sm text-white/60">VIP Seats Available</div>
+                  <div className="text-2xl font-bold">24 / 48</div>
+                </div>
+                <div className="text-[#D9B44A] font-semibold">50% FILLED</div>
+              </div>
+              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-[#CE1126] via-[#D9B44A] to-[#007A3D]"
+                  initial={{ width: '0%' }}
+                  whileInView={{ width: '50%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 2, delay: 0.5 }}
+                />
+              </div>
+            </div>
+
+            <a
+              href="#register"
+              className="group relative overflow-hidden w-full bg-gradient-to-r from-[#CE1126] via-[#D9B44A] to-[#007A3D] text-white rounded-full px-8 py-5 text-lg font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center gap-3"
+            >
+              <span>Secure My VIP Seat</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- 3. EVENT DETAILS CARD ---
+const EventDetails = () => {
+  const features = [
+    { icon: Building, label: "5-Star Venue", desc: "Grand Hyatt Muscat" },
+    { icon: ShieldCheck, label: "Secure Access", desc: "Invitation Only" },
+    { icon: Users, label: "Private Sessions", desc: "1:1 Consultations" },
+    { icon: BarChart3, label: "Market Insights", desc: "Exclusive Data" },
+  ];
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0B1220] mb-6">
+              Event <span className="text-[#CE1126]">Essentials</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Everything you need for an unparalleled investment experience
+            </p>
+          </motion.div>
+
+          {/* Main Card */}
+          <div className="relative">
+            {/* Background Grid */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0" style={{
+                backgroundImage: `linear-gradient(90deg, #CE1126 1px, transparent 1px),
+                                 linear-gradient(0deg, #007A3D 1px, transparent 1px)`,
+                backgroundSize: '40px 40px',
+              }} />
+            </div>
+
+            {/* Floating Card */}
+            <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl overflow-hidden">
+              <div className="grid lg:grid-cols-2">
+                {/* Left Panel - Info */}
+                <div className="p-8 lg:p-12">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-[#CE1126]/10 to-[#CE1126]/5">
+                      <Map className="w-8 h-8 text-[#CE1126]" />
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-500 uppercase tracking-widest">Location & Details</div>
+                      <div className="text-2xl font-bold text-[#0B1220]">Grand Hyatt Muscat</div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6 mb-8">
+                    {[
+                      { icon: MapPin, text: "Shatti Al Qurum, Muscat 133, Oman" },
+                      { icon: Calendar, text: "November 15-16, 2026" },
+                      { icon: Clock, text: "9:00 AM - 6:00 PM Daily" },
+                      { icon: Navigation, text: "Private Transportation Available" },
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center gap-4">
+                        <div className="p-2 rounded-lg bg-gray-100">
+                          <item.icon className="w-5 h-5 text-gray-600" />
+                        </div>
+                        <span className="text-gray-700">{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Features Grid */}
+                  <div className="grid grid-cols-2 gap-4">
+                    {features.map((feature, index) => (
+                      <div key={index} className="p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-100">
+                        <feature.icon className="w-6 h-6 text-[#CE1126] mb-2" />
+                        <div className="font-semibold text-[#0B1220]">{feature.label}</div>
+                        <div className="text-sm text-gray-500">{feature.desc}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right Panel - CTA & Visual */}
+                <div className="bg-gradient-to-br from-[#0B1220] to-gray-900 p-8 lg:p-12 relative overflow-hidden">
+                  {/* Floating Elements */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#CE1126]/10 rounded-full blur-3xl" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#007A3D]/10 rounded-full blur-3xl" />
+                  
+                  <div className="relative z-10 h-full flex flex-col justify-center">
+                    <h3 className="text-2xl font-bold text-white mb-6">
+                      Ready to Transform Your Portfolio?
+                    </h3>
+                    <p className="text-white/70 mb-8">
+                      Join Oman's most exclusive real estate investment forum. 
+                      Limited VIP seats available.
+                    </p>
+
+                    <a
+                      href="#register"
+                      className="group w-full bg-gradient-to-r from-[#CE1126] to-[#007A3D] hover:from-[#D9B44A] hover:to-[#CE1126] text-white rounded-xl px-6 py-4 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 mb-8"
+                    >
+                      <span>Register Now</span>
+                      <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </a>
+
+                    <div className="space-y-4">
+                      {[
+                        "Priority 1:1 session booking",
+                        "Exclusive pre-launch pricing",
+                        "Comprehensive legal guidance",
+                        "Personal concierge service",
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-center text-white/80">
+                          <CheckCircle className="w-5 h-5 text-[#D9B44A] mr-3" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- 4. EVENT HIGHLIGHTS - MODERN GRID ---
+const EventHighlights = () => {
+  const highlights = [
+    {
+      icon: TargetIcon,
+      title: "Strategic Focus",
+      description: "Targeted investment opportunities in high-growth corridors",
+      gradient: "from-[#CE1126]/20 to-[#CE1126]/5",
+      stats: "18% ROI"
+    },
+    {
+      icon: PieChart,
+      title: "Market Intelligence",
+      description: "Exclusive data and analysis from industry leaders",
+      gradient: "from-[#007A3D]/20 to-[#007A3D]/5",
+      stats: "100+ Reports"
+    },
+    {
+      icon: Landmark,
+      title: "Legal Assurance",
+      description: "Comprehensive guidance for NRI investments",
+      gradient: "from-[#D9B44A]/20 to-[#D9B44A]/5",
+      stats: "AAA Grade"
+    },
+    {
+      icon: Home,
+      title: "Premium Portfolio",
+      description: "Curated selection of high-potential properties",
+      gradient: "from-[#CE1126]/20 to-[#CE1126]/5",
+      stats: "$500M+"
+    },
+    {
+      icon: Briefcase,
+      title: "Private Networking",
+      description: "Connect with industry leaders and investors",
+      gradient: "from-[#007A3D]/20 to-[#007A3D]/5",
+      stats: "200+ Investors"
+    },
+    {
+      icon: Globe2,
+      title: "Global Standards",
+      description: "International best practices and compliance",
+      gradient: "from-[#D9B44A]/20 to-[#D9B44A]/5",
+      stats: "10+ Countries"
+    },
+  ];
+
+  return (
+    <section id="highlights" className="py-24 bg-gray-50 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 70% 30%, #CE1126 0%, transparent 40%),
+                             radial-gradient(circle at 30% 70%, #007A3D 0%, transparent 40%)`,
+          }} />
+        </div>
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#CE1126]/10 to-[#007A3D]/10 rounded-full mb-6">
+            <Star className="w-4 h-4 text-[#D9B44A]" />
+            <span className="text-sm font-semibold text-[#0B1220] tracking-widest">EXCLUSIVE FEATURES</span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#0B1220] mb-6">
+            Why <span className="text-[#CE1126]">Choose</span> This Event
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Experience benefits designed exclusively for discerning investors
+          </p>
+        </motion.div>
+
+        {/* Highlights Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {highlights.map((highlight, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative"
+            >
+              {/* Card */}
+              <div className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 h-full">
+                {/* Gradient Border */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#CE1126] via-[#D9B44A] to-[#007A3D] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                
+                {/* Icon */}
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${highlight.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <highlight.icon className="w-7 h-7 text-[#0B1220]" />
+                </div>
+
+                {/* Content */}
+                <h3 className="text-xl font-bold text-[#0B1220] mb-3">
+                  {highlight.title}
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  {highlight.description}
+                </p>
+
+                {/* Stats */}
+                <div className="mt-4 pt-4 border-t border-gray-100">
+                  <div className="text-sm text-gray-500 uppercase tracking-widest">Performance</div>
+                  <div className="text-2xl font-bold text-[#CE1126]">{highlight.stats}</div>
+                </div>
+
+                {/* Hover Indicator */}
+                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ArrowRight className="w-5 h-5 text-[#007A3D]" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <a
+            href="#register"
+            className="inline-flex items-center justify-center bg-[#0B1220] hover:bg-[#0B1220]/90 text-white rounded-full px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <span>Experience All Benefits</span>
+            <ArrowRight className="ml-3 w-5 h-5" />
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// --- 5. MODERN AGENDA ---
+const Agenda = () => {
+  const days = [
+    {
+      title: "Day 1 - Strategic Insights",
+      date: "November 15, 2026",
+      sessions: [
+        { time: "09:00", title: "Registration & Welcome", desc: "Networking breakfast" },
+        { time: "10:00", title: "Keynote: Market Outlook", desc: "Industry trends 2026-2030" },
+        { time: "11:30", title: "Legal Framework", desc: "NRI investment regulations" },
+        { time: "14:00", title: "Project Deep Dive", desc: "Exclusive developments" },
+      ],
+      color: "#CE1126"
+    },
+    {
+      title: "Day 2 - Private Consultations",
+      date: "November 16, 2026",
+      sessions: [
+        { time: "09:00-13:00", title: "1:1 Sessions", desc: "Private portfolio reviews" },
+        { time: "14:00", title: "Site Visits", desc: "Optional development tours" },
+        { time: "16:00", title: "Networking", desc: "Exclusive investor lounge" },
+      ],
+      color: "#007A3D"
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-[#0B1220] relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1220] via-[#1a1f2e] to-[#0B1220]" />
+        {/* Moving Lines */}
+        <div className="absolute inset-0 opacity-10">
+          {[...Array(10)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute h-px bg-gradient-to-r from-transparent via-[#D9B44A] to-transparent"
+              animate={{ x: [-100, 2000] }}
+              transition={{
+                duration: 20 + i * 2,
+                repeat: Infinity,
+                delay: i * 0.5
+              }}
+              style={{
+                top: `${10 + i * 10}%`,
+                width: '100%',
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#CE1126]/20 to-[#007A3D]/20 rounded-full mb-6">
+            <Calendar className="w-4 h-4 text-[#D9B44A]" />
+            <span className="text-sm font-semibold text-white tracking-widest">THE SCHEDULE</span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+            Two Days of <span className="text-[#D9B44A]">Value Creation</span>
+          </h2>
+          <p className="text-xl text-white/60 max-w-2xl mx-auto">
+            Carefully curated sessions for maximum impact and strategic insights
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {days.map((day, dayIndex) => (
+            <motion.div
+              key={dayIndex}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: dayIndex * 0.2 }}
+              className={`${glassStyle} rounded-3xl p-8`}
+            >
+              {/* Day Header */}
+              <div className="flex items-center gap-4 mb-8">
+                <div className="p-3 rounded-xl" style={{ backgroundColor: `${day.color}20` }}>
+                  <Calendar className="w-6 h-6" style={{ color: day.color }} />
+                </div>
+                <div>
+                  <div className="text-sm text-white/60 uppercase tracking-widest">DAY {dayIndex + 1}</div>
+                  <h3 className="text-2xl font-bold text-white">{day.title}</h3>
+                  <div className="text-white/40">{day.date}</div>
+                </div>
+              </div>
+
+              {/* Sessions */}
+              <div className="space-y-4">
+                {day.sessions.map((session, sessionIndex) => (
+                  <motion.div
+                    key={sessionIndex}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: sessionIndex * 0.1 }}
+                    className="group flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-sm font-semibold text-white min-w-20" style={{ color: day.color }}>
+                      {session.time}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-white mb-1">{session.title}</h4>
+                      <p className="text-sm text-white/60">{session.desc}</p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Day Footer */}
+              <div className="mt-8 pt-8 border-t border-white/10">
+                <a
+                  href="#register"
+                  className="w-full bg-gradient-to-r from-white/10 to-transparent hover:from-white/20 text-white rounded-xl px-6 py-3 font-semibold flex items-center justify-center gap-3 transition-all duration-300"
+                >
+                  <span>Book Day {dayIndex + 1} Sessions</span>
+                  <ChevronRight className="w-5 h-5" />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- 6. ABOUT FLIVV - MODERN ---
+const AboutFlivv = () => {
+  const achievements = [
+    { value: "10+", label: "Years Excellence", icon: Award },
+    { value: "2K+", label: "Units Delivered", icon: Home },
+    { value: "$500M+", label: "Portfolio Value", icon: DollarSign },
+    { value: "98%", label: "Client Satisfaction", icon: ChartUp },
+  ];
+
+  return (
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full opacity-5">
+        <div className="absolute inset-0 bg-gradient-to-l from-[#CE1126] to-[#007A3D]" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Visual */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            {/* Main Card */}
+            <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl overflow-hidden">
+              {/* Floating Stats */}
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-[#CE1126]/20 to-[#D9B44A]/20 rounded-full blur-2xl" />
+              
+              <div className="relative z-10 p-8">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#CE1126] to-[#007A3D] flex items-center justify-center">
+                    <span className="text-2xl font-bold text-white">F</span>
+                  </div>
+                  <div>
+                    <h2 className="text-4xl font-bold text-[#0B1220]">Flivv</h2>
+                    <div className="text-gray-500">Premium Real Estate</div>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  With over a decade of excellence in Oman's real estate sector, 
+                  Flivv has established itself as the premier platform for discerning 
+                  investors seeking substantial returns in premium property developments.
+                </p>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  {achievements.map((achievement, index) => (
+                    <div key={index} className="p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="p-2 rounded-lg bg-gray-100">
+                          <achievement.icon className="w-4 h-4 text-[#CE1126]" />
+                        </div>
+                        <div className="text-2xl font-bold text-[#0B1220]">{achievement.value}</div>
+                      </div>
+                      <div className="text-sm text-gray-500">{achievement.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Element */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute -bottom-6 -right-6 w-32 h-32 opacity-10"
+            >
+              <div className="w-full h-full border-2 border-[#CE1126] rounded-full" />
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#CE1126]/10 to-[#007A3D]/10 rounded-full mb-6">
+                <Sparkles className="w-4 h-4 text-[#D9B44A]" />
+                <span className="text-sm font-semibold text-[#0B1220] tracking-widest">OUR DIFFERENCE</span>
+              </div>
+              <h2 className="text-4xl font-bold text-[#0B1220] mb-6">
+                Redefining <span className="text-[#CE1126]">Real Estate</span> Investment
+              </h2>
+              <div className="w-20 h-1 bg-gradient-to-r from-[#CE1126] to-[#007A3D] mb-8" />
+            </div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  icon: TargetIcon,
+                  title: "Strategic Selection",
+                  description: "Curated portfolio of high-potential developments in growth corridors",
+                  color: "#CE1126"
+                },
+                {
+                  icon: ShieldCheck,
+                  title: "Legal Excellence",
+                  description: "100% compliant with FEMA regulations for NRI land ownership",
+                  color: "#007A3D"
+                },
+                {
+                  icon: TrendingUp,
+                  title: "Performance Focus",
+                  description: "Consistently delivering superior returns through strategic planning",
+                  color: "#D9B44A"
+                },
+                {
+                  icon: Globe2,
+                  title: "Global Standards",
+                  description: "International best practices and comprehensive support",
+                  color: "#CE1126"
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-all duration-300"
+                >
+                  <div className="p-3 rounded-lg" style={{ backgroundColor: `${item.color}10` }}>
+                    <item.icon className="w-6 h-6" style={{ color: item.color }} />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-[#0B1220] mb-2">{item.title}</h4>
+                    <p className="text-gray-600">{item.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="pt-8 border-t border-gray-100">
+              <a
+                href="#register"
+                className="inline-flex items-center gap-3 text-[#CE1126] font-semibold hover:text-[#007A3D] transition-colors"
+              >
+                <span>Experience the Flivv Difference</span>
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+// --- MAIN PAGE COMPOSITION ---
+export default function MuscatConclave() {
+  return (
+    <SafeRender>
+      <div className="min-h-screen bg-white overflow-hidden">
+        <Hero />
+        <AboutFlivv />
+        <Countdown />
+        <EventDetails />
+        <EventHighlights />
+        <Agenda />
+        <OmnRegistrationform/>
+      </div>
+    </SafeRender>
+  );
+}

@@ -234,10 +234,10 @@ export default function FlivvconnectPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 font-sans">
 
-    <UpcomingSalesMeetRiyadh/>
+    {/* <UpcomingSalesMeetRiyadh/> */}
 
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-start md:items-center justify-center px-4 md:px-8 lg:px-16 py-20 gap-8">
+      <section className="relative flex flex-col md:flex-row items-start md:items-center justify-center lg:h-screen px-4 md:px-8 lg:px-16 py-40 gap-8">
         <div className="absolute inset-0 bg-[#002200] z-0" />
 
         <div className="w-full md:w-1/2 mb-6 md:mb-0 relative z-10 px-4 text-justify">
