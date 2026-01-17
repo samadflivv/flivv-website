@@ -957,9 +957,9 @@ function AddEditEventModal({ isOpen, onClose, onSave, mode = 'add', initialData 
                   disabled={isSubmitting}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
                 >
-                  <option value="Meetup">Sales Meet</option>
-                  <option value="SalesSession">Sales Session</option>
-                  <option value="Other">Event</option>
+                  <option value="Sales Meet">Sales Meet</option>
+                  <option value="Sales Session">Sales Session</option>
+                  <option value="Event">Event</option>
                 </select>
               </div>
 

@@ -39,7 +39,7 @@ const Page = () => {
     <div>
       <Navigation/>
       <Suspense fallback={<EventCalendarLoading />}>
-        <EventCalendar enableAdmin={false}/>
+        <EventCalendar enableAdmin={true}/>
       </Suspense>
       <Footer/>
     </div>
