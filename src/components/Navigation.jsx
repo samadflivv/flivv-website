@@ -62,6 +62,7 @@ export default function Navigation() {
         >
           <Link href="/projects" className="flex items-center">
             Projects
+            <ChevronDown size={16} className="ml-2" />
           </Link>
           
           {/* Mega Menu Dropdown */}

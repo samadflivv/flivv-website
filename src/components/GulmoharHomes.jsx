@@ -1198,14 +1198,14 @@ useEffect(() => {
             </div>
             
             {/* Overlay on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
               <div className="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="flex items-center gap-2 mt-3 text-white/60 font-montserrat">
                   <span>Click to view</span>
                   <span>→</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </motion.div>
       ))}

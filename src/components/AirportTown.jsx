@@ -35,8 +35,8 @@ export default function AirportTown() {
 
   // memoize gallery images so array isn't recreated every render
   const galleryImages = useMemo(() => ([
-    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013083416_0013_D-min.jpg",
-    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013085037_0036_D-min.jpg",
+    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013083416_0013_D-min%20(1)%20(1)%20(1).jpg",
+    "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013085037_0036_D-min%20(1)%20(1)%20(1).jpg",
     "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/WhatsApp%20Image%202025-11-17%20at%2012.32.02%20PM%20(1).jpeg",
     "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/WhatsApp%20Image%202025-11-17%20at%2012.32.02%20PM.jpeg",
     "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/WhatsApp%20Image%202025-11-17%20at%2012.32.01%20PM.jpeg",
@@ -375,7 +375,7 @@ useEffect(() => {
             <div className="order-2 lg:order-1">
               <div className="rounded-3xl overflow-hidden shadow-2xl relative bg-white/90 border border-white/20">
                 <img 
-                  src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013083416_0013_D-min.jpg" 
+                  src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013083416_0013_D-min%20(1)%20(1)%20(1).jpg" 
                   alt="Airport Town site plan" 
                   className="w-full object-cover h-64 lg:h-[450px]"
                   loading="lazy"
