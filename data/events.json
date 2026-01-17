@@ -1136,11 +1136,11 @@
     "venue": "Hyatt Place - Hyderabad Banjara Hills",
     "type": "Sales Meet",
     "tags": [],
-    "rsvpUrl": "",
+    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
     "organizer": "Flivv",
     "id": "evt-1768632723731-u4ctde141",
     "createdAt": "2026-01-17T06:52:03.731Z",
-    "updatedAt": "2026-01-17T07:02:09.079Z",
+    "updatedAt": "2026-01-17T10:46:55.284Z",
     "isPublished": true,
     "capacity": ""
   },
@@ -1155,12 +1155,13 @@
     "venue": "Hyatt Place - Hyderabad Banjara Hills",
     "type": "Sales Meet",
     "tags": [],
-    "rsvpUrl": "",
+    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
     "organizer": "Flivv",
     "id": "evt-1768633365792-oz6o0pxlj",
     "createdAt": "2026-01-17T07:02:45.793Z",
-    "updatedAt": "2026-01-17T07:02:45.793Z",
-    "isPublished": true
+    "updatedAt": "2026-01-17T10:47:05.349Z",
+    "isPublished": true,
+    "capacity": ""
   },
   {
     "title": "Sales Meet at Hyatt Place",
@@ -1173,12 +1174,13 @@
     "venue": "Hyatt Place - Hyderabad Banjara Hills",
     "type": "Sales Meet",
     "tags": [],
-    "rsvpUrl": "",
+    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
     "organizer": "Flivv",
     "id": "evt-1768633379684-lz14pf48s",
     "createdAt": "2026-01-17T07:02:59.684Z",
-    "updatedAt": "2026-01-17T07:02:59.684Z",
-    "isPublished": true
+    "updatedAt": "2026-01-17T10:47:10.806Z",
+    "isPublished": true,
+    "capacity": ""
   },
   {
     "title": "Sales Meet at Hyatt Place",
@@ -1191,11 +1193,12 @@
     "venue": "Hyatt Place - Hyderabad Banjara Hills",
     "type": "Sales Meet",
     "tags": [],
-    "rsvpUrl": "",
+    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
     "organizer": "Flivv",
     "id": "evt-1768633391321-ju7xx74yk",
     "createdAt": "2026-01-17T07:03:11.321Z",
-    "updatedAt": "2026-01-17T07:03:11.321Z",
-    "isPublished": true
+    "updatedAt": "2026-01-17T10:47:16.137Z",
+    "isPublished": true,
+    "capacity": ""
   }
 ]

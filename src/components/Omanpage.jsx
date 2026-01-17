@@ -20,213 +20,186 @@ const SafeRender = ({ children }) => {
 export default function MuscatConclave() {
   
   // ============================================
-  // HERO SECTION - Ultra Modern with 3D Effect
+  // HERO SECTION - Ultra Modern & Trendy Design
   // ============================================
   const HeroSection = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [scrollY, setScrollY] = useState(0);
 
     useEffect(() => {
-      const handleMouseMove = (e) => {
-        setMousePosition({ x: e.clientX, y: e.clientY });
-      };
       const handleScroll = () => setScrollY(window.scrollY);
-      
-      window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('scroll', handleScroll);
-      };
+      return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-      <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
-        {/* Advanced Gradient Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-red-700 to-rose-900" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-red-500/20 to-white/10" />
+      <section className="relative min-h-screen w-full flex items-center overflow-hidden">
+        {/* Dynamic Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-red-500 via-red-600 to-red-800">
+          {/* Animated Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-red-600/50 via-transparent to-white/10 animate-pulse" style={{ animationDuration: '8s' }} />
           
-          {/* Animated Mesh Gradient */}
-          <div 
-            className="absolute inset-0 opacity-30"
-            style={{
-              background: `radial-gradient(circle at ${mousePosition.x / 20}% ${mousePosition.y / 20}%, rgba(255,255,255,0.3) 0%, transparent 50%)`,
-              transition: 'background 0.3s ease'
-            }}
-          />
+          {/* Radial Glow Effects */}
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-white/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '6s' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-red-400/30 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '7s', animationDelay: '1s' }} />
         </div>
 
-        {/* 3D Floating Elements */}
+        {/* Modern Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.15]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(to right, white 1px, transparent 1px),
+              linear-gradient(to bottom, white 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px'
+          }} />
+        </div>
+
+        {/* Floating Geometric Shapes */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full mix-blend-overlay"
-              style={{
-                width: `${Math.random() * 300 + 50}px`,
-                height: `${Math.random() * 300 + 50}px`,
-                background: `radial-gradient(circle, rgba(255,255,255,${Math.random() * 0.1 + 0.05}) 0%, transparent 70%)`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `float ${Math.random() * 10 + 10}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 5}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Geometric Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full">
-            <defs>
-              <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
+          <div className="absolute top-20 right-20 w-64 h-64 border-2 border-white/20 rounded-full animate-spin" style={{ animationDuration: '30s' }} />
+          <div className="absolute bottom-40 left-20 w-48 h-48 border-2 border-white/20 rotate-45" style={{ animation: 'float 20s ease-in-out infinite' }} />
+          <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-white/5 backdrop-blur-sm rounded-2xl rotate-12" style={{ animation: 'float 15s ease-in-out infinite', animationDelay: '2s' }} />
         </div>
 
         {/* Main Content */}
         <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Hero Content */}
+            <div className="text-center max-w-5xl mx-auto mb-20">
               
-              {/* Left Column - Text Content */}
-              <div className="space-y-10">
-                {/* Animated Badge */}
-                <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-2xl rounded-full border border-white/20 shadow-2xl">
-                  <div className="relative">
-                    <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
-                    <div className="absolute inset-0 w-3 h-3 bg-white rounded-full animate-ping" />
-                  </div>
-                  <span className="text-sm font-bold text-white tracking-[0.3em] uppercase">Exclusive Event</span>
-                  <Sparkles className="w-5 h-5 text-white animate-pulse" />
+              {/* Premium Badge */}
+              <div className="inline-flex items-center gap-3 px-6 py-3 mb-8 bg-white/10 backdrop-blur-2xl rounded-full border border-white/20 shadow-2xl">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                  <span className="text-white text-sm font-bold tracking-[0.25em] uppercase">Feb 12-15, 2026</span>
                 </div>
-
-                {/* Main Headline with 3D Effect */}
-                <div className="space-y-6">
-                  <h1 className="text-7xl sm:text-8xl lg:text-9xl font-black leading-[0.85] tracking-tighter">
-                    <span className="block text-white drop-shadow-2xl" style={{ 
-                      textShadow: '0 10px 30px rgba(0,0,0,0.3), 0 0 60px rgba(255,255,255,0.1)' 
-                    }}>
-                      MUSCAT
-                    </span>
-                    <span className="block text-white/90 text-6xl sm:text-7xl lg:text-8xl mt-2">
-                      PREMIUM
-                    </span>
-                    <span className="block bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent text-5xl sm:text-6xl lg:text-7xl mt-2">
-                      SHOWCASE
-                    </span>
-                  </h1>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="h-1 w-20 bg-gradient-to-r from-white to-transparent rounded-full" />
-                    <p className="text-2xl sm:text-3xl text-white/90 font-light">
-                      February 2026
-                    </p>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-xl sm:text-2xl text-white/80 font-light leading-relaxed max-w-2xl">
-                  Experience Oman's most prestigious real estate investment summit. Three days of exclusive property showcases, private consultations, and strategic networking.
-                </p>
-
-                {/* Modern Stats Grid */}
-                <div className="grid grid-cols-3 gap-4">
-                  {[
-                    { num: "24", label: "VIP SEATS", icon: Star },
-                    { num: "15+", label: "PROJECTS", icon: Building },
-                    { num: "3", label: "DAYS", icon: Calendar }
-                  ].map((stat, i) => (
-                    <div key={i} className="group relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="relative p-6 text-center">
-                        <stat.icon className="w-6 h-6 text-white/60 mx-auto mb-3" />
-                        <div className="text-4xl sm:text-5xl font-black text-white mb-2">{stat.num}</div>
-                        <div className="text-xs text-white/70 tracking-[0.2em] font-bold">{stat.label}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-5">
-                  <a href="#register" className="group relative overflow-hidden">
-                    <div className="absolute inset-0 bg-white rounded-2xl" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative px-10 py-6 flex items-center justify-center gap-3">
-                      <span className="text-lg font-bold text-red-700">Secure Your Seat</span>
-                      <ArrowRight className="w-5 h-5 text-red-700 group-hover:translate-x-2 transition-transform duration-300" />
-                    </div>
-                  </a>
-                  
-                  <a href="#schedule" className="group relative overflow-hidden">
-                    <div className="absolute inset-0 bg-white/10 backdrop-blur-xl border-2 border-white/30 rounded-2xl" />
-                    <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-                    <div className="relative px-10 py-6 flex items-center justify-center gap-3">
-                      <Calendar className="w-5 h-5 text-white" />
-                      <span className="text-lg font-bold text-white">Event Details</span>
-                    </div>
-                  </a>
-                </div>
+                <div className="w-px h-4 bg-white/30" />
+                <Sparkles className="w-4 h-4 text-white animate-pulse" />
               </div>
 
-              {/* Right Column - Floating Card */}
-              <div className="relative lg:block hidden">
-                <div 
-                  className="relative"
-                  style={{
-                    transform: `translateY(${scrollY * 0.1}px) rotateX(${mousePosition.y * 0.01}deg) rotateY(${mousePosition.x * 0.01}deg)`,
-                    transition: 'transform 0.1s ease-out'
-                  }}
-                >
-                  {/* Glow Effect */}
-                  <div className="absolute -inset-4 bg-gradient-to-r from-white/30 via-red-300/30 to-white/30 rounded-3xl blur-3xl opacity-60" />
-                  
-                  {/* Main Card */}
-                  <div className="relative bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+              {/* Main Headline */}
+              <h1 className="mb-8">
+                <span className="block text-white text-7xl sm:text-8xl lg:text-9xl font-black leading-none tracking-tighter mb-6" style={{
+                  textShadow: '0 20px 60px rgba(0,0,0,0.3)'
+                }}>
+                  MUSCAT
+                </span>
+                <span className="block text-white/95 text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
+                  Real Estate Summit
+                </span>
+              </h1>
+
+              {/* Description */}
+              <p className="text-white/90 text-xl sm:text-2xl lg:text-3xl font-light max-w-3xl mx-auto mb-12 leading-relaxed">
+                Three days of exclusive property showcases, elite networking, 
+                and premium investment opportunities at Grand Hyatt Muscat
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16">
+                <a href="#register" className="group relative overflow-hidden px-10 py-5 bg-white rounded-full shadow-2xl hover:shadow-white/50 transition-all duration-500 hover:scale-105">
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative flex items-center gap-3">
+                    <span className="text-red-700 text-lg font-bold">Reserve Your VIP Seat</span>
+                    <ArrowRight className="w-5 h-5 text-red-700 group-hover:translate-x-2 transition-transform duration-300" />
+                  </div>
+                </a>
+
+                <a href="#schedule" className="group px-10 py-5 bg-white/10 backdrop-blur-xl border-2 border-white/30 rounded-full text-white text-lg font-bold hover:bg-white/20 hover:border-white/50 transition-all duration-300 flex items-center gap-3">
+                  <Calendar className="w-5 h-5" />
+                  <span>Explore Schedule</span>
+                </a>
+              </div>
+
+              {/* Stats Section */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                {[
+                  { icon: Star, number: "24", label: "Exclusive VIP Seats", gradient: "from-red-400 to-red-600" },
+                  { icon: Building, number: "15+", label: "Premium Projects", gradient: "from-red-500 to-red-700" },
+                  { icon: Users, number: "1:1", label: "Private Sessions", gradient: "from-red-600 to-red-800" }
+                ].map((stat, i) => (
+                  <div key={i} className="group relative">
+                    {/* Hover Glow */}
+                    <div className={`absolute -inset-4 bg-gradient-to-br ${stat.gradient} rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
                     
-                    <div className="relative p-8 space-y-6">
-                      {/* Header */}
-                      <div className="flex items-center gap-4 pb-6 border-b border-white/20">
-                        <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-xl">
+                    {/* Card */}
+                    <div className="relative bg-white/10 backdrop-blur-2xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-500 hover:scale-105">
+                      <div className={`w-14 h-14 mx-auto mb-4 bg-gradient-to-br ${stat.gradient} rounded-2xl flex items-center justify-center shadow-lg`}>
+                        <stat.icon className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="text-5xl font-black text-white mb-2">{stat.number}</div>
+                      <div className="text-white/80 text-sm uppercase tracking-widest font-semibold">{stat.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Floating Event Card */}
+            <div className="max-w-5xl mx-auto">
+              <div 
+                className="relative"
+                style={{
+                  transform: `translateY(${scrollY * -0.1}px)`,
+                  transition: 'transform 0.05s ease-out'
+                }}
+              >
+                {/* Outer Glow */}
+                <div className="absolute -inset-6 bg-gradient-to-r from-white/30 via-red-300/30 to-white/30 rounded-3xl blur-3xl opacity-60" />
+                
+                {/* Main Card */}
+                <div className="relative bg-white/95 backdrop-blur-3xl rounded-3xl shadow-2xl overflow-hidden border border-white/50">
+                  <div className="grid md:grid-cols-2 divide-x divide-gray-200">
+                    
+                    {/* Left Info */}
+                    <div className="p-10 space-y-6">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl flex items-center justify-center shadow-lg">
                           <MapPin className="w-7 h-7 text-white" />
                         </div>
                         <div>
-                          <div className="text-sm text-white/60 uppercase tracking-wider font-semibold">Venue</div>
-                          <div className="text-2xl font-bold text-white">Grand Hyatt Muscat</div>
+                          <div className="text-sm text-gray-500 uppercase tracking-wider font-semibold">Venue</div>
+                          <div className="text-2xl font-black text-gray-900">Grand Hyatt Muscat</div>
                         </div>
                       </div>
 
-                      {/* Event Details */}
                       {[
-                        { icon: Calendar, label: "Dates", value: "Feb 12-15, 2026" },
-                        { icon: Clock, label: "Time", value: "9:00 AM - 6:00 PM" },
-                        { icon: Users, label: "Format", value: "VIP Private Sessions" },
-                        { icon: Building, label: "Projects", value: "15+ Premium Properties" }
+                        { icon: Calendar, text: "February 12-15, 2026" },
+                        { icon: Clock, text: "9:00 AM - 6:00 PM Daily" },
+                        { icon: Users, text: "Private VIP Format" }
                       ].map((item, i) => (
-                        <div key={i} className="group flex items-center gap-4 p-5 bg-white/5 hover:bg-white/10 rounded-2xl transition-all duration-300">
-                          <div className="p-3 bg-white/10 rounded-xl group-hover:bg-white/20 transition-colors duration-300">
-                            <item.icon className="w-6 h-6 text-white" />
+                        <div key={i} className="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl hover:bg-red-50 transition-colors duration-300">
+                          <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                            <item.icon className="w-6 h-6 text-red-600" />
                           </div>
-                          <div className="flex-1">
-                            <div className="text-sm text-white/60 font-medium">{item.label}</div>
-                            <div className="text-lg font-bold text-white">{item.value}</div>
-                          </div>
+                          <span className="text-gray-900 font-semibold text-lg">{item.text}</span>
                         </div>
                       ))}
+                    </div>
 
-                      {/* CTA */}
-                      <a href="#register" className="group block w-full bg-white hover:bg-red-50 rounded-2xl p-5 transition-all duration-300">
-                        <div className="flex items-center justify-between">
-                          <span className="text-lg font-bold text-red-700">Register Now</span>
-                          <ChevronRight className="w-6 h-6 text-red-700 group-hover:translate-x-2 transition-transform duration-300" />
-                        </div>
+                    {/* Right Features */}
+                    <div className="p-10 bg-gradient-to-br from-red-600 to-red-800 text-white">
+                      <h3 className="text-2xl font-black mb-6">What's Included</h3>
+                      <div className="space-y-4">
+                        {[
+                          "Premium property portfolio access",
+                          "1:1 investment consultations",
+                          "Legal & financial guidance",
+                          "Exclusive market insights",
+                          "VIP networking sessions"
+                        ].map((item, i) => (
+                          <div key={i} className="flex items-center gap-3">
+                            <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                              <Check className="w-4 h-4 text-white" />
+                            </div>
+                            <span className="text-white/95">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <a href="#register" className="group mt-8 w-full bg-white hover:bg-red-50 text-red-700 rounded-2xl px-6 py-4 font-bold flex items-center justify-between transition-all duration-300">
+                        <span>Register Now</span>
+                        <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                       </a>
                     </div>
                   </div>
@@ -238,8 +211,8 @@ export default function MuscatConclave() {
 
         <style jsx>{`
           @keyframes float {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            50% { transform: translateY(-20px) translateX(10px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
           }
         `}</style>
       </section>
