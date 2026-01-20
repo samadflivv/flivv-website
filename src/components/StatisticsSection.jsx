@@ -3,8 +3,9 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: "7", label: "Projects" },
+  { value: "07", label: "Projects" },
   { value: "14+", label: "Years of Legacy" },
+  { value: "4+", label: "Years of Real Estate" },
   { value: "500+", label: "Growing Customers" },
   { value: "100%", label: "Satisfaction Rate" },
 ];
@@ -84,8 +85,8 @@ const StatisticsSection = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="px-6 sm:px-8 md:px-20 mt-20 mb-30">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-12 justify-items-center items-center text-center">
+    <div ref={sectionRef} className="px-4 sm:px-8 md:px-6 mt-20 mb-30">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-10 justify-items-center items-center text-center">
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-col items-center text-center">
             <h1 className="text-5xl md:text-7xl font-normal leading-none">
