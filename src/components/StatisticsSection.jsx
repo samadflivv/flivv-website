@@ -3,10 +3,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: "10+", label: "Projects" },
+  { value: "7", label: "Projects" },
   { value: "14+", label: "Years of Legacy" },
   { value: "500+", label: "Growing Customers" },
-  { value: "97%", label: "Satisfaction Rate" },
+  { value: "100%", label: "Satisfaction Rate" },
 ];
 
 // Reusable AnimatedNumber component
