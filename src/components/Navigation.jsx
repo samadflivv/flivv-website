@@ -186,7 +186,6 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Menu - Full Screen */}
-      {/* Mobile Menu - Full Screen */}
 <nav
   className={`
     md:hidden fixed top-0 left-0 h-full w-full bg-black z-40

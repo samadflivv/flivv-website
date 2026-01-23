@@ -19,7 +19,7 @@ const ContactpageSecondsection = () => {
       country: "Sadhana City",
       city: "Veldanda, Kalwakurthy",
       address: "DTCP-approved gated community near the Regional Ring Road and Mucherla IT Cluster, offering 100% Vastu plots with top amenities.",
-      status: "active"
+      status: ""
     },
     {
       country: "Gulmohar Villas",
