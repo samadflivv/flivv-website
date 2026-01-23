@@ -16,18 +16,20 @@ const ContactpageSecondsection = () => {
       status: "active"
     },
     {
-      country: "Sadhana City",
-      city: "Veldanda, Kalwakurthy",
-      address: "DTCP-approved gated community near the Regional Ring Road and Mucherla IT Cluster, offering 100% Vastu plots with top amenities.",
-      status: ""
-    },
-    {
       country: "Gulmohar Villas",
       city: "Shadnagar",
       address: "Our first-ever HMDA-approved 22-acre villa plot project in Nagulapally, Shadnagar, designed to enhance community living",
       link: "/gulmoharvillas",
       status: "active"
     },
+    
+    {
+      country: "Sadhana City",
+      city: "Veldanda, Kalwakurthy",
+      address: "DTCP-approved gated community near the Regional Ring Road and Mucherla IT Cluster, offering 100% Vastu plots with top amenities.",
+      status: ""
+    },
+    
     {
       country: "Rivendell Farms",
       city: "Thimmajipet, Jadcherla",
