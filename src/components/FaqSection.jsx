@@ -98,7 +98,7 @@ const FaqSection = () => {
     {
       question: "How many projects have you marketed and developed so far?",
       answer:
-        "We either take up projects for developing & marketing or exclusively for marketing. So far, we have 10+ projects successfully being executed.",
+        "We either take up projects for developing & marketing or exclusively for marketing. So far, we have 07 projects successfully being executed.",
     },
     {
       question: "In what ways do you support or assist buyers after the sale?",

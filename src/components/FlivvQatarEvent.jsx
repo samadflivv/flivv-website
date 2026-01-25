@@ -549,13 +549,13 @@ useEffect(() => {
                <div className="w-16 h-1 bg-gray-300 mb-8"></div>
                <div className="space-y-6 text-gray-600 leading-relaxed text-lg text-justify">
                  <p>
-                   With over <strong>14 years</strong> of experience in business, Flivv has built a strong reputation for reliability and service excellence.
+                   With over <strong>14+ years</strong> of experience in business, Flivv has built a strong reputation for reliability and service excellence.
                  </p>
                  <p>
                    Over the past 4 years, we have successfully established a strong presence in the real estate sector, specializing in the development and marketing of open plot projects focused on long-term investment goals.
                  </p>
                  <p>
-                   With <span className="text-[#8A1538] font-bold">10+ projects</span> in our portfolio, we offer trustworthy companionship, backed by lifetime advisory and customer relationship management.
+                   With <span className="text-[#8A1538] font-bold">07 projects</span> in our portfolio, we offer trustworthy companionship, backed by lifetime advisory and customer relationship management.
                  </p>
                </div>
              </motion.div>
@@ -574,7 +574,7 @@ useEffect(() => {
                      <div className="text-gray-600 text-sm">Years of Experience</div>
                    </div>
                    <div className="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-gray-800 hover:shadow-xl transition-shadow">
-                     <div className="text-4xl font-bold text-gray-800 mb-2">10+</div>
+                     <div className="text-4xl font-bold text-gray-800 mb-2">07</div>
                      <div className="text-gray-600 text-sm">Projects</div>
                    </div>
                  </div>

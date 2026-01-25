@@ -1261,7 +1261,7 @@ useEffect(() => {
               
               <div className="space-y-6 text-lg leading-relaxed font-light mb-6 font-montserrat text-justify">
                 <p>
-                  With over 14 years of experience in business, Flivv has built a strong reputation for reliability and service excellence. Over the past 4 years, Flivv Developers has successfully established a strong presence in the real estate sector. 
+                  With over 14+ years of experience in business, Flivv has built a strong reputation for reliability and service excellence. Over the past 4 years, Flivv Developers has successfully established a strong presence in the real estate sector. 
                 </p>
                 <p>
                   We specialize in the development and marketing of open plot projects, with focus on long-term real estate investment goals. With 10+ projects in our portfolio, we offer trustworthy companionship, backed by lifetime advisory and customer relationship management.
@@ -1270,10 +1270,10 @@ useEffect(() => {
 
               <div className="grid grid-cols-2 gap-6 lg:mb-12">
                 {[
-                  { label: 'Projects', value: '10+' },
-                  { label: 'Years Experience', value: '14' },
+                  { label: 'Projects', value: '07' },
+                  { label: 'Years Experience', value: '14+' },
                   { label: 'Growing Customers', value: '500+' },
-                  { label: 'Satisfaction Rate', value: '97%' }
+                  { label: 'Satisfaction Rate', value: '100%' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}

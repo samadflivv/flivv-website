@@ -326,7 +326,7 @@ const AboutFlivv = () => {
                         
                         <div className="space-y-6 text-gray-300 font-light leading-relaxed text-lg">
                             <p>
-                                With over 14 years of experience in business, Flivv has built a strong reputation for reliability and service excellence. Over the past 4 years, Flivv Developers has successfully established a strong presence in the real estate sector.
+                                With over 14+ years of experience in business, Flivv has built a strong reputation for reliability and service excellence. Over the past 4 years, Flivv Developers has successfully established a strong presence in the real estate sector.
                             </p>
                             <p>
                                 We specialize in the development and marketing of open plot projects, with a focus on long-term real estate investment goals.
@@ -336,7 +336,7 @@ const AboutFlivv = () => {
                         <div className="grid grid-cols-2 gap-8 mt-12 pt-12 border-t border-white/10">
                             <div>
                                 <Building2 className="text-[#D4AF37] mb-3" size={28} />
-                                <h4 className="text-white text-xl font-serif">10+ Projects</h4>
+                                <h4 className="text-white text-xl font-serif">07 Projects</h4>
                                 <p className="text-sm text-gray-500">Under Portfolio</p>
                             </div>
                             <div>
