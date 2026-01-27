@@ -12,6 +12,7 @@ import RFSfaqs from '@/components/RFSfaqs'
 import PopupRFS from '@/components/PopupRFS'
 import RFSalesmeetcta from '@/components/RFSalesmeetcta'
 import FarmFestCTA from '@/components/FarmFestCTA'
+import RFSAutoVideoSection from '@/components/RFSAutoVideoSection'
 
 const page = () => {
   return (
@@ -19,6 +20,7 @@ const page = () => {
         <Navigation/>
         <RivendellHeader/>
         <RivendellAbout/>
+        <RFSAutoVideoSection/>
         <RFShighlights/>
         <WhyRFS/>
         <RFSactivityGuide/>
