@@ -65,10 +65,10 @@ export default function MuscatConclave() {
             {/* Image Blend Text Effect */}
             <div className="relative inline-block">
                 <h1 className="text-[18vw] md:text-[14rem] font-black leading-[0.8] tracking-tighter text-white mix-blend-overlay opacity-90 transition-transform duration-700 hover:scale-[1.02]">
-                    MUSCAT
+                    OMAN
                 </h1>
-                <h2 className="text-xl md:text-4xl font-light text-white tracking-[0.8em] uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
-                        THE <span className="font-bold text-red-500">SUMMIT</span> 2026
+                <h2 className="text-xl md:text-4xl font-light text-white tracking-[0.8em] pt-10 uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+                        SALES EVENT’<span className="font-bold text-red-500">26</span>
                 </h2>
             </div>
 
@@ -98,8 +98,10 @@ export default function MuscatConclave() {
           </h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-10" />
           <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed">
-            For three days, Muscat becomes the epicenter of high-stakes real estate investment. 
-            An exclusive gathering designed for those who don't just follow trends, but set them.
+            After our sales events, held in The Kingdom of Saudi Arabia, Qatar and Bahrain, Flivv developers now takes great pride to present ourselves, this time at your city - Muscat, Oman
+          </p>
+          <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed">
+            It's our immense pleasure to host and welcome you and your family, with the same credibility and promising principles of assisting you, with clear and open heart, to get you a secured open plot land investment
           </p>
       </div>
     </section>
@@ -122,13 +124,13 @@ export default function MuscatConclave() {
             <div className="lg:col-span-5">
               <div className="sticky top-32">
                 <h3 className="text-red-600 text-xs font-black tracking-[0.5em] uppercase mb-6 flex items-center gap-4">
-                  <div className="w-8 h-[2px] bg-red-600" /> Itinerary
+                  <div className="w-8 h-[2px] bg-red-600" /> Itinerary Plan
                 </h3>
                 <h2 className="text-6xl md:text-8xl font-black text-black tracking-tighter mb-8 leading-none">
                   The <br /><span className="text-gray-300 font-serif italic">Curated</span> <br /> Days
                 </h2>
                 <p className="text-gray-400 text-lg font-light leading-relaxed max-w-sm">
-                  Strategic sessions, private viewings, and networking within the Sultanate’s most prestigious venues.
+                  Interactive sessions, project insights, and networking within the Sultanate’s most prestigious venues.
                 </p>
               </div>
             </div>
@@ -198,7 +200,7 @@ export default function MuscatConclave() {
       <section className="py-32 bg-red-600 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         <div className="container mx-auto px-4 text-center relative z-10">
-            <h2 className="text-xl md:text-3xl font-light tracking-[0.3em] uppercase mb-12">The Opportunity Window is <span className="font-black">Closing</span></h2>
+            <h2 className="text-xl md:text-3xl font-light tracking-[0.3em] uppercase mb-12">We are jump-starting <span className="font-black">in</span></h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
                 {Object.entries(timeLeft).map(([unit, value]) => (
                     <div key={unit} className="group">
@@ -223,7 +225,7 @@ export default function MuscatConclave() {
          <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-20">
                 <span className="text-red-600 font-black tracking-[0.4em] uppercase text-[10px]">What to Expect</span>
-                <h2 className="text-5xl font-black mt-4 tracking-tighter">Summit Highlights</h2>
+                <h2 className="text-5xl font-black mt-4 tracking-tighter">Event Highlights</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
@@ -237,7 +239,7 @@ export default function MuscatConclave() {
                             <PresentationIcon className="w-7 h-7" />
                         </div>
                         <h3 className="text-4xl font-black mb-4">Elite Showcase</h3>
-                        <p className="text-gray-500 text-lg font-light leading-relaxed max-w-md">Access 15+ ultra-luxury projects before they are released to the general public. Direct developer engagement on-site.</p>
+                        <p className="text-gray-500 text-lg font-light leading-relaxed max-w-md">Access our exclusive 7 luxury projects and have direct insights on key points of them in-person with our team.</p>
                     </div>
                 </div>
 
@@ -246,7 +248,7 @@ export default function MuscatConclave() {
                     <Mic className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
                     <div>
                         <h3 className="text-2xl font-bold mb-2">Expert Keynotes</h3>
-                        <p className="text-white/60 text-sm">Economic outlooks and legal framework insights by industry giants.</p>
+                        <p className="text-white/60 text-sm">Economic advantages and legal framework insights about ventures.</p>
                     </div>
                 </div>
 
@@ -271,8 +273,8 @@ export default function MuscatConclave() {
       <div className="container mx-auto px-4 max-w-7xl">
          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
-               <h2 className="text-red-600 font-black tracking-[0.4em] uppercase mb-6 text-[10px]">The Host Organization</h2>
-               <h3 className="text-6xl md:text-8xl font-black leading-none mb-10 tracking-tighter">FLIVV <br /><span className="text-white/10">DEVELOPERS</span></h3>
+               <h2 className="text-red-600 font-black tracking-[0.4em] uppercase mb-6 text-[10px]">About Flivv Developers</h2>
+               <h3 className="text-6xl md:text-6xl font-black leading-none mb-10 tracking-tighter">Building Trust, <br /><span className="text-white/10">Delivering Value.</span></h3>
                <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-10">
                    <div>
                        <span className="block text-5xl font-black text-red-600">14+</span>
@@ -280,17 +282,17 @@ export default function MuscatConclave() {
                    </div>
                    <div>
                        <span className="block text-5xl font-black text-white">07</span>
-                       <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Landmark Projects</span>
+                       <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Projects</span>
                    </div>
                </div>
             </div>
             <div className="text-xl text-gray-400 font-light leading-relaxed space-y-8">
-                <p>Flivv Developers is more than a real estate firm; we are custodians of Omani investment growth. With over a decade of operational excellence, we specialize in high-yield open plot projects.</p>
-                <p>Our philosophy is built on <span className="text-white font-medium">Lifetime Advisory</span>. We don't just sell assets; we build multi-generational relationships through absolute transparency.</p>
+                <p>With over 14+ years of experience in business, Flivv has built a strong reputation for reliability and service excellence. Over the past <span className="text-white font-medium">4 years,</span> Flivv Developers has successfully established a strong presence in the real estate sector.</p>
+                <p>We specialize in the development and marketing of open plot projects, with a focus on long-term real estate investment goals.</p>
                 <div className="pt-6">
-                    <a href="#" className="flex items-center gap-4 text-white font-bold group">
+                    <a href="https://flivvdevelopers.com/about" className="flex items-center gap-4 text-white font-bold group">
                         <span className="w-12 h-[1px] bg-red-600 group-hover:w-20 transition-all" />
-                        Explore Our Portfolio
+                        More About us
                     </a>
                 </div>
             </div>
@@ -330,9 +332,9 @@ export default function MuscatConclave() {
             <div className="bg-gray-50 rounded-[3rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col lg:flex-row">
                 <div className="lg:w-2/5 p-12 md:p-20 bg-red-600 text-white">
                     <h2 className="text-5xl font-black tracking-tighter mb-8 leading-none">Register <br />Interest.</h2>
-                    <p className="text-red-100 font-light text-lg mb-12">Attendance is strictly limited to 50 VIP guests to ensure privacy and personalized advisory.</p>
+                    <p className="text-red-100 font-light text-lg mb-12">We are open to heartily welcome 200 VIP guests to ensure privacy and personalized advisory</p>
                     <div className="space-y-6">
-                        {["Priority Project Access", "Complimentary Valuation", "Legal Consultation"].map((item, i) => (
+                        {["Exclusive access to projects", "Complimentary Valuation", "Legal Consultation"].map((item, i) => (
                             <div key={i} className="flex items-center gap-4">
                                 <div className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
                                     <Check className="w-3 h-3 text-white" />
