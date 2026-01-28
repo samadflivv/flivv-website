@@ -67,11 +67,9 @@ export default function MuscatConclave() {
                 <h1 className="text-[18vw] md:text-[14rem] font-black leading-[0.8] tracking-tighter text-white mix-blend-overlay opacity-90 transition-transform duration-700 hover:scale-[1.02]">
                     MUSCAT
                 </h1>
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <h2 className="text-xl md:text-4xl font-light text-white tracking-[0.8em] uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+                <h2 className="text-xl md:text-4xl font-light text-white tracking-[0.8em] uppercase drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
                         THE <span className="font-bold text-red-500">SUMMIT</span> 2026
-                    </h2>
-                </div>
+                </h2>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-20">

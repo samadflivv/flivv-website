@@ -584,6 +584,8 @@ useEffect(() => {
               className="absolute inset-0 w-full h-full object-cover"
               muted
               loop
+              controls
+              controlsList="nodownload"
               playsInline
               preload="none"          /* don't preload until we explicitly set src */
               onLoadedData={handleVideoLoad}

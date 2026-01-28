@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ProgressRoadmap from './GHProgressRoadmap';
 import GHProgressRoadmap from './GHProgressRoadmap';
 import FloatingJumpNav from './FloatingJumpNav';
+import Gallery from './Gallery';
 
 export default function GulmoharHomes() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -38,45 +39,6 @@ export default function GulmoharHomes() {
   { id: 'ghlocation', label: 'Contact', tooltip: 'Get in touch' },
   { id: 'ghgallery', label: 'Contact', tooltip: 'Get in touch' },
   { id: 'contact-form', label: 'Contact', tooltip: 'Get in touch' }, 
-];
-
-
-
-  const gallery = [
-  { 
-    id: 1, 
-    imageUrl: 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Our-Projects-section/DJI_20251013114348_0094_D-min.jpg' 
-  },
-  { 
-    id: 2, 
-    title: 'Connectivity Map', 
-    category: 'Location', 
-    imageUrl: 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GulmoharHomes/IMG_0579.jpg' 
-  },
-  { 
-    id: 3, 
-    title: 'Site Layout', 
-    category: 'Planning', 
-    imageUrl: 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GulmoharHomes/IMG_0582.jpg' 
-  },
-  { 
-    id: 4, 
-    title: 'Amenities', 
-    category: 'Lifestyle', 
-    imageUrl: 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GulmoharHomes/IMG_0576.jpg' 
-  },
-  { 
-    id: 5, 
-    title: 'Nearby Growth', 
-    category: 'Investment', 
-    imageUrl: 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GulmoharHomes/IMG_0578_(3).jpg' 
-  },
-  { 
-    id: 6, 
-    title: 'Approvals & Docs', 
-    category: 'Legal', 
-    imageUrl: 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GulmoharHomes/upscalemedia-transformed%20(1).jpeg' 
-  }
 ];
 
   
@@ -1139,79 +1101,7 @@ useEffect(() => {
       </section>
 
       {/* Enhanced Gallery Section */}
-<section id='ghgallery' className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-  {/* Background Flowers */}
-  <motion.div
-    animate={{ 
-      rotate: [0, -8, 0],
-      scale: [1, 1.1, 1]
-    }}
-    transition={{ 
-      duration: 16,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }}
-    className="absolute top-8 right-8 text-[#E05780]/10 text-6xl"
-  >
-    ❀
-  </motion.div>
-
-  <div className="max-w-7xl mx-auto px-6 relative z-10">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="text-center mb-20"
-    >
-      <div className="inline-block bg-[#602437] text-white px-6 py-3 rounded-2xl text-sm font-bold mb-6 font-montserrat">
-        PROJECT GALLERY
-      </div>
-      <h2 className="font-lancelot text-5xl text-[#602437] mb-6">
-        Visual <span className="text-[#E05780]">Journey</span>
-      </h2>
-      <p className="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed font-montserrat">
-        Explore visual updates of Gulmohar Homes
-      </p>
-    </motion.div>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {gallery.map((item, index) => (
-        <motion.div
-          key={item.id}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: index * 0.1 }}
-          whileHover={{ scale: 1.03, y: -5 }}
-          className="group cursor-pointer relative"
-          onClick={() => openLightbox(index)}
-        >
-          <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden relative shadow-2xl hover:shadow-3xl transition-all duration-500">
-            {/* Image Container */}
-            <div className="absolute inset-0">
-              <img 
-                src={item.imageUrl} 
-                alt={item.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            
-            {/* Overlay on Hover */}
-            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end">
-              <div className="p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <div className="flex items-center gap-2 mt-3 text-white/60 font-montserrat">
-                  <span>Click to view</span>
-                  <span>→</span>
-                </div>
-              </div>
-            </div> */}
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+<Gallery/>
 
       {/* Enhanced Contact Section */}
       <section id="contact-form" className="py-20 bg-[#E05780] relative overflow-hidden">
