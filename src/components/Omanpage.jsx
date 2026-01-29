@@ -76,9 +76,9 @@ export default function MuscatConclave() {
               <a href="#register" className="px-12 py-5 bg-red-600 text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-white hover:text-red-600 transition-all duration-500 rounded-sm">
                 Request Invitation
               </a>
-              <a href="#schedule" className="px-12 py-5 border border-white/40 text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-white/10 backdrop-blur-md transition-all rounded-sm">
+              {/* <a href="#schedule" className="px-12 py-5 border border-white/40 text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-white/10 backdrop-blur-md transition-all rounded-sm">
                 View Schedule
-              </a>
+              </a> */}
             </div>
         </div>
       </section>
@@ -110,44 +110,89 @@ export default function MuscatConclave() {
   // ============================================
   // 3. ITINERARY (RESTORED PREVIOUS STICKY - Light Theme)
   // ============================================
-  const TimelineSection = () => {
-    const events = [
-      { date: "Feb 12", title: "Private Consultation", desc: "One-on-one strategy sessions with our lead portfolio managers.", time: "10:00 — 18:00" },
-      { date: "Feb 14", title: "Grand Expo & Showcase", desc: "The official unveiling of 15+ premium Omani residential projects.", time: "09:00 — 17:00" },
-      { date: "Feb 15", title: "Asset Acquisition", desc: "Final site verification and priority booking window for VIPs.", time: "10:00 — 16:00" }
-    ];
+  // const TimelineSection = () => {
+  //   const events = [
+  //     { date: "Feb 12", title: "Private Consultation", desc: "One-on-one strategy sessions with our lead portfolio managers.", time: "10:00 — 18:00" },
+  //     { date: "Feb 14", title: "Grand Expo & Showcase", desc: "The official unveiling of 15+ premium Omani residential projects.", time: "09:00 — 17:00" },
+  //     { date: "Feb 15", title: "Asset Acquisition", desc: "Final site verification and priority booking window for VIPs.", time: "10:00 — 16:00" }
+  //   ];
 
+  //   return (
+  //     <section id="schedule" className="py-40 bg-gray-50 border-y border-gray-100">
+  //       <div className="container mx-auto px-4 max-w-6xl">
+  //         <div className="grid lg:grid-cols-12 gap-20">
+  //           <div className="lg:col-span-5">
+  //             <div className="sticky top-32">
+  //               <h3 className="text-red-600 text-xs font-black tracking-[0.5em] uppercase mb-6 flex items-center gap-4">
+  //                 <div className="w-8 h-[2px] bg-red-600" /> Itinerary Plan
+  //               </h3>
+  //               <h2 className="text-6xl md:text-8xl font-black text-black tracking-tighter mb-8 leading-none">
+  //                 The <br /><span className="text-gray-300 font-serif italic">Curated</span> <br /> Days
+  //               </h2>
+  //               <p className="text-gray-400 text-lg font-light leading-relaxed max-w-sm">
+  //                 Interactive sessions, project insights, and networking within the Sultanate’s most prestigious venues.
+  //               </p>
+  //             </div>
+  //           </div>
+  //           <div className="lg:col-span-7 space-y-24">
+  //             {events.map((evt, i) => (
+  //               <div key={i} className="group relative border-l-2 border-red-100 pl-12 py-2 hover:border-red-600 transition-all duration-700">
+  //                 <div className="absolute left-[-9px] top-4 w-4 h-4 bg-white border-2 border-red-600 rounded-full group-hover:bg-red-600 transition-colors" />
+  //                 <span className="text-red-600 font-mono text-sm font-bold tracking-widest">{evt.date}</span>
+  //                 <div className="mt-4 mb-2 flex items-center justify-between">
+  //                    <h4 className="text-3xl md:text-5xl font-bold text-black tracking-tight group-hover:text-red-600 transition-colors duration-500">{evt.title}</h4>
+  //                 </div>
+  //                 <div className="flex items-center gap-2 text-gray-400 font-mono text-xs uppercase tracking-widest mb-6">
+  //                   <Clock className="w-3 h-3" /> {evt.time}
+  //                 </div>
+  //                 <p className="text-gray-500 text-lg font-light leading-relaxed max-w-lg">{evt.desc}</p>
+  //               </div>
+  //             ))}
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </section>
+  //   );
+  // };
+
+  // ============================================
+  // 3. TIMELINE PLACEHOLDER (Temporary)
+  // ============================================
+  const TimelineSection = () => {
     return (
-      <section id="schedule" className="py-40 bg-gray-50 border-y border-gray-100">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid lg:grid-cols-12 gap-20">
-            <div className="lg:col-span-5">
-              <div className="sticky top-32">
-                <h3 className="text-red-600 text-xs font-black tracking-[0.5em] uppercase mb-6 flex items-center gap-4">
-                  <div className="w-8 h-[2px] bg-red-600" /> Itinerary Plan
-                </h3>
-                <h2 className="text-6xl md:text-8xl font-black text-black tracking-tighter mb-8 leading-none">
-                  The <br /><span className="text-gray-300 font-serif italic">Curated</span> <br /> Days
-                </h2>
-                <p className="text-gray-400 text-lg font-light leading-relaxed max-w-sm">
-                  Interactive sessions, project insights, and networking within the Sultanate’s most prestigious venues.
-                </p>
-              </div>
+      <section id="schedule" className="py-40 bg-black border-y border-gray-100 relative overflow-hidden">
+        {/* Decorative Background Element */}
+        <div className="absolute top-0 right-0 p-20 opacity-[0.03] pointer-events-none">
+            <Calendar className="w-96 h-96 text-black" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Animated Badge */}
+            <div className="inline-flex items-center gap-3 px-4 py-2 bg-red-50 border border-red-100 rounded-full mb-10">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                </span>
+                <span className="text-red-600 text-[10px] font-black uppercase tracking-[0.3em]">Dates and Location</span>
             </div>
-            <div className="lg:col-span-7 space-y-24">
-              {events.map((evt, i) => (
-                <div key={i} className="group relative border-l-2 border-red-100 pl-12 py-2 hover:border-red-600 transition-all duration-700">
-                  <div className="absolute left-[-9px] top-4 w-4 h-4 bg-white border-2 border-red-600 rounded-full group-hover:bg-red-600 transition-colors" />
-                  <span className="text-red-600 font-mono text-sm font-bold tracking-widest">{evt.date}</span>
-                  <div className="mt-4 mb-2 flex items-center justify-between">
-                     <h4 className="text-3xl md:text-5xl font-bold text-black tracking-tight group-hover:text-red-600 transition-colors duration-500">{evt.title}</h4>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-400 font-mono text-xs uppercase tracking-widest mb-6">
-                    <Clock className="w-3 h-3" /> {evt.time}
-                  </div>
-                  <p className="text-gray-500 text-lg font-light leading-relaxed max-w-lg">{evt.desc}</p>
-                </div>
-              ))}
+
+            <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none mb-8">
+                Scheduling  <span className="text-gray-400 font-serif italic">in</span> <br /> 
+                Progress
+            </h2>
+
+            <div className="w-20 h-1 bg-red-600 mx-auto mb-10" />
+
+            {/* Subtle Call to Action */}
+            <div className="mt-16">
+                <a 
+                  href="#register" 
+                  className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-red-600 group"
+                >
+                    <span className="w-12 h-[1px] bg-red-600 group-hover:w-20 transition-all duration-500" />
+                    Get Notified via RSVP
+                </a>
             </div>
           </div>
         </div>
@@ -331,21 +376,11 @@ export default function MuscatConclave() {
         <div className="container mx-auto px-4 max-w-6xl">
             <div className="bg-gray-50 rounded-[3rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col lg:flex-row">
                 <div className="lg:w-2/5 p-12 md:p-20 bg-red-600 text-white">
-                    <h2 className="text-5xl font-black tracking-tighter mb-8 leading-none">Register <br />Interest.</h2>
-                    <p className="text-red-100 font-light text-lg mb-12">We are open to heartily welcome 200 VIP guests to ensure privacy and personalized advisory</p>
-                    <div className="space-y-6">
-                        {["Exclusive access to projects", "Complimentary Valuation", "Legal Consultation"].map((item, i) => (
-                            <div key={i} className="flex items-center gap-4">
-                                <div className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center">
-                                    <Check className="w-3 h-3 text-white" />
-                                </div>
-                                <span className="font-bold text-xs uppercase tracking-widest">{item}</span>
-                            </div>
-                        ))}
-                    </div>
+                    <h2 className="text-5xl font-black tracking-tighter mb-8 leading-none">Register to<br />join us.</h2>
+                    <p className="text-red-100 font-light text-lg mb-12">We are open to heartily welcome 200 guests to ensure privacy and personalized advisory.</p>
                 </div>
                 <div className="lg:w-3/5 p-12 md:p-20 bg-white">
-                    <div id="hubspot-form-container" className="min-h-[400px]">
+                    <div id="hubspot-form-container">
                         <div className="flex flex-col items-center justify-center h-full py-20 text-gray-300">
                             <div className="w-10 h-10 border-2 border-red-600 border-t-transparent rounded-full animate-spin mb-4" />
                             <p className="text-[10px] uppercase tracking-[0.4em]">Establishing Secure Connection</p>
@@ -365,8 +400,8 @@ export default function MuscatConclave() {
         <HeroSection />
         <IntroSection />
         <TimelineSection />
-        <CustomComponentSection />
-        <CountdownSection />
+        {/* <CustomComponentSection /> */}
+        {/* <CountdownSection /> */}
         <HighlightsSection />
         <AboutFlivvSection />
         <RegistrationSection />

@@ -1165,5 +1165,41 @@
     "createdAt": "2026-01-19T08:01:09.805Z",
     "updatedAt": "2026-01-19T08:01:09.805Z",
     "isPublished": true
+  },
+  {
+    "title": "Sales Meet at Hyatt Place",
+    "description": "Join us for dinner along with Premium Investment Options",
+    "start": "2026-01-31T14:30:00.000Z",
+    "end": "2026-01-31T17:30:00.000Z",
+    "country": "India",
+    "countryLabel": "Hyderabad",
+    "city": "Hyderabad",
+    "venue": "Hyatt Place - Hyderabad Banjara Hills",
+    "type": "Sales Meet",
+    "tags": [],
+    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
+    "organizer": "Flivv",
+    "id": "evt-1769688645741-i2pgaay56",
+    "createdAt": "2026-01-29T12:10:45.741Z",
+    "updatedAt": "2026-01-29T12:10:45.741Z",
+    "isPublished": true
+  },
+  {
+    "title": "Sales Meet at Hyatt Place",
+    "description": "Join us for dinner along with Premium Investment Options",
+    "start": "2026-02-07T14:30:00.000Z",
+    "end": "2026-02-07T17:30:00.000Z",
+    "country": "India",
+    "countryLabel": "Hyderabad",
+    "city": "Hyderabad",
+    "venue": "Hyatt Place - Hyderabad Banjara Hills",
+    "type": "Sales Meet",
+    "tags": [],
+    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
+    "organizer": "Flivv",
+    "id": "evt-1769688700333-6ycxg6zpc",
+    "createdAt": "2026-01-29T12:11:40.333Z",
+    "updatedAt": "2026-01-29T12:11:40.333Z",
+    "isPublished": true
   }
 ]
