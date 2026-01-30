@@ -7,8 +7,10 @@ import {
   Phone, Mail, ChevronRight, ArrowUpRight, Sparkles, 
   Zap, BarChart3, Landmark, Home, Briefcase, Eye, 
   Compass, FileText, DollarSign, CheckCircle, Navigation,
-  Globe2, TrendingUp, Target, Layers, Mic, PresentationIcon
+  Globe2, TrendingUp, Target, Layers, Mic, PresentationIcon, HelpCircle,
+  Link
 } from 'lucide-react';
+
 
 // ============================================
 // LUXURY UI ASSETS
@@ -98,7 +100,7 @@ export default function MuscatConclave() {
           </h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-10" />
           <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed">
-            After our sales events, held in The Kingdom of Saudi Arabia, Qatar and Bahrain, Flivv developers now takes great pride to present ourselves, this time at your city - Muscat, Oman
+            After our sales events, held in The Kingdom of <a href="/flivvksaevent" className='text-blue-600'>Saudi Arabia</a>, <a href="/flivvqatarevent" className='text-blue-600'>Qatar</a> and <a href="/flivvbahrainvisit" className='text-blue-600'>Bahrain</a>, Flivv developers now takes great pride to present ourselves, this time at your city - Muscat, Oman
           </p>
           <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed">
             It's our immense pleasure to host and welcome you and your family, with the same credibility and promising principles of assisting you, with clear and open heart, to get you a secured open plot land investment
@@ -273,23 +275,27 @@ export default function MuscatConclave() {
                 <h2 className="text-5xl font-black mt-4 tracking-tighter">Event Highlights</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
-                {/* Large Featured Card */}
-                <div className="shadow-xl md:col-span-2 md:row-span-2 bg-gray-50 rounded-3xl p-12 flex flex-col justify-end relative overflow-hidden group border border-gray-100 shadow-sm">
+            {/* Adjusted to 4 columns for a more balanced Bento Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+                
+                {/* 1. Large Featured Card (Elite Showcase) */}
+                <div className="md:col-span-2 md:row-span-2 bg-gray-50 rounded-3xl p-12 flex flex-col justify-end relative overflow-hidden group border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500">
                     <div className="absolute top-12 right-12">
-                        <Building className="w-32 h-32 text-red-600 duration-700" />
+                        <Building className="w-32 h-32 text-red-600/10 group-hover:text-red-600/20 transition-colors duration-700" />
                     </div>
                     <div className="relative z-10">
                         <div className="w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-red-200">
                             <PresentationIcon className="w-7 h-7" />
                         </div>
                         <h3 className="text-4xl font-black mb-4">Elite Showcase</h3>
-                        <p className="text-gray-500 text-lg font-light leading-relaxed max-w-md">Access our exclusive 7 luxury projects and have direct insights on key points of them in-person with our team.</p>
+                        <p className="text-gray-500 text-lg font-light leading-relaxed max-w-md">
+                            Access our exclusive 7 luxury projects and have direct insights on key points of them in-person with our team.
+                        </p>
                     </div>
                 </div>
 
-                {/* Smaller Card 1 */}
-                <div className="bg-red-600 rounded-3xl p-10 text-white flex flex-col justify-between group transition-all hover:bg-black">
+                {/* 2. Smaller Card (Expert Keynotes) */}
+                <div className="md:col-span-1 md:row-span-1 bg-red-600 rounded-3xl p-8 text-white flex flex-col justify-between group transition-all hover:bg-black shadow-lg">
                     <Mic className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
                     <div>
                         <h3 className="text-2xl font-bold mb-2">Expert Keynotes</h3>
@@ -297,18 +303,33 @@ export default function MuscatConclave() {
                     </div>
                 </div>
 
-                {/* Smaller Card 2 */}
-                <div className="bg-gray-50 rounded-3xl p-10 flex flex-col justify-between border border-gray-100 shadow-xl transition-all">
+                {/* 3. Smaller Card (Private Networking) */}
+                <div className="md:col-span-1 md:row-span-1 bg-gray-50 rounded-3xl p-8 flex flex-col justify-between border border-gray-100 shadow-sm hover:shadow-xl transition-all">
                     <Users className="w-8 h-8 text-red-600" />
                     <div>
                         <h3 className="text-2xl font-bold mb-2">Private Networking</h3>
                         <p className="text-gray-400 text-sm">Join the 1% in an intimate networking lounge environment.</p>
                     </div>
                 </div>
+
+                {/* 4. NEW: Wide Card (Q&A Session) */}
+                <div className="md:col-span-2 md:row-span-1 bg-[#080808] text-white rounded-3xl p-8 flex items-center justify-between group border border-white/5 hover:border-red-600/50 transition-all shadow-2xl">
+                    <div className="max-w-[70%]">
+                        <div className="flex items-center gap-3 mb-3">
+                            <HelpCircle className="w-6 h-6 text-red-600" />
+                            <h3 className="text-2xl font-bold">Q&A Session</h3>
+                        </div>
+                        <p className="text-white/50 text-sm">Directly engage with our leadership team to clarify your investment doubts and strategies.</p>
+                    </div>
+                    <div className="hidden sm:block">
+                        <ArrowUpRight className="w-10 h-10 text-white/10 group-hover:text-red-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                    </div>
+                </div>
+
             </div>
          </div>
       </section>
-  );
+);
 
   // ============================================
   // 7. ABOUT FLIVV (Deep Carbon)
@@ -320,7 +341,7 @@ export default function MuscatConclave() {
             <div className="relative">
                <h2 className="text-red-600 font-black tracking-[0.4em] uppercase mb-6 text-[10px]">About Flivv Developers</h2>
                <h3 className="text-6xl md:text-6xl font-black leading-none mb-10 tracking-tighter">Building Trust, <br /><span className="text-white/10">Delivering Value.</span></h3>
-               <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-10">
+               <div className="grid grid-cols-3 gap-8 border-t border-white/10 pt-10">
                    <div>
                        <span className="block text-5xl font-black text-red-600">14+</span>
                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Years of Trust</span>
@@ -328,6 +349,10 @@ export default function MuscatConclave() {
                    <div>
                        <span className="block text-5xl font-black text-white">07</span>
                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Projects</span>
+                   </div>
+                   <div>
+                       <span className="block text-5xl font-black text-white">500+</span>
+                       <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Growing Customers</span>
                    </div>
                </div>
             </div>
