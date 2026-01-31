@@ -121,9 +121,9 @@ export default function Navigation() {
           <div className="absolute right-0 top-full mt-2 w-[220px] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-white backdrop-blur-md border border-grey">
             <ul className="p-3">
               {/* First item highlighted */}
-               {/* <li>
+               <li>
                 <Link href="/flivvomanevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">Oman</Link>
-              </li> */}
+              </li>
               <li>
                 <Link href="/flivvqatarevent" className="block px-4 py-2 rounded-md text-black hover:bg-[#0192D3] hover:text-white mt-2">Qatar</Link>
               </li>
@@ -322,7 +322,7 @@ export default function Navigation() {
         </div>
 
         <div className="p-4 space-y-4"> 
-          {/* <Link 
+          <Link 
             href="/flivvomanevent" 
             onClick={() => {
               setIsOpen(false);
@@ -331,7 +331,7 @@ export default function Navigation() {
             className="block px-6 py-4 text-lg text-gray-300 hover:bg-[#0192D3] rounded-md"
           >
             Oman
-          </Link> */}
+          </Link>
           
           <Link 
             href="/flivvqatarevent" 

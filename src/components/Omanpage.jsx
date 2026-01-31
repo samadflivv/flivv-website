@@ -8,7 +8,15 @@ import {
   Zap, BarChart3, Landmark, Home, Briefcase, Eye, 
   Compass, FileText, DollarSign, CheckCircle, Navigation,
   Globe2, TrendingUp, Target, Layers, Mic, PresentationIcon, HelpCircle,
-  Link
+  Link,
+  Speaker,
+  Megaphone,
+  SpeakerIcon,
+  SeparatorHorizontal,
+  Volume,
+  LucideVolume1,
+  LucideVolume2,
+  SpeechIcon
 } from 'lucide-react';
 
 
@@ -95,8 +103,8 @@ export default function MuscatConclave() {
       <div className="container mx-auto px-4 max-w-4xl text-center">
           <span className="text-red-600 font-black tracking-[0.4em] uppercase text-[10px] mb-6 block">The Vision</span>
           <h2 className="text-4xl md:text-6xl font-medium leading-[1.1] mb-10 tracking-tight">
-            Where Global <span className="italic font-serif text-red-600">Ambition</span> <br /> 
-            Meets Omani Legacy.
+            Built on <span className="italic font-serif text-red-600">Trust,</span> <br /> 
+            Focussed on <span className="italic font-serif text-red-600">Principles</span> 
           </h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-10" />
           <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed">
@@ -176,7 +184,7 @@ export default function MuscatConclave() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                 </span>
-                <span className="text-red-600 text-[10px] font-black uppercase tracking-[0.3em]">Dates and Location</span>
+                <span className="text-red-600 text-[12px] font-black uppercase tracking-[0.3em]">Dates and Location</span>
             </div>
 
             <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none mb-8">
@@ -193,7 +201,7 @@ export default function MuscatConclave() {
                   className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-red-600 group"
                 >
                     <span className="w-12 h-[1px] bg-red-600 group-hover:w-20 transition-all duration-500" />
-                    Get Notified via RSVP
+                    Confirm your RSVP
                 </a>
             </div>
           </div>
@@ -281,25 +289,25 @@ export default function MuscatConclave() {
                 {/* 1. Large Featured Card (Elite Showcase) */}
                 <div className="md:col-span-2 md:row-span-2 bg-gray-50 rounded-3xl p-12 flex flex-col justify-end relative overflow-hidden group border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500">
                     <div className="absolute top-12 right-12">
-                        <Building className="w-32 h-32 text-red-600/10 group-hover:text-red-600/20 transition-colors duration-700" />
+                        <SpeechIcon className="w-32 h-32 text-red-600/10 group-hover:text-red-600/20 transition-colors duration-700" />
                     </div>
                     <div className="relative z-10">
                         <div className="w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-red-200">
-                            <PresentationIcon className="w-7 h-7" />
+                            <LucideVolume2 className="w-7 h-7" />
                         </div>
-                        <h3 className="text-4xl font-black mb-4">Elite Showcase</h3>
+                        <h3 className="text-4xl font-black mb-4">Public Addressing</h3>
                         <p className="text-gray-500 text-lg font-light leading-relaxed max-w-md">
-                            Access our exclusive 7 luxury projects and have direct insights on key points of them in-person with our team.
+                            Led by our management chairpersons, the session opens with strategic insights into our organization, projects and long-term vision.
                         </p>
                     </div>
                 </div>
 
                 {/* 2. Smaller Card (Expert Keynotes) */}
                 <div className="md:col-span-1 md:row-span-1 bg-red-600 rounded-3xl p-8 text-white flex flex-col justify-between group transition-all hover:bg-black shadow-lg">
-                    <Mic className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
+                    <PresentationIcon className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
                     <div>
-                        <h3 className="text-2xl font-bold mb-2">Expert Keynotes</h3>
-                        <p className="text-white/60 text-sm">Economic advantages and legal framework insights about ventures.</p>
+                        <h3 className="text-2xl font-bold mb-2">Projects showcase</h3>
+                        <p className="text-white/60 text-sm">Our projects are showcased with a clear vision to deliver value to your interest of investment.</p>
                     </div>
                 </div>
 
@@ -307,8 +315,8 @@ export default function MuscatConclave() {
                 <div className="md:col-span-1 md:row-span-1 bg-gray-50 rounded-3xl p-8 flex flex-col justify-between border border-gray-100 shadow-sm hover:shadow-xl transition-all">
                     <Users className="w-8 h-8 text-red-600" />
                     <div>
-                        <h3 className="text-2xl font-bold mb-2">Private Networking</h3>
-                        <p className="text-gray-400 text-sm">Join the 1% in an intimate networking lounge environment.</p>
+                        <h3 className="text-2xl font-bold mb-2">1:1 Sales session</h3>
+                        <p className="text-gray-400 text-sm">Private one-on-one discussions with our sales team looking to interact and discuss your investment goals and preferences.</p>
                     </div>
                 </div>
 
@@ -319,7 +327,7 @@ export default function MuscatConclave() {
                             <HelpCircle className="w-6 h-6 text-red-600" />
                             <h3 className="text-2xl font-bold">Q&A Session</h3>
                         </div>
-                        <p className="text-white/50 text-sm">Directly engage with our leadership team to clarify your investment doubts and strategies.</p>
+                        <p className="text-white/50 text-sm">An open Q&A session led by our Sales Team Lead, addressing project details and investment clarity.</p>
                     </div>
                     <div className="hidden sm:block">
                         <ArrowUpRight className="w-10 h-10 text-white/10 group-hover:text-red-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
@@ -343,15 +351,15 @@ export default function MuscatConclave() {
                <h3 className="text-6xl md:text-6xl font-black leading-none mb-10 tracking-tighter">Building Trust, <br /><span className="text-white/10">Delivering Value.</span></h3>
                <div className="grid grid-cols-3 gap-8 border-t border-white/10 pt-10">
                    <div>
-                       <span className="block text-5xl font-black text-red-600">14+</span>
+                       <span className="block text-4xl lg:text-5xl font-black text-red-600">14+</span>
                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Years of Trust</span>
                    </div>
                    <div>
-                       <span className="block text-5xl font-black text-white">07</span>
+                       <span className="block text-4xl lg:text-5xl font-black text-white">07</span>
                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Projects</span>
                    </div>
                    <div>
-                       <span className="block text-5xl font-black text-white">500+</span>
+                       <span className="block text-4xl lg:text-5xl font-black text-white">500+</span>
                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Growing Customers</span>
                    </div>
                </div>
@@ -401,8 +409,8 @@ export default function MuscatConclave() {
         <div className="container mx-auto px-4 max-w-6xl">
             <div className="bg-gray-50 rounded-[3rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col lg:flex-row">
                 <div className="lg:w-2/5 p-12 md:p-20 bg-red-600 text-white">
-                    <h2 className="text-5xl font-black tracking-tighter mb-8 leading-none">Register to<br />join us.</h2>
-                    <p className="text-red-100 font-light text-lg mb-12">We are open to heartily welcome 200 guests to ensure privacy and personalized advisory.</p>
+                    <h2 className="text-4xl font-black tracking-tighter mb-8 leading-none">Expression of<br />Interest.</h2>
+                    <p className="text-red-100 font-light text-lg">We invite the Hyderabadi NRI to join us in Oman for an exclusive interaction building the strong relationships and trust we’ve established overtime across KSA, Qatar, and Bahrain.</p>
                 </div>
                 <div className="lg:w-3/5 p-12 md:p-20 bg-white">
                     <div id="hubspot-form-container">
