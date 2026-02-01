@@ -7,7 +7,7 @@ import {
   Phone, Mail, ChevronRight, ArrowUpRight, Sparkles, 
   Zap, BarChart3, Landmark, Home, Briefcase, Eye, 
   Compass, FileText, DollarSign, CheckCircle, Navigation,
-  Globe2, TrendingUp, Target, Layers, Mic, PresentationIcon, HelpCircle,
+  Globe2, TrendingUp, Target, Layers, PresentationIcon, HelpCircle,
   Link,
   Speaker,
   Megaphone,
@@ -16,7 +16,7 @@ import {
   Volume,
   LucideVolume1,
   LucideVolume2,
-  SpeechIcon
+  SpeechIcon, Volume2
 } from 'lucide-react';
 
 
@@ -287,16 +287,28 @@ export default function MuscatConclave() {
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
                 
                 {/* 1. Large Featured Card (Elite Showcase) */}
-                <div className="md:col-span-2 md:row-span-2 bg-gray-50 rounded-3xl p-12 flex flex-col justify-end relative overflow-hidden group border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div className="absolute top-12 right-12">
-                        <SpeechIcon className="w-32 h-32 text-red-600/10 group-hover:text-red-600/20 transition-colors duration-700" />
-                    </div>
+                <div className="md:col-span-2 md:row-span-2 rounded-3xl p-12 flex flex-col justify-end relative overflow-hidden group border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
+                    
+                    {/* BACKGROUND IMAGE */}
+                    <img 
+                        src="/VaseemStage.jpg" 
+                        alt="Summit Presentation"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+
+                    {/* CINEMATIC OVERLAYS */}
+                    {/* Tint Overlay */}
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" />
+                    {/* Gradient Overlay for Text Readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+                    {/* CONTENT LAYER */}
                     <div className="relative z-10">
-                        <div className="w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-red-200">
-                            <LucideVolume2 className="w-7 h-7" />
+                        <div className="w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-red-900/40">
+                            <Volume2 className="w-7 h-7" />
                         </div>
-                        <h3 className="text-4xl font-black mb-4">Public Addressing</h3>
-                        <p className="text-gray-500 text-lg font-light leading-relaxed max-w-md">
+                        <h3 className="text-4xl font-black mb-4 text-white">Public Addressing</h3>
+                        <p className="text-white/70 text-lg font-light leading-relaxed max-w-md">
                             Led by our management chairpersons, the session opens with strategic insights into our organization, projects and long-term vision.
                         </p>
                     </div>
