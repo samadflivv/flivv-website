@@ -103,7 +103,7 @@ export default function MuscatConclave() {
       <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-4xl md:text-6xl font-medium leading-[1.1] mb-10 tracking-tight">
             Join us in  <br /> 
-           <span className="italic font-serif text-red-600">Muscut</span> 
+           <span className="italic font-serif text-red-600">Muscat</span> 
           </h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-10" />
           <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed">
