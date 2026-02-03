@@ -84,7 +84,7 @@ export default function MuscatConclave() {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-20">
               <a href="#register" className="px-12 py-5 bg-red-600 text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-white hover:text-red-600 transition-all duration-500 rounded-sm">
-                Request Invitation
+                Get Connected
               </a>
               {/* <a href="#schedule" className="px-12 py-5 border border-white/40 text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-white/10 backdrop-blur-md transition-all rounded-sm">
                 View Schedule
@@ -101,10 +101,9 @@ export default function MuscatConclave() {
   const IntroSection = () => (
     <section className="py-32 bg-white text-black">
       <div className="container mx-auto px-4 max-w-4xl text-center">
-          <span className="text-red-600 font-black tracking-[0.4em] uppercase text-[10px] mb-6 block">The Vision</span>
           <h2 className="text-4xl md:text-6xl font-medium leading-[1.1] mb-10 tracking-tight">
-            Built on <span className="italic font-serif text-red-600">Trust,</span> <br /> 
-            Focussed on <span className="italic font-serif text-red-600">Principles</span> 
+            Join us in  <br /> 
+           <span className="italic font-serif text-red-600">Muscut</span> 
           </h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-10" />
           <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed">
@@ -184,7 +183,7 @@ export default function MuscatConclave() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                 </span>
-                <span className="text-red-600 text-[12px] font-black uppercase tracking-[0.3em]">Dates and Location</span>
+                <span className="text-red-600 text-[12px] font-black uppercase tracking-[0.3em]">Dates & Venue</span>
             </div>
 
             <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none mb-8">
@@ -201,7 +200,7 @@ export default function MuscatConclave() {
                   className="inline-flex items-center gap-4 text-xs font-black uppercase tracking-[0.4em] text-red-600 group"
                 >
                     <span className="w-12 h-[1px] bg-red-600 group-hover:w-20 transition-all duration-500" />
-                    Confirm your RSVP
+                     Get in touch
                 </a>
             </div>
           </div>
@@ -283,26 +282,25 @@ export default function MuscatConclave() {
                 <h2 className="text-5xl font-black mt-4 tracking-tighter">Event Highlights</h2>
             </div>
             
-            {/* Adjusted to 4 columns for a more balanced Bento Grid */}
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
                 
-                {/* 1. Large Featured Card (Elite Showcase) */}
+                {/* 1. Public Addressing */}
                 <div className="md:col-span-2 md:row-span-2 rounded-3xl p-12 flex flex-col justify-end relative overflow-hidden group border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
                     
-                    {/* BACKGROUND IMAGE */}
+                    {/* NUMBER - TOP RIGHT */}
+                    <div className="absolute top-10 right-10 z-20 font-black text-6xl text-white/20 group-hover:text-red-600 group-hover:scale-110 transition-all duration-500 italic">
+                        01
+                    </div>
+
                     <img 
                         src="/VaseemStage.jpg" 
                         alt="Summit Presentation"
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 
-                    {/* CINEMATIC OVERLAYS */}
-                    {/* Tint Overlay */}
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-700" />
-                    {/* Gradient Overlay for Text Readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-                    {/* CONTENT LAYER */}
                     <div className="relative z-10">
                         <div className="w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-red-900/40">
                             <Volume2 className="w-7 h-7" />
@@ -314,32 +312,50 @@ export default function MuscatConclave() {
                     </div>
                 </div>
 
-                {/* 2. Smaller Card (Expert Keynotes) */}
-                <div className="md:col-span-1 md:row-span-1 bg-red-600 rounded-3xl p-8 text-white flex flex-col justify-between group transition-all hover:bg-black shadow-lg">
+                {/* 2. Projects Showcase */}
+                <div className="md:col-span-1 md:row-span-1 bg-red-600 rounded-3xl p-8 text-white flex flex-col justify-between group transition-all hover:bg-black shadow-lg relative overflow-hidden">
+                    
+                    {/* NUMBER - TOP RIGHT */}
+                    <div className="absolute top-6 right-8 z-20 font-black text-5xl text-white/20 group-hover:text-red-600 group-hover:scale-110 transition-all duration-500 italic">
+                        02
+                    </div>
+
                     <PresentationIcon className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
                     <div>
                         <h3 className="text-2xl font-bold mb-2">Projects showcase</h3>
-                        <p className="text-white/60 text-sm">Our projects are showcased with a clear vision to deliver value to your interest of investment.</p>
+                        <p className="text-white/60 text-sm lg:leading-5">Our projects are showcased with a clear vision to deliver value to your interest of investment.</p>
                     </div>
                 </div>
 
-                {/* 3. Smaller Card (Private Networking) */}
-                <div className="md:col-span-1 md:row-span-1 bg-gray-50 rounded-3xl p-8 flex flex-col justify-between border border-gray-100 shadow-sm hover:shadow-xl transition-all">
-                    <Users className="w-8 h-8 text-red-600" />
+                {/* 3. Q&A Session */}
+                <div className="md:col-span-1 md:row-span-1 bg-gray-50 rounded-3xl p-8 flex flex-col justify-between border border-gray-100 shadow-sm hover:shadow-xl transition-all relative overflow-hidden group">
+                    
+                    {/* NUMBER - TOP RIGHT */}
+                    <div className="absolute top-6 right-8 z-20 font-black text-5xl text-black/5 group-hover:text-red-600 group-hover:scale-110 transition-all duration-500 italic">
+                        03
+                    </div>
+
+                    <HelpCircle className="w-8 h-8 text-red-600" />
                     <div>
-                        <h3 className="text-2xl font-bold mb-2">1:1 Sales session</h3>
-                        <p className="text-gray-400 text-sm">Private one-on-one discussions with our sales team looking to interact and discuss your investment goals and preferences.</p>
+                        <h3 className="text-2xl font-bold mb-2">Q&A Session</h3>
+                        <p className="text-gray-400 text-sm lg:leading-5">An open Q&A session led by our Managing Director, Mr. Vaseem Siddiqui, addressing project details and investment clarity.</p>
                     </div>
                 </div>
 
-                {/* 4. NEW: Wide Card (Q&A Session) */}
-                <div className="md:col-span-2 md:row-span-1 bg-[#080808] text-white rounded-3xl p-8 flex items-center justify-between group border border-white/5 hover:border-red-600/50 transition-all shadow-2xl">
-                    <div className="max-w-[70%]">
+                {/* 4. 1:1 Sales Session */}
+                <div className="md:col-span-2 md:row-span-1 bg-[#080808] text-white rounded-3xl p-8 flex items-center justify-between group border border-white/5 hover:border-red-600/50 transition-all shadow-2xl relative overflow-hidden">
+                    
+                    {/* NUMBER - TOP RIGHT */}
+                    <div className="absolute top-6 right-10 z-20 font-black text-5xl text-white/5 group-hover:text-red-600 group-hover:scale-110 transition-all duration-500 italic">
+                        04
+                    </div>
+
+                    <div className="max-w-[70%] relative z-10">
                         <div className="flex items-center gap-3 mb-3">
-                            <HelpCircle className="w-6 h-6 text-red-600" />
-                            <h3 className="text-2xl font-bold">Q&A Session</h3>
+                            <Users className="w-6 h-6 text-red-600" />
+                            <h3 className="text-2xl font-bold">1:1 Sales session</h3>
                         </div>
-                        <p className="text-white/50 text-sm">An open Q&A session led by our Sales Team Lead, addressing project details and investment clarity.</p>
+                        <p className="text-white/50 text-sm lg:leading-6">Private one-on-one discussions with our Sales Team looking to interact and discuss your investment goals and preferences.</p>
                     </div>
                     <div className="hidden sm:block">
                         <ArrowUpRight className="w-10 h-10 text-white/10 group-hover:text-red-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
@@ -360,7 +376,7 @@ export default function MuscatConclave() {
          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
                <h2 className="text-red-600 font-black tracking-[0.4em] uppercase mb-6 text-[10px]">About Flivv Developers</h2>
-               <h3 className="text-6xl md:text-6xl font-black leading-none mb-10 tracking-tighter">Building Trust, <br /><span className="text-white/10">Delivering Value.</span></h3>
+               <h3 className="text-6xl md:text-6xl font-black leading-none mb-10 tracking-tighter">Building Trust, <br /><span className="text-white/40">Delivering Value.</span></h3>
                <div className="grid grid-cols-3 gap-8 border-t border-white/10 pt-10">
                    <div>
                        <span className="block text-4xl lg:text-5xl font-black text-red-600">14+</span>
