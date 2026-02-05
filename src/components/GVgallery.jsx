@@ -1,177 +1,221 @@
-'use client'
+'use client';
 
-// components/GVgallery.js
-import { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function GVgallery() {
-  const [images, setImages] = useState([]);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselRef = useRef(null);
-  const dialogRef = useRef(null);
+export default function Gallery() {
+  const allGalleryImages = [
+    { id: 1, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/image1.jpg", alt: "" },
+    { id: 2, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.46.58%20AM.jpeg", alt: "" },
+    { id: 3, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.00%20AM.jpeg", alt: "" },
+    { id: 4, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.46.59%20AM.jpeg", alt: "" },
+    { id: 5, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.46.59%20AM%20(1).jpeg", alt: "" },
+    { id: 6, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.46.59%20AM%20(2).jpeg", alt: "" },
+    { id: 7, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.01%20AM.jpeg", alt: "" },
+    { id: 8, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.01%20AM%20(1).jpeg", alt: "" },
+    { id: 9, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.02%20AM.jpeg", alt: "" },
+    { id: 10, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.03%20AM.jpeg", alt: "" },
+    { id: 11, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.04%20AM.jpeg", alt: "" },
+    { id: 12, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.05%20AM%20(1).jpeg", alt: "" },
+    { id: 13, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.06%20AM.jpeg", alt: "" },
+    { id: 14, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.06%20AM%20(2).jpeg", alt: "" },
+    { id: 15, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.07%20AM.jpeg", alt: "" },
+    { id: 16, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.08%20AM.jpeg", alt: "" },
+    { id: 17, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.08%20AM%20(1).jpeg", alt: "" },
+    { id: 18, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.09%20AM.jpeg", alt: "" },
+    { id: 19, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.10%20AM.jpeg", alt: "" },
+    { id: 20, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.13%20AM.jpeg", alt: "" },
+    { id: 21, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.13%20AM%20(1).jpeg", alt: "" },
+    { id: 22, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.14%20AM.jpeg", alt: "" },
+    { id: 23, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/WhatsApp%20Image%202026-02-05%20at%2011.47.15%20AM.jpeg", alt: "" },
+    { id: 24, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/image4.jpg", alt: "" },
+    { id: 25, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/image5.jpg", alt: "" },
+    { id: 26, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/image6.jpg", alt: "" },
+    { id: 27, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/image7.jpg", alt: "" },
+    { id: 27, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/image8.jpg", alt: "" },
+    { id: 27, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/image10.jpg", alt: "" },
+    { id: 27, src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GV-gallery/image11.jpg", alt: "" }
+  ];
 
-  // Load images from public/gvimages folder
+  const [galleryId, setGalleryId] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(8);
+
+  // Set Page Title
   useEffect(() => {
-    // This should be replaced with your actual image loading logic
-    const mockImages = Array.from({ length: 12 }, (_, i) => ({
-      src: `/gvimages/image${i + 1}.jpg`,
-      alt: `Image ${i + 1}`,
-    }));
-    setImages(mockImages);
+    document.title = "Flivv Qatar Mega Sales Event 2025";
   }, []);
 
-  const openDialog = (index) => {
-    setCurrentIndex(index);
-    setIsDialogOpen(true);
-    dialogRef.current.showModal();
-  };
-
-  const closeDialog = () => {
-    dialogRef.current.close();
-    setIsDialogOpen(false);
-  };
-
-  const scrollCarousel = (direction) => {
-    if (carouselRef.current) {
-      const scrollAmount = carouselRef.current.clientWidth * direction;
-      carouselRef.current.scrollBy({ 
-        left: scrollAmount, 
-        behavior: 'smooth' 
-      });
+  // Prevent body scroll when lightbox is open
+  useEffect(() => {
+    if (galleryId != null) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prev || '';
+      };
     }
-  };
+  }, [galleryId]);
 
-  // Handle keyboard navigation
+  // Gallery Keyboard Navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (!isDialogOpen) return;
-      
-      if (e.key === 'Escape') closeDialog();
-      if (e.key === 'ArrowLeft') scrollCarousel(-1);
-      if (e.key === 'ArrowRight') scrollCarousel(1);
-    };
+      if (!galleryId) return;
+      const images = allGalleryImages;
+      const currentIndex = images.findIndex(img => img.id === galleryId);
 
+      if (e.key === 'ArrowRight') {
+        const nextIndex = (currentIndex + 1) % images.length;
+        setGalleryId(images[nextIndex].id);
+      }
+      if (e.key === 'ArrowLeft') {
+        const prevIndex = (currentIndex - 1 + images.length) % images.length;
+        setGalleryId(images[prevIndex].id);
+      }
+      if (e.key === 'Escape') setGalleryId(null);
+    };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isDialogOpen]);
+  }, [galleryId]);
 
-  // Scroll to current image when dialog opens
-  useEffect(() => {
-    if (isDialogOpen && carouselRef.current) {
-      const scrollPosition = carouselRef.current.clientWidth * currentIndex;
-      carouselRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: 'auto'
-      });
-    }
-  }, [isDialogOpen, currentIndex]);
+  const openLightbox = (id) => setGalleryId(id);
+  const closeLightbox = () => setGalleryId(null);
+  const showMore = () => setVisibleCount(prev => Math.min(allGalleryImages.length, prev + 8));
+  const currentImage = allGalleryImages.find(img => img.id === galleryId);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Main Gallery */}
-      <div className="container mx-auto py-25 px-4 sm:px-25">
-        {/* Added Heading */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl lg:text-6xl font-normal text-gray-800">Gallery</h1>
-          <div className="w-24 h-1 bg-gray-300 mx-auto mt-4"></div>
+    <section className="py-24 bg-white relative">
+      <div className="container mx-auto px-4 lg:px-20">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="font-normal text-6xl mb-6">Gallery</h2>
+          {/* <p className="text-slate-600 max-w-2xl mx-auto">A curated selection of moments from our Qatar event.</p> */}
         </div>
-        
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-          {images.map((image, index) => (
-            <button
-              key={index}
-              className="relative p-0 m-0 border-none overflow-hidden group aspect-square"
-              onClick={() => openDialog(index)}
-            >
 
-              {/* Image without any overlay covering it */}
-              <img
-                src={image.src}
-                alt={image.alt}
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
-              
-              {/* Hover effect from original source code */}
-              <div 
-                className="absolute inset-0 hidden group-hover:block"
-                style={{
-                  backgroundColor: 'oklch(0 0 0 / 0.4)',
-                  backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M21.27,10.18l-5.5-5.47a1,1,0,0,0-.7-.29,1,1,0,0,0-.71.29L12.46,7.76,5.51,2.79a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l6.94,5-4.9,4.9a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.3,1,1,0,0,0,.7-.3l4.9-4.9,2.35,2.35-4.9,4.89a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.3,1,1,0,0,0,.7-.3l4.9-4.89,2.35,2.35-4.19,4.2a1,1,0,0,0,0,1.41,1,1,0,0,0,1.42,0l8.66-8.66A1,1,0,0,0,21.27,10.18Z'/%3E%3C/svg%3E\")",
-                  backgroundSize: '1.5rem',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'top 0.25rem right 0.25rem',
-                  opacity: 0,
-                  transition: 'opacity 0.2s ease'
-                }}
-              />
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Lightbox Dialog */}
-      <dialog
-        ref={dialogRef}
-        className="fixed inset-0 z-50 bg-transparent w-screen h-screen overflow-hidden p-0 m-0"
-        onClose={() => setIsDialogOpen(false)}
-      >
-        {/* Full-screen glassmorphism background - covers entire screen */}
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-xl"></div>
-        
-        <div className="relative h-full w-full flex flex-col items-center justify-center">
-          {/* Carousel */}
-          <div 
-            ref={carouselRef}
-            className="flex overflow-x-auto snap-x snap-mandatory w-full h-full"
-            style={{ 
-              scrollbarWidth: 'none', 
-              msOverflowStyle: 'none',
-              scrollBehavior: 'smooth'
-            }}
-          >
-            {images.map((image, index) => (
-              <div 
-                key={index} 
-                className="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-2 sm:p-4"
+        {/* Grid (2 rows x 4 cols initially) */}
+        <motion.div layout className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <AnimatePresence mode="popLayout">
+            {allGalleryImages.slice(0, visibleCount).map((img) => (
+              <motion.div
+                layout
+                key={img.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.36 }}
+                className="relative group cursor-pointer aspect-[4/5] overflow-hidden bg-gray-100"
+                onClick={() => openLightbox(img.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter') openLightbox(img.id); }}
+                aria-label={`Open image ${img.id}`}
               >
-                {/* Mobile centering fix */}
-                <div className="w-full h-full flex items-center justify-center">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="max-h-[80vh] pl-5"
-                  />
+                <img
+                  src={img.src}
+                  alt={img.alt || `Image ${img.id}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <p className="text-white font-serif text-sm italic translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    {img.alt}
+                  </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </AnimatePresence>
+        </motion.div>
 
-          {/* Controls - Hidden on mobile */}
-          <div className="fixed top-1/2 left-0 right-0 hidden sm:flex justify-between px-4 z-20 transform -translate-y-1/2">
+        {/* Load More */}
+        {visibleCount < allGalleryImages.length && (
+          <div className="flex justify-center mt-12">
             <button
-              className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-3xl text-gray-800 shadow-lg hover:bg-white transition-all duration-300"
-              onClick={() => scrollCarousel(-1)}
+              onClick={showMore}
+              className="group flex items-center gap-3 px-8 py-3 border border-[#E509EF]/20 text-[#E509EF] rounded-full font-medium hover:bg-[#E509EF] hover:text-white transition-all duration-300"
+              aria-label="Load more photos"
             >
-              ←
-            </button>
-            <button
-              className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-3xl text-gray-800 shadow-lg hover:bg-white transition-all duration-300"
-              onClick={() => scrollCarousel(1)}
-            >
-              →
+              <span>View More Photos</span>
+              <svg className="w-4 h-4 transform group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
           </div>
+        )}
 
-          {/* Close Button - Larger on mobile */}
-          <button
-            className="fixed top-4 right-4 w-12 h-12 text-3xl text-gray-800 flex items-center justify-center z-20 bg-white/80 backdrop-blur-md rounded-full shadow-lg hover:bg-white transition-all duration-300"
-            onClick={closeDialog}
-          >
-            ✕
-          </button>
-        </div>
-      </dialog>
-    </div>
+        {/* Lightbox */}
+        <AnimatePresence>
+          {galleryId && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+              onClick={closeLightbox}
+            >
+              <div
+                className="relative w-full h-full flex flex-col items-center justify-center p-4 max-w-6xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close */}
+                <button
+                  onClick={closeLightbox}
+                  className="absolute top-6 right-6 z-50 text-white/60 hover:text-white p-2"
+                  aria-label="Close gallery"
+                >
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* Prev */}
+                <button
+                  className="absolute left-4 md:left-8 z-50 p-3 rounded-full bg-white/10 hover:bg-[#E509EF] text-white transition-all hidden md:block"
+                  onClick={() => {
+                    const currentIndex = allGalleryImages.findIndex(img => img.id === galleryId);
+                    const prevIndex = (currentIndex - 1 + allGalleryImages.length) % allGalleryImages.length;
+                    setGalleryId(allGalleryImages[prevIndex].id);
+                  }}
+                  aria-label="Previous image"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                {/* Image */}
+                <motion.img
+                  key={galleryId}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.32 }}
+                  src={currentImage?.src}
+                  alt={currentImage?.alt || `Image ${galleryId}`}
+                  className="max-h-[85vh] w-auto rounded shadow-2xl object-contain"
+                />
+
+                {/* Next */}
+                <button
+                  className="absolute right-4 md:right-8 z-50 p-3 rounded-full bg-white/10 hover:bg-[#E509EF] text-white transition-all hidden md:block"
+                  onClick={() => {
+                    const currentIndex = allGalleryImages.findIndex(img => img.id === galleryId);
+                    const nextIndex = (currentIndex + 1) % allGalleryImages.length;
+                    setGalleryId(allGalleryImages[nextIndex].id);
+                  }}
+                  aria-label="Next image"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Caption */}
+                <p className="absolute bottom-8 text-white font-serif text-lg tracking-wide">
+                  {currentImage?.alt}
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </section>
   );
 }
