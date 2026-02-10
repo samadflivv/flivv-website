@@ -230,5 +230,4 @@ const GVamenities = () => {
     </div>
   );
 };
-
 export default GVamenities;
