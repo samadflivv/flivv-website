@@ -15,6 +15,7 @@ const page = () => {
     <div>
       <Navigation/>
       <GulmoharheroSection/>
+      <GVProgressRoadmap/>
       <GVabout/>
       <GVamenities/>
       <GVLocationMapSection/>

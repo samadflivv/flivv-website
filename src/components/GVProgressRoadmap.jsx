@@ -1,3 +1,4 @@
+'use client';
 import React, { useMemo } from 'react'
 import useSWR from 'swr'
 import { motion, AnimatePresence } from 'framer-motion'

@@ -42,139 +42,102 @@ const GVamenities = () => {
     }
   ];
 
-  useEffect(() => {
-    // Desktop animations
-    if (containerRef.current && cardsRef.current.length) {
-      const cards = cardsRef.current;
-      const container = containerRef.current;
-      
-      // Set initial positions for cards
-      gsap.set(cards, {
-        y: index => 300 + (index * 500),
-        scale: index => 1 - (0.05 * index),
-        zIndex: index => cards.length - index,
-        opacity: 1,
-      });
-      
-      // Create timeline for scroll animations
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: "+=400%",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          markers: false,
-        }
-      });
-      
-      // Animation for Card 1 to stick at top
-      tl.to(cards[0], {
-        y: 0,
-        scale: 1,
-        zIndex: 3,
-        duration: 0.5
-      }, 0);
-      
-      // Animation for Card 2 to come over Card 1
-      tl.to(cards[0], {
-        scale: 0.95,
-        y: -40,
-        zIndex: 3,
-        duration: 1
-      }, 0.5);
-      
-      tl.to(cards[1], {
-        y: 0,
-        scale: 1,
-        zIndex: 4,
-        duration: 1
-      }, 0.5);
-      
-      // Animation for Card 3 to come over Card 2
-      tl.to(cards[0], {
-        scale: 0.9,
-        y: -80,
-        zIndex: 2,
-        duration: 1
-      }, 1.5);
-      
-      tl.to(cards[1], {
-        scale: 0.95,
-        y: -40,
-        zIndex: 3,
-        duration: 1
-      }, 1.5);
-      
-      tl.to(cards[2], {
-        y: 0,
-        scale: 1,
-        zIndex: 4,
-        duration: 1
-      }, 1.5);
-      
-      // Animation for Card 4 to come over Card 3
-      tl.to(cards[0], {
-        scale: 0.85,
-        y: -120,
-        zIndex: 1,
-        duration: 1
-      }, 2.5);
-      
-      tl.to(cards[1], {
-        scale: 0.9,
-        y: -80,
-        zIndex: 2,
-        duration: 1
-      }, 2.5);
-      
-      tl.to(cards[2], {
-        scale: 0.95,
-        y: -40,
-        zIndex: 3,
-        duration: 1
-      }, 2.5);
-      
-      tl.to(cards[3], {
-        y: 0,
-        scale: 1,
-        zIndex: 4,
-        duration: 1
-      }, 2.5);
-      
-      // Refresh ScrollTrigger after setup
-      ScrollTrigger.refresh();
-    }
+ useEffect(() => {
+  const timeouts = [];
+  let tl; // timeline reference
 
-    // Mobile animations
-    if (mobileCardsRef.current.length) {
-      mobileCardsRef.current.forEach((card, index) => {
-        gsap.fromTo(card,
-          { y: 100, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            delay: index * 0.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 80%",
-              toggleActions: "play none none none"
-            }
-          }
-        );
-      });
-      
-      // Refresh ScrollTrigger after setup
-      ScrollTrigger.refresh();
-    }
+  // Desktop animations
+  if (containerRef.current && cardsRef.current.length) {
+    const cards = cardsRef.current;
+    const container = containerRef.current;
     
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+    gsap.set(cards, {
+      y: index => 300 + (index * 500),
+      scale: index => 1 - (0.05 * index),
+      zIndex: index => cards.length - index,
+      opacity: 1,
+    });
+    
+    tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top top",
+        end: "+=400%",
+        scrub: 1,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+        markers: false,
+      }
+    });
+    
+    // existing anim steps (same as you had)
+    tl.to(cards[0], { y: 0, scale: 1, zIndex: 3, duration: 0.5 }, 0);
+    tl.to(cards[0], { scale: 0.95, y: -40, zIndex: 3, duration: 1 }, 0.5);
+    tl.to(cards[1], { y: 0, scale: 1, zIndex: 4, duration: 1 }, 0.5);
+    tl.to(cards[0], { scale: 0.9, y: -80, zIndex: 2, duration: 1 }, 1.5);
+    tl.to(cards[1], { scale: 0.95, y: -40, zIndex: 3, duration: 1 }, 1.5);
+    tl.to(cards[2], { y: 0, scale: 1, zIndex: 4, duration: 1 }, 1.5);
+    tl.to(cards[0], { scale: 0.85, y: -120, zIndex: 1, duration: 1 }, 2.5);
+    tl.to(cards[1], { scale: 0.9, y: -80, zIndex: 2, duration: 1 }, 2.5);
+    tl.to(cards[2], { scale: 0.95, y: -40, zIndex: 3, duration: 1 }, 2.5);
+    tl.to(cards[3], { y: 0, scale: 1, zIndex: 4, duration: 1 }, 2.5);
+
+    // Basic refresh (immediate)
+    ScrollTrigger.refresh();
+
+    // Additional refreshes after slight delays to catch async layout changes
+    timeouts.push(setTimeout(() => ScrollTrigger.refresh(), 120));
+    timeouts.push(setTimeout(() => ScrollTrigger.refresh(), 600));
+    timeouts.push(setTimeout(() => ScrollTrigger.refresh(), 1200));
+  }
+
+  // Mobile animations
+  if (mobileCardsRef.current.length) {
+    mobileCardsRef.current.forEach((card, index) => {
+      gsap.fromTo(card,
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          delay: index * 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+    });
+
+    timeouts.push(setTimeout(() => ScrollTrigger.refresh(), 200));
+  }
+
+  // refresh on load/resize (keeps things stable if images/fonts finish loading or viewport size changes)
+  const onLoad = () => ScrollTrigger.refresh();
+  const onResize = () => ScrollTrigger.refresh();
+  window.addEventListener('load', onLoad, { passive: true });
+  window.addEventListener('resize', onResize, { passive: true });
+
+  return () => {
+    // kill triggers & timeline
+    if (tl && tl.scrollTrigger) {
+      try { tl.kill(); } catch (e) {}
+    }
+    ScrollTrigger.getAll().forEach(trigger => {
+      try { trigger.kill(); } catch (e) {}
+    });
+
+    // cleanup timeouts & listeners
+    timeouts.forEach(t => clearTimeout(t));
+    window.removeEventListener('load', onLoad);
+    window.removeEventListener('resize', onResize);
+  }
+}, []);
+
+
 
   return (
     <div className="w-full bg-black min-h-screen">

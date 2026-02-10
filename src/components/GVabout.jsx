@@ -8,9 +8,9 @@ export default function GVabout() {
   return (
     <section className="w-full py-30 px-6 md:px-24 font-sans bg-white text-[#0a0a0a]">
 
-      <div>
+      {/* <div>
         <GVProgressRoadmap/>
-      </div>
+      </div> */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-15">
         {/* Text Section */}
         <div>
