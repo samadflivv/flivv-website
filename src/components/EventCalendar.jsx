@@ -960,6 +960,7 @@ function AddEditEventModal({ isOpen, onClose, onSave, mode = 'add', initialData 
                   <option value="Sales Meet">Sales Meet</option>
                   <option value="Sales Session">Sales Session</option>
                   <option value="Event">Event</option>
+                  <option value="Meet & Greet">Meet & Greet</option>
                 </select>
               </div>
 

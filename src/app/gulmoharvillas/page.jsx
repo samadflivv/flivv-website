@@ -23,7 +23,7 @@ const page = () => {
       <GVgallery/>
       <GVFaqs/>
       <Footer/>
-    </div>
+    </div> 
   )
 }
 
