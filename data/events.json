@@ -1075,25 +1075,6 @@
     "capacity": ""
   },
   {
-    "title": "Sales Meet Gulmohar Villas",
-    "description": "1:1 Sales Meet",
-    "start": "2026-02-15T04:30:00.000Z",
-    "end": "2026-02-15T12:30:00.000Z",
-    "country": "India",
-    "countryLabel": "Hyderabad",
-    "city": "Hyderabad",
-    "venue": "Gulmohar Villas, Shadnagar",
-    "type": "SalesSession",
-    "tags": [],
-    "rsvpUrl": "https://flivvdevelopers.com/gulmoharvillas",
-    "organizer": "Flivv",
-    "id": "evt-1768561785556-lqkwmbui9",
-    "createdAt": "2026-01-16T11:09:45.556Z",
-    "updatedAt": "2026-01-28T10:50:06.504Z",
-    "isPublished": true,
-    "capacity": ""
-  },
-  {
     "title": "Sales Meet at Hyatt Place",
     "description": "Join us for dinner along with Premium Investment Options",
     "start": "2026-01-17T14:30:00.000Z",
