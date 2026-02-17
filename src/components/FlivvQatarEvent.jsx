@@ -574,7 +574,7 @@ useEffect(() => {
                      <div className="text-gray-600 text-sm">Years of Experience</div>
                    </div>
                    <div className="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-gray-800 hover:shadow-xl transition-shadow">
-                     <div className="text-4xl font-bold text-gray-800 mb-2">07</div>
+                     <div className="text-4xl font-bold text-gray-800 mb-2">08</div>
                      <div className="text-gray-600 text-sm">Projects</div>
                    </div>
                  </div>

@@ -383,7 +383,7 @@ export default function MuscatConclave() {
                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Years of Trust</span>
                    </div>
                    <div>
-                       <span className="block text-4xl lg:text-5xl font-black text-white">07</span>
+                       <span className="block text-4xl lg:text-5xl font-black text-white">08</span>
                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">Projects</span>
                    </div>
                    <div>
