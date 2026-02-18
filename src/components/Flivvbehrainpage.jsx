@@ -336,7 +336,7 @@ const AboutFlivv = () => {
                         <div className="grid grid-cols-2 gap-8 mt-12 pt-12 border-t border-white/10">
                             <div>
                                 <Building2 className="text-[#D4AF37] mb-3" size={28} />
-                                <h4 className="text-white text-xl font-serif">08 Projects</h4>
+                                <h4 className="text-white text-xl font-serif">07 Projects</h4>
                                 <p className="text-sm text-gray-500">Under Portfolio</p>
                             </div>
                             <div>

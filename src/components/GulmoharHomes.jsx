@@ -1160,7 +1160,7 @@ useEffect(() => {
 
               <div className="grid grid-cols-2 gap-6 lg:mb-12">
                 {[
-                  { label: 'Projects', value: '08' },
+                  { label: 'Projects', value: '07' },
                   { label: 'Years Experience', value: '14+' },
                   { label: 'Growing Customers', value: '500+' },
                   { label: 'Satisfaction Rate', value: '100%' }
