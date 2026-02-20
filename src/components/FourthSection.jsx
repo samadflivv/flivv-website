@@ -140,7 +140,7 @@ const FourthSection = () => {
           <div className="space-y-4 shadow-md rounded-xl p-4">
             <div className="relative w-full h-72 sm:h-90">
               <Image
-                src="/consultation.jpeg"
+                src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/LW0A7843.jpg"
                 alt="Modern Elegance"
                 layout="fill"
                 objectFit="cover"
@@ -157,7 +157,7 @@ const FourthSection = () => {
             </div>
             <div className="relative w-full h-72 sm:h-90">
               <Image
-                src="/DSC00693.JPG"
+                src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/LW0A7181.jpg"
                 alt="Inspired Spaces"
                 layout="fill"
                 objectFit="cover"
