@@ -189,8 +189,8 @@ const AccordionItem = ({ item, isOpen, onClick, index }) => {
             }}
             className="overflow-hidden"
           >
-            <div className="pb-8 pl-14 md:pl-20 pr-8">
-              <p className="text-base md:text-lg text-gray-400 font-light leading-loose max-w-3xl">
+            <div className="pb-8 pl-14 md:pl-20 pr-4 lg:pr-8">
+              <p className="text-base text-justify md:text-lg text-gray-400 font-light leading-loose max-w-3xl">
                 {item.answer}
               </p>
             </div>
