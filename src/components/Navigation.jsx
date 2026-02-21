@@ -108,6 +108,8 @@ export default function Navigation() {
 
         <li><Link href="/contact">Contact</Link></li>
 
+        <li><Link href="/faqs">Faq's</Link></li>
+
 
         {/* International Events Dropdown (new) */}
         <li className="relative group">         
@@ -226,6 +228,12 @@ export default function Navigation() {
         <li>
           <Link href="/contact" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">
             Contact
+          </Link>
+        </li>
+
+        <li>
+          <Link href="/faqs" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">
+            Faq's
           </Link>
         </li>
 
