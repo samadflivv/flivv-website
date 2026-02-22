@@ -48,6 +48,12 @@ const FAQS_DATA = [
     answer:
       "We understand that skepticism exists due to past industry malpractices. However, we believe trust is built through transparency, compliance, and consistent delivery. Our approach includes: HMDA-approved and regulation-compliant projects, Clearly defined development norms, Transparent documentation and accessible data, Strong digital presence for open communication, Ethical selling practices. For example, in projects like Gulmohar Villas, we maintained strict development standards, including mandatory garden spaces, to ensure quality community living. This clarity and discipline contributed to its strong response and rapid sales. We encourage investors to conduct due diligence, visit our office, review documentation, and make informed decisions. Healthy skepticism is natural but informed trust is essential for any investment journey. Ultimately, real estate requires both due diligence and conviction. We are committed to delivering responsibly and building long-term credibility through action, not just words.",
   },
+  {
+    id: "faq-7",
+    question: "Do you provide maintenance or long-term project upkeep after investors purchase plots?",
+    answer:
+      "Yes. Unlike many developers who maintain projects for only a limited period, we continue maintaining our ventures until a functioning community develops. This includes: Regular upkeep of plots and common areas, Ongoing site maintenance and operational support, ensuring the project remains clean, accessible, and presentable. Our goal is to protect the value of customerss’ assets until the community becomes self-sustaining.",
+  },
 ];
 
 // --- 2. UTILITY COMPONENTS ---
