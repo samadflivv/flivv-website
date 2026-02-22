@@ -150,7 +150,7 @@ const AccordionItem = ({ item, isOpen, onClick, index }) => {
         onClick={onClick}
         className="w-full py-8 px-4 md:px-8 flex items-start md:items-center justify-between text-left focus:outline-none"
       >
-        <div className="flex items-baseline gap-6">
+        <div className="flex items-baseline lg:gap-6 gap-4">
            <span className={`font-mono text-xs text-white/30 transition-colors duration-300 ${isOpen ? "text-emerald-400/60" : ""}`}>
                 0{index + 1}
            </span>
@@ -189,7 +189,7 @@ const AccordionItem = ({ item, isOpen, onClick, index }) => {
             }}
             className="overflow-hidden"
           >
-            <div className="pb-8 pl-14 md:pl-20 pr-4 lg:pr-8">
+            <div className="pb-8 pl-10 md:pl-20 pr-6 lg:pr-8">
               <p className="text-base text-justify md:text-lg text-gray-400 font-light leading-loose max-w-3xl">
                 {item.answer}
               </p>
