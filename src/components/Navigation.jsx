@@ -108,7 +108,7 @@ export default function Navigation() {
 
         <li><Link href="/contact">Contact</Link></li>
 
-        <li><Link href="/faqs">Faq's</Link></li>
+        <li><Link href="/faqs">FAQ's</Link></li>
 
 
         {/* International Events Dropdown (new) */}
@@ -233,7 +233,7 @@ export default function Navigation() {
 
         <li>
           <Link href="/faqs" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">
-            Faq's
+            FAQ's
           </Link>
         </li>
 
