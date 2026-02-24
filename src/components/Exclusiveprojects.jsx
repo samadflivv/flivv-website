@@ -47,16 +47,16 @@ const projectsData = [
     href: "/airporttown",
     priority: false
   },
-  {
-    id: 3,
-    title: "Sadhana City",
-    location: "Veldanda, Kalwakurthy",
-    imageKey: "SadhanaCity1",
-    description: "DTCP-approved gated community near Regional Ring Road.",
-    hasBadge: false,
-    href: "#",
-    priority: false
-  },
+  // {
+  //   id: 3,
+  //   title: "Sadhana City",
+  //   location: "Veldanda, Kalwakurthy",
+  //   imageKey: "SadhanaCity1",
+  //   description: "DTCP-approved gated community near Regional Ring Road.",
+  //   hasBadge: false,
+  //   href: "#",
+  //   priority: false
+  // },
   {
     id: 4,
     title: "Gulmohar Villas",
@@ -67,16 +67,16 @@ const projectsData = [
     hasBadge: false,
     priority: true
   },
-  {
-    id: 5,
-    title: "Rivendell Farms",
-    location: "Thimmajipet, Jadcherla",
-    imageKey: "RivendellRFS2",
-    description: "Premium farmland project with sustainable living concept.",
-    href: "/rivendellfarms",
-    hasBadge: false,
-    priority: true
-  }
+  // {
+  //   id: 5,
+  //   title: "Rivendell Farms",
+  //   location: "Thimmajipet, Jadcherla",
+  //   imageKey: "RivendellRFS2",
+  //   description: "Premium farmland project with sustainable living concept.",
+  //   href: "/rivendellfarms",
+  //   hasBadge: false,
+  //   priority: true
+  // }
 ];
 
 const Exclusiveprojects = () => {
