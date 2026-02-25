@@ -101,7 +101,7 @@ const FourthSection = () => {
           Understanding Your Investment Concerns
         </h1>
         <h2 className="text-base sm:text-xl font-normal text-gray-600 tracking-tight mt-5">
-          With over 12+ years in the business, we understand what it takes to build trust among our stakeholders.
+          With over 14+ years in the business, we understand what it takes to build trust among our stakeholders.
         </h2>
 
         {/* Cards Section */}
