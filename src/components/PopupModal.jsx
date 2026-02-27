@@ -43,7 +43,7 @@ const PopupModal = () => {
         {/* Left Image - hidden on mobile */}
         <div className="hidden md:block w-1/2 h-full">
           <img
-            src="/popup-img-2.jpeg"
+            src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Gemini_Generated_Image_sh2ufesh2ufesh2u.png"
             alt="Popup Visual"
             className="w-full h-150 object-cover"
           />

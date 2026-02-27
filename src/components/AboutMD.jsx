@@ -240,11 +240,6 @@ const AboutUs = () => {
             </div>
           </div>
         </motion.div>
-
-        {/* Floating Decorative Elements */}
-        <div className="fixed top-20 left-5 w-4 h-4 bg-blue-400 rounded-full opacity-20 pointer-events-none"></div>
-        <div className="fixed bottom-20 right-5 w-6 h-6 bg-purple-400 rounded-full opacity-20 pointer-events-none"></div>
-        <div className="fixed top-1/2 left-10 w-2 h-2 bg-green-400 rounded-full opacity-20 pointer-events-none"></div>
       </div>
     </div>
   );
