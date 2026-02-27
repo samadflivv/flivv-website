@@ -101,8 +101,8 @@ const Exclusiveprojects = () => {
       <div className="px-4 sm:px-8 md:px-20 py-12 bg-white" id="projects">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-10">
           <div className="flex-1">
-            <h2 className="text-sm md:text-base font-semibold text-gray-600 tracking-wider mb-1">Featured Developments</h2>
-            <h1 className="text-3xl md:text-5xl font-normal text-gray-800 leading-tight">Our Projects</h1>
+            <h2 className="text-sm md:text-base font-semibold text-gray-600 tracking-wider mb-1">Nearby Bangalore Highway</h2>
+            <h1 className="text-3xl md:text-5xl font-normal text-gray-800 leading-tight">Actively Running Projects</h1>
           </div>
 
           <div className="mt-6 lg:mt-0">

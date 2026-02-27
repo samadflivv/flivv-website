@@ -123,7 +123,7 @@ const FaqSection = () => {
         
         {/* Left Section */}
         <div className="flex-1">
-          <h2 className="text-sm font-medium text-black uppercase mb-2">FAQs</h2>
+          <h2 className="text-sm font-medium text-black uppercase mb-2">FAQ's</h2>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal leading-tight tracking-tight">
             Everything You Need to <br className="hidden sm:block" /> Know About Flivv
           </h1>
