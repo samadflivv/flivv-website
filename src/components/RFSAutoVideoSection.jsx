@@ -142,6 +142,8 @@ useEffect(() => {
           muted
           loop
           playsInline
+          controls
+          controlsList="nodownload"
           preload="none"
           onLoadedData={handleVideoLoad}
           style={{
