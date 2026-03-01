@@ -113,22 +113,23 @@
     "isPublished": true
   },
   {
-    "title": "Sales Meet Doha ",
-    "description": "1:1 Sales Meet",
-    "start": "2026-03-06T09:30:00.000Z",
-    "end": "2026-03-06T17:30:00.000Z",
+    "title": "Flivv's Iftar Event, Doha",
+    "description": "Join us for Iftar at Layali Al Falak",
+    "start": "2026-03-06T12:00:00.000Z",
+    "end": "2026-03-06T14:30:00.000Z",
     "country": "QA",
     "countryLabel": "Qatar",
     "city": "Doha",
-    "venue": "Holiday Inn Business Park",
-    "type": "SalesSession",
+    "venue": "Layali Al Falak, Crowne Plaza, The Business Park",
+    "type": "Iftar",
     "tags": [],
     "rsvpUrl": "https://flivvdevelopers.com/flivvqatarevent",
     "organizer": "Flivv",
     "id": "evt-1767432871181-mf2mgsnol",
     "createdAt": "2026-01-03T09:34:31.181Z",
-    "updatedAt": "2026-01-03T09:34:31.181Z",
-    "isPublished": true
+    "updatedAt": "2026-03-01T10:53:55.998Z",
+    "isPublished": true,
+    "capacity": ""
   },
   {
     "title": "Sales Meet Doha",
@@ -1127,6 +1128,25 @@
     "id": "evt-1770800151098-wf7n7bs4j",
     "createdAt": "2026-02-11T08:55:51.098Z",
     "updatedAt": "2026-02-11T09:27:15.901Z",
+    "isPublished": true,
+    "capacity": ""
+  },
+  {
+    "title": "Flivv's Suhoor Event, Doha",
+    "description": "Join us for Suhoor at Layali Al Falak",
+    "start": "2026-03-07T15:30:00.000Z",
+    "end": "2026-03-07T20:30:00.000Z",
+    "country": "QA",
+    "countryLabel": "Qatar",
+    "city": "Doha",
+    "venue": "Layali Al Falak, Crowne Plaza, The Business Park",
+    "type": "Suhoor",
+    "tags": [],
+    "rsvpUrl": "https://flivvdevelopers.com/flivvqatarevent",
+    "organizer": "Flivv",
+    "id": "evt-1772362332864-42iz6dfdt",
+    "createdAt": "2026-03-01T10:52:12.864Z",
+    "updatedAt": "2026-03-01T11:00:19.508Z",
     "isPublished": true,
     "capacity": ""
   }
