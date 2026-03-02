@@ -267,22 +267,18 @@ useEffect(() => {
             ))}
           </motion.div> */}
 
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           >
               <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent mx-auto"></div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
    
 
-      {/* ========================================
-        2. LOCATION / VENUE SECTION (Image removed, Map placeholder added)
-        ========================================
-      */}
     
 
 
