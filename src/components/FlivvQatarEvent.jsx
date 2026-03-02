@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'; 
 import Footer from './Footer';
+import UpcomingEventsHero from './UpcomingEventsHero';
 
 
 // --- DATA CONSTANTS ---
@@ -184,6 +185,12 @@ useEffect(() => {
 
       `}</style>
 
+
+
+        <UpcomingEventsHero/>
+
+
+
       {/* ========================================
         1. HERO SECTION (Schedule is now here)
         ========================================
@@ -276,75 +283,7 @@ useEffect(() => {
         2. LOCATION / VENUE SECTION (Image removed, Map placeholder added)
         ========================================
       */}
-      {/* <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-12 items-center max-w-6xl mx-auto">
-            
-            <motion.div 
-              className="lg:w-1/2"
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <h4 className="text-[#8A1538] font-bold tracking-wider uppercase mb-3 text-sm">The Venue</h4>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-                Crowne Plaza Doha,<br/>The Business Park
-              </h2>
-              
-              <div className="flex flex-col gap-6">
-                <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                  <div className="bg-[#8A1538]/10 p-3 rounded-full text-[#8A1538]">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">Location</h3>
-                    <p className="text-gray-600">Crowne Plaza Doha - The Business Park</p>
-                    <p className="text-gray-500 text-sm">Airport Road, Doha, Qatar</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                  <div className="bg-[#8A1538]/10 p-3 rounded-full text-[#8A1538]">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">Date & Time</h3>
-                    <p className="text-gray-600">November 28th - 29th, 2025</p>
-                    <p className="text-gray-500 text-sm">04:00 PM - 10:00 PM</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            
-            <motion.div 
-              className="lg:w-1/2 w-full"
-              variants={scaleIn}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl lg:h-[500px] bg-gray-100 border-4 border-[#8A1538]">
-                <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center">
-                  <svg className="w-20 h-20 text-[#8A1538] mb-4 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 font-serif">View Venue on Map</h3>
-                  <p className="text-gray-600 mb-6 max-w-xs">Click below to get directions to Crowne Plaza Doha - The Business Park.</p>
-                  <a 
-                    href="https://www.google.com/maps/search/Crowne+Plaza+Doha+-+The+Business+Park/@25.263884,51.527357,15z" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-block bg-[#8A1538] text-white py-3 px-8 rounded-full font-semibold shadow-lg hover:bg-[#6A102B] transition-colors"
-                  >
-                    Get Directions
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </section> */}
+    
 
 
    {/* ========================================
