@@ -113,7 +113,7 @@
     "isPublished": true
   },
   {
-    "title": "Flivv's Iftar Event, Doha",
+    "title": "Flivv Iftar Event, Doha",
     "description": "Join us for Iftar at Layali Al Falak",
     "start": "2026-03-06T12:00:00.000Z",
     "end": "2026-03-06T14:30:00.000Z",
@@ -127,7 +127,7 @@
     "organizer": "Flivv",
     "id": "evt-1767432871181-mf2mgsnol",
     "createdAt": "2026-01-03T09:34:31.181Z",
-    "updatedAt": "2026-03-01T10:53:55.998Z",
+    "updatedAt": "2026-03-03T09:09:06.147Z",
     "isPublished": true,
     "capacity": ""
   },
@@ -1132,7 +1132,7 @@
     "capacity": ""
   },
   {
-    "title": "Flivv's Suhoor Event, Doha",
+    "title": "Flivv Suhoor Event, Doha",
     "description": "Join us for Suhoor at Layali Al Falak",
     "start": "2026-03-07T15:30:00.000Z",
     "end": "2026-03-07T20:30:00.000Z",
@@ -1146,7 +1146,45 @@
     "organizer": "Flivv",
     "id": "evt-1772362332864-42iz6dfdt",
     "createdAt": "2026-03-01T10:52:12.864Z",
-    "updatedAt": "2026-03-01T11:00:19.508Z",
+    "updatedAt": "2026-03-03T09:09:16.432Z",
+    "isPublished": true,
+    "capacity": ""
+  },
+  {
+    "title": "Flivv Sales Event ( Eid Ul-Fitr )",
+    "description": "Join us for Eid Ul-Fitr Event at Hyatt Place",
+    "start": "2026-03-21T12:30:00.000Z",
+    "end": "2026-03-21T17:00:00.000Z",
+    "country": "India",
+    "countryLabel": "Hyderabad",
+    "city": "Hyderabad",
+    "venue": "Hyatt Place - Hyderabad Banjara Hills",
+    "type": "Sales Meet",
+    "tags": [],
+    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
+    "organizer": "Flivv",
+    "id": "evt-1772528631404-q2pw6h5fm",
+    "createdAt": "2026-03-03T09:03:51.404Z",
+    "updatedAt": "2026-03-03T09:08:53.077Z",
+    "isPublished": true,
+    "capacity": ""
+  },
+  {
+    "title": "Gala Meet at Gulmohar Homes",
+    "description": "Join us at Gulmohar Homes for our Gala Meet",
+    "start": "2026-03-23T04:30:00.000Z",
+    "end": "2026-03-23T12:30:00.000Z",
+    "country": "India",
+    "countryLabel": "Hyderabad",
+    "city": "Hyderabad",
+    "venue": "Gulmohar Homes, Shadnagar",
+    "type": "Sales Meet",
+    "tags": [],
+    "rsvpUrl": "https://flivvdevelopers.com/gulmoharhomes",
+    "organizer": "Flivv",
+    "id": "evt-1772530163058-3r32djl3y",
+    "createdAt": "2026-03-03T09:29:23.059Z",
+    "updatedAt": "2026-03-03T09:29:50.275Z",
     "isPublished": true,
     "capacity": ""
   }
