@@ -65,9 +65,9 @@ export default function EventFormPage() {
       
       {/* Main Content */}
       <div className="min-h-screen bg-gradient-to-b from-blue-500  flex items-center justify-center px-4 py-40 ">
-        <div className="max-w-xl w-full bg-white rounded-2xl shadow-md border border-gray-100">
+        <div className="max-w-2xl w-full bg-white rounded-2xl shadow-md border border-gray-100">
           {/* Header */}
-          <div className="text-center pl-2 pr-2 pt-10">
+          <div className="text-center pl-4 pr-4 pt-10">
             <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
               Join us for our Eid Ul-Fitr Event featuring Premium Investment Options
             </h1>
