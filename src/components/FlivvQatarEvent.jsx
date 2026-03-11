@@ -187,7 +187,7 @@ useEffect(() => {
 
 
 
-        <UpcomingEventsHero/>
+        {/* <UpcomingEventsHero/> */}
 
 
 
