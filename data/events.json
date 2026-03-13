@@ -1153,8 +1153,8 @@
   {
     "title": "Flivv Sales Event ( Eid Ul-Fitr )",
     "description": "Join us for Eid Ul-Fitr Event at Hyatt Place",
-    "start": "2026-03-21T12:30:00.000Z",
-    "end": "2026-03-21T17:00:00.000Z",
+    "start": "2026-03-28T12:30:00.000Z",
+    "end": "2026-03-28T17:00:00.000Z",
     "country": "India",
     "countryLabel": "Hyderabad",
     "city": "Hyderabad",
@@ -1165,7 +1165,7 @@
     "organizer": "Flivv",
     "id": "evt-1772528631404-q2pw6h5fm",
     "createdAt": "2026-03-03T09:03:51.404Z",
-    "updatedAt": "2026-03-03T09:08:53.077Z",
+    "updatedAt": "2026-03-13T08:38:44.663Z",
     "isPublished": true,
     "capacity": ""
   },
