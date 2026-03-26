@@ -69,7 +69,7 @@ export default function EventFormPage() {
           {/* Header */}
           <div className="text-center pl-4 pr-4 pt-10">
             <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
-              Join us for Sales Meet - featuring Premium Investment Options, happening in Hyatt Place
+              Join us for Sales Meet - Featuring Premium Investment Options, Happening in Hyatt Place
             </h1>
             <p className="text-lg font-semibold text-gray-600">
               Venue: Hyatt Place - Hyderabad Banjara Hills
