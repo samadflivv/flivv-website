@@ -1151,8 +1151,8 @@
     "capacity": ""
   },
   {
-    "title": "Flivv Sales Event ( Eid Ul-Fitr )",
-    "description": "Join us for Eid Ul-Fitr Event at Hyatt Place",
+    "title": "Sales Meet at Hyatt Place",
+    "description": "Join us for Sales Meet at Hyatt Place",
     "start": "2026-03-28T12:30:00.000Z",
     "end": "2026-03-28T17:00:00.000Z",
     "country": "India",
@@ -1165,7 +1165,7 @@
     "organizer": "Flivv",
     "id": "evt-1772528631404-q2pw6h5fm",
     "createdAt": "2026-03-03T09:03:51.404Z",
-    "updatedAt": "2026-03-13T08:38:44.663Z",
+    "updatedAt": "2026-03-26T10:27:37.985Z",
     "isPublished": true,
     "capacity": ""
   },
@@ -1188,8 +1188,8 @@
     "isPublished": true
   },
   {
-    "title": "Gala Meet at Gulmohar Villas",
-    "description": "Join us at Gulmohar Villas",
+    "title": "Sales Meet at Gulmohar Homes",
+    "description": "Join us at Gulmohar Homes",
     "start": "2026-03-29T04:30:00.000Z",
     "end": "2026-03-29T12:30:00.000Z",
     "country": "India",
@@ -1198,11 +1198,11 @@
     "venue": "Gulmohar Homes, Shadnagar",
     "type": "Sales Meet",
     "tags": [],
-    "rsvpUrl": "https://flivvdevelopers.com/gulmoharvillas",
+    "rsvpUrl": "https://flivvdevelopers.com/gulmoharhomes",
     "organizer": "Flivv",
     "id": "evt-1773307862537-jinbvm4ro",
     "createdAt": "2026-03-12T09:31:02.537Z",
-    "updatedAt": "2026-03-12T09:31:21.724Z",
+    "updatedAt": "2026-03-26T10:28:14.356Z",
     "isPublished": true,
     "capacity": ""
   }
