@@ -1205,5 +1205,43 @@
     "updatedAt": "2026-03-26T10:28:14.356Z",
     "isPublished": true,
     "capacity": ""
+  },
+  {
+    "title": "Sales Meet at Hyatt Place",
+    "description": "Join us for dinner along with Premium Investment Options",
+    "start": "2026-04-04T11:30:00.000Z",
+    "end": "2026-04-04T17:30:00.000Z",
+    "country": "India",
+    "countryLabel": "Hyderabad",
+    "city": "Hyderabad",
+    "venue": "Hyatt Place - Banjara Hills",
+    "type": "Sales Meet",
+    "tags": [],
+    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
+    "organizer": "Flivv",
+    "id": "evt-1775123097765-wc1r9idpv",
+    "createdAt": "2026-04-02T09:44:57.765Z",
+    "updatedAt": "2026-04-02T09:46:40.269Z",
+    "isPublished": true,
+    "capacity": ""
+  },
+  {
+    "title": "Sales Meet at Airport Town",
+    "description": "1:1 Sales Meet",
+    "start": "2026-04-05T04:30:00.000Z",
+    "end": "2026-04-05T12:30:00.000Z",
+    "country": "India",
+    "countryLabel": "Hyderabad",
+    "city": "Shadnagar",
+    "venue": "Airport Town, Kothur",
+    "type": "Sales Meet",
+    "tags": [],
+    "rsvpUrl": "https://flivvdevelopers.com/airporttown",
+    "organizer": "Flivv",
+    "id": "evt-1775123742441-uvpqnpamc",
+    "createdAt": "2026-04-02T09:55:42.441Z",
+    "updatedAt": "2026-04-02T09:58:08.356Z",
+    "isPublished": true,
+    "capacity": ""
   }
 ]
