@@ -1375,24 +1375,6 @@
     "isPublished": true
   },
   {
-    "title": "Sales Meet at Hyatt Place",
-    "description": "Join us for dinner along with Premium Investment Options",
-    "start": "2026-05-23T11:30:00.000Z",
-    "end": "2026-05-23T17:30:00.000Z",
-    "country": "India",
-    "countryLabel": "Hyderabad",
-    "city": "Hyderabad",
-    "venue": "Hyatt Place - Banjara Hills",
-    "type": "Sales Meet",
-    "tags": [],
-    "rsvpUrl": "http://flivvdevelopers.com/eventsform",
-    "organizer": "Flivv",
-    "id": "evt-1777817238024-e5r0bgrqd",
-    "createdAt": "2026-05-03T14:07:18.024Z",
-    "updatedAt": "2026-05-03T14:07:18.024Z",
-    "isPublished": true
-  },
-  {
     "title": "Sales Meet Gulmohar Homes",
     "description": "1:1 Sales Meet\n",
     "start": "2026-05-10T04:30:00.000Z",
