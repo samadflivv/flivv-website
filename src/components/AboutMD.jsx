@@ -194,12 +194,6 @@ const AboutUs = () => {
                     >
                       <div className="font-bold text-white">Grant Cardone</div>
                     </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="px-6 py-4 bg-white/10 rounded-2xl backdrop-blur-sm"
-                    >
-                      <div className="font-bold text-white">Jordan Belfort</div>
-                    </motion.div>
                   </div>
                 </div>
               </motion.div>
