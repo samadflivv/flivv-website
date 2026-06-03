@@ -6,12 +6,14 @@ import FlivvConnectBanner from "@/components/FlivvConnectBanner";
 import Footer from "@/components/Footer";
 import FourthSection from "@/components/FourthSection";
 import Herosection from "@/components/Herosection";
+import Navigation from "@/components/Navigation";
 import ProjectAccordion from "@/components/ProjectAccordion";
 import StatisticsSection from "@/components/StatisticsSection";
 
 export default function Home() {
   return (
     <main>
+      <Navigation />
       <Herosection />
       <Aboutsection/>
       <Exclusiveprojects/>

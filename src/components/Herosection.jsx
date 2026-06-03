@@ -1,53 +1,67 @@
-import React from 'react';
-import Navigation from '@/components/Navigation';
-import { Button } from '@/components/button';
+'use client';
 
-const Herosection = () => {
+import { useEffect, useRef } from 'react';
+
+export default function Herosection() {
+  const SRC =
+    'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Video%20Project%201.mp4';
+
+  const videoRef = useRef(null);
+  const videoWrapperRef = useRef(null);
+
+  // Play with audio on mount
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // ✅ React's `muted` JSX prop is buggy — set it via DOM ref
+    // otherwise the browser sees it as unmuted and blocks autoplay entirely
+    video.muted = true;
+
+    video.play()
+      .then(() => {
+        // Playing (muted) — unmute immediately for audio
+        video.muted = true;
+        video.volume = 1;
+      })
+      .catch(() => {
+        // Browser still blocked — video stays muted/silent
+      });
+  }, []);
+
+  // Pause when scrolled out, resume when back in view
+  useEffect(() => {
+    const wrapper = videoWrapperRef.current;
+    const video = videoRef.current;
+    if (!wrapper || !video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(wrapper);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <header>
-      <div className="relative bg-[url('/hero-img-2.jpg')] bg-cover bg-center sm:h-screen m-3 rounded-xl overflow-hidden pt-35 pb-15 sm:pt-0 sm:pb-0">
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10" />
-
-        {/* Navigation */}
-        <div className="absolute top-0 left-0 w-full z-30">
-          <Navigation />
-        </div>
-
-        {/* Hero Content */}
-        <div className="flex flex-col justify-center h-full px-6 md:px-16 lg:px-[100px] z-20 relative gap-6">
-          <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-7xl font-normal text-white leading-tight sm:text-left">
-  Dedicated to helping you
-  <span className="hidden sm:inline"><br /></span>{" "}
-  Invest Wisely in Real Estate
-</h1>
-
-
-          <p className="text-white text-base sm:text-lg leading-relaxed text-justify sm:text-left">
-  We’re full-fledged developers and marketers of premium open plot ventures committed to
-  <span className="hidden sm:inline"><br /></span>{" "}
-  providing you with customer-driven services and expertise in real estate investments in
-  <span className="hidden sm:inline"><br /></span>{" "}
-  the growing areas around Hyderabad.
-</p>
-
-
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-            {/* <a href="/contact">
-            <Button variant="secondary" className="w-full md:w-40 rounded-full py-6 px-6 border border-black text-lg">
-              Connect With Us
-            </Button>
-            </a> */}
-            <a href="/projects">
-            <Button variant="secondary" className="w-full md:w-60 flex items-center justify-center gap-2 bg-white/10 text-white text-lg border border-white rounded-full py-6 px-6 font-semibold backdrop-blur-md hover:bg-white/20 transition-all">
-              Explore Our Projects
-            </Button>
-            </a> 
-          </div>
-        </div>
+    <section id="ATvideo" className="relative w-full overflow-hidden bg-black">
+      <div ref={videoWrapperRef} className="relative w-full h-[50vh] sm:h-screen">
+        <video
+          ref={videoRef}
+          src={SRC}
+          className="absolute inset-0 w-full h-full object-cover"
+          loop
+          playsInline
+          preload="auto"
+        />
       </div>
-    </header>
+    </section>
   );
-};
-
-export default Herosection;
+}

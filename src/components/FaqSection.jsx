@@ -105,15 +105,15 @@ const FaqSection = () => {
       answer:
         "Once you buy from us, it's not a one-time deal. We're here for you even after your purchase. And when it comes to keeping your property safe and well-maintained, you can count on us.",
     },
-    {
-      question: "What payment methods are available for your open plot ventures?",
-      answer:
-        "In real estate, payments can raise many questions and worries. To make things easier for you and ensure your comfort, we offer various payment options. You can choose to pay the full amount upfront, in installments, or through EMI.",
-    },
+    // {
+    //   question: "What payment methods are available for your open plot ventures?",
+    //   answer:
+    //     "In real estate, payments can raise many questions and worries. To make things easier for you and ensure your comfort, we offer various payment options. You can choose to pay the full amount upfront, in installments",
+    // },
     {
       question: "Why should we trust Flivv Developers?",
       answer:
-        "We believe in complete transperancy with the people we deal with. More than monetory transactions, we prioritize in maintaining healthy relations with stakeholders - business follows.",
+        "We believe in complete transparency with the people we deal with. More than monetory transactions, we prioritize in maintaining healthy relations with stakeholders - business follows.",
     },
   ];
 

@@ -8,7 +8,7 @@ const ContactHeroSection = () => {
         {/* Image Section */}
         <div className="w-full h-64 sm:h-96 md:h-full p-4">
           <img
-            src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/LW0A7960.jpg"
+            src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/contact/IMG_3286.PNG"
             alt="Green Villa"
             className="w-full lg:h-150 h-70 object-cover rounded-xl border-5"
           />

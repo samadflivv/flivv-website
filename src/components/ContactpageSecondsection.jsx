@@ -24,13 +24,6 @@ const ContactpageSecondsection = () => {
     },
     
     {
-      country: "Sadhana City",
-      city: "Veldanda, Kalwakurthy",
-      address: "DTCP-approved gated community near the Regional Ring Road and Mucherla IT Cluster, offering 100% Vastu plots with top amenities.",
-      status: ""
-    },
-    
-    {
       country: "Rivendell Farms",
       city: "Thimmajipet, Jadcherla",
       address: "A premium farmland project with 10+ amenities, sustainable living concept, exclusive memberships, and full of experience.",
