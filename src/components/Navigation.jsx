@@ -17,8 +17,7 @@ const projectsData = {
     projects: [
       { name: 'Gulmohar Villas', href: '/gulmoharvillas' },
       { name: 'Gulmohar Homes', href: '/gulmoharhomes' },
-      { name: 'Airport Town', href: '/airporttown' },
-      { name: 'Sadhana City', href: '/' }
+      { name: 'Airport Town', href: '/airporttown' }
     ]
   },
   completed: {
