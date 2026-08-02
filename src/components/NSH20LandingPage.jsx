@@ -62,6 +62,7 @@ import {
   ChevronRight,
   Image as ImageIcon,
 } from "lucide-react";
+import NSH2devprogress from "./NSH2devprogress";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -951,6 +952,9 @@ export default function NSH20LandingPage() {
           <div className="h-9 w-px" style={{ background: "currentColor", opacity: 0.5 }} />
         </div>
       </section>
+
+      {/* ============================================================ Progress */}
+      <NSH2devprogress/>
 
       {/* ======================================================= OVERVIEW */}
       <section id="overview" className="relative px-6 py-24 md:px-10 md:py-32" style={{ background: "var(--bg)" }}>

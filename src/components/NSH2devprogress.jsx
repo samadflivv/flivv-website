@@ -157,7 +157,7 @@ export default function ProgressRoadmap() {
                   </div>
 
                   {/* VISIBLE DATES */}
-                  <div className="pt-4 border-t border-slate-50 flex items-center justify-between text-[11px] font-bold text-slate-600">
+                  {/* <div className="pt-4 border-t border-slate-50 flex items-center justify-between text-[11px] font-bold text-slate-600">
                     <div className="flex flex-col gap-0.5">
                       <span className="text-[9px] text-slate-300 uppercase">Commencement</span>
                       <span className="flex items-center gap-1"><Calendar size={11} className="text-indigo-400"/> {it.start?.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
@@ -167,7 +167,7 @@ export default function ProgressRoadmap() {
                       <span className="text-[9px] text-slate-300 uppercase">Target</span>
                       <span className="flex items-center gap-1 justify-end">{it.end?.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })} <Clock size={11} className="text-indigo-400"/></span>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             )
