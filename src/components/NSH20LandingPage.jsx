@@ -640,7 +640,7 @@ const GalleryReel = ({ items, onOpen }) => {
                   <ImagePlaceholder tag={g.tag} src={g.src} tone={i % 3 === 0 ? "dark" : "surface"} aspect="aspect-[3/4]" />
                 </div>
               </div>
-              <div
+              {/* <div
                 className="flex items-end justify-between"
                 style={{
                   color: "var(--bg)",
@@ -650,7 +650,7 @@ const GalleryReel = ({ items, onOpen }) => {
                   left: 0,
                   bottom: 0,
                   right: 0,
-                  height: "50%",
+                  height: 10,
                   padding: 20,
                   fontSize: 36,
                   fontFamily: "'Fraunces'",
@@ -660,7 +660,7 @@ const GalleryReel = ({ items, onOpen }) => {
               >
                 <span>{g.tag}</span>
                 <span>{String(i + 1).padStart(2, "0")}</span>
-              </div>
+              </div> */}
             </button>
           ))}
         </div>
@@ -679,23 +679,23 @@ const GalleryReel = ({ items, onOpen }) => {
 const HERO_CHIPS = [
   { icon: Ruler, label: "4 Acres" },
   { icon: LayoutGrid, label: "54 Plots" },
-  { icon: Milestone, label: "From 165 Sq.Yd" },
-  { icon: FileCheck2, label: "DTCP T.L.P 58/2024/HRO/H1" },
+  { icon: Milestone, label: "From 165 Sq. Yd" },
+  { icon: FileCheck2, label: "DTCP T.L.P. 58/2024/HRO/H1" },
 ];
 
 const HIGHLIGHTS = [
-  { icon: LayoutGrid, title: "Infrastructure", note: "DTCP-compliant roads, drainage and utilities, built in from the start." },
-  { icon: Route, title: "Roads", note: "33 ft internal roads engineered across the full four-acre layout." },
+  { icon: LayoutGrid, title: "Infrastructure", note: "DTCP-compliant roads, drainage and utilities built into the plan." },
+  { icon: Route, title: "Roads", note: "33 ft internal BT roads engineered across the full four-acre layout." },
   { icon: MapPin, title: "Premium Location", note: "On the same highway stretch as NS Homes, near Mirkhanpet." },
-  { icon: Award, title: "Development Quality", note: "The same construction discipline that shaped NS Homes' original 11 acres." },
-  { icon: Zap, title: "Utilities", note: "Electricity, drainage, an overhead tank and a harvesting pit, planned in." },
-  { icon: Train, title: "Connectivity", note: "Minutes from Amazon Data Center, on a corridor with metro expansion underway." },
-  { icon: TreePine, title: "Green Environment", note: "Open, landscaped pockets designed into the layout, not left over." },
+  { icon: Award, title: "Developer Track Record", note: "The same team that delivered Phase 1 is on the ground again." },
+  { icon: Zap, title: "Utilities", note: "Electricity, drainage, overhead tank and harvesting provisions planned from day one." },
+  { icon: Train, title: "Connectivity", note: "Minutes from Amazon Data Center, on a corridor with clear expansion underway." },
+  { icon: TreePine, title: "Green Environment", note: "Open, landscaped pockets designed into the layout, not left as afterthoughts." },
 ];
 
 const AMENITIES = [
-  { icon: Ruler, title: "500 Ft. Facing", note: "Frontage on the same main road stretch as NS Homes." },
-  { icon: Milestone, title: "33 Ft. Roads", note: "Internal roads engineered for smooth, everyday access." },
+  { icon: Ruler, title: "500 ft. Facing", note: "Frontage on the same main road stretch as NS Homes." },
+  { icon: Milestone, title: "33 ft. Roads", note: "Internal roads engineered for smooth, everyday access." },
   { icon: LayoutGrid, title: "Compound Wall", note: "A finished boundary enclosing the full four-acre layout." },
   { icon: ShieldCheck, title: "Security", note: "A monitored, secured perimeter across the venture." },
   { icon: Zap, title: "Electricity", note: "Plot-level power connections built into the plan." },
@@ -719,18 +719,16 @@ const LOCATION_GROWTH = [
 ];
 
 const GALLERY_ITEMS = [
-  { tag: "Aerial View", src: "https://picsum.photos/seed/nsh2-aerial/900/1125", aspect: "aspect-[4/5]" },
-  { tag: "Site Entrance", src: "https://picsum.photos/seed/nsh2-entrance/900/675", aspect: "aspect-[4/3]" },
-  { tag: "Internal Roads", src: "https://picsum.photos/seed/nsh2-roads/900/675", aspect: "aspect-[4/3]" },
-  { tag: "Compound Wall", src: "https://picsum.photos/seed/nsh2-wall/900/1125", aspect: "aspect-[4/5]" },
-  { tag: "Plot Rows", src: "https://picsum.photos/seed/nsh2-plots/900/675", aspect: "aspect-[4/3]" },
-  { tag: "Survey Markers", src: "https://picsum.photos/seed/nsh2-survey/900/675", aspect: "aspect-[4/3]" },
-  { tag: "Site Progress — Oct", src: "https://picsum.photos/seed/nsh2-oct/900/1125", aspect: "aspect-[4/5]" },
-  { tag: "Site Progress — Nov", src: "https://picsum.photos/seed/nsh2-nov/900/675", aspect: "aspect-[4/3]" },
-  { tag: "Site Progress — Dec", src: "https://picsum.photos/seed/nsh2-dec/900/675", aspect: "aspect-[4/3]" },
-  { tag: "Drone Perspective", src: "https://picsum.photos/seed/nsh2-drone/900/1125", aspect: "aspect-[4/5]" },
-  { tag: "Layout Stakeout", src: "https://picsum.photos/seed/nsh2-stakeout/900/675", aspect: "aspect-[4/3]" },
-  { tag: "Boundary Wall", src: "https://picsum.photos/seed/nsh2-boundary/900/675", aspect: "aspect-[4/3]" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Screenshot%202026-08-02%20193344.png", aspect: "aspect-[4/5]" },
+  {  src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/IMG_0734-transformed-e1733912114633.jpg", aspect: "aspect-[4/3]" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/IMG_0732-e1733906468575.jpg", aspect: "aspect-[4/3]" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Gallery-0.2.jpg", aspect: "aspect-[4/5]" },
+  {  src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Gallery-0.3.jpg", aspect: "aspect-[4/3]" },
+  {  src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Gallery-0.4.jpg", aspect: "aspect-[4/3]" },
+  {  src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Gallery-0.7.jpg", aspect: "aspect-[4/5]" },
+  {  src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Gallery-0.6.jpg", aspect: "aspect-[4/3]" },
+  {  src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Gallery-0.5.jpg", aspect: "aspect-[4/3]" },
+  {  src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/ns2.jpeg", aspect: "aspect-[4/5]" },
 ];
 
 const SPEC_CARDS = [
@@ -738,53 +736,29 @@ const SPEC_CARDS = [
     icon: LayoutGrid,
     title: "Layout Specifications",
     rows: [
-      { label: "Total Area", value: "4 Acres" },
-      { label: "Total Plots", value: "54" },
-      { label: "Plot Sizes", value: "From 165 Sq.Yd" },
+      { label: "Total Land", value: "4 Acres" },
+      { label: "No. of Plots", value: "54" },
+      { label: "Plot Sizes", value: "From 165 Sq. Yd" },
+      { label: "Approval", value: "DTCP T.L.P. No. 58/2024/HRO/H1" },
     ],
   },
   {
     icon: Route,
     title: "Road Details",
     rows: [
-      { label: "Main Facing", value: "500 Ft." },
       { label: "Internal Roads", value: "33 Ft." },
+      { label: "Frontage", value: "500 Ft. on Main Road" },
     ],
   },
   {
     icon: Zap,
     title: "Infrastructure & Utilities",
     rows: [
-      { label: "Electricity", value: "Connected" },
-      { label: "Drainage", value: "Underground" },
-      { label: "Water Tank", value: "Overhead" },
-      { label: "Harvesting Pit", value: "Included" },
-    ],
-  },
-  {
-    icon: FileCheck2,
-    title: "Approvals",
-    rows: [
-      { label: "DTCP Layout", value: "T.L.P NO. 58/2024/HRO/H1" },
-      { label: "Registration", value: "Ibrahimpatnam SRO" },
-    ],
-  },
-  {
-    icon: IndianRupee,
-    title: "Investment & Payment",
-    rows: [
-      { label: "Min. Investment", value: "₹30 Lakhs" },
-      { label: "Option 1", value: "Full Payment" },
-      { label: "Option 2", value: "2 Instalments" },
-      { label: "Instalment Terms", value: "50% Upfront · Balance in 45 Days" },
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: "Development Quality",
-    rows: [
-      { label: "Boundary", value: "Compound Wall" },
-      { label: "Security", value: "Round-the-Clock" },
+      { label: "Electricity", value: "Included" },
+      { label: "Underground Drainage", value: "Included" },
+      { label: "Overhead Water Tank", value: "Included" },
+      { label: "Water Harvesting", value: "Included" },
+      { label: "Security & Maintenance", value: "Included" },
     ],
   },
 ];
@@ -944,7 +918,7 @@ export default function NSH20LandingPage() {
             style={{ color: "rgba(255,253,249,0.8)" }}
           >
             Fifty-four residential plots across four fresh acres, extending the NS Homes address
-            onto the same Srisailam–Nagarjuna Sagar highway corridor — DTCP approved and open for
+            onto the same Srisailam–Nagarjuna Sagar Highway corridor — DTCP approved and open for
             investment.
           </motion.p>
 
@@ -968,7 +942,7 @@ export default function NSH20LandingPage() {
               style={{ borderColor: "rgba(255,253,249,0.3)", color: "var(--bg)" }}
             >
               View Gallery
-              <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              {/* <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /> */}
             </button>
           </motion.div>
         </div>
@@ -989,11 +963,13 @@ export default function NSH20LandingPage() {
                 <br /><span className="italic" style={{ color: "var(--primary)" }}>same address.</span>
               </h2>
               <p className="mt-6 text-[15.5px] leading-relaxed" style={{ color: "rgba(42,42,42,0.72)" }}>
-                Investing in open plots pays off best where growth is already arriving. NS Homes
-                2.0 sits on a fresh four-acre layout of fifty-four residential plots, starting at
-                165 square yards, on the same Srisailam–Nagarjuna Sagar highway stretch that's
-                carried NS Homes to more than 85 completed registrations. The layout is DTCP
-                approved, with roads, electricity and drainage designed in from the start.
+                NS Homes 2.0 is the natural extension of a community that is already living. Four
+                new acres of residential plots, starting at 165 square yards, sit on the same 100
+                ft main road near the Amazon Data Center.
+              </p>
+              <p className="mt-4 text-[15.5px] leading-relaxed" style={{ color: "rgba(42,42,42,0.72)" }}>
+                The layout is DTCP-approved, with roads, electricity and drainage designed in from
+                the start. Same corridor. Same standards. Fresh opportunity.
               </p>
             </Reveal>
 
@@ -1005,14 +981,14 @@ export default function NSH20LandingPage() {
 
           <div className="lg:col-span-7">
             <Reveal delay={0.15}>
-              <ImagePlaceholder tag="NSH 2.0 — Site Overview" src={OVERVIEW_IMAGE} tone="surface" aspect="aspect-[16/12] lg:aspect-[16/11]" />
+              <ImagePlaceholder tag="NSH 2.0 — Site Overview" src={OVERVIEW_IMAGE} tone="surface" aspect="aspect-[16/12] lg:aspect-[18/10]" />
             </Reveal>
-            <Reveal delay={0.2} className="mt-10 grid grid-cols-2 gap-8 rounded-[8px] border p-8 sm:grid-cols-4" style={{ borderColor: "rgba(200,155,99,0.2)", background: "var(--surface)" }}>
+            {/* <Reveal delay={0.2} className="mt-10 grid grid-cols-2 gap-8 rounded-[8px] border p-8 sm:grid-cols-4" style={{ borderColor: "rgba(200,155,99,0.2)", background: "var(--surface)" }}>
               <AnimatedStat value={4} suffix=" Ac" label="Total Area" />
               <AnimatedStat value={54} label="Total Plots" />
               <AnimatedStat value={165} suffix="+" label="Sq.Yd. Starting" />
-              <AnimatedStat value={30} prefix="₹" suffix="L" label="Min. Investment" />
-            </Reveal>
+              <AnimatedStat value={20000} prefix="₹" label="Starting / Sq.Yd." />
+            </Reveal> */}
           </div>
         </div>
       </section>
@@ -1076,11 +1052,15 @@ export default function NSH20LandingPage() {
           <Reveal className="max-w-2xl">
             <PhaseMark code="NSH2-P2.04" tone="onDark">Location</PhaseMark>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--bg)" }}>
-              Growing the same address
+              Growing in the same address
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "rgba(255,253,249,0.68)" }}>
-              NSH 2.0 sits on the same Srisailam–Nagarjuna Sagar highway corridor as NS Homes,
-              inside a stretch of South Hyderabad absorbing steady infrastructure investment.
+              NS Homes 2.0 sits on the same Srisailam–Nagarjuna Sagar Highway corridor as Phase 1,
+              in a stretch of South Hyderabad attracting steady infrastructure investment.
+            </p>
+            <p className="mt-3 text-[15px] leading-relaxed" style={{ color: "rgba(255,253,249,0.68)" }}>
+              Close to the Amazon Data Center, with clear links to the Outer Ring Road and
+              proposed regional developments around Mucherla and Kandukur.
             </p>
           </Reveal>
 
@@ -1125,9 +1105,9 @@ export default function NSH20LandingPage() {
                 Site progress, in pictures
               </h2>
             </div>
-            <span className="font-mono hidden text-[12px] tracking-[0.14em] sm:block" style={{ color: "rgba(42,42,42,0.4)" }}>
+            {/* <span className="font-mono hidden text-[12px] tracking-[0.14em] sm:block" style={{ color: "rgba(42,42,42,0.4)" }}>
               Scroll to move through the reel →
-            </span>
+            </span> */}
           </Reveal>
         </div>
 
@@ -1165,15 +1145,14 @@ export default function NSH20LandingPage() {
               Let's plan your visit to <span className="italic" style={{ color: "var(--accent)" }}>NSH 2.0</span>
             </h2>
             <p className="mx-auto mt-5 max-w-lg text-[15.5px] leading-relaxed" style={{ color: "rgba(255,253,249,0.7)" }}>
-              Our team can walk you through plot options, pricing and the site itself — reach out
-              and we'll take it from there.
+              For any queries you may have about NS Homes 2.0, please fill out the form below and
+              our team will reach out to you.
             </p>
           </Reveal>
 
           <Reveal delay={0.1} className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Chip icon={MapPin} tone="onDark">Mirkhanpet, Srisailam Highway</Chip>
-            <Chip icon={FileCheck2} tone="onDark">DTCP T.L.P 58/2024/HRO/H1</Chip>
-            <Chip icon={IndianRupee} tone="onDark">From ₹30 Lakhs</Chip>
+            <Chip icon={FileCheck2} tone="onDark">DTCP T.L.P. 58/2024/HRO/H1</Chip>
           </Reveal>
 
           <Reveal delay={0.15} className="mt-7 text-center">
