@@ -115,47 +115,47 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TMPL-01 | — | Pending |
-| TMPL-02 | — | Pending |
-| TMPL-03 | — | Pending |
-| TMPL-04 | — | Pending |
-| SECT-01 | — | Pending |
-| SECT-02 | — | Pending |
-| SECT-03 | — | Pending |
-| SECT-04 | — | Pending |
-| SECT-05 | — | Pending |
-| SECT-06 | — | Pending |
-| SECT-07 | — | Pending |
-| SECT-08 | — | Pending |
-| SECT-09 | — | Pending |
-| SECT-10 | — | Pending |
-| PROG-01 | — | Pending |
-| PROG-02 | — | Pending |
-| PROG-03 | — | Pending |
-| PROG-04 | — | Pending |
-| PROG-05 | — | Pending |
-| SEO-01 | — | Pending |
-| SEO-02 | — | Pending |
-| EVNT-01 | — | Pending |
-| EVNT-02 | — | Pending |
-| EVNT-03 | — | Pending |
-| EVNT-04 | — | Pending |
-| DEPL-01 | — | Pending |
-| DEPL-02 | — | Pending |
-| DEPL-03 | — | Pending |
-| DEPL-04 | — | Pending |
-| DEPL-05 | — | Pending |
-| CDN-01 | — | Pending |
-| CDN-02 | — | Pending |
-| CDN-03 | — | Pending |
-| HYGN-01 | — | Pending |
-| HYGN-02 | — | Pending |
-| HYGN-03 | — | Pending |
+| TMPL-01 | Phase 3 | Pending |
+| TMPL-02 | Phase 3 | Pending |
+| TMPL-03 | Phase 3 | Pending |
+| TMPL-04 | Phase 3 | Pending |
+| SECT-01 | Phase 3 | Pending |
+| SECT-02 | Phase 3 | Pending |
+| SECT-03 | Phase 3 | Pending |
+| SECT-04 | Phase 3 | Pending |
+| SECT-05 | Phase 3 | Pending |
+| SECT-06 | Phase 3 | Pending |
+| SECT-07 | Phase 3 | Pending |
+| SECT-08 | Phase 3 | Pending |
+| SECT-09 | Phase 3 | Pending |
+| SECT-10 | Phase 3 | Pending |
+| PROG-01 | Phase 2 | Pending |
+| PROG-02 | Phase 2 | Pending |
+| PROG-03 | Phase 2 | Pending |
+| PROG-04 | Phase 2 | Pending |
+| PROG-05 | Phase 2 | Pending |
+| SEO-01 | Phase 3 | Pending |
+| SEO-02 | Phase 3 | Pending |
+| EVNT-01 | Phase 4 | Pending |
+| EVNT-02 | Phase 4 | Pending |
+| EVNT-03 | Phase 1 | Pending |
+| EVNT-04 | Phase 1 | Pending |
+| DEPL-01 | Phase 4 | Pending |
+| DEPL-02 | Phase 4 | Pending |
+| DEPL-03 | Phase 4 | Pending |
+| DEPL-04 | Phase 4 | Pending |
+| DEPL-05 | Phase 4 | Pending |
+| CDN-01 | Phase 4 | Pending |
+| CDN-02 | Phase 4 | Pending |
+| CDN-03 | Phase 4 | Pending |
+| HYGN-01 | Phase 1 | Pending |
+| HYGN-02 | Phase 1 | Pending |
+| HYGN-03 | Phase 1 | Pending |
 
 **Coverage:**
 - v1 requirements: 36 total
-- Mapped to phases: 0
-- Unmapped: 36 ⚠️
+- Mapped to phases: 36
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-08-01*

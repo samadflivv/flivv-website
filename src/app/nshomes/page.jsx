@@ -1,13 +1,13 @@
-import Resalepage from '@/components/Resalepage'
-import React from 'react'
-import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import Navigation from '@/components/Navigation'
+import NSHomes from '@/components/NSHomes'
+import React from 'react'
 
 const page = () => {
   return (
     <div>
         <Navigation/>
-        <Resalepage/>
+        <NSHomes/>
         <Footer/>
     </div>
   )
