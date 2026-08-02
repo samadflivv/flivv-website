@@ -24,7 +24,7 @@ const projectsData = {
     title: 'Completed Projects',
     projects: [
       { name: 'NS Homes 1.0', href: '/nshomes' },
-      { name: 'NS Homes 2.0', href: '/' },
+      { name: 'NS Homes 2.0', href: '/nshomes2' },
       { name: 'Ideal Avenue', href: '/' },
       { name: 'Rivendell Farms', href: '/rivendellfarms' }
     ]

@@ -28,6 +28,7 @@
  */
 'use client';
 import React, { useEffect, useRef, useState, useId, useCallback } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -69,6 +70,8 @@ if (typeof window !== "undefined") {
 const MAP_EMBED_SRC =
   "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2817.037783204565!2d78.59364616864376!3d17.040688934399736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDAyJzI2LjYiTiA3OMKwMzUnNDIuNSJF!5e1!3m2!1sen!2sus!4v1785073812478!5m2!1sen!2sus";
 const MAP_DIRECTIONS_URL = "https://www.google.com/maps/search/?api=1&query=17.040688934399736,78.59364616864376";
+const OVERVIEW_IMAGE =
+  "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Screenshot%202026-08-02%20193355.png";
 
 /* =============================================================================
    DESIGN TOKENS
@@ -305,8 +308,9 @@ const PhaseMark = ({ code, children, tone = "onLight", color: colorOverride }) =
 };
 
 /** Placeholder imagery — gradient + facet texture + caption tag. Swap for a
- *  real <img> when photography/renders are ready; `tag` maps to alt text. */
-const ImagePlaceholder = ({ tag, tone = "surface", aspect = "aspect-[4/3]", className = "" }) => {
+ *  real <img> when photography/renders are ready; `tag` maps to alt text.
+ *  Pass `src` to render a real image instead of the placeholder pattern. */
+const ImagePlaceholder = ({ tag, src, tone = "surface", aspect = "aspect-[4/3]", className = "" }) => {
   const isDark = tone === "dark";
   return (
     <div
@@ -319,11 +323,24 @@ const ImagePlaceholder = ({ tag, tone = "surface", aspect = "aspect-[4/3]", clas
           : "linear-gradient(150deg,#F8F4F3 0%,#EDE3DF 100%)",
       }}
     >
-      <FacetField opacity={isDark ? 0.14 : 0.16} stroke={isDark ? "#C89B63" : "#5A1E2A"} />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <ImageIcon size={20} strokeWidth={1.25} style={{ color: isDark ? "var(--accent)" : "var(--primary)", opacity: 0.5 }} />
-      </div>
-      {tag && (
+      {src ? (
+        <Image
+          src={src}
+          alt={tag || "NSH 2.0 image"}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          quality={80}
+          style={{ objectFit: "cover" }}
+        />
+      ) : (
+        <>
+          <FacetField opacity={isDark ? 0.14 : 0.16} stroke={isDark ? "#C89B63" : "#5A1E2A"} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <ImageIcon size={20} strokeWidth={1.25} style={{ color: isDark ? "var(--accent)" : "var(--primary)", opacity: 0.5 }} />
+          </div>
+        </>
+      )}
+      {!src && tag && (
         <div
           className="font-mono absolute bottom-3 left-3 rounded-sm px-2 py-1 text-[10px] uppercase tracking-[0.14em]"
           style={{
@@ -620,7 +637,7 @@ const GalleryReel = ({ items, onOpen }) => {
             >
               <div className="overflow-hidden rounded-[10px] transition-shadow duration-500 group-hover:shadow-2xl">
                 <div className="nsh2-zoom-frame">
-                  <ImagePlaceholder tag={g.tag} tone={i % 3 === 0 ? "dark" : "surface"} aspect="aspect-[3/4]" />
+                  <ImagePlaceholder tag={g.tag} src={g.src} tone={i % 3 === 0 ? "dark" : "surface"} aspect="aspect-[3/4]" />
                 </div>
               </div>
               <div
@@ -702,18 +719,18 @@ const LOCATION_GROWTH = [
 ];
 
 const GALLERY_ITEMS = [
-  { tag: "Aerial View", aspect: "aspect-[4/5]" },
-  { tag: "Site Entrance", aspect: "aspect-[4/3]" },
-  { tag: "Internal Roads", aspect: "aspect-[4/3]" },
-  { tag: "Compound Wall", aspect: "aspect-[4/5]" },
-  { tag: "Plot Rows", aspect: "aspect-[4/3]" },
-  { tag: "Survey Markers", aspect: "aspect-[4/3]" },
-  { tag: "Site Progress — Oct", aspect: "aspect-[4/5]" },
-  { tag: "Site Progress — Nov", aspect: "aspect-[4/3]" },
-  { tag: "Site Progress — Dec", aspect: "aspect-[4/3]" },
-  { tag: "Drone Perspective", aspect: "aspect-[4/5]" },
-  { tag: "Layout Stakeout", aspect: "aspect-[4/3]" },
-  { tag: "Boundary Wall", aspect: "aspect-[4/3]" },
+  { tag: "Aerial View", src: "https://picsum.photos/seed/nsh2-aerial/900/1125", aspect: "aspect-[4/5]" },
+  { tag: "Site Entrance", src: "https://picsum.photos/seed/nsh2-entrance/900/675", aspect: "aspect-[4/3]" },
+  { tag: "Internal Roads", src: "https://picsum.photos/seed/nsh2-roads/900/675", aspect: "aspect-[4/3]" },
+  { tag: "Compound Wall", src: "https://picsum.photos/seed/nsh2-wall/900/1125", aspect: "aspect-[4/5]" },
+  { tag: "Plot Rows", src: "https://picsum.photos/seed/nsh2-plots/900/675", aspect: "aspect-[4/3]" },
+  { tag: "Survey Markers", src: "https://picsum.photos/seed/nsh2-survey/900/675", aspect: "aspect-[4/3]" },
+  { tag: "Site Progress — Oct", src: "https://picsum.photos/seed/nsh2-oct/900/1125", aspect: "aspect-[4/5]" },
+  { tag: "Site Progress — Nov", src: "https://picsum.photos/seed/nsh2-nov/900/675", aspect: "aspect-[4/3]" },
+  { tag: "Site Progress — Dec", src: "https://picsum.photos/seed/nsh2-dec/900/675", aspect: "aspect-[4/3]" },
+  { tag: "Drone Perspective", src: "https://picsum.photos/seed/nsh2-drone/900/1125", aspect: "aspect-[4/5]" },
+  { tag: "Layout Stakeout", src: "https://picsum.photos/seed/nsh2-stakeout/900/675", aspect: "aspect-[4/3]" },
+  { tag: "Boundary Wall", src: "https://picsum.photos/seed/nsh2-boundary/900/675", aspect: "aspect-[4/3]" },
 ];
 
 const SPEC_CARDS = [
@@ -817,7 +834,7 @@ const Lightbox = ({ items, index, onClose, onPrev, onNext }) => {
           onClick={(e) => e.stopPropagation()}
           className="w-full max-w-2xl"
         >
-          <ImagePlaceholder tag={item.tag} tone="dark" aspect="aspect-[4/3]" className="shadow-2xl" />
+          <ImagePlaceholder tag={item.tag} src={item.src} tone="dark" aspect="aspect-[4/3]" className="shadow-2xl" />
           <p className="font-mono mt-4 text-center text-[12px] uppercase tracking-[0.16em]" style={{ color: "var(--accent)" }}>
             {String(index + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")} — {item.tag}
           </p>
@@ -988,7 +1005,7 @@ export default function NSH20LandingPage() {
 
           <div className="lg:col-span-7">
             <Reveal delay={0.15}>
-              <ImagePlaceholder tag="NSH 2.0 — Site Overview" tone="surface" aspect="aspect-[16/12] lg:aspect-[16/11]" />
+              <ImagePlaceholder tag="NSH 2.0 — Site Overview" src={OVERVIEW_IMAGE} tone="surface" aspect="aspect-[16/12] lg:aspect-[16/11]" />
             </Reveal>
             <Reveal delay={0.2} className="mt-10 grid grid-cols-2 gap-8 rounded-[8px] border p-8 sm:grid-cols-4" style={{ borderColor: "rgba(200,155,99,0.2)", background: "var(--surface)" }}>
               <AnimatedStat value={4} suffix=" Ac" label="Total Area" />

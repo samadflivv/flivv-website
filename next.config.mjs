@@ -44,6 +44,12 @@
           port: '',
           pathname: '/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'picsum.photos',
+          port: '',
+          pathname: '/**',
+        },
         // add other remote hosts here if you need them
       ],
     },
