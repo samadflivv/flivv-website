@@ -459,18 +459,18 @@ const LOCATION_GROWTH = [
 ];
 
 const GALLERY_ITEMS = [
-  { tag: "Aerial View", aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-01.jpg" },
-  { tag: "Site Entrance", aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-02.jpg" },
-  { tag: "Internal Road Network", aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-03.jpg" },
-  { tag: "Compound Wall", aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-04.jpg" },
-  { tag: "Overhead Water Tank", aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-05.jpg" },
-  { tag: "Layout Plan", aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-06.jpg" },
-  { tag: "Front Road", aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-07.jpg" },
-  { tag: "Site Location Map", aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-08.jpg" },
-  { tag: "Plot Rows", aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-09.jpg" },
-  { tag: "Drone Perspective", aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-10.jpg" },
-  { tag: "Electric Infrastructure", aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-11.jpg" },
-  { tag: "Boundary Wall", aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-12.jpg" },
+  { aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-01.jpg" },
+  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-02.jpg" },
+  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-03.jpg" },
+  { aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-04.jpg" },
+  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-05.jpg" },
+  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-06.jpg" },
+  { aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-07.jpg" },
+  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-08.jpg" },
+  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-09.jpg" },
+  { aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-10.jpg" },
+  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-11.jpg" },
+  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-12.jpg" },
 ];
 
 const MILESTONES = [
@@ -762,7 +762,7 @@ export default function NSHomesCompletedProject() {
 
           <div className="lg:col-span-7">
             <Reveal delay={0.15}>
-              <ImagePlaceholder tag="Aerial Overview — NS Homes, 11 Acres" tone="stone" aspect="aspect-[16/12] lg:aspect-[16/13]" src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/Screenshot%202026-08-02%20145427.png" />
+              <ImagePlaceholder tag="Aerial Overview — NS Homes, 11 Acres" tone="stone" aspect="aspect-[16/12] lg:aspect-[14/10]" src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/Screenshot%202026-08-02%20170950.png" />
             </Reveal>
           </div>
         </div>
@@ -937,7 +937,7 @@ export default function NSHomesCompletedProject() {
                 >
                   <div className="overflow-hidden rounded-[3px] transition-shadow duration-500 group-hover:shadow-2xl">
                     <div className="transition-transform duration-700 ease-out group-hover:scale-[1.05]">
-                      <ImagePlaceholder tag={g.tag} tone="stone" aspect={g.aspect} />
+                      <ImagePlaceholder tone="stone" aspect={g.aspect} src={g.src} />
                     </div>
                   </div>
                 </button>
