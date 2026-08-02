@@ -1155,16 +1155,7 @@ export default function NSH20LandingPage() {
             <Chip icon={FileCheck2} tone="onDark">DTCP T.L.P. 58/2024/HRO/H1</Chip>
           </Reveal>
 
-          <Reveal delay={0.15} className="mt-7 text-center">
-            <a
-              href="tel:+919000370730"
-              className="font-display inline-flex items-center gap-3 text-[1.5rem] transition-opacity duration-300 hover:opacity-80 md:text-[1.9rem]"
-              style={{ color: "var(--accent)" }}
-            >
-              <Phone size={20} strokeWidth={1.75} />
-              +91 90003 70730
-            </a>
-          </Reveal>
+  
 
           <Reveal delay={0.2} className="mx-auto mt-14 max-w-2xl">
             <div className="nsh2-glass p-7 md:p-10">
