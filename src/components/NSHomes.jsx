@@ -406,18 +406,16 @@ const LandmarkRow = ({ icon: Icon, title, note, distance }) => (
 
 const HERO_CHIPS = [
   { icon: Ruler, label: "11 Acres Delivered" },
-  { icon: FileCheck2, label: "DTCP T.L.P 335/2021/H" },
-  { icon: Award, label: "RERA P02400005290" },
-  { icon: Users, label: "85+ Families Home" },
+  { icon: FileCheck2, label: "DTCP T.L.P. No. 335/2021/H" },
+  { icon: Award, label: "RERA P024000005290" },
 ];
 
 const OVERVIEW_STATS = [
   { icon: Ruler, label: "Total Land", value: "11 Acres" },
   { icon: Grid3x3, label: "Plot Sizes", value: "146 – 838 Sq.Yd" },
-  { icon: FileCheck2, label: "DTCP Layout", value: "T.L.P NO. 335/2021/H" },
-  { icon: Award, label: "RERA No.", value: "P02400005290" },
+  { icon: FileCheck2, label: "DTCP Layout", value: "T.L.P. No. 335/2021/H" },
+  { icon: Award, label: "RERA No.", value: "P024000005290" },
   { icon: MapPin, label: "Registration", value: "Ibrahimpatnam SRO" },
-  { icon: Users, label: "Residents", value: "85+ Families" },
 ];
 
 const HIGHLIGHTS = [
@@ -428,7 +426,6 @@ const HIGHLIGHTS = [
   { icon: TreePine, title: "Landscaped Green Spaces", note: "Planted buffers and open pockets built into the layout." },
   { icon: ShieldCheck, title: "Round-the-Clock Security", note: "A monitored perimeter and manned entrance, always on." },
   { icon: DoorOpen, title: "Grand Entrance Gate", note: "A single, secured point of arrival for the whole venture." },
-  { icon: Users, title: "Ready Residential Community", note: "85+ families already living on-site, not just registered." },
 ];
 
 const AMENITIES = [
@@ -463,7 +460,7 @@ const GALLERY_ITEMS = [
   { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-02.jpg" },
   { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-03.jpg" },
   { aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-04.jpg" },
-  { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-05.jpg" },
+  { aspect: "aspect-[4/2]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/Screenshot%202026-08-02%20145427.png" },
   { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-06.jpg" },
   { aspect: "aspect-[4/5]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-07.jpg" },
   { aspect: "aspect-[4/3]", src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH/gallery-08.jpg" },
@@ -474,19 +471,17 @@ const GALLERY_ITEMS = [
 ];
 
 const MILESTONES = [
-  { code: "01", title: "Land Surveyed & DTCP Approved", note: "Layout T.L.P NO. 335/2021/H registered." },
-  { code: "02", title: "RERA Registration Secured", note: "Registered under P02400005290." },
+  { code: "01", title: "Land Surveyed & DTCP Approved", note: "Layout T.L.P. No. 335/2021/H registered." },
+  { code: "02", title: "RERA Registration Secured", note: "Registered under P024000005290." },
   { code: "03", title: "Roads & Compound Wall Built", note: "33/40 ft internal roads and full boundary enclosure." },
   { code: "04", title: "Water, Drainage & Power Connected", note: "Underground drainage, overhead tank, electricity live." },
   { code: "05", title: "Entrance & Green Spaces Finished", note: "Grand entrance gate and landscaped buffers completed." },
-  { code: "06", title: "Handed Over to Residents", note: "85+ families registered and settled on-site." },
+  { code: "06", title: "Handed Over to Residents", note: "Families registered to make it their future address." },
 ];
 
 const COMPLETION_STATS = [
   { value: "11", label: "Acres Delivered" },
-  { value: "100%", label: "DTCP Compliant" },
-  { value: "85+", label: "Families Home" },
-  { value: "0", label: "Open Approvals" },
+  { value: "100%", label: "DTCP & RERA Compliant" },
 ];
 
 /* =============================================================================
@@ -678,8 +673,9 @@ export default function NSHomesCompletedProject() {
             className="mt-6 max-w-xl text-[16px] leading-relaxed md:text-[17px]"
             style={{ color: "rgba(243,239,228,0.78)" }}
           >
-            An eleven-acre open-plot venture on the Srisailam–Nagarjuna Sagar highway junction —
-            surveyed, developed under DTCP and RERA oversight, and delivered.
+            Eleven acres. Fully delivered. An open-plot community on the 100 ft main road at the
+            Srisailam–Nagarjuna Sagar highway junction, just minutes from the Amazon Data
+            Center. Surveyed, registered and handed over under DTCP and RERA.
           </motion.p>
 
           <motion.div
@@ -712,7 +708,6 @@ export default function NSHomesCompletedProject() {
               style={{ borderColor: "rgba(243,239,228,0.3)", color: "var(--stone)" }}
             >
               Explore Project
-              <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </motion.div>
         </div>
@@ -738,8 +733,8 @@ export default function NSHomesCompletedProject() {
               <p className="mt-6 text-[15.5px] leading-relaxed" style={{ color: "rgba(38,34,30,0.72)" }}>
                 NS Homes is an eleven-acre open-plot venture set directly on the 100 ft main road
                 connecting the Srisailam and Nagarjuna Sagar highways, a short stretch from the
-                Amazon Data Center in South Hyderabad. Every plot — from 146 to 838 square yards,
-                residential and commercial — was laid out, registered, and delivered under DTCP
+                Amazon Data Center in South Hyderabad. Every plot ranges from 146 to 838 square yards,
+                residential and commercial, was laid out, registered  and delivered under DTCP
                 norms and RERA oversight, with the paperwork closed and the roads already carrying
                 traffic.
               </p>
@@ -782,15 +777,15 @@ export default function NSHomesCompletedProject() {
             <Reveal delay={0.1} className="md:col-span-1">
               <p className="has-dropcap text-[15.5px] leading-[1.85]" style={{ color: "rgba(38,34,30,0.78)" }}>
                 NS Homes began as a plan on a surveyor's table and ended as a functioning
-                neighbourhood. The venture's position — anchored to the Srisailam–Nagarjuna
-                Sagar highway junction — was never incidental; it was the first decision every
-                later one was built around, from road width to plot orientation.
+                neighbourhood. The venture's position is anchored to the Srisailam–Nagarjuna
+                Sagar highway junction which was never incidental; it was the first decision
+                built around.
               </p>
               <p className="mt-6 text-[15.5px] leading-[1.85]" style={{ color: "rgba(38,34,30,0.78)" }}>
                 Construction followed DTCP layout norms end to end: internal roads were cut and
                 metalled at 33 and 40 feet, drainage was routed underground rather than left to
-                open channels, and the compound wall was raised before a single plot changed
-                hands. None of it was ornamental — it was the groundwork a highway-facing venture
+                open channels and the compound wall was raised before a single plot changed
+                hands. None of it was ornamental instead it was the groundwork a highway-facing venture
                 of this scale needed to hold up over decades, not just at handover.
               </p>
             </Reveal>
@@ -803,7 +798,7 @@ export default function NSHomesCompletedProject() {
                 everything else was built to match it.
               </blockquote>
               <p className="mt-8 text-[15.5px] leading-[1.85]" style={{ color: "rgba(38,34,30,0.78)" }}>
-                Vastu-aligned plotting, a monitored grand entrance, and a security presence that
+                Vastu-aligned plotting, a monitored grand entrance and a security presence that
                 runs around the clock round out a layout designed to feel finished, rather than
                 merely sold.
               </p>
@@ -865,9 +860,9 @@ export default function NSHomesCompletedProject() {
               Positioned at a highway junction
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed" style={{ color: "var(--blush)" }}>
-              NS Homes sits where the Srisailam and Nagarjuna Sagar highways meet, inside a
+              NS Homes sits where the Srisailam and Nagarjuna Sagar highways meet. Inside a
               stretch of South Hyderabad that's been absorbing infrastructure investment for
-              years — some of it already running past the venture's boundary wall, some of it
+              years where some of it has already been running past the venture's boundary wall, some of it
               still on the drawing board.
             </p>
           </Reveal>
@@ -905,8 +900,7 @@ export default function NSHomesCompletedProject() {
                 </div>
                 <p className="mt-5 text-[12.5px] leading-relaxed" style={{ color: "rgba(243,239,228,0.45)" }}>
                   The developments above are publicly announced or proposed projects in the wider
-                  Srisailam Highway corridor, included as area context rather than guarantees
-                  attached to NS Homes.
+                  Srisailam Highway corridor.
                 </p>
               </Reveal>
             </div>
@@ -1032,11 +1026,11 @@ export default function NSHomesCompletedProject() {
               </div>
               <div className="flex items-center gap-3">
                 <Award size={16} style={{ color: "var(--maroon-deep)" }} />
-                <span className="text-[14px]" style={{ color: "rgba(38,34,30,0.75)" }}>RERA No. P02400005290</span>
+                <span className="text-[14px]" style={{ color: "rgba(38,34,30,0.75)" }}>RERA No. P024000005290</span>
               </div>
               <div className="flex items-center gap-3">
                 <FileCheck2 size={16} style={{ color: "var(--maroon-deep)" }} />
-                <span className="text-[14px]" style={{ color: "rgba(38,34,30,0.75)" }}>DTCP Layout T.L.P NO. 335/2021/H</span>
+                <span className="text-[14px]" style={{ color: "rgba(38,34,30,0.75)" }}>DTCP Layout T.L.P. No. 335/2021/H</span>
               </div>
             </Reveal>
 
