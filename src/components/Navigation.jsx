@@ -15,8 +15,8 @@ const projectsData = {
   current: {
     title: 'Current Projects',
     projects: [
-      { name: 'Gulmohar Villas', href: '/gulmoharvillas' },
       { name: 'Gulmohar Homes', href: '/gulmoharhomes' },
+      { name: 'Gulmohar Villas', href: '/gulmoharvillas' },
     ]
   },
   completed: {
@@ -140,7 +140,7 @@ export default function Navigation() {
 
         <li className="relative group">
   <Link href="/salesmeets">
-    <button className="flex items-center">
+    <button className="flex items-center cursor-pointer">
       Sales Meets
       <ChevronDown size={16} className="ml-2" />
     </button>
