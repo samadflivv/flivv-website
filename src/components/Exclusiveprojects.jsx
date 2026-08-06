@@ -37,28 +37,19 @@ const projectsData = [
     href: "/gulmoharhomes",
     priority: false
   },
-  {
-    id: 2,
-    title: "Airport Town",
-    location: "Kothur - Penjerla Road",
-    imageKey: "AirportTown1",
-    description: "Premium open plot project near Bangalore Highway.",
-    hasBadge: false,
-    href: "/airporttown",
-    priority: false
-  },
   // {
-  //   id: 3,
-  //   title: "Sadhana City",
-  //   location: "Veldanda, Kalwakurthy",
-  //   imageKey: "SadhanaCity1",
-  //   description: "DTCP-approved gated community near Regional Ring Road.",
+  //   id: 2,
+  //   title: "Airport Town",
+  //   location: "Kothur - Penjerla Road",
+  //   imageKey: "AirportTown1",
+  //   description: "Premium open plot project near Bangalore Highway.",
   //   hasBadge: false,
-  //   href: "#",
+  //   href: "/airporttown",
   //   priority: false
   // },
+  
   {
-    id: 4,
+    id: 2,
     title: "Gulmohar Villas",
     location: "Shadnagar",
     imageKey: "GulmoharVillas1",
@@ -67,16 +58,14 @@ const projectsData = [
     hasBadge: false,
     priority: true
   },
-  // {
-  //   id: 5,
-  //   title: "Rivendell Farms",
-  //   location: "Thimmajipet, Jadcherla",
-  //   imageKey: "RivendellRFS2",
-  //   description: "Premium farmland project with sustainable living concept.",
-  //   href: "/rivendellfarms",
-  //   hasBadge: false,
-  //   priority: true
-  // }
+   {
+    id: 3,
+    title: "New Project - Coming Soon !",
+    imageKey: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/new-project.png",
+    description: "Something new is being plotted strategically and designed specifically for those who invest wisely and trust in building a lasting value.",
+    hasBadge: false,
+    priority: true
+  },
 ];
 
 const Exclusiveprojects = () => {

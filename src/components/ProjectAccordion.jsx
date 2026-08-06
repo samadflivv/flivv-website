@@ -112,6 +112,13 @@ import { useState } from 'react';
 
 const projects = [
   {
+    type: 'Airport Town',
+    name: 'HMDA GP under LRS',
+    description: 'Exclusive R1-zone open plots just 2 km from Bangalore Highway (NH-44) on Kothur-Penjerla Road, is limited to having 36 plots designed for strong connectivity and high-growth potential and rewarding investment.',
+    location: 'location : Kothur – Penjerla',
+    images: ['/AirportTown1.jpg', 'https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/AirportTown/DJI_20251013085037_0036_D-min%20(1)%20(1)%20(1).jpg'],
+  },
+  {
     type: 'NS Homes',
     name: 'DTCP/RERA',
     description: 'NS Homes is our maiden open plot project located on the 100ft. main road connecting Srisailam & Nagarjuna Sagar Highways',
@@ -126,19 +133,20 @@ const projects = [
     images: ['/images/ns2.jpeg', '/images/ns2-2.jpeg'],
   },
   {
+    type: 'Rivendell Farms',
+    name: 'Farmland',
+    description: 'Premium 15-acre farmland retreat in Thimmajipet, Jadcherla. This place perfectly defines sustainable living, serene nature, and exclusive shared farmhouse amenities create a peaceful long-term asset.',
+    location: 'location : Thimmajipet, Jadcherla',
+    images: ['/RFS2.jpeg', '/Lowpollutionzone.jpg'],
+  },
+  {
     type: 'Ideal Avenue',
     name: 'HMDA',
     description: 'Ideal Avenue is a premium HMDA-approved plotted venture in the R1 zone on the Kothur - Shadnagar Highway',
     location: 'location : Shadnagar',
     images: ['/images/ideal-1.jpg', '/images/ideal-2.jpg'],
   },
-  {
-    type: 'Lake City',
-    name: 'DTCP/RERA',
-    description: 'A 10.5-acre open plot project on Mumbai Highway (NH65) in Nandikandis prime growth corridor.',
-    location: 'location : Nandikandi',
-    images: ['/images/lakecity-1.JPG', '/images/lakecity2.JPG'],
-  },
+
 ];
 
 export default function ProjectAccordion() {

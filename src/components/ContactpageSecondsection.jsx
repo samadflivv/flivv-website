@@ -10,17 +10,17 @@ const ContactpageSecondsection = () => {
       status: "active"
     },
     {
-      country: "Airport Town",
-      city: "Kothur - Penjerla Road",
-      address: "Premium open plot project just 2 km from Bangalore Highway, featuring limited plots with top-notch development.",
-      status: "active"
-    },
-    {
       country: "Gulmohar Villas",
       city: "Shadnagar",
       address: "Our first-ever HMDA-approved 22-acre villa plot project in Nagulapally, Shadnagar, designed to enhance community living",
       link: "/gulmoharvillas",
       status: "active"
+    },
+    {
+      country: "Airport Town",
+      city: "Kothur - Penjerla Road",
+      address: "Premium open plot project just 2 km from Bangalore Highway, featuring limited plots with top-notch development.",
+      status: "sold-out"
     },
     
     {
