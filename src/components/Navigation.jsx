@@ -17,16 +17,16 @@ const projectsData = {
     projects: [
       { name: 'Gulmohar Villas', href: '/gulmoharvillas' },
       { name: 'Gulmohar Homes', href: '/gulmoharhomes' },
-      { name: 'Airport Town', href: '/airporttown' }
     ]
   },
   completed: {
     title: 'Completed Projects',
     projects: [
+      { name: 'Airport Town', href: '/airporttown' },
       { name: 'NS Homes 1.0', href: '/nshomes' },
       { name: 'NS Homes 2.0', href: '/nshomes2' },
+      { name: 'Rivendell Farms', href: '/rivendellfarms' },
       { name: 'Ideal Avenue', href: '/' },
-      { name: 'Rivendell Farms', href: '/rivendellfarms' }
     ]
   }
 };
