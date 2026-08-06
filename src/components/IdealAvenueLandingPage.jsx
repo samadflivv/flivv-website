@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect, useRef, useState } from "react";
 import {
   ShieldCheck,
@@ -16,43 +15,51 @@ import {
   Clock,
   ArrowRight,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Ruler,
-  Banknote,
   FileCheck,
+  Maximize2,
+  X,
 } from "lucide-react";
 
 /* ============================================================
    IDEAL AVENUE — completed HMDA-approved open-plot community
-   Design tokens (from brief):
-   primary #6B2A2A · secondary #8D3E3E · accent #D6B36A
-   background #FCFAF7 · surface #F5F2EE · text #2B2B2B · dark #1D1616
-
-   Signature concept: "The Corridor" — the project's whole identity
-   is a 200 ft highway corridor between Kothur and Shadnagar, so a
-   thin gold route-line tracks the reader's progress down the page,
-   lighting up a marker as each section is reached — the page is
-   read the way the highway is driven.
+   Design tokens — cool "ocean" palette:
+   dark #03045E · primary #023E8A · secondary #0077B6
+   accent #00B4D8 · background #F4FBFD · surface #E8F6FA
+   text #0B2239
 
    Note on animation libraries: the brief specifies Framer Motion
    and GSAP. This file uses native IntersectionObserver + CSS
    transitions instead, so the component has zero external
    animation dependencies and drops into any React + Tailwind
    project as-is. If your project already has framer-motion / gsap
-   installed, the <Reveal> wrapper and the corridor-progress hook
-   below are the two spots to swap in — everything else is layout.
+   installed, the <Reveal> wrapper below is the spot to swap in —
+   everything else is layout.
    ============================================================ */
 
 const GRAIN_SVG = `data:image/svg+xml;utf8,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>`
 )}`;
 
-const SECTION_KEYS = [
-  "overview",
-  "highlights",
-  "infrastructure",
-  "location",
-  "details",
-  "investment",
+// TODO: replace with real gallery links when available
+const GALLERY_IMAGES = [
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7133.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7154.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7137.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7141.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7134.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7156.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7149.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7162.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7139.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7135.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7142.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7157.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7143.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7145.jpg" },
+  { src: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7151.jpg" },
 ];
 
 /* ---------------- hooks ---------------- */
@@ -69,37 +76,14 @@ function useReducedMotion() {
   return reduced;
 }
 
-function useCorridor(count) {
-  const [active, setActive] = useState(-1);
-  const indexRefs = useRef([]);
+function useSectionRefs() {
   const namedRefs = useRef({});
-
-  const register = (i, key) => (el) => {
-    indexRefs.current[i] = el;
-    if (key) namedRefs.current[key] = el;
+  const register = (key) => (el) => {
+    namedRefs.current[key] = el;
   };
-
-  useEffect(() => {
-    const observers = [];
-    indexRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(i);
-        },
-        { threshold: 0, rootMargin: "-42% 0px -42% 0px" }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const scrollTo = (key) =>
     namedRefs.current[key]?.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  return { active, register, scrollTo };
+  return { register, scrollTo };
 }
 
 /* ---------------- small building blocks ---------------- */
@@ -142,10 +126,19 @@ function Reveal({ children, className = "", delay = 0, as: Tag = "div" }) {
   );
 }
 
+function GlowOrb({ className = "" }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute rounded-full blur-3xl ${className}`}
+    />
+  );
+}
+
 function Eyebrow({ children }) {
   return (
-    <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.28em] uppercase text-[#8D3E3E] font-[var(--ia-mono)]">
-      <span className="h-px w-6 bg-[#D6B36A]" />
+    <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.28em] uppercase text-[#0077B6] font-[var(--ia-mono)]">
+      <span className="h-px w-6 bg-[#00B4D8]" />
       {children}
     </span>
   );
@@ -155,7 +148,7 @@ function SectionHeading({ eyebrow, title, className = "" }) {
   return (
     <Reveal className={className}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="mt-4 font-[var(--ia-display)] text-[clamp(1.9rem,4vw,3rem)] leading-[1.12] text-[#1D1616] font-medium">
+      <h2 className="mt-4 font-[var(--ia-display)] text-[clamp(1.9rem,4vw,3rem)] leading-[1.12] text-[#03045E] font-medium">
         {title}
       </h2>
     </Reveal>
@@ -164,95 +157,33 @@ function SectionHeading({ eyebrow, title, className = "" }) {
 
 function PlaqueBadge({ icon: Icon, children }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-[#D6B36A]/50 bg-[#1D1616]/40 backdrop-blur-sm px-4 py-2 text-[12px] tracking-wide text-[#F5F2EE] font-[var(--ia-mono)]">
-      <Icon size={14} className="text-[#D6B36A] shrink-0" />
+    <span className="inline-flex items-center gap-2 rounded-full border border-[#00B4D8]/50 bg-[#03045E]/40 backdrop-blur-sm px-4 py-2 text-[12px] tracking-wide text-[#F4FBFD] font-[var(--ia-mono)]">
+      <Icon size={14} className="text-[#00B4D8] shrink-0" />
       {children}
     </span>
   );
 }
 
-function FeatureCard({ icon: Icon, label, index, tone = "wine" }) {
-  const dashed = tone === "blueprint";
+function IconBadge({ icon: Icon, size = "h-11 w-11", iconSize = 19 }) {
   return (
-    <Reveal delay={index * 70}>
-      <div
-        className={`group relative h-full rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1.5 ${
-          dashed
-            ? "border border-dashed border-[#6B2A2A]/30 bg-[#FCFAF7] hover:border-[#D6B36A] hover:shadow-[0_18px_40px_-24px_rgba(107,42,42,0.45)]"
-            : "bg-[#F5F2EE] hover:shadow-[0_20px_45px_-24px_rgba(107,42,42,0.5)]"
-        }`}
-      >
-        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#6B2A2A] to-[#8D3E3E] text-[#D6B36A] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-          <Icon size={19} strokeWidth={1.75} />
-        </div>
-        <p className="mt-5 text-[15px] leading-snug text-[#2B2B2B] font-medium">
-          {label}
-        </p>
-      </div>
-    </Reveal>
-  );
-}
-
-function SpecRow({ label, value }) {
-  return (
-    <div className="flex items-baseline justify-between gap-4 border-b border-[#D6B36A]/20 py-2.5 last:border-b-0">
-      <span className="text-[11px] uppercase tracking-[0.16em] text-[#D6B36A]/80 font-[var(--ia-mono)]">
-        {label}
-      </span>
-      <span className="text-right text-[14px] text-[#F5F2EE] font-[var(--ia-mono)]">
-        {value}
-      </span>
+    <div
+      className={`flex shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#023E8A] to-[#0077B6] text-[#00B4D8] transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_20px_-2px_rgba(0,180,216,0.65)] ${size}`}
+    >
+      <Icon size={iconSize} strokeWidth={1.75} />
     </div>
   );
 }
 
-function SpecCard({ heading, rows, index, stamp }) {
+function FeatureCard({ icon: Icon, label, index }) {
   return (
-    <Reveal delay={index * 90}>
-      <div className="relative h-full rounded-2xl bg-gradient-to-b from-[#2B1010] to-[#1D1616] p-7 shadow-[0_25px_60px_-30px_rgba(29,22,22,0.7)] ring-1 ring-[#D6B36A]/25">
-        {stamp && (
-          <span
-            className="absolute right-4 top-4 rotate-[-8deg] rounded-sm border-2 border-dashed border-[#D6B36A] px-2 py-1 text-[10px] font-[var(--ia-mono)] uppercase tracking-widest text-[#D6B36A]"
-          >
-            {stamp}
-          </span>
-        )}
-        <h3 className="font-[var(--ia-display)] text-[19px] text-[#F5F2EE]">{heading}</h3>
-        <div className="mt-4">
-          {rows.map((r) => (
-            <SpecRow key={r.label} label={r.label} value={r.value} />
-          ))}
+    <Reveal delay={index * 60}>
+      <div className="group h-full rounded-2xl bg-gradient-to-br from-[#00B4D8]/35 via-[#0077B6]/10 to-transparent p-[1px] transition-transform duration-500 hover:-translate-y-1.5">
+        <div className="flex h-full flex-col justify-between rounded-[15px] bg-[#F4FBFD]/85 backdrop-blur-sm p-6 transition-shadow duration-500 group-hover:shadow-[0_20px_45px_-24px_rgba(2,62,138,0.45)]">
+          <IconBadge icon={Icon} />
+          <p className="mt-5 text-[15px] leading-snug text-[#0B2239] font-medium">{label}</p>
         </div>
       </div>
     </Reveal>
-  );
-}
-
-/* ---------------- corridor progress rail ---------------- */
-
-function CorridorRail({ active }) {
-  return (
-    <div className="pointer-events-none fixed left-8 top-1/2 z-40 hidden h-[50vh] -translate-y-1/2 lg:flex xl:left-12">
-      <div className="relative w-px h-full bg-[#6B2A2A]/15">
-        <div
-          className="absolute left-0 top-0 w-px bg-[#D6B36A] transition-[height] duration-700 ease-out"
-          style={{ height: `${((active + 1) / SECTION_KEYS.length) * 100}%` }}
-        />
-        <div className="absolute inset-0 flex flex-col justify-between">
-          {SECTION_KEYS.map((key, i) => (
-            <span
-              key={key}
-              className={`h-2 w-2 rounded-full border transition-colors duration-500 ${
-                i <= active
-                  ? "border-[#D6B36A] bg-[#D6B36A] shadow-[0_0_0_4px_rgba(214,179,106,0.18)]"
-                  : "border-[#6B2A2A]/25 bg-[#FCFAF7]"
-              }`}
-              style={{ marginLeft: "-3.5px" }}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -268,17 +199,17 @@ function HighwayArt() {
     >
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1D1616" />
-          <stop offset="55%" stopColor="#3A1B1B" />
-          <stop offset="100%" stopColor="#6B2A2A" />
+          <stop offset="0%" stopColor="#03045E" />
+          <stop offset="55%" stopColor="#023E8A" />
+          <stop offset="100%" stopColor="#0077B6" />
         </linearGradient>
         <radialGradient id="glow" cx="50%" cy="62%" r="42%">
-          <stop offset="0%" stopColor="#D6B36A" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#D6B36A" stopOpacity="0" />
+          <stop offset="0%" stopColor="#00B4D8" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#00B4D8" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#4A2626" />
-          <stop offset="100%" stopColor="#241111" />
+          <stop offset="0%" stopColor="#0B2A4A" />
+          <stop offset="100%" stopColor="#041B33" />
         </linearGradient>
       </defs>
       <rect width="1600" height="900" fill="url(#sky)" />
@@ -286,14 +217,14 @@ function HighwayArt() {
       {/* distant ridge */}
       <path
         d="M0 560 L180 520 L360 548 L560 500 L780 535 L1020 495 L1260 540 L1440 512 L1600 545 L1600 900 L0 900 Z"
-        fill="#1D1616"
+        fill="#03045E"
         opacity="0.55"
       />
       {/* road */}
       <polygon points="700,900 900,900 830,560 770,560" fill="url(#road)" />
-      <polygon points="700,900 900,900 830,560 770,560" fill="none" stroke="#D6B36A" strokeOpacity="0.12" />
+      <polygon points="700,900 900,900 830,560 770,560" fill="none" stroke="#00B4D8" strokeOpacity="0.15" />
       {/* centre dashes */}
-      <g stroke="#D6B36A" strokeWidth="6" strokeLinecap="round" opacity="0.85">
+      <g stroke="#00B4D8" strokeWidth="6" strokeLinecap="round" opacity="0.85">
         <g className={reduced ? "" : "ia-dash-run"}>
           {Array.from({ length: 9 }).map((_, i) => {
             const t = i / 8;
@@ -312,37 +243,38 @@ function HighwayArt() {
    Section components
    ============================================================ */
 
-function Hero({ onExplore, onLocation }) {
+function Hero({ onGallery, onLocation }) {
   const badges = [
     { icon: BadgeCheck, label: "HMDA Approved" },
     { icon: Ruler, label: "From 165 Sq. Yd" },
-    { icon: Banknote, label: "₹20,000 / Sq. Yd" },
     { icon: FileCheck, label: "L.P. No. 000103/LO/Plg/HMDA/2022" },
   ];
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-[#1D1616]">
+    <section className="relative flex min-h-screen items-center overflow-hidden bg-[#03045E]">
       <HighwayArt />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1D1616] via-[#1D1616]/60 to-[#1D1616]/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#03045E] via-[#03045E]/60 to-[#03045E]/20" />
 
       {/* monogram */}
-      <div className="absolute left-6 top-7 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[#D6B36A]/50 sm:left-10 sm:top-10">
-        <span className="font-[var(--ia-display)] text-[13px] tracking-widest text-[#D6B36A]">IA</span>
+      <div className="absolute left-6 top-7 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-[#00B4D8]/50 sm:left-10 sm:top-10">
+        <span className="font-[var(--ia-display)] text-[13px] tracking-widest text-[#00B4D8]">IA</span>
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-24 sm:px-10">
         <Reveal>
           <Eyebrow>
-            <span className="text-[#D6B36A]">Ideal Avenue</span>
+            <span className="text-[#00B4D8]">Ideal Avenue</span>
           </Eyebrow>
         </Reveal>
         <Reveal delay={100}>
-          <h1 className="mt-6 max-w-3xl font-[var(--ia-display)] text-[clamp(2.4rem,6vw,4.4rem)] leading-[1.08] text-[#FCFAF7]">
+          <h1 className="mt-6 max-w-3xl font-[var(--ia-display)] text-[clamp(2.4rem,6vw,4.4rem)] leading-[1.08] text-[#F4FBFD]">
             Rediscover luxury on the{" "}
-            <span className="text-[#D6B36A]">Old Bangalore Highway.</span>
+            <span className="bg-gradient-to-r from-[#00B4D8] via-[#48CAE4] to-[#90E0EF] bg-clip-text text-transparent">
+              Old Bangalore Highway
+            </span>
           </h1>
         </Reveal>
         <Reveal delay={200}>
-          <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-[#F5F2EE]/85">
+          <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-[#E8F6FA]/85">
             A premium HMDA-approved open-plot community between Kothur and
             Shadnagar, set directly on the 200 ft Old Bangalore Highway.
             Fifty-eight thoughtfully planned plots, starting from 165 square
@@ -364,23 +296,23 @@ function Hero({ onExplore, onLocation }) {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <button
               onClick={onLocation}
-              className="inline-flex items-center gap-2 rounded-full border border-[#F5F2EE]/30 px-6 py-3 text-[13px] font-medium tracking-wide text-[#F5F2EE] transition-colors duration-300 hover:border-[#D6B36A] hover:text-[#D6B36A]"
+              className="inline-flex items-center gap-2 rounded-full border border-[#E8F6FA]/30 px-6 py-3 text-[13px] font-medium tracking-wide text-[#F4FBFD] transition-all duration-300 hover:border-[#00B4D8] hover:bg-white/5 hover:text-[#00B4D8]"
             >
               View Location
               <MapPin size={15} />
             </button>
             <button
-              onClick={onExplore}
-              className="group inline-flex items-center gap-2 rounded-full bg-[#D6B36A] px-6 py-3 text-[13px] font-semibold tracking-wide text-[#1D1616] transition-transform duration-300 hover:-translate-y-0.5"
+              onClick={onGallery}
+              className="group inline-flex items-center gap-2 rounded-full bg-[#00B4D8] px-6 py-3 text-[13px] font-semibold tracking-wide text-[#03045E] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_35px_-10px_rgba(0,180,216,0.65)]"
             >
-              Explore Project
+              View Gallery
               <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
         </Reveal>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-[#F5F2EE]/50">
+      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-[#E8F6FA]/50">
         <ChevronDown size={20} className="ia-bob" />
       </div>
     </section>
@@ -389,22 +321,20 @@ function Hero({ onExplore, onLocation }) {
 
 function Overview({ setRef }) {
   return (
-    <section ref={setRef} className="relative bg-[#FCFAF7] px-6 py-24 sm:px-10 lg:py-32">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-12">
+    <section ref={setRef} className="relative overflow-hidden bg-[#F4FBFD] px-6 py-24 sm:px-10 lg:py-32">
+      <GlowOrb className="left-[-12%] top-[15%] h-72 w-72 bg-[#00B4D8]/15" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-12">
         <Reveal className="lg:col-span-5" as="div">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-br from-[#6B2A2A] to-[#1D1616]">
-            <svg viewBox="0 0 400 500" className="absolute inset-0 h-full w-full opacity-90">
-              <defs>
-                <pattern id="plotGrid" width="50" height="50" patternUnits="userSpaceOnUse">
-                  <rect width="50" height="50" fill="none" stroke="#D6B36A" strokeOpacity="0.22" />
-                </pattern>
-              </defs>
-              <rect width="400" height="500" fill="url(#plotGrid)" />
-              <line x1="0" y1="250" x2="400" y2="250" stroke="#D6B36A" strokeWidth="4" strokeDasharray="2 10" />
-              <rect x="150" y="200" width="100" height="100" fill="#D6B36A" fillOpacity="0.85" />
-            </svg>
-            <div className="absolute bottom-6 left-6 right-6 rounded-xl bg-[#1D1616]/70 px-4 py-3 backdrop-blur-sm">
-              <span className="font-[var(--ia-mono)] text-[11px] uppercase tracking-[0.2em] text-[#D6B36A]">
+          <div className="relative flex justify-center aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-br from-[#023E8A] to-[#03045E] ring-1 ring-[#00B4D8]/20 shadow-[0_30px_70px_-35px_rgba(2,62,138,0.5)]">
+            <img
+              src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/Ideal%20Avenue/IMG_7133.jpg"
+              alt="Ideal Avenue site"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#03045E]/80 via-transparent to-transparent" />
+            <div className="absolute bottom-8 rounded-xl border border-[#00B4D8]/35 bg-[#03045E]/70 px-4 py-3 backdrop-blur-sm">
+              <span className="font-[var(--ia-mono)] text-[15px] uppercase tracking-[0.2em] text-[#00B4D8]">
                 Completed · Sold Out
               </span>
             </div>
@@ -414,7 +344,7 @@ function Overview({ setRef }) {
         <div className="lg:col-span-7">
           <SectionHeading eyebrow="Project Overview" title="A finished address on a growing corridor." />
           <Reveal delay={120}>
-            <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-[#2B2B2B]/85">
+            <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-[#0B2239]/85">
               Ideal Avenue sits on the wide 200 ft Old Bangalore Highway under
               the R1 zone, between Kothur and Shadnagar. The layout contained
               58 residential plots ranging from 165 to 500 square yards,
@@ -432,55 +362,157 @@ function Overview({ setRef }) {
 }
 
 function Highlights({ setRef }) {
-  const items = [
-    { icon: ShieldCheck, label: "Gated community with controlled access" },
+  const normalItems = [
     { icon: BadgeCheck, label: "Full HMDA approval" },
+    { icon: ShieldCheck, label: "Gated community with controlled access" },
+    { icon: Compass, label: "100% Vastu-compliant plotting" },
     { icon: Route, label: "CC roads throughout" },
     { icon: SignpostBig, label: "30 ft internal roads" },
     { icon: Zap, label: "Electricity and drainage connections" },
-    { icon: Compass, label: "100% Vastu-compliant plotting" },
-    { icon: Navigation, label: "Direct frontage on the 200 ft Old Bangalore Highway" },
-    { icon: Home, label: "Designed for long-term ownership, not just short-term appreciation." },
   ];
   return (
-    <section ref={setRef} className="relative bg-[#F5F2EE] px-6 py-24 sm:px-10 lg:py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Highlights" title="What defines Ideal Avenue" />
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((it, i) => (
+    <section ref={setRef} className="relative overflow-hidden bg-[#E8F6FA] px-6 py-24 sm:px-10 lg:py-32">
+      <GlowOrb className="left-[-8%] top-[-8%] h-80 w-80 bg-[#00B4D8]/25" />
+      <GlowOrb className="right-[-10%] bottom-[-12%] h-96 w-96 bg-[#023E8A]/15" />
+      <div className="relative mx-auto max-w-6xl">
+        <SectionHeading eyebrow="Highlights" title="What Defines Ideal Avenue" />
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-4 sm:auto-rows-[140px] sm:[grid-auto-flow:dense]">
+          {/* feature tile */}
+          <Reveal className="sm:col-span-2 sm:row-span-2">
+            <div className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-[#023E8A] to-[#03045E] p-7 shadow-[0_25px_60px_-30px_rgba(2,62,138,0.6)] transition-transform duration-500 hover:-translate-y-1.5">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle,white_1px,transparent_1px)] [background-size:18px_18px]"
+              />
+              <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-[#00B4D8]/15 ring-1 ring-[#00B4D8]/40 text-[#00B4D8] transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_25px_-4px_rgba(0,180,216,0.7)]">
+                <Navigation size={24} strokeWidth={1.75} />
+              </div>
+              <p className="relative font-[var(--ia-display)] text-[22px] leading-snug text-[#F4FBFD]">
+                Direct frontage on the 200&nbsp;ft Old Bangalore Highway
+              </p>
+            </div>
+          </Reveal>
+
+          {normalItems.map((it, i) => (
             <FeatureCard key={it.label} icon={it.icon} label={it.label} index={i} />
           ))}
+
+          {/* wide banner tile */}
+          <Reveal className="sm:col-span-2" delay={normalItems.length * 60}>
+            <div className="group h-full rounded-2xl bg-gradient-to-br from-[#00B4D8]/40 via-[#0077B6]/15 to-transparent p-[1px] transition-transform duration-500 hover:-translate-y-1">
+              <div className="flex h-full items-center gap-5 rounded-[15px] bg-[#F4FBFD]/85 backdrop-blur-sm px-6 py-5">
+                <IconBadge icon={Home} />
+                <p className="text-[15px] leading-snug text-[#0B2239] font-medium">
+                  Designed for long-term ownership, not just short-term appreciation.
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
   );
 }
 
-function Infrastructure({ setRef }) {
-  const items = [
-    { icon: DoorOpen, label: "Gated entrance and compound" },
-    { icon: Route, label: "Cement concrete internal roads" },
-    { icon: Zap, label: "Electricity to plots" },
-    { icon: Droplets, label: "Underground drainage" },
-    { icon: SignpostBig, label: "30 ft wide internal roads" },
-    { icon: Compass, label: "Vastu-oriented layout" },
-  ];
+function Gallery({ setRef }) {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const total = GALLERY_IMAGES.length;
+
+  useEffect(() => {
+    if (activeIndex === null) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setActiveIndex(null);
+      if (e.key === "ArrowRight") setActiveIndex((v) => (v + 1) % total);
+      if (e.key === "ArrowLeft") setActiveIndex((v) => (v - 1 + total) % total);
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [activeIndex, total]);
+
   return (
-    <section ref={setRef} className="relative bg-[#FCFAF7] px-6 py-24 sm:px-10 lg:py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="On-Ground Infrastructure" title="Infrastructure that is already in place" />
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it, i) => (
-            <FeatureCard key={it.label} icon={it.icon} label={it.label} index={i} tone="blueprint" />
+    <section ref={setRef} className="relative overflow-hidden bg-[#E8F6FA] px-6 py-24 sm:px-10 lg:py-32">
+      <GlowOrb className="right-[-8%] top-[8%] h-72 w-72 bg-[#0077B6]/20" />
+      <div className="relative mx-auto max-w-6xl">
+        <SectionHeading eyebrow="Gallery" title="A look around the community" />
+        <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
+          {GALLERY_IMAGES.map((img, i) => (
+            <Reveal key={img.caption} delay={i * 60}>
+              <button
+                type="button"
+                onClick={() => setActiveIndex(i)}
+                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl ring-1 ring-[#023E8A]/15 transition-shadow duration-500 hover:shadow-[0_20px_45px_-24px_rgba(2,62,138,0.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4D8]"
+              >
+                <img
+                  src={img.src}
+                  alt={img.caption}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-[#03045E]/75 via-transparent to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100">
+                  <span className="px-4 pb-3 text-[12.5px] font-medium text-[#F4FBFD]">{img.caption}</span>
+                </div>
+                <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-[#03045E]/50 text-[#F4FBFD] opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                  <Maximize2 size={14} />
+                </div>
+              </button>
+            </Reveal>
           ))}
         </div>
-        <Reveal delay={480}>
-          <p className="mx-auto mt-10 max-w-2xl text-center font-[var(--ia-display)] text-[17px] italic text-[#6B2A2A]/85">
-            Everything required for a settled residential address was planned
-            and executed as part of the original development.
-          </p>
-        </Reveal>
       </div>
+
+      {activeIndex !== null && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#03045E]/92 px-4 py-10 backdrop-blur-md"
+          onClick={() => setActiveIndex(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setActiveIndex(null)}
+            aria-label="Close"
+            className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-[#F4FBFD] transition-colors hover:bg-white/20"
+          >
+            <X size={18} />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveIndex((v) => (v - 1 + total) % total);
+            }}
+            aria-label="Previous image"
+            className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-[#F4FBFD] transition-colors hover:bg-white/20 sm:left-8"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveIndex((v) => (v + 1) % total);
+            }}
+            aria-label="Next image"
+            className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-[#F4FBFD] transition-colors hover:bg-white/20 sm:right-8"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          <div className="max-w-[92vw]" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={GALLERY_IMAGES[activeIndex].src}
+              alt={GALLERY_IMAGES[activeIndex].caption}
+              className="max-h-[78vh] w-auto max-w-[92vw] rounded-2xl object-contain shadow-2xl"
+            />
+            <p className="mt-4 text-center font-[var(--ia-mono)] text-[12.5px] tracking-wide text-[#F4FBFD]/75">
+              {GALLERY_IMAGES[activeIndex].caption} · {activeIndex + 1} / {total}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -494,15 +526,16 @@ function LocationSection({ setRef }) {
     { time: "30 mins", place: "RGIA" },
   ];
   return (
-    <section ref={setRef} className="relative bg-[#1D1616] px-6 py-24 sm:px-10 lg:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section ref={setRef} className="relative overflow-hidden bg-[#03045E] px-6 py-24 sm:px-10 lg:py-32">
+      <GlowOrb className="left-[-10%] bottom-[-15%] h-80 w-80 bg-[#0077B6]/25" />
+      <div className="relative mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Location"
-          title="Between Kothur and Shadnagar — on the Old Highway"
-          className="[&_h2]:text-[#F5F2EE]"
+          title={<>Between Kothur and Shadnagar —  <br /> on the Old Highway</>}
+          className="[&_h2]:text-[#F4FBFD]"
         />
         <Reveal delay={120}>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-[#F5F2EE]/75">
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-[#E8F6FA]/75">
             Close enough to key employment, education and lifestyle nodes,
             yet set in a planned open-plot environment.
           </p>
@@ -510,29 +543,32 @@ function LocationSection({ setRef }) {
 
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-5">
           <Reveal className="lg:col-span-3" delay={80}>
-            <div className="overflow-hidden rounded-3xl ring-1 ring-[#D6B36A]/25 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.6)]">
-              {/* Placeholder embed — swap the query for exact coordinates */}
+            <div className="overflow-hidden rounded-3xl ring-1 ring-[#00B4D8]/25 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.6)]">
               <iframe
                 title="Ideal Avenue location"
-                src="https://maps.google.com/maps?q=Kothur%20to%20Shadnagar%20Old%20Bangalore%20Highway&t=&z=12&ie=UTF8&iwloc=&output=embed"
-                className="h-[380px] w-full grayscale-[15%] sm:h-[440px] lg:h-full lg:min-h-[420px]"
-                loading="lazy"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4094.895794875883!2d78.22207556413112!3d17.094368977628896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA1JzQyLjEiTiA3OMKwMTMnMjYuNyJF!5e1!3m2!1sen!2sin!4v1785936775189!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                className="h-[380px] w-full sm:h-[440px] lg:h-full lg:min-h-[420px]"
                 style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
           </Reveal>
 
           <div className="lg:col-span-2">
-            <div className="rounded-3xl border border-[#D6B36A]/20 bg-[#241111] p-2">
+            <div className="rounded-3xl border border-[#00B4D8]/20 bg-white/5 p-2 backdrop-blur-md">
               {stops.map((s, i) => (
                 <Reveal key={s.place} delay={i * 70}>
-                  <div className="flex items-center gap-4 border-b border-[#D6B36A]/10 px-4 py-4 last:border-b-0">
-                    <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[#D6B36A]/12 px-3 py-1 font-[var(--ia-mono)] text-[12px] text-[#D6B36A]">
+                  <div className="flex items-center gap-4 border-b border-[#00B4D8]/10 px-4 py-4 last:border-b-0">
+                    <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[#00B4D8]/12 px-3 py-1 font-[var(--ia-mono)] text-[12px] text-[#00B4D8]">
                       <Clock size={12} />
                       {s.time}
                     </span>
-                    <span className="flex-1 text-[14px] text-[#F5F2EE]/90">{s.place}</span>
-                    <Navigation size={14} className="text-[#D6B36A]/60" />
+                    <span className="flex-1 text-[14px] text-[#F4FBFD]/90">{s.place}</span>
+                    <Navigation size={14} className="text-[#00B4D8]/60" />
                   </div>
                 </Reveal>
               ))}
@@ -544,71 +580,16 @@ function LocationSection({ setRef }) {
   );
 }
 
-function Details({ setRef }) {
-  const cards = [
-    {
-      heading: "Layout",
-      rows: [
-        { label: "Total Plots", value: "58" },
-        { label: "Plot Sizes", value: "165 – 500 Sq. Yd" },
-        { label: "Approval", value: "HMDA L.P. No. 000103/LO/Plg/HMDA/2022" },
-      ],
-    },
-    {
-      heading: "Roads & Access",
-      rows: [
-        { label: "Main Road", value: "200 ft Old Bangalore Highway" },
-        { label: "Internal Roads", value: "30 ft" },
-      ],
-    },
-    {
-      heading: "Status",
-      rows: [{ label: "Project", value: "Sold Out" }],
-      stamp: "Sold Out",
-    },
-  ];
-  return (
-    <section ref={setRef} className="relative bg-[#F5F2EE] px-6 py-24 sm:px-10 lg:py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Project Details" title="The essentials, clearly stated" />
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((c, i) => (
-            <SpecCard key={c.heading} heading={c.heading} rows={c.rows} index={i} stamp={c.stamp} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Investment({ setRef }) {
-  return (
-    <section ref={setRef} className="relative overflow-hidden bg-gradient-to-b from-[#6B2A2A] to-[#1D1616] px-6 py-24 text-center sm:px-10">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D6B36A] to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D6B36A] to-transparent" />
-      <Reveal>
-        <Eyebrow>
-          <span className="text-[#D6B36A]">Investment</span>
-        </Eyebrow>
-      </Reveal>
-      <Reveal delay={100}>
-        <p className="mx-auto mt-6 max-w-xl font-[var(--ia-display)] text-[clamp(1.4rem,3vw,2rem)] leading-snug text-[#FCFAF7]">
-          Project sold out. Limited resale opportunities may be available.
-        </p>
-      </Reveal>
-    </section>
-  );
-}
 
 /* ============================================================
    Root component
    ============================================================ */
 
 export default function IdealAvenue() {
-  const { active, register, scrollTo } = useCorridor(SECTION_KEYS.length);
+  const { register, scrollTo } = useSectionRefs();
 
   return (
-    <div className="relative bg-[#FCFAF7] font-[var(--ia-body)] text-[#2B2B2B]">
+    <div className="relative bg-[#F4FBFD] font-[var(--ia-body)] text-[#0B2239]">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,560&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
         :root {
@@ -631,15 +612,11 @@ export default function IdealAvenue() {
         style={{ backgroundImage: `url("${GRAIN_SVG}")` }}
       />
 
-      <CorridorRail active={active} />
-
-      <Hero onExplore={() => scrollTo("overview")} onLocation={() => scrollTo("location")} />
-      <Overview setRef={register(0, "overview")} />
-      <Highlights setRef={register(1, "highlights")} />
-      <Infrastructure setRef={register(2, "infrastructure")} />
-      <LocationSection setRef={register(3, "location")} />
-      <Details setRef={register(4, "details")} />
-      <Investment setRef={register(5, "investment")} />
+      <Hero onGallery={() => scrollTo("gallery")} onLocation={() => scrollTo("location")} />
+      <Overview setRef={register("overview")} />
+      <Highlights setRef={register("highlights")} />
+      <Gallery setRef={register("gallery")} />
+      <LocationSection setRef={register("location")} />
     </div>
   );
 }

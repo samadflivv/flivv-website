@@ -26,7 +26,7 @@ const projectsData = {
       { name: 'NS Homes 1.0', href: '/nshomes' },
       { name: 'NS Homes 2.0', href: '/nshomes2' },
       { name: 'Rivendell Farms', href: '/rivendellfarms' },
-      { name: 'Ideal Avenue', href: '/' },
+      { name: 'Ideal Avenue', href: '/idealavenue' },
     ]
   }
 };
