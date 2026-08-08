@@ -899,7 +899,7 @@ export default function NSH20LandingPage() {
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 md:px-10 md:pb-24">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <PhaseMark code="NSH2-P2.00" tone="onDark">Phase II · Mirkhanpet, South Hyderabad</PhaseMark>
+            <PhaseMark code="NSH-2.0" tone="onDark">Mirkhanpet, South Hyderabad</PhaseMark>
           </motion.div>
 
           <motion.h1
@@ -962,7 +962,7 @@ export default function NSH20LandingPage() {
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Reveal>
-              <PhaseMark code="NSH2-P2.01">Project Overview</PhaseMark>
+              <PhaseMark>Project Overview</PhaseMark>
               <h2 className="font-display mt-5 text-[2.3rem] leading-[1.05] md:text-[2.8rem]" style={{ color: "var(--text)" }}>
                 The next phase,
                 <br /><span className="italic" style={{ color: "var(--primary)" }}>same address.</span>
@@ -1012,7 +1012,7 @@ export default function NSH20LandingPage() {
         <div className="relative mx-auto max-w-7xl">
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <PhaseMark code="NSH2-P2.02" tone="onDark">Project Highlights</PhaseMark>
+              <PhaseMark tone="onDark">Project Highlights</PhaseMark>
               <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--bg)" }}>
                 Seven reasons it's an easy phase to join
               </h2>
@@ -1037,7 +1037,7 @@ export default function NSH20LandingPage() {
       <section className="relative px-6 py-24 md:px-10 md:py-32" style={{ background: "var(--surface)" }}>
         <div className="mx-auto max-w-7xl">
           <Reveal className="mx-auto max-w-xl text-center">
-            <PhaseMark code="NSH2-P2.03">Amenities</PhaseMark>
+            <PhaseMark>Amenities</PhaseMark>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--text)" }}>
               Everything NS Homes proved out, again
             </h2>
@@ -1055,7 +1055,7 @@ export default function NSH20LandingPage() {
       <section id="location" className="relative overflow-hidden px-6 pt-24 md:px-10 md:pt-32" style={{ background: "linear-gradient(180deg,#23161A,#2A1B20)" }}>
         <div className="relative mx-auto max-w-7xl pb-24 md:pb-32">
           <Reveal className="max-w-2xl">
-            <PhaseMark code="NSH2-P2.04" tone="onDark">Location</PhaseMark>
+            <PhaseMark tone="onDark">Location</PhaseMark>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--bg)" }}>
               Growing in the same address
             </h2>
@@ -1105,7 +1105,7 @@ export default function NSH20LandingPage() {
         <div className="mx-auto max-w-7xl">
           <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <PhaseMark code="NSH2-P2.05">Gallery</PhaseMark>
+              <PhaseMark>Gallery</PhaseMark>
               <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--text)" }}>
                 Site progress, in pictures
               </h2>
@@ -1125,7 +1125,7 @@ export default function NSH20LandingPage() {
       <section className="relative px-6 py-24 md:px-10 md:py-32" style={{ background: "var(--surface)" }}>
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <PhaseMark code="NSH2-P2.06">Project Specifications</PhaseMark>
+            <PhaseMark>Project Specifications</PhaseMark>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--text)" }}>
               The details, in one place
             </h2>
@@ -1145,7 +1145,7 @@ export default function NSH20LandingPage() {
 
         <div className="relative mx-auto max-w-7xl">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <PhaseMark code="NSH2-P2.07" tone="onDark">Get in Touch</PhaseMark>
+            <PhaseMark tone="onDark">Get in Touch</PhaseMark>
             <h2 className="font-display mt-5 text-[2.4rem] leading-[1.05] md:text-[3.2rem]" style={{ color: "var(--bg)" }}>
               Let's plan your visit to <span className="italic" style={{ color: "var(--accent)" }}>NSH 2.0</span>
             </h2>

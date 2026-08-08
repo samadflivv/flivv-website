@@ -877,7 +877,7 @@ export default function NSHomesCompletedProject() {
 
             <div className="lg:col-span-6">
               <Reveal delay={0.15}>
-                <h3 className="font-mono mb-1 text-[12px] uppercase tracking-[0.18em]" style={{ color: "var(--maroon)" }}>
+                <h3 className="font-mono mb-1 text-[12px] uppercase tracking-[0.18em]" style={{ color: "#F3EFE4" }}>
                   On the Doorstep
                 </h3>
                 <div className="mb-8">
@@ -888,7 +888,7 @@ export default function NSHomesCompletedProject() {
               </Reveal>
 
               <Reveal delay={0.2}>
-                <h3 className="font-mono mb-1 text-[12px] uppercase tracking-[0.18em]" style={{ color: "var(--maroon)" }}>
+                <h3 className="font-mono mb-1 text-[12px] uppercase tracking-[0.18em]" style={{ color: "#F3EFE4" }}>
                   Growing Around It
                 </h3>
                 <div>
@@ -910,7 +910,7 @@ export default function NSHomesCompletedProject() {
       <section id="gallery" className="relative px-6 py-24 md:px-10 md:py-32" style={{ background: "var(--stone)" }}>
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <PlotMarker code="NS-11.06">Gallery</PlotMarker>
+            <PlotMarker>Gallery</PlotMarker>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--graphite)" }}>
               A walk through the site
             </h2>
@@ -943,7 +943,7 @@ export default function NSHomesCompletedProject() {
       <section className="relative px-6 py-24 md:px-10 md:py-32" style={{ background: "var(--stone-soft)" }}>
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <PlotMarker code="NS-11.07">Project Completion</PlotMarker>
+            <PlotMarker>Project Completion</PlotMarker>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--graphite)" }}>
               From survey to handover
             </h2>
@@ -1007,7 +1007,7 @@ export default function NSHomesCompletedProject() {
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <Reveal>
-              <PlotMarker code="NS-11.08">Get in Touch</PlotMarker>
+              <PlotMarker>Get in Touch</PlotMarker>
               <h2 className="font-display mt-5 text-[2.1rem] leading-tight md:text-[2.5rem]" style={{ color: "var(--graphite)" }}>
                 Have questions about NS Homes?
               </h2>
