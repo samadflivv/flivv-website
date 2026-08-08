@@ -447,12 +447,10 @@ const LOCATION_DOORSTEP = [
 ];
 
 const LOCATION_GROWTH = [
-  { icon: GraduationCap, title: "Skill University", note: "A proposed vocational-training campus planned along the corridor.", distance: "Proposed" },
-  { icon: Leaf, title: "Future City", note: "An eco-focused, sustainability-led development planned nearby.", distance: "Proposed" },
-  { icon: Train, title: "Metro Expansion to Kandukur", note: "A proposed Hyderabad Metro extension along the highway.", distance: "Proposed" },
-  { icon: FlaskConical, title: "Green Pharma City", note: "A pharma hub taking shape, with majors planning large sites.", distance: "In development" },
-  { icon: Trophy, title: "BCCI Cricket Facility", note: "A proposed cricket facility near Mirkhapet, along the corridor.", distance: "Proposed" },
+  { icon: GraduationCap, title: "Young India Skill University", note: "A proposed vocational-training campus planned along the corridor.", distance: "In development" },
+  { icon: Leaf, title: "Future City", note: "An eco-focused, sustainability-led development planned nearby.", distance: "In development" },
   { icon: Construction, title: "Highway Widening — 62.5 km", note: "A proposed widening of the Hyderabad–Srisailam Highway by CSTD.", distance: "Proposed" },
+  { icon: Train, title: "Metro Expansion to Kandukur", note: "A proposed Hyderabad Metro extension along the highway.", distance: "Proposed" },
 ];
 
 const GALLERY_ITEMS = [
@@ -652,8 +650,8 @@ export default function NSHomesCompletedProject() {
         </motion.div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 md:px-10 md:pb-24">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <PlotMarker code="NS-11.00" tone="onDark" color="var(--stone)">Completed Project · South Hyderabad</PlotMarker>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>a
+            <PlotMarker tone="onDark" color="var(--stone)">Completed Project · South Hyderabad</PlotMarker>
           </motion.div>
 
           <motion.h1
@@ -673,7 +671,7 @@ export default function NSHomesCompletedProject() {
             className="mt-6 max-w-xl text-[16px] leading-relaxed md:text-[17px]"
             style={{ color: "rgba(243,239,228,0.78)" }}
           >
-            Eleven acres. Fully delivered. An open-plot community on the 100 ft main road at the
+            11 acres. Fully delivered. An open-plot community on the 100 ft main road at the
             Srisailam–Nagarjuna Sagar highway junction, just minutes from the Amazon Data
             Center. Surveyed, registered and handed over under DTCP and RERA.
           </motion.p>
@@ -725,14 +723,14 @@ export default function NSHomesCompletedProject() {
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Reveal>
-              <PlotMarker code="NS-11.01">Project Overview</PlotMarker>
+              <PlotMarker>Project Overview</PlotMarker>
               <h2 className="font-display mt-5 text-[2.4rem] leading-[1.05] md:text-[2.9rem]" style={{ color: "var(--graphite)" }}>
-                Eleven acres,
+                11 acres,
                 <br /><span className="italic" style={{ color: "var(--maroon-deep)" }}>precisely</span> delivered.
               </h2>
               <p className="mt-6 text-[15.5px] leading-relaxed" style={{ color: "rgba(38,34,30,0.72)" }}>
-                NS Homes is an eleven-acre open-plot venture set directly on the 100 ft main road
-                connecting the Srisailam and Nagarjuna Sagar highways, a short stretch from the
+                NS Homes is an 11 acre open-plot venture set directly on the 100 ft main road
+                connecting the Srisailam & Nagarjuna Sagar highways, a short stretch from the
                 Amazon Data Center in South Hyderabad. Every plot ranges from 146 to 838 square yards,
                 residential and commercial, was laid out, registered  and delivered under DTCP
                 norms and RERA oversight, with the paperwork closed and the roads already carrying
@@ -767,7 +765,7 @@ export default function NSHomesCompletedProject() {
       <section className="relative px-6 py-24 md:px-10 md:py-32" style={{ background: "var(--stone-soft)" }}>
         <div className="mx-auto max-w-4xl">
           <Reveal>
-            <PlotMarker code="NS-11.02">About the Development</PlotMarker>
+            <PlotMarker>About the Development</PlotMarker>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--graphite)" }}>
               Built for the long term
             </h2>
@@ -812,7 +810,7 @@ export default function NSHomesCompletedProject() {
         <ContourField opacity={0.06} stroke="#C98A96" />
         <div className="relative mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <PlotMarker code="NS-11.03" tone="onDark" color="var(--stone)">Project Highlights</PlotMarker>
+            <PlotMarker tone="onDark" color="var(--stone)">Project Highlights</PlotMarker>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--stone)" }}>
               What's actually been delivered
             </h2>
@@ -833,7 +831,7 @@ export default function NSHomesCompletedProject() {
       <section className="relative px-6 py-24 md:px-10 md:py-32" style={{ background: "var(--stone)" }}>
         <div className="mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <PlotMarker code="NS-11.04">Amenities</PlotMarker>
+            <PlotMarker>Amenities</PlotMarker>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--graphite)" }}>
               On-ground, not on paper
             </h2>
@@ -855,7 +853,7 @@ export default function NSHomesCompletedProject() {
         <ContourField opacity={0.06} stroke="#C98A96" />
         <div className="relative mx-auto max-w-7xl">
           <Reveal className="max-w-2xl">
-            <PlotMarker code="NS-11.05" tone="onDark" color="var(--stone)">Location</PlotMarker>
+            <PlotMarker tone="onDark" color="var(--stone)">Location</PlotMarker>
             <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--stone)" }}>
               Positioned at a highway junction
             </h2>

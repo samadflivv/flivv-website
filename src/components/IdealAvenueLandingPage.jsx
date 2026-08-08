@@ -277,7 +277,7 @@ function Hero({ onGallery, onLocation }) {
           <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-[#E8F6FA]/85">
             A premium HMDA-approved open-plot community between Kothur and
             Shadnagar, set directly on the 200 ft Old Bangalore Highway.
-            Fifty-eight thoughtfully planned plots, starting from 165 square
+            58 thoughtfully planned plots, starting from 165 square
             yards.
           </p>
         </Reveal>

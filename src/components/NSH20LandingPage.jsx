@@ -47,6 +47,7 @@ import {
   Recycle,
   Ruler,
   TreePine,
+  Construction,
   Award,
   FileCheck2,
   Users,
@@ -69,8 +70,8 @@ if (typeof window !== "undefined") {
 }
 
 const MAP_EMBED_SRC =
-  "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2817.037783204565!2d78.59364616864376!3d17.040688934399736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDAyJzI2LjYiTiA3OMKwMzUnNDIuNSJF!5e1!3m2!1sen!2sus!4v1785073812478!5m2!1sen!2sus";
-const MAP_DIRECTIONS_URL = "https://www.google.com/maps/search/?api=1&query=17.040688934399736,78.59364616864376";
+  "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3408.2975980067113!2d78.593447809335!3d17.04015278663694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1786102914807!5m2!1sen!2sin";
+const MAP_DIRECTIONS_URL = "https://www.google.com/maps/search/?api=1&query=17.040526936388343, 78.59330550748554";
 const OVERVIEW_IMAGE =
   "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/NSH2/Screenshot%202026-08-02%20193355.png";
 
@@ -713,10 +714,10 @@ const LOCATION_DOORSTEP = [
 ];
 
 const LOCATION_GROWTH = [
-  { icon: GraduationCap, title: "Young Skills University", note: "A vocational-training campus planned along the corridor.", distance: "Proposed" },
-  { icon: Leaf, title: "4th Future City — Mucherla", note: "A planned fourth 'future city' development for the region.", distance: "Proposed" },
+  { icon: GraduationCap, title: "Young India Skill University", note: "A proposed vocational-training campus planned along the corridor.", distance: "In development" },
+  { icon: Leaf, title: "Future City", note: "An eco-focused, sustainability-led development planned nearby.", distance: "In development" },
+  { icon: Construction, title: "Highway Widening — 62.5 km", note: "A proposed widening of the Hyderabad–Srisailam Highway by CSTD.", distance: "Proposed" },
   { icon: Train, title: "Metro Expansion to Kandukur", note: "A proposed Hyderabad Metro extension along the highway.", distance: "Proposed" },
-  { icon: FlaskConical, title: "Green Pharma City", note: "A pharma hub taking shape further along the same corridor.", distance: "In development" },
 ];
 
 const GALLERY_ITEMS = [
@@ -918,7 +919,7 @@ export default function NSH20LandingPage() {
             className="mt-6 max-w-xl text-[16px] leading-relaxed md:text-[17px]"
             style={{ color: "rgba(255,253,249,0.8)" }}
           >
-            Fifty-four residential plots across four fresh acres, extending the NS Homes address
+            54 residential plots across four fresh acres, extending the NS Homes address
             onto the same Srisailam–Nagarjuna Sagar Highway corridor — DTCP approved and open for
             investment.
           </motion.p>
