@@ -955,7 +955,7 @@ export default function NSH20LandingPage() {
       </section>
 
       {/* ============================================================ Progress */}
-      {/* <NSH2devprogress/> */}
+      <NSH2devprogress/>
 
       {/* ======================================================= OVERVIEW */}
       <section id="overview" className="relative px-6 py-24 md:px-10 md:py-32" style={{ background: "var(--bg)" }}>

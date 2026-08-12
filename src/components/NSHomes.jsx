@@ -626,94 +626,490 @@ export default function NSHomesCompletedProject() {
   const closeLightbox = () => setLightboxIndex(null);
   const prevImage = () => setLightboxIndex((i) => (i === 0 ? GALLERY_ITEMS.length - 1 : i - 1));
   const nextImage = () => setLightboxIndex((i) => (i === GALLERY_ITEMS.length - 1 ? 0 : i + 1));
-
+const shouldReduceMotion = useReducedMotion();
   return (
     <div ref={containerRef} className="ns-homes-page w-full overflow-x-hidden">
       <GlobalStyle />
 
       {/* ============================================================ HERO */}
-      <section ref={heroRef} className="relative flex min-h-[100svh] items-end overflow-hidden" style={{ background: "linear-gradient(180deg,#150F0F 0%,#1C1414 55%,#2A1B1B 100%)" }}>
-        <div ref={heroTextureRef} className="absolute inset-0">
-          <ContourField opacity={0.14} stroke="#C98A96" />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(60% 50% at 78% 15%, rgba(122,32,51,0.18), transparent)" }} />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(45% 40% at 10% 85%, rgba(89,24,37,0.32), transparent)" }} />
-        </div>
+<section ref={heroRef} className="relative flex min-h-[100svh] items-end overflow-hidden">
+  {/* Layered gradient background */}
+  <div ref={heroTextureRef} className="absolute inset-0">
+    <div
+      className="absolute inset-0"
+      style={{ background: "linear-gradient(165deg, #170F0F 0%, #1D1414 30%, #271918 56%, #34201F 78%, #3E2422 100%)" }}
+    />
+    <div className="absolute inset-0" style={{ background: "radial-gradient(65% 55% at 84% 6%, rgba(148,45,68,0.30), transparent 65%)" }} />
+    <div className="absolute inset-0" style={{ background: "radial-gradient(55% 50% at 6% 96%, rgba(89,24,37,0.40), transparent 70%)" }} />
+    <div className="absolute inset-0" style={{ background: "radial-gradient(120% 85% at 50% 105%, rgba(0,0,0,0.38), transparent 62%)" }} />
+  </div>
 
-        {/* Completion stamp */}
+  {/* Self-drawing skyline — developing township: cottages, mid-rise, towers, active cranes, and framework-stage builds, all sharing one line-art system */}
+  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[190px] select-none md:h-[240px] xl:h-[280px]" aria-hidden="true">
+    <svg viewBox="0 0 1440 280" preserveAspectRatio="none" className="h-full w-full">
+
+      {/* distant silhouette layer — depth backdrop, fade-in only (no pathLength draw) to stay light */}
+      <motion.path
+        d="M40,248 L40,222 L70,222 L70,248 M130,248 L130,205 L165,205 L165,248 M235,248 L235,228 L268,228 L268,248 M310,248 L310,212 L346,212 L346,248 M470,248 L470,230 L500,230 L500,248 M565,248 L565,215 L598,215 L598,248 M780,248 L780,222 L812,222 L812,248 M935,248 L935,207 L972,207 L972,248 M1035,248 L1035,232 L1062,232 L1062,248 M1130,248 L1130,213 L1160,213 L1160,248 M1195,248 L1195,228 L1222,228 L1222,248 M1340,248 L1340,210 L1372,210 L1372,248 M1400,248 L1400,232 L1430,232 L1430,248"
+        fill="none" stroke="rgba(201,138,150,0.14)" strokeWidth={1}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.14 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 1, ease: "easeOut", delay: 0.15 }}
+      />
+
+      {/* ground line */}
+      <motion.path
+        d="M0,248 L1440,248"
+        fill="none" stroke="rgba(201,138,150,0.22)" strokeWidth={1.2} strokeLinecap="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.22 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.4, ease: "easeOut", delay: 0.5 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 0.5 },
+        }}
+      />
+
+      {/* left-edge cottages — completed, low-rise */}
+      <motion.path
+        d="M15,248 L15,222 L25,205 L35,222 L35,248 M35,248 L35,222 M35,222 L45,205 L55,222 L55,248 M20,235 L20,222 M30,235 L30,222 M40,235 L40,222 M50,235 L50,222"
+        fill="none" stroke="rgba(201,138,150,0.22)" strokeWidth={1.1} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.22 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1, ease: [0.65, 0, 0.35, 1], delay: 0.85 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.5, delay: 0.85 },
+        }}
+      />
+
+      {/* scaffolded low-rise — under construction */}
+      <motion.path
+        d="M60,248 L60,150 L170,150 L170,248 M60,205 L170,205 M60,175 L170,175 M60,150 L90,205 M90,150 L60,205 M120,150 L150,205 M150,150 L120,205"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.3, ease: [0.65, 0, 0.35, 1], delay: 1.15 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 1.15 },
+        }}
+      />
+
+      {/* twin-gable townhouses — completed */}
+      <motion.path
+        d="M175,248 L175,208 L183,190 L191,208 L191,248 M191,208 L191,248 M191,208 L199,190 L207,208 L207,248 M179,225 L179,208 M187,225 L187,208 M195,225 L195,208 M203,225 L203,208"
+        fill="none" stroke="rgba(201,138,150,0.26)" strokeWidth={1.1} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.26 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1, ease: [0.65, 0, 0.35, 1], delay: 1.45 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.5, delay: 1.45 },
+        }}
+      />
+
+      {/* diagrid parametric tower */}
+      <motion.path
+        d="M210,248 L210,110 L330,110 L330,248 M210,248 L330,110 M210,110 L330,248 M210,179 L330,179 M270,110 L270,248"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.4, ease: [0.65, 0, 0.35, 1], delay: 1.75 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 1.75 },
+        }}
+      />
+
+      {/* grid-facade mid-rise — completed */}
+      <motion.path
+        d="M340,248 L340,95 L410,95 L410,248 M340,120 L410,120 M340,145 L410,145 M340,170 L410,170 M340,195 L410,195 M340,220 L410,220 M352,248 L352,95 M375,248 L375,95 M398,248 L398,95"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.3, ease: [0.65, 0, 0.35, 1], delay: 2.05 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 2.05 },
+        }}
+      />
+
+      {/* tower crane — active construction, bolder stroke */}
+      <motion.path
+        d="M420,248 L420,60 M420,60 L560,60 M420,60 L370,60 M405,60 L420,40 L435,60 M362,60 L362,72 L378,72 L378,60 M540,60 L540,150 M528,150 L528,170 L552,170 L552,150 L528,150 M420,248 L405,225 L420,210 L435,225 L420,248"
+        fill="none" stroke="rgba(201,138,150,0.46)" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.46 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.6, ease: [0.65, 0, 0.35, 1], delay: 2.35 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 2.35 },
+        }}
+      />
+
+      {/* building rising under the crane — exposed frame, uneven columns, incomplete top floor */}
+      <motion.path
+        d="M445,248 L445,175 M460,248 L460,160 M475,248 L475,150 M490,248 L490,145 M505,248 L505,150 M520,248 L520,160 M535,248 L535,175 M445,225 L535,225 M445,200 L535,200 M460,175 L505,175"
+        fill="none" stroke="rgba(201,138,150,0.30)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.3 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.2, ease: [0.65, 0, 0.35, 1], delay: 2.6 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.5, delay: 2.6 },
+        }}
+      />
+
+      {/* stepped ziggurat — tallest fixed tower */}
+      <motion.path
+        d="M600,248 L600,150 L625,150 L625,120 L650,120 L650,90 L675,90 L675,120 L700,120 L700,150 L725,150 L725,248"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.3, ease: [0.65, 0, 0.35, 1], delay: 2.9 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 2.9 },
+        }}
+      />
+
+      {/* small pitched-roof house — bridges ziggurat and dome */}
+      <motion.path
+        d="M730,248 L730,215 L742,196 L754,215 L754,248 M736,230 L736,215 M748,230 L748,215"
+        fill="none" stroke="rgba(201,138,150,0.24)" strokeWidth={1.1} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.24 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 0.9, ease: [0.65, 0, 0.35, 1], delay: 3.2 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.5, delay: 3.2 },
+        }}
+      />
+
+      {/* geodesic dome */}
+      <motion.path
+        d="M760,248 L760,210 L880,210 L880,248 M760,210 A60,60 0 0,1 880,210 M780,210 L820,155 L860,210 M820,155 L820,210"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.4, ease: [0.65, 0, 0.35, 1], delay: 3.5 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 3.5 },
+        }}
+      />
+
+      {/* balcony mid-rise — completed, rooftop mechanical box */}
+      <motion.path
+        d="M880,248 L880,145 L915,145 L915,248 M890,145 L890,130 L905,130 L905,145 M880,172 L915,172 M880,196 L915,196 M880,220 L915,220 M887,248 L887,145 M908,248 L908,145"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.1, ease: [0.65, 0, 0.35, 1], delay: 3.8 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.5, delay: 3.8 },
+        }}
+      />
+
+      {/* chamfered angular tower */}
+      <motion.path
+        d="M920,248 L920,130 L950,100 L1000,100 L1020,140 L1020,248"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.1, ease: [0.65, 0, 0.35, 1], delay: 4.1 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 4.1 },
+        }}
+      />
+
+      {/* framework-only build — earliest development stage */}
+      <motion.path
+        d="M1025,248 L1025,165 M1040,248 L1040,150 M1055,248 L1055,170 M1025,225 L1055,225 M1030,200 L1050,200"
+        fill="none" stroke="rgba(201,138,150,0.24)" strokeWidth={1.1} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.24 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 0.9, ease: [0.65, 0, 0.35, 1], delay: 4.4 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.5, delay: 4.4 },
+        }}
+      />
+
+      {/* solar-grid roof building */}
+      <motion.path
+        d="M1060,248 L1060,190 L1120,190 L1120,170 L1180,170 L1180,248 M1065,190 L1075,178 M1080,190 L1090,178 M1095,190 L1105,178 M1110,190 L1120,178 M1150,170 L1150,145 M1145,150 L1155,150 M1145,140 L1155,140"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.2, ease: [0.65, 0, 0.35, 1], delay: 4.7 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 4.7 },
+        }}
+      />
+
+      {/* signature tower — tallest silhouette, rooftop spire */}
+      <motion.path
+        d="M1190,248 L1190,70 L1250,70 L1250,248 M1190,100 L1250,100 M1190,130 L1250,130 M1190,160 L1250,160 M1190,190 L1250,190 M1190,220 L1250,220 M1202,248 L1202,70 M1214,248 L1214,70 M1226,248 L1226,70 M1238,248 L1238,70 M1220,70 L1220,50"
+        fill="none" stroke="rgba(201,138,150,0.32)" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.32 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.3, ease: [0.65, 0, 0.35, 1], delay: 5.0 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 5.0 },
+        }}
+      />
+
+      {/* second crane, bookend */}
+      <motion.path
+        d="M1260,248 L1260,120 M1260,120 L1340,120 M1260,120 L1230,120 M1320,120 L1320,170 M1312,170 L1312,182 L1328,182 L1328,170"
+        fill="none" stroke="rgba(201,138,150,0.46)" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.46 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1.3, ease: [0.65, 0, 0.35, 1], delay: 5.3 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.6, delay: 5.3 },
+        }}
+      />
+
+      {/* building under the second crane — early framing stage */}
+      <motion.path
+        d="M1280,248 L1280,190 M1295,248 L1295,175 M1310,248 L1310,185 M1320,248 L1320,195 M1280,220 L1320,220"
+        fill="none" stroke="rgba(201,138,150,0.28)" strokeWidth={1.15} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.28 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1, ease: [0.65, 0, 0.35, 1], delay: 5.5 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.5, delay: 5.5 },
+        }}
+      />
+
+      {/* right-edge low-rises — completed */}
+      <motion.path
+        d="M1350,248 L1350,220 L1375,220 L1375,248 M1358,248 L1358,220 M1367,248 L1367,220 M1385,248 L1385,205 L1412,205 L1412,248 M1392,248 L1392,205 M1400,248 L1400,205 M1405,248 L1405,205"
+        fill="none" stroke="rgba(201,138,150,0.24)" strokeWidth={1.1} strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.24 }}
+        transition={{
+          pathLength: { duration: shouldReduceMotion ? 0 : 1, ease: [0.65, 0, 0.35, 1], delay: 5.8 },
+          opacity: { duration: shouldReduceMotion ? 0 : 0.5, delay: 5.8 },
+        }}
+      />
+    </svg>
+  </div>
+
+  {/* Completion stamp — unchanged */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.8, rotate: -14 }}
+    animate={{ opacity: 1, scale: 1, rotate: -7 }}
+    transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    className="ns-stamp font-mono absolute right-6 top-24 hidden select-none rounded-sm px-4 py-2 text-[11px] tracking-[0.28em] md:right-14 md:top-28 md:block"
+  >
+    HANDED&nbsp;OVER
+  </motion.div>
+
+  {/* FCDA seal — holographic foil coin + instrument tick bezel, framed by a fixed ring with soft outward-only sonar pulses (no breathing / no contraction) */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.82 }}
+    animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+    transition={{
+      opacity: { duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] },
+      scale: { duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] },
+      y: { duration: 8, repeat: shouldReduceMotion ? 0 : Infinity, ease: "easeInOut", delay: 1.7 },
+    }}
+    className="absolute right-6 top-1/2 hidden -translate-y-1/2 md:right-12 lg:right-24 lg:block xl:right-32"
+  >
+    <div className="relative h-80 w-80 xl:h-96 xl:w-96">
+      {/* ambient glow — static, no motion */}
+      <div
+        className="absolute -inset-10 rounded-full blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(201,138,150,0.30) 0%, rgba(122,32,51,0.14) 45%, transparent 72%)" }}
+      />
+
+      {/* fixed framing ring — quiet, stable edge that anchors the seal at rest */}
+      <div
+        className="absolute inset-0 rounded-full border"
+        style={{ borderColor: "rgba(232,201,184,0.22)" }}
+      />
+
+      {/* sonar pulse rings — expand outward from the fixed ring and fade to nothing; scale never reverses, so there is no "flowing back" and the loop reset happens only once the ring is already invisible */}
+      {[0, 1].map((i) => (
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -14 }}
-          animate={{ opacity: 1, scale: 1, rotate: -7 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="ns-stamp font-mono absolute right-6 top-24 hidden select-none rounded-sm px-4 py-2 text-[11px] tracking-[0.28em] md:right-14 md:top-28 md:block"
+          key={i}
+          className="absolute inset-0 rounded-full border"
+          style={{ borderColor: "rgba(232,201,184,0.55)" }}
+          initial={{ scale: 0.88, opacity: 0 }}
+          animate={{ scale: [0.88, 1.36], opacity: [0, 0.45, 0] }}
+          transition={{
+            scale: {
+              duration: shouldReduceMotion ? 0 : 5.2,
+              repeat: shouldReduceMotion ? 0 : Infinity,
+              repeatType: "loop",
+              ease: [0.16, 1, 0.3, 1],
+              delay: shouldReduceMotion ? 0 : i * 2.6,
+            },
+            opacity: {
+              duration: shouldReduceMotion ? 0 : 5.2,
+              repeat: shouldReduceMotion ? 0 : Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+              times: [0, 0.22, 1],
+              delay: shouldReduceMotion ? 0 : i * 2.6,
+            },
+          }}
+        />
+      ))}
+
+      {/* instrument tick bezel — slow rotating dial marks, replaces the arc */}
+      <motion.svg
+        viewBox="0 0 320 320"
+        className="absolute inset-0 h-full w-full"
+        animate={{ rotate: shouldReduceMotion ? 0 : 360 }}
+        transition={{ duration: 90, repeat: shouldReduceMotion ? 0 : Infinity, ease: "linear" }}
+      >
+        {Array.from({ length: 48 }).map((_, i) => {
+          const angle = (i * 360) / 48;
+          const major = i % 6 === 0;
+          return (
+            <line
+              key={i}
+              x1="160"
+              y1={major ? "20" : "24"}
+              x2="160"
+              y2="30"
+              stroke="rgba(232,201,184,0.45)"
+              strokeWidth={major ? 1.4 : 0.8}
+              strokeLinecap="round"
+              transform={`rotate(${angle} 160 160)`}
+            />
+          );
+        })}
+      </motion.svg>
+
+      {/* coin */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          className="relative h-56 w-56 rounded-full p-[3px] shadow-[0_18px_50px_rgba(0,0,0,0.45)] xl:h-64 xl:w-64"
+          style={{ background: "linear-gradient(135deg, #E8C9B8 0%, #C98A96 30%, #F3EFE4 60%, #C98A96 85%, #E8C9B8 100%)" }}
+          animate={{ scale: shouldReduceMotion ? 1 : [1, 1.03, 1] }}
+          transition={{ duration: 6.5, repeat: shouldReduceMotion ? 0 : Infinity, ease: "easeInOut", delay: 1.2 }}
         >
-          HANDED&nbsp;OVER
+          <div
+            className="relative h-full w-full overflow-hidden rounded-full"
+            style={{
+              background: "radial-gradient(120% 120% at 32% 22%, #FCFAF2 0%, #F3ECD8 55%, #E5D8B8 100%)",
+              boxShadow: "inset 0 3px 18px rgba(89,24,37,0.20), inset 0 -8px 26px rgba(89,24,37,0.14)",
+            }}
+          >
+            {/* holographic foil sheen — drifting iridescent gradient */}
+            <motion.div
+              className="absolute inset-0 mix-blend-color-dodge"
+              style={{
+                background:
+                  "linear-gradient(115deg, transparent 10%, rgba(243,225,184,0.55) 24%, rgba(227,199,214,0.5) 38%, rgba(201,138,150,0.45) 50%, rgba(232,201,184,0.55) 62%, transparent 78%)",
+                backgroundSize: "260% 260%",
+                opacity: 0.55,
+              }}
+              animate={{
+                backgroundPosition: shouldReduceMotion ? "50% 50%" : ["0% 20%", "100% 80%", "0% 20%"],
+              }}
+              transition={{ duration: 11, repeat: shouldReduceMotion ? 0 : Infinity, ease: "easeInOut" }}
+            />
+
+            {/* rim text — independent slow rotation */}
+            <motion.div
+              className="absolute inset-0"
+              animate={{ rotate: shouldReduceMotion ? 0 : -360 }}
+              transition={{ duration: 60, repeat: shouldReduceMotion ? 0 : Infinity, ease: "linear" }}
+            >
+              <svg viewBox="0 0 200 200" className="h-full w-full">
+                <defs>
+                  <path id="fcdaRingPath" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0" />
+                </defs>
+                <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(122,32,51,0.22)" strokeWidth="1" />
+                <circle cx="100" cy="100" r="66" fill="none" stroke="rgba(122,32,51,0.22)" strokeWidth="1" />
+                <text fontSize="9" letterSpacing="3" fill="var(--maroon)" className="font-mono font-medium uppercase">
+                  <textPath href="#fcdaRingPath" startOffset="0%">
+                    Comes Under FCDA Limits &#8226; Comes Under FCDA Limits &#8226;
+                  </textPath>
+                </text>
+              </svg>
+            </motion.div>
+
+            {/* static center content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--maroon)" strokeWidth="1.5" className="mb-2">
+                <path d="M12 2l7 3v6c0 5-3.4 8.6-7 11-3.6-2.4-7-6-7-11V5l7-3z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+              <span className="font-display text-[26px] leading-none tracking-wide" style={{ color: "var(--maroon)" }}>
+                FCDA
+              </span>
+              <span className="mt-2 text-[9.5px] font-medium tracking-[0.3em]" style={{ color: "rgba(122,32,51,0.72)" }}>
+                ZONE COMPLIANT
+              </span>
+            </div>
+          </div>
         </motion.div>
+      </div>
+    </div>
+  </motion.div>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 md:px-10 md:pb-24">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>a
-            <PlotMarker tone="onDark" color="var(--stone)">Completed Project · South Hyderabad</PlotMarker>
-          </motion.div>
+  {/* Left content — unchanged */}
+  <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 md:px-10 md:pb-24">
+    <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+      <PlotMarker tone="onDark" color="var(--stone)">Completed Project · South Hyderabad</PlotMarker>
+    </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display mt-6 text-[15vw] leading-[0.92] tracking-tight md:text-[7.2rem]"
-            style={{ color: "var(--stone)" }}
-          >
-            NS Homes
-          </motion.h1>
+    <motion.h1
+      initial={{ opacity: 0, y: 26 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+      className="font-display mt-6 text-[15vw] leading-[0.92] tracking-tight md:text-[7.2rem]"
+      style={{ color: "var(--stone)" }}
+    >
+      NS Homes
+    </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35 }}
-            className="mt-6 max-w-xl text-[16px] leading-relaxed md:text-[17px]"
-            style={{ color: "rgba(243,239,228,0.78)" }}
-          >
-            11 acres. Fully delivered. An open-plot community on the 100 ft main road at the
-            Srisailam–Nagarjuna Sagar highway junction, just minutes from the Amazon Data
-            Center. Surveyed, registered and handed over under DTCP and RERA.
-          </motion.p>
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.35 }}
+      className="mt-6 max-w-xl text-[16px] leading-relaxed md:text-[17px]"
+      style={{ color: "rgba(243,239,228,0.78)" }}
+    >
+      11 acres. Fully delivered. An open-plot community on the 100 ft main road at the
+      Srisailam–Nagarjuna Sagar highway junction, just minutes from the Amazon Data
+      Center. Surveyed, registered and handed over under DTCP and RERA.
+    </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.55 }}
-            className="mt-8 flex flex-wrap gap-2.5"
-          >
-            {HERO_CHIPS.map((c) => (
-              <Chip key={c.label} icon={c.icon} tone="onDark">{c.label}</Chip>
-            ))}
-          </motion.div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.55 }}
+      className="mt-8 flex flex-wrap gap-2.5"
+    >
+      {HERO_CHIPS.map((c) => (
+        <Chip key={c.label} icon={c.icon} tone="onDark">{c.label}</Chip>
+      ))}
+    </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7 }}
-            className="mt-11 flex flex-wrap items-center gap-4"
-          >
-            <button
-              onClick={() => scrollToId("gallery")}
-              className="ns-btn-shine rounded-full px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-transform duration-300 hover:-translate-y-0.5"
-              style={{ background: "var(--maroon)", color: "var(--stone)" }}
-            >
-              View Gallery
-            </button>
-            <button
-              onClick={() => scrollToId("overview")}
-              className="group inline-flex items-center gap-2 rounded-full border px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-colors duration-300 hover:bg-white/5"
-              style={{ borderColor: "rgba(243,239,228,0.3)", color: "var(--stone)" }}
-            >
-              Explore Project
-            </button>
-          </motion.div>
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.7 }}
+      className="mt-11 flex flex-wrap items-center gap-4"
+    >
+      <button
+        onClick={() => scrollToId("gallery")}
+        className="ns-btn-shine rounded-full px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-transform duration-300 hover:-translate-y-0.5"
+        style={{ background: "var(--maroon)", color: "var(--stone)" }}
+      >
+        View Gallery
+      </button>
+      <button
+        onClick={() => scrollToId("overview")}
+        className="group inline-flex items-center gap-2 rounded-full border px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-colors duration-300 hover:bg-white/5"
+        style={{ borderColor: "rgba(243,239,228,0.3)", color: "var(--stone)" }}
+      >
+        Explore Project
+      </button>
+    </motion.div>
+  </div>
 
-        <div className="ns-scroll-cue absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block" style={{ color: "var(--blush)" }} aria-hidden="true">
-          <div className="h-9 w-px" style={{ background: "currentColor", opacity: 0.5 }} />
-        </div>
-      </section>
+  <div className="ns-scroll-cue absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block" style={{ color: "var(--blush)" }} aria-hidden="true">
+    <div className="h-9 w-px" style={{ background: "currentColor", opacity: 0.5 }} />
+  </div>
+</section>
 
       {/* ============================================================ Progress Bar */}
       <NSHdevprogress/>
