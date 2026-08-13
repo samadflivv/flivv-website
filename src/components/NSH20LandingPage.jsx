@@ -783,6 +783,7 @@ const Lightbox = ({ items, index, onClose, onPrev, onNext }) => {
   if (index === null) return null;
   const item = items[index];
 
+  
   return (
     <AnimatePresence>
       <motion.div
@@ -829,7 +830,8 @@ export default function NSH20LandingPage() {
   const heroRef = useRef(null);
   const heroTextureRef = useRef(null);
   const [lightboxIndex, setLightboxIndex] = useState(null);
-
+  const shouldReduceMotion = useReducedMotion() ?? false;
+  
   useEffect(() => {
     if (!document.getElementById("nsh2-fonts")) {
       const link = document.createElement("link");
@@ -877,82 +879,685 @@ export default function NSH20LandingPage() {
 
       {/* ============================================================ HERO */}
       <section
-        ref={heroRef}
-        className="relative flex min-h-[100svh] items-end overflow-hidden"
-        style={{ background: "linear-gradient(165deg,#23161A 0%,#33202A 55%,#5A1E2A 100%)" }}
+  ref={heroRef}
+  className="relative flex min-h-[100svh] items-end overflow-hidden"
+  style={{
+    background:
+      "linear-gradient(165deg,#23161A 0%,#33202A 55%,#5A1E2A 100%)",
+  }}
+>
+  {/* =========================================================
+      HERO BACKGROUND
+     ========================================================= */}
+  <div ref={heroTextureRef} className="absolute inset-0">
+    <div
+      className="nsh2-sheen absolute inset-0"
+      style={{
+        background:
+          "radial-gradient(60% 60% at 30% 20%, rgba(200,155,99,0.16), transparent 60%)",
+      }}
+    />
+
+    <ExpansionRings
+      opacity={0.14}
+      className="right-0 top-0 h-[70%] w-[70%]"
+    />
+
+    <div
+      className="absolute h-56 w-56 rounded-full blur-3xl"
+      style={{
+        background: "rgba(200,155,99,0.25)",
+        top: "14%",
+        left: "8%",
+        animation: "nsh2-float 11s ease-in-out infinite",
+      }}
+    />
+
+    <div
+      className="absolute h-72 w-72 rounded-full blur-3xl"
+      style={{
+        background: "rgba(123,44,59,0.35)",
+        bottom: "10%",
+        right: "12%",
+        animation: "nsh2-float-rev 13s ease-in-out infinite",
+      }}
+    />
+  </div>
+
+  {/* =========================================================
+      MAIN HERO CONTENT
+     ========================================================= */}
+  <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 md:px-10 md:pb-24">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+    >
+      <PhaseMark code="NSH-2.0" tone="onDark">
+        Mirkhanpet, South Hyderabad
+      </PhaseMark>
+    </motion.div>
+
+    {/* =====================================================
+        HEADING
+       ===================================================== */}
+    <motion.h1
+      initial={{ opacity: 0, y: 26 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.9,
+        delay: 0.15,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="font-display mt-6 text-[13vw] leading-[0.94] tracking-tight md:text-[6.4rem]"
+      style={{ color: "var(--bg)" }}
+    >
+      NS Homes{" "}
+      <span
+        className="italic"
+        style={{ color: "var(--accent)" }}
       >
-        <div ref={heroTextureRef} className="absolute inset-0">
-          <div
-            className="nsh2-sheen absolute inset-0"
-            style={{ background: "radial-gradient(60% 60% at 30% 20%, rgba(200,155,99,0.16), transparent 60%)" }}
-          />
-          <ExpansionRings opacity={0.14} className="right-0 top-0 h-[70%] w-[70%]" />
-          <div
-            className="absolute h-56 w-56 rounded-full blur-3xl"
-            style={{ background: "rgba(200,155,99,0.25)", top: "14%", left: "8%", animation: "nsh2-float 11s ease-in-out infinite" }}
-          />
-          <div
-            className="absolute h-72 w-72 rounded-full blur-3xl"
-            style={{ background: "rgba(123,44,59,0.35)", bottom: "10%", right: "12%", animation: "nsh2-float-rev 13s ease-in-out infinite" }}
-          />
-        </div>
+        2.0
+      </span>
+    </motion.h1>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-40 md:px-10 md:pb-24">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <PhaseMark code="NSH-2.0" tone="onDark">Mirkhanpet, South Hyderabad</PhaseMark>
-          </motion.div>
+    {/* =====================================================
+        DESCRIPTION
+       ===================================================== */}
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.35,
+      }}
+      className="mt-6 max-w-xl text-[16px] leading-relaxed md:text-[17px]"
+      style={{ color: "rgba(255,253,249,0.8)" }}
+    >
+      54 residential plots across four fresh acres, extending the NS Homes
+      address onto the same Srisailam–Nagarjuna Sagar Highway corridor —
+      DTCP approved and open for investment.
+    </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display mt-6 text-[13vw] leading-[0.94] tracking-tight md:text-[6.4rem]"
-            style={{ color: "var(--bg)" }}
+    {/* =====================================================
+        HERO CHIPS
+       ===================================================== */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.55,
+      }}
+      className="mt-8 flex flex-wrap gap-2.5"
+    >
+      {HERO_CHIPS.map((c) => (
+        <Chip
+          key={c.label}
+          icon={c.icon}
+          tone="onDark"
+        >
+          {c.label}
+        </Chip>
+      ))}
+    </motion.div>
+
+    {/* =====================================================
+        CTA BUTTONS
+       ===================================================== */}
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.7,
+        delay: 0.7,
+      }}
+      className="mt-11 flex flex-wrap items-center gap-4"
+    >
+      <button
+        onClick={() => scrollToId("overview")}
+        className="nsh2-btn-shine rounded-full px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-transform duration-300 hover:-translate-y-0.5"
+        style={{
+          background: "var(--accent)",
+          color: "var(--dark)",
+        }}
+      >
+        Explore Project
+      </button>
+
+      <button
+        onClick={() => scrollToId("gallery")}
+        className="group inline-flex items-center gap-2 rounded-full border px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-colors duration-300 hover:bg-white/5"
+        style={{
+          borderColor: "rgba(255,253,249,0.3)",
+          color: "var(--bg)",
+        }}
+      >
+        View Gallery
+
+        {/* Optional icon */}
+        {/* 
+        <ArrowUpRight
+          size={15}
+          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+        */}
+      </button>
+    </motion.div>
+
+    {/* =========================================================
+        FCDA — MOBILE VERSION
+
+        Completely different design from the previous circular seal.
+
+        Mobile:
+        - Comes after buttons
+        - Remains in normal document flow
+        - No absolute positioning
+        - No overlap with menu/content
+        - Large enough to read clearly
+       ========================================================= */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 18,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.75,
+        delay: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="mt-9 flex w-full justify-start lg:hidden"
+    >
+      <div
+        className="relative w-full max-w-[390px] overflow-hidden rounded-[18px] border p-[1px]"
+        style={{
+          borderColor: "rgba(200,155,99,0.5)",
+          background:
+            "linear-gradient(135deg, rgba(200,155,99,0.55), rgba(255,253,249,0.12), rgba(200,155,99,0.35))",
+        }}
+      >
+        <div
+          className="relative overflow-hidden rounded-[17px] px-4 py-4 sm:px-5 sm:py-5"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(35,22,26,0.96), rgba(50,30,39,0.96))",
+          }}
+        >
+          {/* Technical grid */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(200,155,99,1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200,155,99,1) 1px, transparent 1px)
+              `,
+              backgroundSize: "22px 22px",
+            }}
+          />
+
+          {/* Animated scan line */}
+          <motion.div
+            className="pointer-events-none absolute left-0 right-0 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, rgba(200,155,99,0.7), transparent)",
+            }}
+            animate={{
+              top: ["0%", "100%"],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 4.5,
+              repeat: shouldReduceMotion ? 0 : Infinity,
+              ease: "linear",
+            }}
+          />
+
+          <div className="relative flex items-center gap-4">
+            {/* FCDA MONOGRAM */}
+            <div className="relative flex h-[76px] w-[76px] shrink-0 items-center justify-center sm:h-[84px] sm:w-[84px]">
+              {/* Corner brackets */}
+              <span
+                className="absolute left-0 top-0 h-3 w-3 border-l border-t"
+                style={{
+                  borderColor: "var(--accent)",
+                }}
+              />
+
+              <span
+                className="absolute right-0 top-0 h-3 w-3 border-r border-t"
+                style={{
+                  borderColor: "var(--accent)",
+                }}
+              />
+
+              <span
+                className="absolute bottom-0 left-0 h-3 w-3 border-b border-l"
+                style={{
+                  borderColor: "var(--accent)",
+                }}
+              />
+
+              <span
+                className="absolute bottom-0 right-0 h-3 w-3 border-b border-r"
+                style={{
+                  borderColor: "var(--accent)",
+                }}
+              />
+
+              {/* Vertical technical line */}
+              <div
+                className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, transparent, rgba(200,155,99,0.25), transparent)",
+                }}
+              />
+
+              {/* FCDA text */}
+              <motion.span
+                className="relative z-10 font-display text-[23px] tracking-[0.06em] sm:text-[26px]"
+                style={{
+                  color: "var(--accent)",
+                }}
+                animate={{
+                  opacity: shouldReduceMotion
+                    ? 1
+                    : [0.75, 1, 0.75],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: shouldReduceMotion ? 0 : Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                FCDA
+              </motion.span>
+            </div>
+
+            {/* Vertical divider */}
+            <div
+              className="h-14 w-px shrink-0"
+              style={{
+                background:
+                  "linear-gradient(to bottom, transparent, rgba(200,155,99,0.65), transparent)",
+              }}
+            />
+
+            {/* CONTENT */}
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <span
+                  className="font-mono text-[8px] font-medium uppercase tracking-[0.22em]"
+                  style={{
+                    color: "rgba(255,253,249,0.48)",
+                  }}
+                >
+                  FCDA / ZONING STATUS
+                </span>
+
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{
+                    background: "var(--accent)",
+                    boxShadow:
+                      "0 0 8px rgba(200,155,99,0.7)",
+                  }}
+                />
+              </div>
+
+              <div
+                className="mt-1 text-[20px] font-medium tracking-wide sm:text-[15px]"
+                style={{
+                  color: "rgba(255,253,249,0.92)",
+                }}
+              >
+                Comes under FCDA limits
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom technical metadata */}
+          <div
+            className="relative mt-4 flex items-center justify-between border-t pt-3"
+            style={{
+              borderColor: "rgba(200,155,99,0.16)",
+            }}
           >
-            NS Homes <span className="italic" style={{ color: "var(--accent)" }}>2.0</span>
-          </motion.h1>
+            <span
+              className="font-mono text-[7px] uppercase tracking-[0.2em]"
+              style={{
+                color: "rgba(255,253,249,0.38)",
+              }}
+            >
+              NSH 2.0 / FCDA
+            </span>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35 }}
-            className="mt-6 max-w-xl text-[16px] leading-relaxed md:text-[17px]"
-            style={{ color: "rgba(255,253,249,0.8)" }}
+            <span
+              className="font-mono text-[7px] uppercase tracking-[0.2em]"
+              style={{
+                color: "rgba(200,155,99,0.7)",
+              }}
+            >
+              DEVELOPMENT PHASE
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+
+
+   {/* =========================================================
+    FCDA — DESKTOP VERSION
+
+    Large architectural information panel.
+    Vertically centered with the hero content.
+   ========================================================= */}
+<motion.div
+  initial={{
+    opacity: 0,
+    x: 35,
+  }}
+  animate={{
+    opacity: 1,
+    x: 0,
+  }}
+  transition={{
+    duration: 0.9,
+    delay: 0.95,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="absolute right-8 top-1/2 hidden w-[380px] -translate-y-1/2 lg:block xl:right-12"
+>
+  <div
+    className="relative overflow-hidden border"
+    style={{
+      borderColor: "rgba(200,155,99,0.4)",
+      background:
+        "linear-gradient(135deg, rgba(35,22,26,0.82), rgba(90,30,42,0.48))",
+      backdropFilter: "blur(14px)",
+    }}
+  >
+    {/* =====================================================
+        TOP HEADER
+       ===================================================== */}
+    <div
+      className="flex items-center justify-between border-b px-7 py-4"
+      style={{
+        borderColor: "rgba(200,155,99,0.2)",
+      }}
+    >
+      <span
+        className="font-mono text-[9px] uppercase tracking-[0.3em]"
+        style={{
+          color: "rgba(255,253,249,0.48)",
+        }}
+      >
+        FCDA / ZONING STATUS
+      </span>
+
+      <span
+        className="font-mono text-[9px]"
+        style={{
+          color: "rgba(200,155,99,0.75)",
+        }}
+      >
+        02
+      </span>
+    </div>
+
+    {/* =====================================================
+        MAIN CONTENT
+       ===================================================== */}
+    <div className="relative px-7 py-8">
+      {/* Architectural corner frame */}
+      <div
+        className="pointer-events-none absolute left-5 top-5 h-14 w-14 border-l border-t"
+        style={{
+          borderColor: "rgba(200,155,99,0.5)",
+        }}
+      />
+
+      <div
+        className="pointer-events-none absolute bottom-5 right-5 h-14 w-14 border-b border-r"
+        style={{
+          borderColor: "rgba(200,155,99,0.5)",
+        }}
+      />
+
+      {/* =================================================
+          FCDA + CROSSHAIR
+         ================================================= */}
+      <div className="flex items-center justify-between gap-6">
+        <div>
+          <motion.div
+            className="font-display text-[68px] leading-[0.82] tracking-[-0.045em]"
+            style={{
+              color: "var(--accent)",
+            }}
+            animate={{
+              opacity: shouldReduceMotion
+                ? 1
+                : [0.84, 1, 0.84],
+            }}
+            transition={{
+              duration: 4,
+              repeat: shouldReduceMotion ? 0 : Infinity,
+              ease: "easeInOut",
+            }}
           >
-            54 residential plots across four fresh acres, extending the NS Homes address
-            onto the same Srisailam–Nagarjuna Sagar Highway corridor — DTCP approved and open for
-            investment.
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.55 }} className="mt-8 flex flex-wrap gap-2.5">
-            {HERO_CHIPS.map((c) => (
-              <Chip key={c.label} icon={c.icon} tone="onDark">{c.label}</Chip>
-            ))}
+            FCDA
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.7 }} className="mt-11 flex flex-wrap items-center gap-4">
-            <button
-              onClick={() => scrollToId("overview")}
-              className="nsh2-btn-shine rounded-full px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-transform duration-300 hover:-translate-y-0.5"
-              style={{ background: "var(--accent)", color: "var(--dark)" }}
-            >
-              Explore Project
-            </button>
-            <button
-              onClick={() => scrollToId("gallery")}
-              className="group inline-flex items-center gap-2 rounded-full border px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-colors duration-300 hover:bg-white/5"
-              style={{ borderColor: "rgba(255,253,249,0.3)", color: "var(--bg)" }}
-            >
-              View Gallery
-              {/* <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /> */}
-            </button>
-          </motion.div>
+          <div
+            className="mt-4 font-mono text-[10px] uppercase tracking-[0.28em]"
+            style={{
+              color: "rgba(255,253,249,0.62)",
+            }}
+          >
+            Zone Compliant
+          </div>
         </div>
 
-        <div className="nsh2-scroll-cue absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block" style={{ color: "var(--accent)" }} aria-hidden="true">
-          <div className="h-9 w-px" style={{ background: "currentColor", opacity: 0.5 }} />
+        {/* Technical crosshair */}
+        <div className="relative h-[82px] w-[82px] shrink-0">
+          <div
+            className="absolute left-1/2 top-0 h-full w-px"
+            style={{
+              background:
+                "linear-gradient(to bottom, transparent, rgba(200,155,99,0.55), transparent)",
+            }}
+          />
+
+          <div
+            className="absolute left-0 top-1/2 h-px w-full"
+            style={{
+              background:
+                "linear-gradient(to right, transparent, rgba(200,155,99,0.55), transparent)",
+            }}
+          />
+
+          <div
+            className="absolute left-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border"
+            style={{
+              borderColor: "rgba(200,155,99,0.65)",
+            }}
+          />
+
+          <motion.div
+            className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{
+              background: "var(--accent)",
+              boxShadow:
+                "0 0 12px rgba(200,155,99,0.8)",
+            }}
+            animate={{
+              scale: shouldReduceMotion
+                ? 1
+                : [1, 1.8, 1],
+              opacity: shouldReduceMotion
+                ? 1
+                : [0.65, 1, 0.65],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: shouldReduceMotion ? 0 : Infinity,
+              ease: "easeInOut",
+            }}
+          />
         </div>
-      </section>
+      </div>
+
+      {/* =================================================
+          MAIN FCDA MESSAGE
+         ================================================= */}
+      <div
+        className="my-7 h-px w-full"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(200,155,99,0.55), rgba(200,155,99,0.05))",
+        }}
+      />
+
+      <div>
+        <div
+          className="font-mono text-[9px] uppercase tracking-[0.25em]"
+          style={{
+            color: "rgba(255,253,249,0.4)",
+          }}
+        >
+          ZONING INFORMATION
+        </div>
+
+        <div
+          className="mt-2 text-[21px] font-medium leading-tight tracking-wide"
+          style={{
+            color: "rgba(255,253,249,0.94)",
+          }}
+        >
+          Comes under FCDA limits
+        </div>
+
+       </div>
+
+      {/* =================================================
+          DEVELOPMENT STATUS
+         ================================================= */}
+      <div
+        className="mt-7 flex items-center justify-between border-t pt-5"
+        style={{
+          borderColor: "rgba(200,155,99,0.18)",
+        }}
+      >
+        <div>
+          <div
+            className="font-mono text-[8px] uppercase tracking-[0.22em]"
+            style={{
+              color: "rgba(255,253,249,0.36)",
+            }}
+          >
+            PROJECT STATUS
+          </div>
+
+          <div
+            className="mt-1.5 text-[14px] font-medium"
+            style={{
+              color: "rgba(255,253,249,0.88)",
+            }}
+          >
+            Development Phase
+          </div>
+        </div>
+
+        {/* Simple status indicator — no "verified" */}
+        <div className="flex items-center gap-2">
+          <motion.span
+            className="h-2 w-2 rounded-full"
+            style={{
+              background: "var(--accent)",
+              boxShadow:
+                "0 0 10px rgba(200,155,99,0.7)",
+            }}
+            animate={{
+              opacity: shouldReduceMotion
+                ? 1
+                : [0.45, 1, 0.45],
+            }}
+            transition={{
+              duration: 2,
+              repeat: shouldReduceMotion ? 0 : Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          <span
+            className="font-mono text-[8px] uppercase tracking-[0.18em]"
+            style={{
+              color: "rgba(200,155,99,0.72)",
+            }}
+          >
+            IN PROGRESS
+          </span>
+        </div>
+      </div>
+    </div>
+
+    {/* =====================================================
+        BOTTOM REFERENCE STRIP
+       ===================================================== */}
+    <div
+      className="flex items-center justify-between border-t px-7 py-3"
+      style={{
+        borderColor: "rgba(200,155,99,0.17)",
+        background: "rgba(0,0,0,0.14)",
+      }}
+    >
+      <span
+        className="font-mono text-[8px] uppercase tracking-[0.24em]"
+        style={{
+          color: "rgba(255,253,249,0.32)",
+        }}
+      >
+        NS HOMES 2.0
+      </span>
+
+      <span
+        className="font-mono text-[8px] uppercase tracking-[0.24em]"
+        style={{
+          color: "rgba(200,155,99,0.55)",
+        }}
+      >
+        FCDA
+      </span>
+    </div>
+  </div>
+</motion.div>
+  </div>
+
+  {/* =========================================================
+      SCROLL CUE
+     ========================================================= */}
+  <div
+    className="nsh2-scroll-cue absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"
+    style={{
+      color: "var(--accent)",
+    }}
+    aria-hidden="true"
+  >
+    <div
+      className="h-9 w-px"
+      style={{
+        background: "currentColor",
+        opacity: 0.5,
+      }}
+    />
+  </div>
+</section>
 
       {/* ============================================================ Progress */}
       {/* <NSH2devprogress/> */}

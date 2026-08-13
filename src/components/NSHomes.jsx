@@ -325,7 +325,7 @@ const Chip = ({ icon: Icon, children, tone = "onDark" }) => (
     className="inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium"
     style={
       tone === "onDark"
-        ? { borderColor: "rgba(243,239,228,0.28)", color: "var(--stone)", background: "rgba(255,255,255,0.05)" }
+        ? { borderColor: "rgba(243,239,228,0.28)", color: "var(--stone)", background: "#180F0F" }
         : { borderColor: "rgba(122,32,51,0.35)", color: "var(--maroon-deep)", background: "rgba(122,32,51,0.07)" }
     }
   >
@@ -1223,7 +1223,7 @@ const shouldReduceMotion = useReducedMotion();
       <button
         onClick={() => scrollToId("overview")}
         className="group inline-flex items-center gap-2 rounded-full border px-7 py-3.5 text-[13.5px] font-medium tracking-wide transition-colors duration-300 hover:bg-white/5"
-        style={{ borderColor: "rgba(243,239,228,0.3)", color: "var(--stone)" }}
+        style={{ borderColor: "rgb(255, 255, 255)", color: "var(--stone)" }}
       >
         Explore Project
       </button>
