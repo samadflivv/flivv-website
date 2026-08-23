@@ -4,15 +4,21 @@ const OurPurpose = () => {
   const purposes = [
     {
       number: '01',
+      title: 'Vision',
+      description:
+        'To be one of the most known online platforms in Hyderabad for educating the audience in the field of Real Estate while providing convenient open plot investment options and delivering the best exceptional value to our customers. This vision is what drives us to give our best and establish disciplined practices at work.',
+    },
+    {
+      number: '02',
       title: 'Mission',
       description:
         'To empower individuals and families with opportunities to diversify investment options according to the options we present while providing trustworthy and transparent services in open plot sales. We also aim to enhance the quality of our projects with each step as we take in all the customer-centric practices.',
     },
     {
-      number: '02',
-      title: 'Vision',
+      number: '03',
+      title: 'Goal',
       description:
-        'To be one of the most known online platforms in Hyderabad for educating the audience in the field of Real Estate while providing convenient open plot investment options and delivering the best exceptional value to our customers. This vision is what drives us to give our best and establish disciplined practices at work.',
+        'We grow real estate ventures by thinking outside the box and uncovering fresh opportunities for everyone involved. Great work starts with great people, so we focus on supporting our team and building a genuinely passionate, loyal culture. As our presence across the industry grows, we stay grounded in strong professional relationships and real partnerships. Above all, we care about helping our clients win—providing clear, honest financial guidance so buyers and investors can make smart moves with confidence.',
     },
   ];
 
@@ -20,9 +26,15 @@ const OurPurpose = () => {
     <section className="bg-white text-black px-4 md:px-40 py-16">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
         {/* Left Section - Heading */}
-        <div className="md:w-1/2">
-          <p className="text-xl tracking-widest text-black uppercase mb-2">Goal</p>
+        <div className="md:w-1/2 gap-10 flex flex-col">
           <h2 className="sm:text-6xl text-4xl font-normal">Our Purpose</h2>
+          <div className="relative w-full">
+    <img
+      src="https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/ChatGPT%20Image%20Aug%2023,%202026,%2004_51_09%20PM.png"
+      alt="Vaseem"
+      className="block h-auto w-full object-contain md:h-full md:object-cover md:object-center rounded-xl"
+    />
+  </div>
         </div>
 
         {/* Right Section - Items */}

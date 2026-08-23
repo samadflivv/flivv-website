@@ -1619,7 +1619,7 @@ export default function NSH20LandingPage() {
             <div className="max-w-2xl">
               <PhaseMark tone="onDark">Project Highlights</PhaseMark>
               <h2 className="font-display mt-5 text-[2.2rem] leading-tight md:text-[2.7rem]" style={{ color: "var(--bg)" }}>
-                Seven reasons it's an easy phase to join
+                7 reasons it's an easy phase to join
               </h2>
             </div>
             <span className="font-mono hidden text-[12px] tracking-[0.14em] sm:block" style={{ color: "rgba(255,253,249,0.4)" }}>

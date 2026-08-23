@@ -1,0 +1,88 @@
+/* PlotLayout.module.css
+   Scoped styles applied directly (via classList) to the real <path>
+   elements injected from project-layout.svg. Kept separate from the
+   Tailwind-based UI chrome since these rules target raw SVG geometry
+   with pixel-precise transitions. */
+
+.svgHost {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.svgHost :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+}
+
+/* Applied once to every detected plot <path> on mount. */
+.plotPath {
+  cursor: pointer;
+  transition: fill 160ms ease, fill-opacity 160ms ease, stroke 160ms ease, stroke-width 160ms ease;
+  stroke-linejoin: round;
+}
+
+/* Desktop hover cue. Touch devices largely ignore :hover, which is fine —
+   tooltips are desktop-only per spec anyway. */
+@media (hover: hover) and (pointer: fine) {
+  .plotPath:hover {
+    stroke: #1f2937;
+    stroke-width: 1.4;
+  }
+}
+
+/* Currently selected plot: stronger outline + soft glow, applied via classList
+   rather than :hover since selection persists after the pointer moves away. */
+.selected {
+  stroke: #111827 !important;
+  stroke-width: 2 !important;
+  filter: drop-shadow(0 0 3px rgba(17, 24, 39, 0.55));
+}
+
+/* Plots that don't match the active filter are dimmed, never hidden. */
+.muted {
+  opacity: 0.28;
+}
+
+/* Bulk multi-select: a lighter, dashed treatment so it stays visually
+   secondary to single-plot selection per the spec. */
+.bulkSelected {
+  stroke: #2563eb !important;
+  stroke-width: 1.6 !important;
+  stroke-dasharray: 3 2;
+}
+
+/* Mortgage hatch overlay clone — sits visually on top of the status-colored
+   path but never intercepts pointer events (the original path underneath
+   still receives clicks/hovers). */
+.hatchOverlay {
+  pointer-events: none;
+}
+
+/* Developer-mode toggle: makes every detected plot boundary visible at once. */
+.debugBoundary {
+  stroke: #ec4899 !important;
+  stroke-width: 1 !important;
+  stroke-dasharray: 2 1;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 60;
+  pointer-events: none;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transform: translate(-50%, -130%);
+  white-space: nowrap;
+}
+
+.tooltip strong {
+  font-weight: 600;
+}
