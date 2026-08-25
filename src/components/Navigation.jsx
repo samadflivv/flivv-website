@@ -105,6 +105,8 @@ export default function Navigation() {
           </div>
         </li>
 
+        <li><Link href="/quickdeals">Quick Deals</Link></li>
+
         <li><Link href="/contact">Contact</Link></li>
 
         <li><Link href="/faqs">FAQ's</Link></li>
@@ -222,6 +224,12 @@ export default function Navigation() {
             Projects
             <ChevronDown size={24} className="rotate-90" />
           </button>
+        </li>
+
+      <li>
+          <Link href="/quickdeals" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">
+            Quick Deals
+          </Link>
         </li>
 
         <li>
