@@ -13,22 +13,22 @@ const DEALS = [
     projectName: "Jalpally",
     dealTitle: "Jalpally — Plots Available",
     description: [
-      "Jalpally is a rapidly growing urban municipality and satellite town located on the southern periphery of Hyderabad. Known for its strategic location and budget-friendly pricing, Jalpally has emerged as one of the best real estate investment destinations near Shamshabad, offering the potential for up to 2x returns over a 5-year period.",
-      "Whether you are looking for low-investment open plots or long-term capital appreciation driven by major infrastructure developments, Jalpally presents an ideal budget friendly opportunity for home builders and property investors alike.",
+      "Jalpally is a rapidly growing urban municipality located on the southern division of Hyderabad. Known for its strategic location, Jalpally has emerged as one of the best real estate investment destinations near Shamshabad, offering the potential for up to 2x returns over a 5-year period.",
+      "Whether you are looking for low-investment open plots or long-term capital appreciation driven by major infrastructure developments, Jalpally presents an ideal opportunity for every home builder and property investor.",
     ],
     descriptionSections: [
       {
         title: "Key Highlights & Amenities",
         items: [
-          "Peaceful Living Environment: Surrounded by scenic surroundings and nearby water bodies, offering a serene, calm atmosphere away from city congestion.",
-          "Thriving Neighborhood: Situated near existing residential colonies, rapidly expanding semi-urban housing, villas, and spacious farmhouses.",
+          "Peaceful Living Environment: Surrounded by scenic surroundings and offering a serene, calm atmosphere.",
+          "Thriving Neighborhood: Situated near existing residential colonies, rapidly expanding semi-urban housing, villas and spacious farmhouses.",
           "100% Clear Title Plots: Features Gram Panchayat (GP) approved layouts with the Layout Regularization Scheme (LRS) fully paid, ensuring hassle-free ownership.",
         ],
       },
       {
         title: "Prime Connectivity & Strategic Location",
         intro:
-          "Jalpally offers seamless connectivity to key commercial hubs and transit networks across Hyderabad:",
+          "Jalpally offers seamless connectivity to key commercial hubs and easy transit networks across Hyderabad:",
         items: [
           "Rajiv Gandhi International Airport (Shamshabad): 20-minute drive",
           "Outer Ring Road (ORR): 12-minute drive",
@@ -49,39 +49,35 @@ const DEALS = [
       { plotNumber: "Plot No. 46A", area: "345 Sq. Yd." },
     ],
     locationHighlights: [
-      "Near RGIA (Shamshabad)",
-      "On Srisailam Highway",
+      "Near RGIA, Shamshabad",
+      "Near PVNR Expressway",
       "Near Hyderabad ORR",
-      "Borders Balapur & Chandrayangutta",
     ],
     projectHighlights: [
       "Gated Layout Options",
       "Independent House Plots",
-      "Long-Term Price Growth",
-      "Semi-Urban, Hilly Setting",
+      "Semi-Urban scenic setting",
     ],
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4098.660461216072!2d78.44324678810361!3d17.274968217617037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDE2JzI5LjMiTiA3OMKwMjYnMzYuNCJF!5e1!3m2!1sen!2sin!4v1787658046656!5m2!1sen!2sin",
   },
   {
-    id: "mothighannapur",
-    projectName: "Mothighannapur",
-    dealTitle: "Mothighannapur — Farm Plots",
+    id: "mothighanapur",
+    projectName: "Mothighanapur",
+    dealTitle: "Mothighanapur — Farm Plots",
     description:
-      "A NALA-converted farmland project by Flivv Developers in Mothighannapur, a Gram Panchayat in Balanagar Mandal, Mahabubnagar district — within Hyderabad's expanding South corridor. The 2-acre layout is divided into 10 individual plots of 1,000 sq. yards each, with direct access from a 50 ft. main road and 30 ft. internal roads. A one-time payment option is available, structured as a long-term hold of 5–10 years, with future potential for LRS regularization or residential use, subject to approvals.",
+      "A NALA-converted farmland project by Flivv Developers in Mothighanapur, a Gram Panchayat in Balanagar Mandal, Mahabubnagar district, within Hyderabad's expanding South corridor. The 2-acre layout is divided into 10 individual plots of 1,000 sq. yards each, with direct access from a 50 ft. main road and 30 ft. internal roads. A one-time payment option is available, structured as a long-term hold of 5–10 years.",
     plotLabel: "AVAILABLE PLOTS",
     availablePlot: { plotNumber: "10 Plots", area: "1,000 Sq. Yd. each" },
     locationHighlights: [
       "12 km from Shadnagar",
-      "6.7 km from Toll Gate",
       "3.5 km from NH-44",
       "53 km from Aramghar",
     ],
     projectHighlights: [
+      "Registry in sq. yards",
       "50 ft. Main Road Access",
       "30 ft. Internal Roads",
-      "One-Time Payment Option",
-      "LRS Potential (Future)",
     ],
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2048.5261487305042!2d78.16350566101266!3d16.999482906602857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDU5JzU1LjciTiA3OMKwMDknNTAuMyJF!5e1!3m2!1sen!2sin!4v1787646320051!5m2!1sen!2sin",
@@ -91,7 +87,7 @@ const DEALS = [
     projectName: "Airport Town",
     dealTitle: "Airport Town",
     description:
-      "One of our most strategically located projects, just 2 km from Bangalore Highway (NH-44) in the R1 zone. This open layout comprises only 36 plots, an HMDA-approved GP layout under LRS, with 30 ft. internal roads and Flivv's development standards throughout. Plot sizes start from 200 sq. yards, close to Kothur town and everyday essentials — built for both ready-to-construct homes and long-term investment.",
+      "One of our most strategically located projects, just 2 km from Bangalore Highway (NH-44) in the R1 zone, GP layout. Location is close to Kothur town and everyday essentials — built for both ready-to-construct homes and long-term investment.",
     availablePlot: { plotNumber: "Plot No. 8", area: "1,041 Sq. Yd." },
     locationHighlights: [
       "19 km from RGIA",
@@ -101,9 +97,9 @@ const DEALS = [
     ],
     projectHighlights: [
       "30 ft. Internal Roads",
-      "CC Roads",
       "Electricity",
-      "24/7 Security",
+      "Two way access",
+      "Beside the Park",
     ],
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3090.2755095124735!2d78.31039251464864!3d17.133868721197903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA4JzAyLjEiTiA3OMKwMTgnNDAuMiJF!5e1!3m2!1sen!2sin!4v1787646542586!5m2!1sen!2sin",
@@ -113,7 +109,7 @@ const DEALS = [
     projectName: "Airport Drive",
     dealTitle: "Airport Drive",
     description:
-      "Situated in Nandigama Mandal, Ranga Reddy District, roughly 50 km south of Hyderabad near Kothur — a fast-growing corridor along NH-44 with seamless connectivity to the Outer Ring Road and Rajiv Gandhi International Airport. The area is emerging as a major hub for warehousing, logistics and industrial development, alongside a rising base of residential layouts and gated communities, while retaining its agricultural roots.",
+      "Situated in Nandigama Mandal, Ranga Reddy District, roughly 50 km south of Hyderabad near Kothur — a fast-growing corridor along NH-44 with seamless connectivity to the Outer Ring Road and Rajiv Gandhi International Airport. The area is emerging as a major hub for warehousing, logistics and industrial development, alongside a rising base of residential layouts and gated communities.",
     availablePlot: { plotNumber: "Plot No. 569", area: "995 Sq. Yd." },
     locationHighlights: [
       "Near NH-44 Highway",
@@ -125,7 +121,6 @@ const DEALS = [
       "Logistics & Industrial Hub",
       "Growing Residential Layouts",
       "Highway Corridor Access",
-      "Agricultural Hinterland",
     ],
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2439.8411708896315!2d78.31330079773414!3d17.128530872852682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA3JzQzLjUiTiA3OMKwMTgnNDkuMiJF!5e1!3m2!1sen!2sin!4v1787658166154!5m2!1sen!2sin",
@@ -747,7 +742,7 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
 
           <div className="qd-highlights">
             <div>
-              <div className="qd-highlight-title">LOCATION HIGHLIGHTS</div>
+              <div className="qd-highlight-title">LOCATION PERKS</div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {deal.locationHighlights.map((item, i) => (
                   <li className="qd-highlight-item location" key={i}>
@@ -758,7 +753,7 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
               </ul>
             </div>
             <div>
-              <div className="qd-highlight-title">PROJECT HIGHLIGHTS</div>
+              <div className="qd-highlight-title">HIGHLIGHTS</div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {deal.projectHighlights.map((item, i) => (
                   <li className="qd-highlight-item project" key={i}>
