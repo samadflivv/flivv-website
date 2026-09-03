@@ -1392,5 +1392,24 @@
     "updatedAt": "2026-05-08T13:36:23.228Z",
     "isPublished": true,
     "capacity": ""
+  },
+  {
+    "title": "Sales Meet at Gulmohar Homes",
+    "description": "1:1 Sales Meet",
+    "start": "2026-09-06T04:30:00.000Z",
+    "end": "2026-09-06T12:30:00.000Z",
+    "country": "India",
+    "countryLabel": "Hyderabad",
+    "city": "Hyderabad",
+    "venue": "Gulmohar Homes, Shadnagar",
+    "type": "Sales Meet",
+    "tags": [],
+    "rsvpUrl": "https://flivvdevelopers.com/gulmoharhomes",
+    "organizer": "Flivv",
+    "id": "evt-1788419800364-cghd8b22b",
+    "createdAt": "2026-09-03T07:16:40.364Z",
+    "updatedAt": "2026-09-03T07:17:05.234Z",
+    "isPublished": true,
+    "capacity": ""
   }
 ]

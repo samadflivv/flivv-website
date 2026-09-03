@@ -123,7 +123,7 @@ const DEALS = [
       "Highway Corridor Access",
     ],
     mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2439.8411708896315!2d78.31330079773414!3d17.128530872852682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA3JzQzLjUiTiA3OMKwMTgnNDkuMiJF!5e1!3m2!1sen!2sin!4v1787658166154!5m2!1sen!2sin",
+      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2439.8411708896315!2d78.31330079773414!3d17.128530872852682!2m3!1f0!2f0!3f0!3m2!1m1!2zMTfCsDA3JzQzLjUiTiA3OMKwMTgnNDkuMiJF!5e1!3m2!1sen!2sin!4v1787658166154!5m2!1sen!2sin",
   },
 ];
 
@@ -781,7 +781,22 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  HUBSPOT FORM — unchanged                                          */
+/*  HUBSPOT FORM                                                        */
+/*  Loading mechanism (remove-and-reinject the embed script whenever    */
+/*  the popup opens, so the .hs-form-frame div is always in the DOM     */
+/*  before the script's own scan runs) is unchanged from the version    */
+/*  that fixed the popup not opening at all.                            */
+/*                                                                       */
+/*  Added below: a listener for HubSpot's documented "Global Form       */
+/*  Events" postMessage — the closest thing to a real onFormReady       */
+/*  callback that still works for a form rendered inside a cross-origin */
+/*  iframe (which is what this embed type uses; the classic             */
+/*  hbspt.forms.create({ onFormReady }) callback isn't available for    */
+/*  this specific form, see the note in project history). HubSpot's own */
+/*  community reports say this postMessage event can fire inconsistently*/
+/*  for the embed-script method specifically, so it supplements the     */
+/*  existing DOM watcher rather than replacing it — whichever signal    */
+/*  arrives first marks the form ready.                                 */
 /* ------------------------------------------------------------------ */
 
 function HubSpotFormFrame({ projectName }) {
@@ -797,15 +812,34 @@ function HubSpotFormFrame({ projectName }) {
     let timeoutId;
     setStatus("loading");
 
-    const observer = new MutationObserver(() => {
+    function markReady() {
       if (cancelled) return;
-      if (container.querySelector("iframe")) {
-        setStatus("ready");
-        observer.disconnect();
-        if (timeoutId) window.clearTimeout(timeoutId);
-      }
+      setStatus("ready");
+      observer.disconnect();
+      window.removeEventListener("message", handleMessage);
+      if (timeoutId) window.clearTimeout(timeoutId);
+    }
+
+    const observer = new MutationObserver(() => {
+      if (container.querySelector("iframe")) markReady();
     });
     observer.observe(container, { childList: true, subtree: true });
+
+    // HubSpot's documented Global Form Events: the form iframe posts
+    // this message to the parent window once it has rendered.
+    // https://developers.hubspot.com/docs/reference/api/library/forms#global-form-events
+    const handleMessage = (event) => {
+      const data = event.data;
+      if (
+        data &&
+        data.type === "hsFormCallback" &&
+        data.eventName === "onFormReady" &&
+        (!data.id || data.id === HUBSPOT.formId)
+      ) {
+        markReady();
+      }
+    };
+    window.addEventListener("message", handleMessage);
 
     document
       .querySelectorAll('script[data-qd-hs-script]')
@@ -828,7 +862,7 @@ function HubSpotFormFrame({ projectName }) {
     timeoutId = window.setTimeout(() => {
       if (cancelled) return;
       if (container.querySelector("iframe")) {
-        setStatus("ready");
+        markReady();
       } else {
         console.warn(
           "[QuickDeals] HubSpot script loaded but no form iframe appeared.",
@@ -843,6 +877,7 @@ function HubSpotFormFrame({ projectName }) {
     return () => {
       cancelled = true;
       observer.disconnect();
+      window.removeEventListener("message", handleMessage);
       if (timeoutId) window.clearTimeout(timeoutId);
     };
   }, [retryCount]);
