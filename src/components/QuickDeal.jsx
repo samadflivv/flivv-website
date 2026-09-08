@@ -123,7 +123,7 @@ const DEALS = [
       "Highway Corridor Access",
     ],
     mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2439.8411708896315!2d78.31330079773414!3d17.128530872852682!2m3!1f0!2f0!3f0!3m2!1m1!2zMTfCsDA3JzQzLjUiTiA3OMKwMTgnNDkuMiJF!5e1!3m2!1sen!2sin!4v1787658166154!5m2!1sen!2sin",
+      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3074.6541235493155!2d78.31311476133386!3d17.12847851062508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA3JzQzLjUiTiA3OMKwMTgnNDkuMiJF!5e1!3m2!1sen!2sin!4v1788852463339!5m2!1sen!2sin",
   },
 ];
 
@@ -685,7 +685,7 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
             </div>
           ))}
 
-          {!deal.hidePlotBox && (
+          {/* {!deal.hidePlotBox && (
   <>
     {deal.id === "jalpally" ? (
       // Simplified plot display for Jalpally
@@ -738,7 +738,7 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
       )
     )}
   </>
-)}
+)} */}
 
           <div className="qd-highlights">
             <div>
