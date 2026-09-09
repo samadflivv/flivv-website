@@ -83,28 +83,6 @@ const DEALS = [
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2048.5261487305042!2d78.16350566101266!3d16.999482906602857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDU5JzU1LjciTiA3OMKwMDknNTAuMyJF!5e1!3m2!1sen!2sin!4v1787646320051!5m2!1sen!2sin",
   },
   {
-    id: "airport-town-1041",
-    projectName: "Airport Town",
-    dealTitle: "Airport Town",
-    description:
-      "One of our most strategically located projects, just 2 km from Bangalore Highway (NH-44) in the R1 zone, GP layout. Location is close to Kothur town and everyday essentials — built for both ready-to-construct homes and long-term investment.",
-    availablePlot: { plotNumber: "Plot No. 8", area: "1,041 Sq. Yd." },
-    locationHighlights: [
-      "19 km from RGIA",
-      "28 km from Aramghar",
-      "2 km from NH-44",
-      "2 km from Kothur Town",
-    ],
-    projectHighlights: [
-      "30 ft. Internal Roads",
-      "Electricity",
-      "Two way access",
-      "Beside the Park",
-    ],
-    mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3090.2755095124735!2d78.31039251464864!3d17.133868721197903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA4JzAyLjEiTiA3OMKwMTgnNDAuMiJF!5e1!3m2!1sen!2sin!4v1787646542586!5m2!1sen!2sin",
-  },
-  {
     id: "airport-drive",
     projectName: "Airport Drive",
     dealTitle: "Airport Drive",
@@ -124,6 +102,29 @@ const DEALS = [
     ],
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3074.6541235493155!2d78.31311476133386!3d17.12847851062508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA3JzQzLjUiTiA3OMKwMTgnNDkuMiJF!5e1!3m2!1sen!2sin!4v1788852463339!5m2!1sen!2sin",
+  },
+  {
+    id: "airport-town-1041",
+    projectName: "Airport Town",
+    dealTitle: "Airport Town",
+    soldOut: true,
+    description:
+      "One of our most strategically located projects, just 2 km from Bangalore Highway (NH-44) in the R1 zone, GP layout. Location is close to Kothur town and everyday essentials — built for both ready-to-construct homes and long-term investment.",
+    availablePlot: { plotNumber: "Plot No. 8", area: "1,041 Sq. Yd." },
+    locationHighlights: [
+      "19 km from RGIA",
+      "28 km from Aramghar",
+      "2 km from NH-44",
+      "2 km from Kothur Town",
+    ],
+    projectHighlights: [
+      "30 ft. Internal Roads",
+      "Electricity",
+      "Two way access",
+      "Beside the Park",
+    ],
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3090.2755095124735!2d78.31039251464864!3d17.133868721197903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA4JzAyLjEiTiA3OMKwMTgnNDAuMiJF!5e1!3m2!1sen!2sin!4v1787646542586!5m2!1sen!2sin",
   },
 ];
 
@@ -283,6 +284,24 @@ const Styles = () => (
       align-items: center;
       gap: 6px;
       z-index: 2;
+    }
+
+    /* Sold Out badge on card */
+    .qd-sold-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #D32F2F;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+      z-index: 10;
+      pointer-events: none;
     }
 
     .qd-content { padding: 40px 40px 36px; display: flex; flex-direction: column; }
@@ -500,6 +519,15 @@ const Styles = () => (
     .qd-cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     @media (max-width: 640px) { .qd-cta { width: 100%; justify-content: center; } }
 
+    .qd-cta-sold {
+      background: #555;
+      color: #aaa;
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+    .qd-cta-sold:hover { background: #555; }
+
     /* ---- modal ---- */
     .qd-modal-backdrop {
       position: fixed; inset: 0; z-index: 100;
@@ -615,6 +643,11 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 0.68, 0, 1] }}
       aria-labelledby={`${deal.id}-heading`}
     >
+      {/* Sold Out badge */}
+      {deal.soldOut && (
+        <div className="qd-sold-badge">Sold Out</div>
+      )}
+
       <div className="qd-grid">
         <div className="qd-map-wrap">
           <span className="qd-map-badge">
@@ -685,60 +718,7 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
             </div>
           ))}
 
-          {/* {!deal.hidePlotBox && (
-  <>
-    {deal.id === "jalpally" ? (
-      // Simplified plot display for Jalpally
-      <div className="qd-stamp" style={{ marginTop: '24px' }}>
-        <div className="qd-stamp-icon">
-          <Compass size={18} aria-hidden="true" />
-        </div>
-        <div>
-          <div className="qd-stamp-label">{deal.plotLabel || "AVAILABLE PLOTS"}</div>
-          <div className="qd-stamp-value" style={{ fontSize: '20px' }}>
-            9 plots available
-          </div>
-        </div>
-      </div>
-    ) : (
-      // Existing plot display logic for other deals
-      deal.availablePlots ? (
-        <div className="qd-stamp qd-stamp-multi" style={{ marginTop: '24px' }}>
-          <div className="qd-stamp-icon">
-            <Compass size={18} aria-hidden="true" />
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div className="qd-stamp-label">
-              {deal.plotLabel || "AVAILABLE PLOTS"} ({deal.availablePlots.length})
-            </div>
-            <div className="qd-stamp-multi-grid">
-              {deal.availablePlots.map((p, i) => (
-                <div className="qd-stamp-chip qd-font-mono" key={i}>
-                  <span className="qd-stamp-chip-num">{p.plotNumber}</span>
-                  <span className="qd-stamp-chip-area">{p.area}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="qd-stamp" style={{ marginTop: '24px' }}>
-          <div className="qd-stamp-icon">
-            <Compass size={18} aria-hidden="true" />
-          </div>
-          <div>
-            <div className="qd-stamp-label">{deal.plotLabel || "AVAILABLE PLOT"}</div>
-            <div className="qd-stamp-value qd-font-mono">
-              {deal.availablePlot.plotNumber}
-              <span className="qd-stamp-sep">·</span>
-              {deal.availablePlot.area}
-            </div>
-          </div>
-        </div>
-      )
-    )}
-  </>
-)} */}
+          {/* The plot box is commented out, kept as is */}
 
           <div className="qd-highlights">
             <div>
@@ -767,12 +747,13 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
 
           <button
             type="button"
-            className="qd-cta"
-            onClick={() => onSelect(deal)}
+            className={`qd-cta ${deal.soldOut ? 'qd-cta-sold' : ''}`}
+            onClick={() => !deal.soldOut && onSelect(deal)}
             aria-label={`Get deal details for ${deal.projectName}`}
+            disabled={deal.soldOut}
           >
-            Get Deal Details
-            <ArrowUpRight size={16} aria-hidden="true" />
+            {deal.soldOut ? 'Sold Out' : 'Get Deal Details'}
+            {!deal.soldOut && <ArrowUpRight size={16} aria-hidden="true" />}
           </button>
         </div>
       </div>
