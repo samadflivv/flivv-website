@@ -109,6 +109,8 @@ export default function Navigation() {
 
         <li><Link href="/contact">Contact</Link></li>
 
+        <li><Link href="/refundpolicies">Refund Policies</Link></li>
+
         <li><Link href="/faqs">FAQ's</Link></li>
 
 
