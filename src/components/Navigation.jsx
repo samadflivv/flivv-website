@@ -240,6 +240,12 @@ export default function Navigation() {
           </Link>
         </li>
 
+      <li>
+          <Link href="/refundpolicies" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">
+            Refund Policies
+          </Link>
+        </li>
+
         <li>
           <Link href="/faqs" onClick={() => setIsOpen(false)} className="text-2xl hover:text-[#0192D3] transition-all">
             FAQ's
