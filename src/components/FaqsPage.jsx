@@ -1,15 +1,11 @@
 'use client';
 
 import React, { useState, useRef } from "react";
-// FIXED: Added useReducedMotion to the import list below
-import { motion, AnimatePresence, useScroll, useTransform, useInView, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 // --- 1. ASSETS & CONFIG ---
 
-// High-end moody architecture
 const HERO_IMAGE_URL = "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/QatarEvent/LW0A7183.jpg";
-// A secondary image for the About section
-// const ABOUT_IMAGE_URL = "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/QatarEvent/LW0A7162-2.jpg";
 
 const FAQS_DATA = [
   {
@@ -56,9 +52,32 @@ const FAQS_DATA = [
   },
 ];
 
+const REFUND_TIERS = [
+  {
+    heading: "Refunds below ₹5,00,000",
+    note: "(Rupees Five Lakh)",
+    duration: "1 month",
+    description:
+      "The refund shall be processed within one month from the date on which the refund becomes due.",
+  },
+  {
+    heading: "Refunds from ₹5,00,000 to ₹20,00,000",
+    note: "(Rupees Twenty Lakh)",
+    duration: "2 months",
+    description:
+      "The refund shall be processed within two months from the date on which the refund becomes due.",
+  },
+  {
+    heading: "Refunds above ₹20,00,000",
+    note: "(Rupees Twenty Lakh)",
+    duration: "3 months",
+    description:
+      "The refund shall be processed within three months from the date on which the refund becomes due.",
+  },
+];
+
 // --- 2. UTILITY COMPONENTS ---
 
-// Adds a cinematic film grain texture over the whole page
 const GrainOverlay = () => (
   <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay">
     <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -70,54 +89,24 @@ const GrainOverlay = () => (
   </div>
 );
 
-const AnimatedTitle = ({ text, className }) => {
-  return (
-    <h2 className={`overflow-hidden ${className}`}>
-      <motion.span
-        initial={{ y: "100%" }}
-        whileInView={{ y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-        className="block"
-      >
-        {text}
-      </motion.span>
-    </h2>
-  );
-};
-
 // --- 3. CORE SECTIONS ---
 
 const HeroSection = () => {
   const ref = useRef(null);
   const { scrollY } = useScroll();
   
-  // Parallax Effects
   const yBg = useTransform(scrollY, [0, 1000], [0, 400]);
   const opacityText = useTransform(scrollY, [0, 300], [1, 0]);
   const yText = useTransform(scrollY, [0, 300], [0, 50]);
 
   return (
     <header ref={ref} className="relative w-full h-[110vh] flex items-center justify-center overflow-hidden bg-[#0B0F19]">
-      
-      {/* Background Parallax Layer */}
-      <motion.div 
-        style={{ y: yBg }}
-        className="absolute inset-0 z-0"
-      >
-        <img
-          src={HERO_IMAGE_URL}
-          alt=""
-          className="w-full h-full object-cover opacity-30"
-        />
+      <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">
+        <img src={HERO_IMAGE_URL} alt="" className="w-full h-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F19]/40 via-transparent to-[#0B0F19]" />
       </motion.div>
 
-      {/* Text Content */}
-      <motion.div 
-        style={{ opacity: opacityText, y: yText }}
-        className="relative z-10 text-center px-6 max-w-5xl"
-      >
+      <motion.div style={{ opacity: opacityText, y: yText }} className="relative z-10 text-center px-6 max-w-5xl">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -133,22 +122,21 @@ const HeroSection = () => {
           All Your Questions, <br />
           <span className="italic text-white/40">Answered.</span>
         </h1>
-
       </motion.div>
     </header>
   );
 };
 
 const AccordionItem = ({ item, isOpen, onClick, index }) => {
-  // This hook was missing in the previous import
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      // Using amount instead of margin prevents it from triggering too early or re-triggering during layout shifts
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : index * 0.1 }}
       className={`group border-b border-white/10 transition-all duration-500 ${isOpen ? "bg-white/[0.02]" : "hover:bg-white/[0.01]"}`}
     >
       <button
@@ -169,7 +157,6 @@ const AccordionItem = ({ item, isOpen, onClick, index }) => {
             </span>
         </div>
         
-        {/* Animated Icon */}
         <div className={`relative w-6 h-6 flex-shrink-0 ml-4 mt-1 md:mt-0 transition-transform duration-500 ${isOpen ? "rotate-45" : "rotate-0"}`}>
             <span className="absolute top-1/2 left-0 w-6 h-[1px] bg-white/40 group-hover:bg-white/80 transition-colors" />
             <span className="absolute top-0 left-1/2 h-6 w-[1px] bg-white/40 group-hover:bg-white/80 transition-colors" />
@@ -207,78 +194,6 @@ const AccordionItem = ({ item, isOpen, onClick, index }) => {
   );
 };
 
-// const AboutSection = () => {
-//     const { scrollYProgress } = useScroll();
-//     const y = useTransform(scrollYProgress, [0.5, 1], [0, -100]);
-
-//     return (
-//       <section className="relative py-32 px-6 md:px-12 bg-[#0B0F19] overflow-hidden">
-//         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            
-//             {/* Left: Image Composition */}
-//             <div className="relative">
-//                 <motion.div 
-//                     style={{ y }}
-//                     className="relative z-10 overflow-hidden rounded-sm aspect-[4/5]"
-//                 >
-//                     <img src={ABOUT_IMAGE_URL} alt="Interior Detail" className="w-full h-full object-cover" />
-//                     {/* Image Shine Effect */}
-//                     <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent pointer-events-none" />
-//                 </motion.div>
-                
-//                 {/* Decorative Border Element */}
-//                 <motion.div 
-//                     initial={{ opacity: 0, x: -50 }}
-//                     whileInView={{ opacity: 1, x: 0 }}
-//                     transition={{ duration: 1, delay: 0.2 }}
-//                     className="absolute -bottom-8 -left-8 w-full h-full border border-white/10 z-0 hidden md:block"
-//                 />
-//             </div>
-
-//             {/* Right: Text Content */}
-//             <div>
-//                 <div className="mb-8">
-//                      <span className="text-emerald-400/80 text-xs font-medium tracking-widest uppercase mb-4 block">Our Ethos</span>
-//                      <AnimatedTitle text="Constructing" className="text-5xl md:text-7xl font-serif text-white leading-none" />
-//                      <AnimatedTitle text="Elegance." className="text-5xl md:text-7xl font-serif text-white/50 italic leading-none" />
-//                 </div>
-
-//                 <motion.p 
-//                     initial={{ opacity: 0, y: 20 }}
-//                     whileInView={{ opacity: 1, y: 0 }}
-//                     viewport={{ once: true }}
-//                     transition={{ duration: 0.8, delay: 0.4 }}
-//                     className="text-gray-400 text-lg font-light leading-relaxed mb-10"
-//                 >
-//                     We exist at the intersection of precision engineering and artistic intuition. 
-//                     Every project is a dialogue between the environment and the inhabitant, 
-//                     ensuring that our spaces do not just house people, but elevate their daily rituals.
-//                 </motion.p>
-
-//                 {/* Stats Grid */}
-//                 <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
-//                     {[
-//                         { label: "Years Active", value: "22" },
-//                         { label: "Awards Won", value: "14" }
-//                     ].map((stat, i) => (
-//                         <motion.div
-//                             key={i}
-//                             initial={{ opacity: 0, y: 20 }}
-//                             whileInView={{ opacity: 1, y: 0 }}
-//                             viewport={{ once: true }}
-//                             transition={{ duration: 0.6, delay: 0.6 + (i * 0.1) }}
-//                         >
-//                             <div className="text-4xl font-serif text-white mb-2">{stat.value}</div>
-//                             <div className="text-xs text-white/40 tracking-widest uppercase">{stat.label}</div>
-//                         </motion.div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </div>
-//       </section>
-//     );
-// };
-
 // --- 4. MAIN PAGE COMPONENT ---
 
 const FaqsPage = () => {
@@ -294,16 +209,17 @@ const FaqsPage = () => {
       
       <HeroSection />
 
-      {/* FAQ SECTION */}
-      <section className="relative z-20 -mt-32 pb-20 px-4 md:px-8">
-        <div className="max-w-5xl mx-auto">
-          {/* Glassmorphism Card */}
+      {/* FAQ & REFUND SECTION */}
+      <section className="relative z-20 -mt-32 pb-24 px-4 md:px-8">
+        <div className="max-w-5xl mx-auto flex flex-col gap-10 md:gap-16">
+          
+          {/* FAQ Card */}
           <motion.div 
-            initial={{ opacity: 0, y: 100 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-[#0B0F19]/80 backdrop-blur-2xl border border-white/10 rounded-t-3xl p-6 md:p-12 lg:p-20 shadow-2xl shadow-black"
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-[#0B0F19]/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:p-12 lg:p-20 shadow-2xl shadow-black"
           >
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
@@ -325,12 +241,75 @@ const FaqsPage = () => {
               ))}
             </div>
           </motion.div>
+
+          {/* Refund Policies Card (Separate Box) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-[#0B0F19]/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:p-12 lg:p-20 shadow-2xl shadow-black"
+          >
+            <div className="mb-12">
+              <span className="text-emerald-400/80 text-xs font-medium tracking-widest uppercase mb-4 block">
+                Important Information
+              </span>
+              <h2 className="text-4xl md:text-5xl font-serif text-white">
+                Refund Policies
+              </h2>
+            </div>
+
+            <div className="relative mt-12">
+              {/* Vertical Timeline Line */}
+              <div
+                className="absolute left-1 top-2 bottom-2 w-px bg-white/10"
+                aria-hidden="true"
+              />
+
+              <div className="space-y-14 sm:space-y-16">
+                {REFUND_TIERS.map((tier, idx) => (
+                  <motion.div 
+                    key={tier.heading} 
+                    className="relative pl-8 sm:pl-12"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: idx * 0.15 }}
+                  >
+                    {/* Dot */}
+                    <span
+                      className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"
+                      aria-hidden="true"
+                    />
+
+                    {/* Header Row */}
+                    <div className="flex flex-col gap-3 border-b border-white/10 pb-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                      <p className="text-lg sm:text-xl font-serif tracking-tight text-white/90">
+                        {tier.heading}{" "}
+                        <span className="font-sans text-sm text-white/40 block sm:inline mt-1 sm:mt-0">
+                          {tier.note}
+                        </span>
+                      </p>
+
+                      <span className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-emerald-900/30 border border-emerald-500/20 px-4 py-1.5 text-xs font-medium tracking-wide text-emerald-300">
+                        {tier.duration}
+                      </span>
+                    </div>
+
+                    {/* Description */}
+                    <p className="mt-5 max-w-[65ch] text-[15px] leading-relaxed text-gray-400 font-light">
+                      {tier.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
-
-      {/* <AboutSection /> */}
       
-      {/* Footer Spacer for visuals */}
+      {/* Footer Spacer */}
       <div className="h-32 bg-[#0B0F19]" />
     </main>
   );
