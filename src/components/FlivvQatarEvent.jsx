@@ -83,11 +83,6 @@ export default function FlivvQatarEvent() {
   const [isHubSpotLoading, setIsHubSpotLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(8);
 
-  // Set Page Title
-  useEffect(() => {
-    document.title = "Flivv Qatar Mega Sales Event 2025";
-  }, []);
-
   // Gallery Keyboard Navigation
   useEffect(() => {
     const handleKeyDown = (e) => {

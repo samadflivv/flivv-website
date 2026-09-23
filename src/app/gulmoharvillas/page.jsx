@@ -10,6 +10,12 @@ import GVProgressRoadmap from '@/components/GVProgressRoadmap'
 import Navigation from '@/components/Navigation'
 import React from 'react'
 
+// Add this metadata block
+export const metadata = {
+  title: 'Gulmohar Villas | Flivv',
+  description: 'Explore Gulmohar Villas by Flivv.',
+};
+
 const page = () => {
   return (
     <div>

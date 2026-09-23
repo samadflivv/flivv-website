@@ -40,10 +40,6 @@ export default function Gallery() {
   const [galleryId, setGalleryId] = useState(null);
   const [visibleCount, setVisibleCount] = useState(8);
 
-  // Set Page Title
-  useEffect(() => {
-    document.title = "Flivv Qatar Mega Sales Event 2025";
-  }, []);
 
   // Prevent body scroll when lightbox is open
   useEffect(() => {
