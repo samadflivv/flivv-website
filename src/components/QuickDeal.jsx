@@ -8,59 +8,59 @@ import { MapPin, CheckCircle2, ArrowUpRight, X, Compass } from "lucide-react";
 /* ------------------------------------------------------------------ */
 
 const DEALS = [
-  {
-    id: "jalpally",
-    projectName: "Jalpally",
-    dealTitle: "Jalpally — Plots Available",
-    description: [
-      "Jalpally is a rapidly growing urban municipality located on the southern division of Hyderabad. Known for its strategic location, Jalpally has emerged as one of the best real estate investment destinations near Shamshabad, offering the potential for up to 2x returns over a 5-year period.",
-      "Whether you are looking for low-investment open plots or long-term capital appreciation driven by major infrastructure developments, Jalpally presents an ideal opportunity for every home builder and property investor.",
-    ],
-    descriptionSections: [
-      {
-        title: "Key Highlights & Amenities",
-        items: [
-          "Peaceful Living Environment: Surrounded by scenic surroundings and offering a serene, calm atmosphere.",
-          "Thriving Neighborhood: Situated near existing residential colonies, rapidly expanding semi-urban housing, villas and spacious farmhouses.",
-          "100% Clear Title Plots: Features Gram Panchayat (GP) approved layouts with the Layout Regularization Scheme (LRS) fully paid, ensuring hassle-free ownership.",
-        ],
-      },
-      {
-        title: "Prime Connectivity & Strategic Location",
-        intro:
-          "Jalpally offers seamless connectivity to key commercial hubs and easy transit networks across Hyderabad:",
-        items: [
-          "Rajiv Gandhi International Airport (Shamshabad): 20-minute drive",
-          "Outer Ring Road (ORR): 12-minute drive",
-          "PVNR Expressway: 18-minute drive",
-        ],
-      },
-    ],
-    plotLabel: "AVAILABLE PLOTS",
-    availablePlots: [
-      { plotNumber: "Plot No. 1", area: "419 Sq. Yd." },
-      { plotNumber: "Plot No. 7", area: "117 Sq. Yd." },
-      { plotNumber: "Plot No. 8", area: "118 Sq. Yd." },
-      { plotNumber: "Plot No. 33", area: "400 Sq. Yd." },
-      { plotNumber: "Plot No. 34", area: "147 Sq. Yd." },
-      { plotNumber: "Plot No. 43", area: "333 Sq. Yd." },
-      { plotNumber: "Plot No. 45", area: "308 Sq. Yd." },
-      { plotNumber: "Plot No. 46", area: "803 Sq. Yd." },
-      { plotNumber: "Plot No. 46A", area: "345 Sq. Yd." },
-    ],
-    locationHighlights: [
-      "Near RGIA, Shamshabad",
-      "Near PVNR Expressway",
-      "Near Hyderabad ORR",
-    ],
-    projectHighlights: [
-      "Gated Layout Options",
-      "Independent House Plots",
-      "Semi-Urban scenic setting",
-    ],
-    mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4098.660461216072!2d78.44324678810361!3d17.274968217617037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDE2JzI5LjMiTiA3OMKwMjYnMzYuNCJF!5e1!3m2!1sen!2sin!4v1787658046656!5m2!1sen!2sin",
-  },
+  // {
+  //   id: "jalpally",
+  //   projectName: "Jalpally",
+  //   dealTitle: "Jalpally — Plots Available",
+  //   description: [
+  //     "Jalpally is a rapidly growing urban municipality located on the southern division of Hyderabad. Known for its strategic location, Jalpally has emerged as one of the best real estate investment destinations near Shamshabad, offering the potential for up to 2x returns over a 5-year period.",
+  //     "Whether you are looking for low-investment open plots or long-term capital appreciation driven by major infrastructure developments, Jalpally presents an ideal opportunity for every home builder and property investor.",
+  //   ],
+  //   descriptionSections: [
+  //     {
+  //       title: "Key Highlights & Amenities",
+  //       items: [
+  //         "Peaceful Living Environment: Surrounded by scenic surroundings and offering a serene, calm atmosphere.",
+  //         "Thriving Neighborhood: Situated near existing residential colonies, rapidly expanding semi-urban housing, villas and spacious farmhouses.",
+  //         "100% Clear Title Plots: Features Gram Panchayat (GP) approved layouts with the Layout Regularization Scheme (LRS) fully paid, ensuring hassle-free ownership.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Prime Connectivity & Strategic Location",
+  //       intro:
+  //         "Jalpally offers seamless connectivity to key commercial hubs and easy transit networks across Hyderabad:",
+  //       items: [
+  //         "Rajiv Gandhi International Airport (Shamshabad): 20-minute drive",
+  //         "Outer Ring Road (ORR): 12-minute drive",
+  //         "PVNR Expressway: 18-minute drive",
+  //       ],
+  //     },
+  //   ],
+  //   plotLabel: "AVAILABLE PLOTS",
+  //   availablePlots: [
+  //     { plotNumber: "Plot No. 1", area: "419 Sq. Yd." },
+  //     { plotNumber: "Plot No. 7", area: "117 Sq. Yd." },
+  //     { plotNumber: "Plot No. 8", area: "118 Sq. Yd." },
+  //     { plotNumber: "Plot No. 33", area: "400 Sq. Yd." },
+  //     { plotNumber: "Plot No. 34", area: "147 Sq. Yd." },
+  //     { plotNumber: "Plot No. 43", area: "333 Sq. Yd." },
+  //     { plotNumber: "Plot No. 45", area: "308 Sq. Yd." },
+  //     { plotNumber: "Plot No. 46", area: "803 Sq. Yd." },
+  //     { plotNumber: "Plot No. 46A", area: "345 Sq. Yd." },
+  //   ],
+  //   locationHighlights: [
+  //     "Near RGIA, Shamshabad",
+  //     "Near PVNR Expressway",
+  //     "Near Hyderabad ORR",
+  //   ],
+  //   projectHighlights: [
+  //     "Gated Layout Options",
+  //     "Independent House Plots",
+  //     "Semi-Urban scenic setting",
+  //   ],
+  //   mapEmbedUrl:
+  //     "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4098.660461216072!2d78.44324678810361!3d17.274968217617037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDE2JzI5LjMiTiA3OMKwMjYnMzYuNCJF!5e1!3m2!1sen!2sin!4v1787658046656!5m2!1sen!2sin",
+  // },
   {
     id: "mothighanapur",
     projectName: "Mothighanapur",
@@ -86,6 +86,7 @@ const DEALS = [
     id: "airport-drive",
     projectName: "Airport Drive",
     dealTitle: "Airport Drive",
+    soldOut: true,
     description:
       "Situated in Nandigama Mandal, Ranga Reddy District, roughly 50 km south of Hyderabad near Kothur — a fast-growing corridor along NH-44 with seamless connectivity to the Outer Ring Road and Rajiv Gandhi International Airport. The area is emerging as a major hub for warehousing, logistics and industrial development, alongside a rising base of residential layouts and gated communities.",
     availablePlot: { plotNumber: "Plot No. 569", area: "995 Sq. Yd." },
