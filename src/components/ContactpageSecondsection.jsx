@@ -2,7 +2,12 @@ import React from 'react';
 
 const ContactpageSecondsection = () => {
   const offices = [
-    
+    {
+      country: "GM Gardens",
+      city: "Hyderabad",
+      address: "GM Gardens offers premium open plots in Nanal Nagar - a rare opportunity to own centrally located land with excellent connectivity to Old City, Cyberabad, and key city landmarks.",
+      status: "active"
+    },
     {
       country: "Gulmohar Homes",
       city: "Shadnagar",

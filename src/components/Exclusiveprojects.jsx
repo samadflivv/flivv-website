@@ -26,9 +26,18 @@ const IMAGE_OPTIONS = {
 };
 
 const projectsData = [
-  
   {
     id: 1,
+    title: "GM Garden",
+    location: "Hyderabad",
+    imageKey: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GMG/IMG_3784%20(1).png",
+    description: "GM Gardens offers premium open plots in Nanal Nagar - a rare opportunity to own centrally located land with excellent connectivity to Old City, Cyberabad, and key city landmarks.",
+    hasBadge: false,
+    priority: true
+  },
+  
+  {
+    id: 2,
     title: "Gulmohar Homes",
     location: "Shadnagar",
     imageKey: "GulmoharHomes1",
@@ -49,20 +58,12 @@ const projectsData = [
   // },
   
   {
-    id: 2,
+    id: 3,
     title: "Gulmohar Villas",
     location: "Shadnagar",
     imageKey: "GulmoharVillas1",
     description: "HMDA-approved 22-acre villa plot project in Nagulapally.",
     href: "/gulmoharvillas",
-    hasBadge: false,
-    priority: true
-  },
-   {
-    id: 3,
-    title: "New Project - Coming Soon !",
-    imageKey: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/new-project.png",
-    description: "Something new is being plotted strategically and designed specifically for those who invest wisely and trust in building a lasting value.",
     hasBadge: false,
     priority: true
   },
