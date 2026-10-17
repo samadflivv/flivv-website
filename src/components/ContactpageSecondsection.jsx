@@ -6,6 +6,7 @@ const ContactpageSecondsection = () => {
       country: "GM Gardens",
       city: "Hyderabad",
       address: "GM Gardens offers premium open plots in Nanal Nagar - a rare opportunity to own centrally located land with excellent connectivity to Old City, Cyberabad, and key city landmarks.",
+      link: "/gm-garden",
       status: "active"
     },
     {

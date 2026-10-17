@@ -9,6 +9,7 @@ const projectsData = {
   current: {
     title: 'Current Projects',
     projects: [
+      { name: 'GM Garden', href: '/gm-garden' },
       { name: 'Gulmohar Homes', href: '/gulmoharhomes' },
       { name: 'Gulmohar Villas', href: '/gulmoharvillas' },
     ]
@@ -32,7 +33,7 @@ const eventsData = {
     href: '/salesmeets', 
     items: [
       { name: 'Qatar', href: '/salesmeets?country=QA' },
-      { name: 'India', href: '/salesmeets?country=India' }
+      // { name: 'India', href: '/salesmeets?country=India' }
     ]
   },
   salesEvents: {

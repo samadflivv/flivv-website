@@ -30,9 +30,10 @@ const projectsData = [
     id: 1,
     title: "GM Garden",
     location: "Hyderabad",
-    imageKey: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GMG/IMG_3784%20(1).png",
+    imageKey: "https://flivv-web-cdn.s3.ap-south-1.amazonaws.com/GMG/gmg.png",
     description: "GM Gardens offers premium open plots in Nanal Nagar - a rare opportunity to own centrally located land with excellent connectivity to Old City, Cyberabad, and key city landmarks.",
     hasBadge: false,
+    href: "/gm-garden",
     priority: true
   },
   
