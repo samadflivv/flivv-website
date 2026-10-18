@@ -169,7 +169,6 @@ export const gmGarden = {
       { label: 'Road Access', value: '40 Ft wide road with 9-inch CC surface' },
       { label: 'Utilities', value: 'Underground electricity, drainage, water & high-speed fiber ready' },
       { label: 'Boundary & Finish', value: 'Granite boundary wall with state-of-the-art curb stones' },
-      { label: 'Ownership', value: 'Clear Title' },
     ],
     chips: [ 'GHMC approved'],
   },

@@ -1,4 +1,5 @@
 import Aboutsection from "@/components/Aboutsection";
+import AnnouncementStrip from "@/components/AnnouncementStrip";
 import CTAHome from "@/components/CTAHome";
 import Exclusiveprojects from "@/components/Exclusiveprojects";
 import FaqSection from "@/components/FaqSection";
@@ -13,6 +14,7 @@ import StatisticsSection from "@/components/StatisticsSection";
 export default function Home() {
   return (
     <main>
+      <AnnouncementStrip />
       <Navigation />
       <Herosection />
       <Aboutsection/>

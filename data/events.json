@@ -1465,5 +1465,24 @@
     "createdAt": "2026-10-06T08:05:41.565Z",
     "updatedAt": "2026-10-06T08:05:41.565Z",
     "isPublished": true
+  },
+  {
+    "title": "One Last Sales Meet At Gulmohar Homes",
+    "description": "We're hosting our Final Gulmohar Homes Sales Meet. Unlock never-before discounts. Book your visit now!",
+    "start": "2026-11-01T05:30:00.000Z",
+    "end": "2026-11-01T10:30:00.000Z",
+    "country": "India",
+    "countryLabel": "Hyderabad",
+    "city": "Shadnagar",
+    "venue": "Gulmohar Homes",
+    "type": "Sales Meet",
+    "tags": [],
+    "rsvpUrl": "https://flivvdevelopers.com/gulmoharhomes",
+    "organizer": "Flivv",
+    "id": "evt-1792327114092-5trydnd2v",
+    "createdAt": "2026-10-18T12:38:34.092Z",
+    "updatedAt": "2026-10-18T12:41:06.254Z",
+    "isPublished": true,
+    "capacity": ""
   }
 ]

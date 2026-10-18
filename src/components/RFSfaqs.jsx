@@ -23,10 +23,10 @@ const RFSfaqs = () => {
       question: "What are the amenities in it?",
       answer: "The project is equipped with recreational amenities on 2.2 Acres, including horse riding, swimming pool, indoor games, amphitheater & much more!"
     },
-    {
-      question: "Is there an EMI plan? What is the registration process?",
-      answer: "Yes, we do have a 12-month EMI option. The registration process takes place at Jadcherla MRO"
-    },
+    // {
+    //   question: "Is there an EMI plan? What is the registration process?",
+    //   answer: "Yes, we do have a 12-month EMI option. The registration process takes place at Jadcherla MRO"
+    // },
     {
       question: "Is this good for short-term or long-term investment?",
       answer: "Preferably long-term, as this project is designed for land ownership and intended to grow in value and purpose over time."
