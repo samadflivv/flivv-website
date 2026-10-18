@@ -30,7 +30,7 @@ const PopupModal = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center sm:pt-25 justify-center bg-black/50 backdrop-blur-sm">
       <div className="relative bg-white backdrop-blur-xl border border-white/30 rounded-2xl shadow-xl flex flex-col md:flex-row w-[95%] max-w-5xl text-white overflow-hidden">
         {/* Close Button */}
         <button

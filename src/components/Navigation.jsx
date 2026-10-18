@@ -33,7 +33,7 @@ const eventsData = {
     href: '/salesmeets', 
     items: [
       { name: 'Qatar', href: '/salesmeets?country=QA' },
-      // { name: 'India', href: '/salesmeets?country=India' }
+      { name: 'India', href: '/salesmeets?country=India' }
     ]
   },
   salesEvents: {
