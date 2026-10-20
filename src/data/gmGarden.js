@@ -76,10 +76,10 @@ export const gmGarden = {
         description: 'Khairatabad Metro Station and Jubilee Hills Road No. 5 Metro Station.',
       },
       {
-        value: '13.5',
+        value: '11',
         suffix: 'km',
-        label: 'Financial District',
-        description: 'Business district access listed in the document.',
+        label: 'IT Hubs',
+        description: 'IT hubs like Gachibowli and HITEC City are easily accessible.',
       },
     ],
   },

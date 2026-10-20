@@ -8,26 +8,72 @@ import { MapPin, CheckCircle2, ArrowUpRight, X, Compass } from "lucide-react";
 /* ------------------------------------------------------------------ */
 
 const DEALS = [
+  // {
+  //   id: "mothighanapur",
+  //   projectName: "Mothighanapur",
+  //   dealTitle: "Mothighanapur — Farm Plots",
+  //   description:
+  //     "A NALA-converted farmland project by Flivv Developers in Mothighanapur, a Gram Panchayat in Balanagar Mandal, Mahabubnagar district, within Hyderabad's expanding South corridor. The 2-acre layout is divided into 10 individual plots of 1,000 sq. yards each, with direct access from a 50 ft. main road and 30 ft. internal roads. A one-time payment option is available, structured as a long-term hold of 5–10 years.",
+  //   plotLabel: "AVAILABLE PLOTS",
+  //   availablePlot: { plotNumber: "10 Plots", area: "1,000 Sq. Yd. each" },
+  //   locationHighlights: [
+  //     "12 km from Shadnagar",
+  //     "3.5 km from NH-44",
+  //     "53 km from Aramghar",
+  //   ],
+  //   projectHighlights: [
+  //     "Registry in sq. yards",
+  //     "50 ft. Main Road Access",
+  //     "30 ft. Internal Roads",
+  //   ],
+  //   mapEmbedUrl:
+  //     "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2048.5261487305042!2d78.16350566101266!3d16.999482906602857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDU5JzU1LjciTiA3OMKwMDknNTAuMyJF!5e1!3m2!1sen!2sin!4v1787646320051!5m2!1sen!2sin",
+  // },
   {
-    id: "mothighanapur",
-    projectName: "Mothighanapur",
-    dealTitle: "Mothighanapur — Farm Plots",
+    id: "airport-town-1041",
+    projectName: "Airport Town",
+    dealTitle: "Airport Town - Phase 1",
+    // soldOut: true,
     description:
-      "A NALA-converted farmland project by Flivv Developers in Mothighanapur, a Gram Panchayat in Balanagar Mandal, Mahabubnagar district, within Hyderabad's expanding South corridor. The 2-acre layout is divided into 10 individual plots of 1,000 sq. yards each, with direct access from a 50 ft. main road and 30 ft. internal roads. A one-time payment option is available, structured as a long-term hold of 5–10 years.",
-    plotLabel: "AVAILABLE PLOTS",
-    availablePlot: { plotNumber: "10 Plots", area: "1,000 Sq. Yd. each" },
+      "One of our most strategically located projects, just 2 km from Bangalore Highway (NH-44) in the R1 zone, GP layout. Location is close to Kothur town and everyday essentials — built for both ready-to-construct homes and long-term investment.",
+    availablePlot: { plotNumber: "Plot No. 8", area: "1,041 Sq. Yd." },
     locationHighlights: [
-      "12 km from Shadnagar",
-      "3.5 km from NH-44",
-      "53 km from Aramghar",
+      "19 km from RGIA",
+      "28 km from Aramghar",
+      "2 km from NH-44",
+      "2 km from Kothur Town",
     ],
     projectHighlights: [
-      "Registry in sq. yards",
-      "50 ft. Main Road Access",
       "30 ft. Internal Roads",
+      "Electricity",
+      "Two way access",
+      "Beside the Park",
     ],
     mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2048.5261487305042!2d78.16350566101266!3d16.999482906602857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDU5JzU1LjciTiA3OMKwMDknNTAuMyJF!5e1!3m2!1sen!2sin!4v1787646320051!5m2!1sen!2sin",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2898.2464749529777!2d78.30717967360594!3d17.135157782426727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbb7f7006692b9%3A0x5e37cade14009966!2sAirport%20Town!5e1!3m2!1sen!2sin!4v1792490517095!5m2!1sen!2sin",
+  },
+   {
+    id: "airport-town-1041",
+    projectName: "Airport Town",
+    dealTitle: "Airport Town - Phase 2",
+    // soldOut: true,
+    description:
+      "One of our most strategically located projects, just 2 km from Bangalore Highway (NH-44) in the R1 zone, GP layout. Location is close to Kothur town and everyday essentials — built for both ready-to-construct homes and long-term investment.",
+    availablePlot: { plotNumber: "Plot No. 8", area: "1,041 Sq. Yd." },
+    locationHighlights: [
+      "19 km from RGIA",
+      "28 km from Aramghar",
+      "2 km from NH-44",
+      "2 km from Kothur Town",
+    ],
+    projectHighlights: [
+      "30 ft. Internal Roads",
+      "Electricity",
+      "Two way access",
+      "Beside the Park",
+    ],
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4100.820399011999!2d78.30096817515906!3d17.127866683715762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA3JzQwLjMiTiA3OMKwMTgnMTIuOCJF!5e1!3m2!1sen!2sin!4v1792489126872!5m2!1sen!2sin",
   },
   {
     id: "jalpally",
@@ -82,51 +128,29 @@ const DEALS = [
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4098.660461216072!2d78.44324678810361!3d17.274968217617037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDE2JzI5LjMiTiA3OMKwMjYnMzYuNCJF!5e1!3m2!1sen!2sin!4v1787658046656!5m2!1sen!2sin",
   },
-  {
-    id: "airport-drive",
-    projectName: "Airport Drive",
-    dealTitle: "Airport Drive",
-    // soldOut: true,
-    description:
-      "Situated in Nandigama Mandal, Ranga Reddy District, roughly 50 km south of Hyderabad near Kothur — a fast-growing corridor along NH-44 with seamless connectivity to the Outer Ring Road and Rajiv Gandhi International Airport. The area is emerging as a major hub for warehousing, logistics and industrial development, alongside a rising base of residential layouts and gated communities.",
-    availablePlot: { plotNumber: "Plot No. 569", area: "995 Sq. Yd." },
-    locationHighlights: [
-      "Near NH-44 Highway",
-      "Close to Shadnagar",
-      "Near ORR & RGIA Airport",
-      "~50 km South of Hyderabad",
-    ],
-    projectHighlights: [
-      "Logistics & Industrial Hub",
-      "Growing Residential Layouts",
-      "Highway Corridor Access",
-    ],
-    mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3074.6541235493155!2d78.31311476133386!3d17.12847851062508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA3JzQzLjUiTiA3OMKwMTgnNDkuMiJF!5e1!3m2!1sen!2sin!4v1788852463339!5m2!1sen!2sin",
-  },
-  {
-    id: "airport-town-1041",
-    projectName: "Airport Town",
-    dealTitle: "Airport Town",
-    soldOut: true,
-    description:
-      "One of our most strategically located projects, just 2 km from Bangalore Highway (NH-44) in the R1 zone, GP layout. Location is close to Kothur town and everyday essentials — built for both ready-to-construct homes and long-term investment.",
-    availablePlot: { plotNumber: "Plot No. 8", area: "1,041 Sq. Yd." },
-    locationHighlights: [
-      "19 km from RGIA",
-      "28 km from Aramghar",
-      "2 km from NH-44",
-      "2 km from Kothur Town",
-    ],
-    projectHighlights: [
-      "30 ft. Internal Roads",
-      "Electricity",
-      "Two way access",
-      "Beside the Park",
-    ],
-    mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3090.2755095124735!2d78.31039251464864!3d17.133868721197903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA4JzAyLjEiTiA3OMKwMTgnNDAuMiJF!5e1!3m2!1sen!2sin!4v1787646542586!5m2!1sen!2sin",
-  },
+  // {
+  //   id: "airport-drive",
+  //   projectName: "Airport Drive",
+  //   dealTitle: "Airport Drive",
+  //   // soldOut: true,
+  //   description:
+  //     "Situated in Nandigama Mandal, Ranga Reddy District, roughly 50 km south of Hyderabad near Kothur — a fast-growing corridor along NH-44 with seamless connectivity to the Outer Ring Road and Rajiv Gandhi International Airport. The area is emerging as a major hub for warehousing, logistics and industrial development, alongside a rising base of residential layouts and gated communities.",
+  //   availablePlot: { plotNumber: "Plot No. 569", area: "995 Sq. Yd." },
+  //   locationHighlights: [
+  //     "Near NH-44 Highway",
+  //     "Close to Shadnagar",
+  //     "Near ORR & RGIA Airport",
+  //     "~50 km South of Hyderabad",
+  //   ],
+  //   projectHighlights: [
+  //     "Logistics & Industrial Hub",
+  //     "Growing Residential Layouts",
+  //     "Highway Corridor Access",
+  //   ],
+  //   mapEmbedUrl:
+  //     "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3074.6541235493155!2d78.31311476133386!3d17.12847851062508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDA3JzQzLjUiTiA3OMKwMTgnNDkuMiJF!5e1!3m2!1sen!2sin!4v1788852463339!5m2!1sen!2sin",
+  // },
+
 ];
 
 /* ------------------------------------------------------------------ */
@@ -733,17 +757,17 @@ function QuickDealCard({ deal, index, onSelect, prefersReducedMotion }) {
                 ))}
               </ul>
             </div>
-            <div>
-              <div className="qd-highlight-title">HIGHLIGHTS</div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {deal.projectHighlights.map((item, i) => (
-                  <li className="qd-highlight-item project" key={i}>
-                    <CheckCircle2 size={14} aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* <div>
+                <div className="qd-highlight-title">HIGHLIGHTS</div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {deal.projectHighlights.map((item, i) => (
+                    <li className="qd-highlight-item project" key={i}>
+                      <CheckCircle2 size={14} aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div> */}
           </div>
 
           <button
