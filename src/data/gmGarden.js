@@ -143,9 +143,9 @@ export const gmGarden = {
       {
         title: 'Education',
         items: [
+          'Glendale International School',
           'Orchids The International School.',
-          'PM SHRI Kendriya Vidyalaya No. 1.',
-          'The Premia Academy.',
+          'Kendriya Vidyalaya No. 1.',
           'Army Public School.'
         ],
       },
@@ -153,6 +153,7 @@ export const gmGarden = {
         title: 'Healthcare',
         items: [
           'Olive Hospital.',
+          'Mythri Hospital', 
           'Premier Hospital.',
           'Majestic Hospital.'
         ],
