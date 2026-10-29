@@ -133,7 +133,7 @@ export const gmGarden = {
       {
         title: 'Transport Hubs',
         items: [
-          'Financial District, IT Hubs & Educational Universities all lie on the same stretch, approximately 13.5 KMS distant from GM Garden',
+          'Financial District, IT Hubs & Educational Universities all lie on the same stretch, approximately 13.5 KMS distant from GM Garden.',
           'Hyderabad Deccan Railway Station (Nampally) — about 4.5 kilometers away.',
           'Khairatabad Metro Station and Jubilee Hills Road No. 5 Metro Station — both around 4.2 to 4.4 kilometers away.',
           'Rajiv Gandhi International Airport — roughly 30 to 35 kilometers via the PV Narasimha Rao Expressway or Nehru Outer Ring Road.',
@@ -144,18 +144,18 @@ export const gmGarden = {
         title: 'Education',
         items: [
           'Glendale International School',
-          'Orchids The International School.',
-          'Kendriya Vidyalaya No. 1.',
-          'Army Public School.'
+          'Orchids The International School',
+          'Kendriya Vidyalaya No. 1',
+          'Army Public School'
         ],
       },
       {
         title: 'Healthcare',
         items: [
-          'Olive Hospital.',
+          'Olive Hospital',
           'Mythri Hospital', 
-          'Premier Hospital.',
-          'Majestic Hospital.'
+          'Premier Hospital',
+          'Majestic Hospital'
         ],
       },
     ],
