@@ -144,9 +144,9 @@ export const gmGarden = {
         title: 'Education',
         items: [
           'Glendale International School',
+          'shadan institute of medical sciences',
           'Orchids The International School',
-          'Kendriya Vidyalaya No. 1',
-          'Army Public School'
+          'Kendriya Vidyalaya No. 1'
         ],
       },
       {
