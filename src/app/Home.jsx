@@ -14,7 +14,7 @@ import StatisticsSection from "@/components/StatisticsSection";
 export default function Home() {
   return (
     <main>
-      <AnnouncementStrip />
+      {/* <AnnouncementStrip /> */}
       <Navigation />
       <Herosection />
       <Aboutsection/>

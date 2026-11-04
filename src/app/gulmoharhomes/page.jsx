@@ -14,7 +14,7 @@ const page = () => {
 
   return (
     <div>
-        <AnnouncementStrip />
+        {/* <AnnouncementStrip /> */}
         <Navigation/>
         <GulmoharHomes/>
         <Footer/>
